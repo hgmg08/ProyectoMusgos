@@ -1,0 +1,172 @@
+/* 
+ * Contenedores
+*/ 
+
+.header {
+	height: 100px;
+	margin-top: 20px;
+	background-image:url(/ProyectoMusgos/images/header_images.jpg);
+}
+
+.left_menu {
+	height: 500px;
+	border: 1px solid #000;
+}
+
+.central_content {
+	height: 500px;
+}
+
+.right_menu {
+	height: 500px;
+	border: 1px solid #000;
+}
+
+.footer {
+	height: 50px;
+	border: 1px solid #000;
+}
+
+/*
+ * Menu principal
+*/
+
+.cssmenu ul{
+	list-style: none;
+	padding: 0;
+	margin: 10px 0 0 20px;
+}
+
+.cssmenu li {
+	margin: 5px 0 0 0;
+}
+									
+.cssmenu li a {
+	margin: 0;
+	padding: 0;
+	text-decoration: none;
+	display: block;
+}	
+														
+.cssmenu li a:link, .cssmenu li a:visited {
+	color: #5E7830;
+	padding: 0;
+}
+																				
+.cssmenu li a:hover {
+	color: #26370A;
+	padding: 0;
+}
+																	
+.cssmenu li a:active {
+	color: #26370A;
+	padding: 0;
+}
+
+/*
+ * Pagina plantilla
+*/
+
+.template_name_page h6{
+	color:#666;
+	margin-bottom:5px;
+}
+
+#tabs .ui-widget-content p {
+	font-weight:bold;
+	margin:0 0 1px 0;
+	display:block;
+}
+
+#tabs .ui-widget-content #details_list {
+	list-style:none;
+}
+
+#tabs .ui-widget-content #details_list li {
+	margin:10px;
+}
+
+#tabs .ui-widget-content #details_list #title1 {
+	margin-left:4em;
+}
+
+#tabs .ui-widget-content #taxon_hierarchy {
+	list-style:square;
+}
+
+#tabs .ui-widget-content #taxon_hierarchy li{
+	margin-left:4em;
+	font-size:11px;
+	margin-top:0;
+	margin-bottom:0;
+}
+
+/*
+ * Pagina plantilla -tabs-
+*/
+
+#tabs {
+	background: transparent;
+	border: none;
+}
+#tabs .ui-widget-header {
+	background: transparent;
+	border: none;
+	border-bottom: 1px solid #c0c0c0;
+	-moz-border-radius: 0px;
+	-webkit-border-radius: 0px;
+	border-radius: 0px;
+	font-size:12px;
+}
+#tabs .ui-state-default {
+	background: transparent;
+	border: none;
+}
+#tabs .ui-state-active {
+	border: none;
+}
+#tabs .ui-state-default a {
+	color: #c0c0c0;
+}
+#tabs .ui-state-active a {
+	color: #459E00;
+}
+
+#tabs .ui-widget-content {
+	font-size:12px;
+}
+
+/*
+ * Busqueda de especies
+*/
+
+.taxon_name {
+	width:84%;
+}
+
+.taxon_search_button {
+	border:#000 solid 1px;
+	margin-left:15px;
+}
+
+.taxon_search_form fieldset {
+	padding:15px 15px 20px;
+	border:#666 solid 1px;
+}
+
+.taxon_search_form legend {
+	background-color:#CCC;
+	color:#000;
+	padding:2px 5px;
+}
+
+.taxon_search_form label {
+	margin-right:0.5em;
+	text-align:right;
+}
+
+.taxon_search_form p {
+	margin-right:2em;
+	margin-top:2em;
+	float:left;
+}

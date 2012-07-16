@@ -1,0 +1,24 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                    http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+<entity name="models\Autor" table="autor">
+	<id name="id" type="integer" column="id">
+		<generator strategy="AUTO" />
+	</id>
+
+	<field name="name" type="string" length="100" />
+	<field name="creationDate" column="fecha_creacion" type="datetime" />
+	<field name="modificationDate" column="fecha_modificacion" type="datetime" nullable="TRUE" />
+	<field name="comments" type="text" nullable="TRUE" />
+
+	<!-- Relacion con Taxon -->
+    <many-to-many field="taxons" target-entity="Taxon"  mapped-by="authors" />
+
+	<!-- Relacion con Publicacion -->
+	<many-to-many field="publications" target-entity="Publicacion" mapped-by="authors" />
+
+</entity>
+
+</doctrine-mapping>
