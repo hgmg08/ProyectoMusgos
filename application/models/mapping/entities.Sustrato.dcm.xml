@@ -1,0 +1,23 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                    http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+<entity name="entities\Sustrato" table="sustrato" repository-class="repositories\SustratoRepository">
+	<id name="id" type="integer" column="id">
+		<generator strategy="AUTO" />
+	</id>
+
+	<field name="name" type="string" length="100" />
+
+	<!-- Relacion con Taxon -->
+  <many-to-many field="taxons" target-entity="Taxon" mapped-by="sustratos" />
+
+	<!-- Relacion con Habito -->
+	<many-to-one field="habito" target-entity="Habito" inversed-by="sustratos">
+		<join-column name="habito_id" referenced-column-name="id" />
+	</many-to-one>
+
+</entity>
+
+</doctrine-mapping>
