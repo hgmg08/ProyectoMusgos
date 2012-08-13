@@ -31,8 +31,8 @@ class Doctrine {
         $symfonyClassLoader = new \Doctrine\Common\ClassLoader('Symfony', APPPATH . 'libraries/Doctrine');
         $symfonyClassLoader->register();
 
-				$repositoriesClassLoader = new \Doctrine\Common\ClassLoader('repositories', APPPATH . 'models');
-				$repositoriesClassLoader->register();  
+	$repositoriesClassLoader = new \Doctrine\Common\ClassLoader('repositories', APPPATH . 'models');
+	$repositoriesClassLoader->register();  
 
         // Choose caching method based on application mode (ENVIRONMENT is defined in /index.php)
         if (ENVIRONMENT == 'development') {
@@ -45,7 +45,7 @@ class Doctrine {
         $config = new Configuration;
  
         // Metadata driver
-        $driverImpl = $driver = new \Doctrine\ORM\Mapping\Driver\XmlDriver(APPPATH . 'models/mappings');
+        $driverImpl = $driver = new \Doctrine\ORM\Mapping\Driver\XmlDriver(APPPATH . 'models/mapping');
         $config->setMetadataDriverImpl($driverImpl);
  
         // Caching
