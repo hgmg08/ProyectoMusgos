@@ -1,23 +1,23 @@
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
-                    http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+                    	http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
 <entity name="entities\Taxon" table="taxon" repository-class="repositories\TaxonRepository">
 	<id name="id" type="integer" column="id">
 		<generator strategy="AUTO" />
 	</id>
 
-	<field name="name" type="string" length="200" />
-	<field name="acceptedName" column="accepted_name" type="boolean" nullable="TRUE" />
-	<field name="endemic"  type="boolean" nullable="TRUE" />
-	<field name="authorInitials" column="author_initials" type="string" length="50" nullable="TRUE" />
-	<field name="synonimClass" column="synomin_class" type="string" length="50" nullable="TRUE" />
-	<field name="creationDate" column="creation_date" type="datetime" />
-	<field name="modificationDate" column="modification_date" type="datetime" nullable="TRUE" />
-	<field name="comments" type="text" nullable="TRUE" />
-	<field name="modificationComments" column="modification_comments" type="text" nullable="TRUE" />
-	<field name="status" type="string" length="50" />	
+	<field name="name" column="nombre" type="string" length="200" />
+	<field name="acceptedName" column="nombre_aceptado" type="boolean" nullable="TRUE" />
+	<field name="endemic" column="endemico" type="boolean" nullable="TRUE" />
+	<field name="authorInitials" column="iniciales_autor" type="string" length="50" nullable="TRUE" />
+	<field name="synonimClass" column="clase_sinonimo" type="string" length="50" nullable="TRUE" />
+	<field name="creationDate" column="fecha_creacion" type="datetime" />
+	<field name="modificationDate" column="fecha_modificacion" type="datetime" nullable="TRUE" />
+	<field name="comments" column="comentarios" type="text" nullable="TRUE" />
+	<field name="modificationComments" column="comentarios_modificacion" type="text" nullable="TRUE" />
+	<field name="status" column="estado" type="string" length="50" />	
 
 	<!-- Relacion con Rank -->
 	<many-to-one field="rank" target-entity="Rank" inversed-by="taxon">
@@ -37,8 +37,8 @@
 	</many-to-one>
 
 	<!-- Relacion con Autor -->
-	<many-to-many field="authors" target-entity="Autor" inversed-by="taxons">
-		<join-table name="taxon_authors">
+	<many-to-many field="autores" target-entity="Autor" inversed-by="taxones">
+		<join-table name="taxon_autores">
 			<join-columns>
 				<join-column name="taxon_id" referenced-column-name="id" />
 			</join-columns>
@@ -49,19 +49,19 @@
 	</many-to-many>
 
 	<!-- Relacion con Publicacion -->
-  <many-to-many field="publications" target-entity="Publicacion" inversed-by="taxons">
-	  <join-table name="taxon_publications">
+  <many-to-many field="publicaciones" target-entity="Publicacion" inversed-by="taxones">
+	  <join-table name="taxon_publicaciones">
 			<join-columns>
 				<join-column name="taxon_id" referenced-column-name="id" />
 			</join-columns>
 			<inverse-join-columns>
-				<join-column name="publication_id" referenced-column-name="id" />
+				<join-column name="publicacion_id" referenced-column-name="id" />
 			</inverse-join-columns>																
 		</join-table>
 	</many-to-many>
 
 	<!-- Relacion con Sustrato -->
-	<many-to-many field="sustratos" target-entity="Sustrato" inversed-by="taxons">
+	<many-to-many field="sustratos" target-entity="Sustrato" inversed-by="taxones">
 		<join-table name="taxon_sustratos">
 			<join-columns>
 				<join-column name="taxon_id" referenced-column-name="id" />

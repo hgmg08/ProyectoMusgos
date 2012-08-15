@@ -42,11 +42,17 @@ class Taxon extends CI_Controller {
 	//Taxon details
 	public function taxon_details($taxon_id) 
 	{
-		$taxon = new models\Taxon;
-		$taxon = $this->em->find('models\Taxon', $taxon_id);
-		$data['params'] = $taxon;
-		$data['view'] = 'Taxon/name';
-		$this->load->view('layout', $data);
+		$taxon = new entities\Taxon;
+		$taxon = $this->em->find('entities\Taxon', $taxon_id);
+		if($taxon != NULL) {
+			$data['params'] = $taxon;
+			$data['view'] = 'Taxon/name';
+			$this->load->view('layout', $data);
+		}
+		else {
+			$data['view'] = 'Taxon/main';
+			$this->load->view('layout', $data);
+		}
 	}
 }
 

@@ -1,33 +1,33 @@
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
-										http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+											http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
 <entity name="entities\Publicacion" table="publicacion" repository-class="repositories\PublicacionRepository">
 	<id name="id" type="integer" column="id">
 		<generator strategy="AUTO" />
 	</id>
 
-	<field name="title" type="string" length="300" />
-	<field name="year" type="integer" />
-	<field name="data" type="text" />
-	<field name="creationDate" column="creation_date" type="datetime" />
-	<field name="modificationDate" column="modification_date" type="datetime" nullable="TRUE" />
-	<field name="comments" type="text" nullable="TRUE" />
-	<field name="type" type="string" length="50" />
-	<field name="status" type="string" length="50" />
+	<field name="title" column="titulo" type="string" length="300" />
+	<field name="year" column="anyo" type="integer" />
+	<field name="data" column="data" type="text" />
+	<field name="creationDate" column="fecha_creacion" type="datetime" />
+	<field name="modificationDate" column="fecha_modificacion" type="datetime" nullable="TRUE" />
+	<field name="comments" column="comentarios" type="text" nullable="TRUE" />
+	<field name="type" column="tipo" type="string" length="50" />
+	<field name="status" column="estado" type="string" length="50" />
 
 	<!-- Relacion con Taxon -->
-  <many-to-many field="taxons" target-entity="Taxon" mapped-by="publications" />
+  <many-to-many field="taxones" target-entity="Taxon" mapped-by="publicaciones" />
 
 	<!-- Relacion con Autor -->
-	<many-to-many field="authors" target-entity="Autor" inversed-by="publications">
-		<join-table name="publications_authors">
+	<many-to-many field="autores" target-entity="Autor" inversed-by="publicaciones">
+		<join-table name="publicaciones_autores">
 			<join-columns>
-				<join-column name="publication_id" referenced-column-name="id" />
+				<join-column name="publicacion_id" referenced-column-name="id" />
 			</join-columns>
 			<inverse-join-columns>
-				<join-column name="author_id" referenced-column-name="id" />
+				<join-column name="autor_id" referenced-column-name="id" />
 			</inverse-join-columns>
 		</join-table>
 	</many-to-many>

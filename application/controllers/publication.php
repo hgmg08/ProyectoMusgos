@@ -42,8 +42,8 @@ class Publication extends CI_Controller {
 	//Taxon details
 	public function publication_details($publication_id) 
 	{
-		$publication = new models\Publicacion;
-		$publication = $this->em->find('models\Publicacion', $publication_id);
+		$publication = new entities\Publicacion;
+		$publication = $this->em->find('entities\Publicacion', $publication_id);
 		$data['params'] = $publication;
 		$data['view'] = 'Publication/name';
 		$this->load->view('layout', $data);
