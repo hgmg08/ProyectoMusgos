@@ -1,0 +1,38 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                    http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+<entity name="entities\Localidad" table="localidad">
+	<id name="id" type="integer" column="id">
+		<generator strategy="AUTO" />
+	</id>
+
+	<field name="name" column="nombre" type="string" length="300" />
+	<field name="minAltitude" column="altitud_min" type="integer" nullable="TRUE" />
+	<field name="maxAltitude" column="altitud_max" type="integer" nullable="TRUE" />
+	<field name="latitude" column="latitud" type="string" length="50" nullable="TRUE" />
+	<field name="longitude" column="longitud" type="string" length="50" nullable="TRUE" />
+	<field name="collection" column="colecciones" type="text" nullable="TRUE" />
+	<field name="collectionDate" column="fecha_colecciones" type="datetime" nullable="TRUE" />
+	<field name="hebarium" column="herbario" type="string" length="50" nullable="TRUE" /> 
+
+	<!-- Relacion con Publicacion -->
+	<many-to-many field="publications" target-entity="Publicacion" mapped-by="localidades" />
+
+	<!-- Relacion con Taxon -->
+	<many-to-many field="taxons" target-entity="Taxon" mapped-by="localidades" />
+	
+	<!-- Relacion con Municipio -->
+	<many-to-one field="municipio" target-entity="Municipio" inversed-by="localidad">
+		<join-column name="municipio_id" referenced-column-name="id" />
+	</many-to-one>
+
+	<!-- Relacion con Estado -->
+	<many-to-one field="estado" target-entity="Estado" inversed-by="localidad">
+		<join-column name="estado_id" referenced-column-name="id" />
+	</many-to-one>
+
+</entity>
+
+</doctrine-mapping>

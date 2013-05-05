@@ -1,0 +1,21 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                    http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+<entity name="entities\ListaRoja" table="lista_roja">
+	<id name="id" type="integer" column="id">
+		<generator strategy="AUTO" />
+	</id>
+
+	<field name="criterionIUCN" column="criterio_iucn" type="string" length="50" />
+	<field name="category" column="categoria" type="string" length="100" />
+	<field name="country" column="pais" type="string" length="100" />
+	<field name="author" column="autor" type="string" length="100" />
+
+	<!-- Relacion con Taxon -->
+	<many-to-many field="taxons" target-entity="Taxon" mapped-by="listas_rojas" />
+
+</entity>
+
+</doctrine-mapping>

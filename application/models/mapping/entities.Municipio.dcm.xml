@@ -1,0 +1,23 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                    http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+<entity name="entities\Municipio" table="municipio">
+	<id name="id" type="integer" column="id">
+		<generator strategy="AUTO" />
+	</id>
+	
+	<field name="name" column="nombre" type="string" length="100" />
+
+	<!-- Relacion con Localidad -->
+	<one-to-many field="localidad" target-entity="Localidad" mapped-by="municipio" />
+	
+	<!-- Relacion con Estado -->
+	<many-to-one field="estado" target-entity="Estado" inversed-by="municipio">
+		<join-column name="estado_id" referenced-column-name="id" />
+	</many-to-one>
+	
+</entity>
+
+</doctrine-mapping>

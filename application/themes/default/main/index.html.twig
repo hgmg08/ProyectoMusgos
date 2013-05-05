@@ -1,0 +1,57 @@
+{% extends _layout %}
+
+{% block head %}
+
+	{{ parent() }}
+	
+	<link href="{{ base_url('public/css/jqwidgets/jqx.base.css') }}" rel="stylesheet" type="text/css" />
+	<link href="{{ base_url('public/css/jqwidgets/jqx.mdv.css') }}" rel="stylesheet" type="text/css" />
+	
+	<script src="{{ base_url('public/js/jqwidgets/jqxcore.js') }}"></script>
+	<script src="{{ base_url('public/js/jqwidgets/jqxinput.js') }}"></script>
+
+{% endblock %}
+
+{% block content %}
+
+	<div class="grid_12 main_search">
+		<script type="text/javascript">
+			$(document).ready(function () {
+				var theme = 'mdv';
+				$('#input_search').jqxInput({
+					height: 42,
+					width: 490,
+				});
+			});
+		</script>
+		<div class="search">
+			<form class="main_search_field" action="{{ base_url('search') }}" method="GET">
+				<label>Busqueda general:</label>
+				<div id="search_layer">
+					<input id="input_search" type="text" name="name" />
+					<button type="submit"><img src="{{ base_url('public/images/main_search/lupa.png') }}" alt="Buscar" /></button>
+				</div>
+			</form>
+		</div>
+		<div class="advanced_search">
+			<img id="advanced_button" />
+		</div>
+	</div>
+
+	<div class="grid_8 destacados">
+	</div>
+	
+	<div class="grid_4 mdv_datos">
+	</div>
+	
+	<div class="clear"></div>
+	
+	<div class="grid_8 ultimas_especies">
+	
+	</div>
+	
+	<div class="grid_4 mas_consultados">
+	
+	</div>
+
+{% endblock %}

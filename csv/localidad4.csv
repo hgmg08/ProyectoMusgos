@@ -1,0 +1,800 @@
+nombre;estado;localidad;altitud_min;altitud_max;coleccion;FechaColeccion;herbario;latitud;longitud;cita_corta
+Leucobryum crispum;1;Río Aparaman, ca 3 Km SE of SSE Amaruay-tepui;500;;Liesner, R. & Holst, B. 20678;1986-05-08;VEN;;;Morales & García 2006
+Leucobryum crispum;1;Río Negro. Cerro Aracamuni;1400;;Liesner, R. & Carnevali, G. 22653;1987-10-30;VEN;;;Morales & García 2006
+Leucobryum crispum;1;Río Negro. Cerro Aracamuni;1400;;Liesner, R. & Carnevali, G. 22592;1987-10-28;VEN;;;Morales & García 2006
+Leucobryum crispum;4;Choroní;1600;;Mägdefrau, K. 503;1958-02-28;VEN;;;Morales & García 2006
+Leucobryum crispum;5;Cerro Guaiquinima, near W end of upper plateau;1500;;Sipman, H. 27144, 26857;1991-02-14;VEN;;;Morales & García 2006
+Leucobryum crispum;5;Meseta del Jaua, cumbre del Cerro Sarisariñama, porción NE ;700;;Steyermark, J., Carreño, V. & Brewer, Ch. 109080;1974-02-12;VEN;;;Morales & García 2006
+Leucobryum crispum;5;NE del Paují;830;900;Liesner, R. 19552;1985-11-05;VEN;;;Morales & García 2006
+Leucobryum crispum;5;Cerro Guaiquinima, near NE edge of upper plateu ;1100;;Sipman, H. 2687, 26912;1990-02-09;VEN;;;Morales & García 2006
+Leucobryum crispum;5;Cerro Venamo, Río Venamo;950;;Steyermark, J., G.C.K. & E. Dunsterville 92212;1963-12-27;VEN;;;Morales & García 2006
+Leucobryum crispum;5;Cerro Venamo, Río Venamo;950;;Steyermark, J., G.C.K. & E. Dunsterville 92221;;VEN;;;Morales & García 2006
+Leucobryum crispum;5;Cerro Guaiquinima, entre río Szczerbanari;750;840;Steyermark, J., G.C.K. & E. Dunsterville 113405;1977-01-23;VEN;;;Morales & García 2006
+Leucobryum crispum;5;Quebrada de Jaspe, al S del Río Yuruaní;1200;;Steyermark, J., G.C.K. & E. Dunsterville 112354;1976-08-25;VEN;;;Morales & García 2006
+Leucobryum crispum;5;Matacuchillo, Santa Elena;920;;Steyermark, J., G.C.K. & E. Dunsterville 112253;1976-08-23;VEN;;;Morales & García 2006
+Leucobryum crispum;5;17 Km E of El Paují by road and 64 Km W of Santa Elena by road, 4 Km N of highway. Río Las Ahallas;850;;Liesner, R. 19034;1985-10-28;VEN;;;Morales & García 2006
+Leucobryum crispum;5;18 Km E of El Paují by road and 64 Km W of Santa Elena by road, 4 Km N of highway. Río Las Ahallas;850;;Liesner, R. 19161;1985-10-30;VEN;;;Morales & García 2006
+Leucobryum crispum;5;Meseta del Jaua, cumbre del Cerro Sarisariñama, porción NE;1410;;Steyermark, J., Carreño, V. & Brewer, Ch. 109007;1974-02-12;VEN;;;Morales & García 2006
+Leucobryum crispum;5;Meseta del Jaua, cumbre del Cerro Sarisariñama, porción NE;1410;;Steyermark, J., Carreño, V. & Brewer, Ch. 108901;1974-02-10;VEN;;;Morales & García 2006
+Leucobryum crispum;5;Cercanías del campamento en el lado S del Río Ichún;500;;Steyermark, J. 90446;1961-12-30;VEN;;;Morales & García 2006
+Leucobryum crispum;5;Meseta de Jaua, Cerro Jaua, Río Marajano;1850;1920;Steyermark, J., Carreño, V. & Brewer, Ch. 109779, 109785;1974-03-04;VEN;;;Morales & García 2006
+Leucobryum crispum;5;Río Karuari, entre Kavanayén y Prari-tepui;;;Moore, H., Ambrose, J., Dietz, R. & Pfister, D. 9671;1970-08-11;VEN;;;Morales & García 2006
+Leucobryum crispum;5;1-2 Km NE of El Paují, Río Cabass below Salto and adjacent forest slope;900;;Liesner, R. 19680;1985-11-07;VEN;;;Morales & García 2006
+Leucobryum crispum;5;Río Aparamán, 1,5 Km S de SW de Amaruay-tepui;500;;Liesner, R. & Holst, B. 20194;1986-04-22;VEN;;;Morales & García 2006
+Leucobryum crispum;5;"Gran Sabana; ca 10 Km SW of Karaurin tepui at junction Río Karaurin and Río Asadon";900;1000;Liesner, R. 23649;1988-04-22;VEN;;;Morales & García 2006
+Leucobryum crispum;5;Cerro Venamo, Río Venamo;950;1400;Steyermark, J., G.C.K. & E. Dunsterville 92297;1963-12-28;VEN;;;Morales & García 2006
+Leucobryum crispum;10;El Volcán, los Guayabitos;1350;;Mägdefrau, K. 51;1957-12-29;VEN;;;Morales & García 2006
+Leucobryum crispum;14;Entre Cubiro y Escalera, 10-15 Km al SE de Cubiro ;1600;2000;Steyermark, J., Espinoza, V. & Nehlin, S 110181;1974-07-07;VEN;;;Morales & García 2006
+Leucobryum crispum;12;Sierra de San Luis, entre Curimagua y San Luis;800;900;Steyermark, J. 99320;1967-07-20;VEN;;;Morales & García 2006
+Leucobryum crispum;19;15 Km al E de Chabasquén, 67 Km al NNO de Guanare;1450;1520;Steyermark, J., Liesner, R. & Stergios, B. 126721;1982-10-29;VEN;;;Morales & García 2006
+Leucobryum crispum;20;Península de Paria. Cerro Patao, al N de Puerto de Hierro, al NE de Guiria;800;825;Steyermark, J. & Agostini, G. 91110;1962-07-19;VEN;;;Morales & García 2006
+Leucobryum crispum;22;Arriba de Escuque, entre Escuque y la Mesa de San Pedro;1300;1650;Steyermark, J. 104675;1971-02-20;VEN;;;Morales & García 2006
+Leucobryum crispum;23;Montaña de María Lionza, Quebrada Quibayo;250;1000;Steyermark, J., Sobrevila, C., Fernández, D. & Hernández, B. 125130;;VEN;;;Morales & García 2006
+Leucobryum crispum;25;Entre el Campamento San José de los Altos y Topochalito;2200;2400;Griffin, D. 65, 115;1975-07-07;VEN;;;Morales & García 2006
+Leucobryum flavo-mucronatum;;Sin localidad;;;;;;;;Churchill et al. 2000
+Leucobryum giganteum;;Sin localidad;;;Fendler 45;;;;;Pittier 1936
+Leucobryum giganteum;;Sin localidad;;;;;;;;Churchill et al. 2000
+Leucobryum giganteum;12;;;;;;;;;
+Leucobryum giganteum;19;;;;;;;;;
+Leucobryum giganteum;25;"Cuenca del Río Socuy y el bosque nublado llamado ""el páramo"" arriba de la ""gran sabana""";;;;;;;;
+Leucobryum giganteum;1;Cerro Marahuaca;;;;;;;;
+Leucobryum giganteum;1;Alto Orinoco, Cerro del Duida;2100;;H. H. Tate 507;;;;;Pittier 1936
+Leucobryum giganteum;10;Galipán;1700;;Funk & Schlim 359;;;;;Pittier 1936
+Leucobryum giganteum;7;Cumbre de Valencia;1700;;Funk & Schlim 618;;;;;Pittier 1936
+Leucobryum giganteum;15;Quebrada Los Salichales tributaRío del Río Canaguá;;;;;;;;
+Leucobryum giganteum;5;"Monte Roraima en la carac sudeste; Macizo de Jaua, Auyan-tepui; Roraima";;;;;;;;
+Leucobryum giganteum;1;Al NO del Cerro de La Neblina;1830;;Buck, W. 10912;1984-02-17;VEN;;;Morales & García 2006
+Leucobryum giganteum;1;Cumbre del Cerro Marahuaca;2480;2580;Guariglia, M., Holmgren, N., Luteyn, J., Mori, S & Steyermark, J. 1539;1982-01-31;VEN;;;Morales & García 2006
+Leucobryum giganteum;1;Cumbre del Cerro Marahuaca, extremo SE alrededor de una laguna;2800;;Steyermark, J. & Delascio, F. 129127;1983-03-26;VEN;;;Morales & García 2006
+Leucobryum giganteum;1;Cerro de La Neblina, NE end of NW plateau;1690;;Buck, W. 12918;1985-02-12;VEN;;;Morales & García 2006
+Leucobryum giganteum;1;Cumbre del Cerro Marahuaca, sección noroccidental;2500;;Steyermark, J., Brewer, Ch. & Liesner, R. 124510;1981-02-16;VEN;;;Morales & García 2006
+Leucobryum giganteum;4;Rancho Grande, Periquito;1400;;Mägdefrau, K. 318;1958-02-24;VEN;;;Morales & García 2006
+Leucobryum giganteum;4;Parque Nacional Henri Pittier, Rancho Grande, fila de Paraíso;;;Agostini, G. & Cobo, T. 191;1963-09-01;VEN;;;Morales & García 2006
+Leucobryum giganteum;5;La Gallineta, Caserío El Celoso;1700;;Dorr, L., Barnett, L. & Bakach, S. 5470;1988-06-07;VEN;;;Morales & García 2006
+Leucobryum giganteum;5;Al NE del Alto de la Aguada;1400;1700;Dorr, L., Aymard, G., Barnett, L., Cuello, N. & Diggs, G. JR. 4871;1988-04-18;VEN;;;Morales & García 2006
+Leucobryum giganteum;5;Perai-tepui;910;;Steyermark, J. 111411;1975-01-03;VEN;;;Morales & García 2006
+Leucobryum giganteum;5;1-2 Km NE of El Paují, Río Cabass below Salto and adjacent forest slope;800;900;Liesner, R. 19676;1985-11-07;VEN;;;Morales & García 2006
+Leucobryum giganteum;5;Macizo de Chimantá, Amuri-tepui;1950;;Steyermark, J., Huber, O. & Carreño, V. 128619;1983-02-02;VEN;;;Morales & García 2006
+Leucobryum giganteum;5;Sierra de Pakaraima, Río Paragua (Aguapira);1400;;Steyermark, J. 107251;1973-05-04;VEN;;;Morales & García 2006
+Leucobryum giganteum;5;Meseta del Jaua, cumbre del Cerro Jaua, porción SO, al E del tributaRío del Río Marajano;1800;;Steyermark, J., Carreño, V. & Brewer, Ch. 109827;1974-02-26;VEN;;;Morales & García 2006
+Leucobryum giganteum;5;Meseta del Jaua, cumbre del Cerro Jaua, porción central-occidental, río Kanarakuni;1922;2100;Steyermark, J. 98105;1967-03-22;VEN;;;Morales & García 2006
+Leucobryum giganteum;5;Meseta del Jaua, Cumbre de Sarisariñama, porción NE;700;;Steyermark, J., Carreño, V. & Brewer, Ch. 109346;1974-02-12;VEN;;;Morales & García 2006
+Leucobryum giganteum;5;Meseta del Jaua, Cumbre de Sarisariñama, porción NE;700;;Steyermark, J., Carreño, V. & Brewer, Ch. 109022;1974-02-13;VEN;;;Morales & García 2006
+Leucobryum giganteum;5;Auyan-tepui, cumbre de la parte occidental, Río Churún;1760;;Steyermark, J. 93336;1964-05-04;VEN;;;Morales & García 2006
+Leucobryum giganteum;12;Cerro Santa Ana, ascensión del lado S desde el pueblo de Santa Ana;850;;Steyermark, J. & Braun, A. 94570;1966-01-24;VEN;;;Morales & García 2006
+Leucobryum giganteum;14;Entre Cubiro y La Escalera;1600;2000;Steyermark, J., Carreño, V. & Nehlin, S. 11236;1974-07-07;VEN;;;Morales & García 2006
+Leucobryum giganteum;15;Cerro Las Flores;2300;;Mägdefrau, K. 607;1958-03-31;VEN;;;Morales & García 2006
+Leucobryum giganteum;20;Península de Paria, Cerro de Humo, NO de Irapa, entre Roma y Santa Isabel;1273;;Steyermark, J. 94938, 94937;1966-03-02;VEN;;;Morales & García 2006
+Leucobryum giganteum;21;Quebrada Agua Blanca cerca de la Rochela;1850;2000;Davidse, G. & González, A. 22370;1982-11-15;VEN;;;Morales & García 2006
+Leucobryum giganteum;25;Valle del río Socuy, arriba de la Gran Sabana;2400;2800;Griffin, D. 323, 308;1975-07-07;VEN;;;Morales & García 2006
+Leucobryum glaucum;1;Río Negro, Entre Pimichin y Javita;;;Spruce;;;;;
+Leucobryum glaucum;15;;;;;;;;;
+Leucobryum glaucum;5;;;;;;;;;
+Leucobryum glaucum;10;Galipán;1700;;Moritz 132 a, Funck & Schlim 361;;;;;Pittier 1936
+Leucobryum glaucum;5;Auyan-tepui, campamento 2, Río Cucurital;;;V. & F. 4724;1956-04-20;VEN;;;Morales & García 2006
+Leucobryum martianum;1;;;;;;;;;Tropicos.org
+Leucobryum martianum;;Sin localidad;;;;;;;;Churchill et al. 2000
+Leucobryum martianum;4;;;;;;;;;Tropicos.org
+Leucobryum martianum;5;;;;;;;;;Tropicos.org
+Leucobryum martianum;5;;;;;;;;;
+Leucobryum martianum;10;;;;;;;;;
+Leucobryum martianum;20;"Cerro de Río Arriba, oeste de Cerro de Humo; arriba de Santa Isabel";600;700;Julian A. Steyermark & Marvin Rabe 96198 ;1966-08-09;MO;10°38'N;062°58'W;Tropicos.org
+Leucobryum martianum;21;;;;;;;;;
+Leucobryum martianum;25;"Cuenca del río de Río Socuy y el bosque nublado llamado ""el páramo"" arriba de la ""gran sabana""";;;;;;;;
+Leucobryum martianum;1;"Río Negro, alrededores de San Carlos entre Pimichin y Javita; Entre lLa Esmeralda y Sureste del Cerro Duida; Entre la Gran Sabana y Caño Negro";;;Spruce;;;;;Pittier 1936
+Leucobryum martianum;1;Alto Orinoco, en los alrededores de la Esmeralda;100;250;H. H. Tate 224, 333, 1065;;;;;Pittier 1937
+Leucobryum martianum;17;El Cocollar de Caripe;;;Moritz 132;;;;;Pittier 1936
+Leucobryum martianum;16;Silla de Caracas;;;Moritz 131;;;;;Pittier 1937
+Leucobryum martianum;5;Macizo de Jaua, Auyan-tepui;;;;;;;;
+Leucobryum martianum;1;Alrededores de la comunidad de Culebra, entre los Cerros Duida y Huachamacari;200;400;Guariglia, M., Holmgren, N., Luteyn, J., Mori, S. & Steyermark, J. 1669, 1689, 1391, 1736, 1685, 1677;1982-01-28;VEN;;;Morales & García 2006
+Leucobryum martianum;1;Salto Yureba, caño Yureba, bajo Ventuari;120;150;Delascio, F. & Guanchez, F. 10771;1981-10-24;VEN;;;Morales & García 2006
+Leucobryum martianum;1;Cerro Yapacana;125;400;Steyermark, J. & Bunting, G. 103052;1970-05-03;VEN;;;Morales & García 2006
+Leucobryum martianum;1;San Carlos de Río Negro;119;;Delasciom F., Christenson, G. & Broome, C. 9448;1981-03-21;VEN;;;Morales & García 2006
+Leucobryum martianum;1;Río Negro;80;;Davidse, G. & Miller, J. 26764;1984-06-28;VEN;;;Morales & García 2006
+Leucobryum martianum;1;Alrededores de San Fernando de Atabapo;;;Foldats, E. 3618;1960-09-02;VEN;;;Morales & García 2006
+Leucobryum martianum;1;Cassiquiare. Capiguara;;;Mägdefrau, K. 203;1958-01-27;VEN;;;Morales & García 2006
+Leucobryum martianum;1;Cassiquiare. Capiguara;;;Mägdefrau, K. 242;1958-02-02;VEN;;;Morales & García 2006
+Leucobryum martianum;1;7-9 Km de Yavita hacia Pimichín;125;;Steyermark, J. & Bunting, G. 102916;1970-04-22;VEN;;;Morales & García 2006
+Leucobryum martianum;1;Cerro Yapacana, Caño Cotua;125;;Steyermark, J. & Bunting, G. 102992;1968-04-30;VEN;;;Morales & García 2006
+Leucobryum martianum;1;Cerro Autana;1230;1270;Steyermark, J. 105195;1971-09-21;VEN;;;Morales & García 2006
+Leucobryum martianum;1;Sierra de Parima, al NO del Río Orinoco;1300;;Steyermark, J. 106103 - A;1972-05-18;VEN;;;Morales & García 2006
+Leucobryum martianum;1;Entre Neblina Base Camp IV y montaña de Canyon Grande a Puerto Chimo, Río Mawarinuma;130;200;Davidse, G. & Miller, J. 27035;1984-07-06;VEN;;;Morales & García 2006
+Leucobryum martianum;1;Al SO del Cerro Yapacana, Río Cotua;125;;Steyermark, J. & Bunting, G. 102992;1968-04-30;VEN;;;Morales & García 2006
+Leucobryum martianum;1;Al NO del Cerro de La Neblina;1830;;Buck, W. 10929;1984-02-17;VEN;;;Morales & García 2006
+Leucobryum martianum;1;1 Km al SSO de La Neblina;200;340;Buck, W. 11403;1984-03-06;VEN;;;Morales & García 2006
+Leucobryum martianum;1;Río Mawarinuma. Cañon Grande, campamento base La Neblina;140;;Buck, W. 10994, 10981, 11087, 11233;1984-02-01;VEN;;;Morales & García 2006
+Leucobryum martianum;1;9 Km NW de Yutajé;1050;1300;Liesner, R. & Holst, B. 21719;1987-03-07;VEN;;;Morales & García 2006
+Leucobryum martianum;1;Cerro de La Neblina camp IV. 15 Km NNE de Pico Phelps ;780;;Liesner, R. 16778, 16753;1984-03-15;VEN;;;Morales & García 2006
+Leucobryum martianum;1;Alrededores de la comunidad de Culebra, entre los Cerros Duida y Huachamacari;200;400;Guariglia, M., Holmgren, N., Luteyn, J., Mori, S. & Steyermark, J. 1683;1982-01-28;VEN;;;Morales & García 2006
+Leucobryum martianum;1;Neblina base camp en río Mawarinuma;;;Miller, J. 1719, 1736;1984-07-06;VEN;;;Morales & García 2006
+Leucobryum martianum;1;Canyon Grande, Río Mawarinuma entre montaña y Cañon ca. 7 Km ENE of Puerto Chimo;350;400;Davidse, G. & Miller, J. 27196;1984-07-09;VEN;;;Morales & García 2006
+Leucobryum martianum;1;Cerro Yapacana;;;Steyermark, J.  & Bunting, G. 103052;1970-05-03;VEN;;;Morales & García 2006
+Leucobryum martianum;1;1,5 Km E de Río Coro-Coro, W de Serranía Yutajé;270;;Liesner, R. & Holst, B. 21261;1987-02-20;VEN;;;Morales & García 2006
+Leucobryum martianum;3;Reserva Forestal San Camilo. Cerro Nulita;250;280;Steyermark, J., Bunting, G. & Blanco, C. 101822-A, 101822-B;1968-04-04;VEN;;;Morales & García 2006
+Leucobryum martianum;3;Reserva Forestal San Camilo. Quebrada del Dique;700;;Steyermark, J., Bunting, G. & Blanco, C. 101822-A, 101560;1968-03-29;VEN;;;Morales & García 2006
+Leucobryum martianum;4;Choroní;1600;;Mägdefrau, K. 500;1958-02-28;VEN;;;Morales & García 2006
+Leucobryum martianum;4;Rancho Grande. Pico Periquito;1300;;Mägdefrau, K. 364;1958-02-24;VEN;;;Morales & García 2006
+Leucobryum martianum;5;Cerro Guaiquinima, Río Szczernabari (Río Carapo) ;750;840;Steyermark, J., G.C.K. & E. Dunsterville 113404;1977-01-23;VEN;;;Morales & García 2006
+Leucobryum martianum;5;Sierra Auraima, Raudal de el Perro;400;;Steyermark, J. 90845;1962-01-16;VEN;;;Morales & García 2006
+Leucobryum martianum;5;Macizo del Chimantá, sector SSE. Altiplanicie sur- oriental del Acopán- tepui, ríoArauác;1920;;Luteyn, L. & Huber, O. 9522;1984-02-14;VEN;;;Morales & García 2006
+Leucobryum martianum;5;Río Churún;1660;;Steyermark, J. 93818;1964-05-12;VEN;;;Morales & García 2006
+Leucobryum martianum;5;Quebrada el Jaspe, 47 Km al N de Santa Elena, río Yuruaní;1200;;Steyermark, J., G.C.K. & E. Dunsterville 112355;1976-08-25;VEN;;;Morales & García 2006
+Leucobryum martianum;5;Caroní. Canaima;400;;Mägdefrau, K. 530;1958-03-16;VEN;;;Morales & García 2006
+Leucobryum martianum;5;Near El Paují, río Cabass and Salto ;800;900;Liesner, R. 19378;1985-11-03;VEN;;;Morales & García 2006
+Leucobryum martianum;5;Affluent of Río Acanán near Yuray- meru rapids 1,5 Km S of SW corner of Amaruay-tepui;500;;Liesner, R. & Holst, B. 20195;1986-04-22;VEN;;;Morales & García 2006
+Leucobryum martianum;5;A 4 Km W de El Paují, 2-5 Km N de Río Chaberú;750;900;Liesner, R. 85-57;1985-11-12;VEN;;;Morales & García 2006
+Leucobryum martianum;5;Auyan-tepui, Río Churún;1760;;Steyermark, J. 93356;1964-05-04;VEN;;;Morales & García 2006
+Leucobryum martianum;5;Auyan-tepui. Río Cucurital;;;Vareschi, V. 6532, 6526;1956-04-20;VEN;;;Morales & García 2006
+Leucobryum martianum;5;Neblina base camp en río Mawarinuma;140;;Miller, J. 1736;1984-07-06;VEN;;;Morales & García 2006
+Leucobryum martianum;5;Río Cuyuní, al S del Dorado;1300;1380;Steyermark, J., G.C.K. & E. Dunsterville 104244;1970-12-22;VEN;;;Morales & García 2006
+Leucobryum martianum;5;Río Caura, Salto Para, en las islas 2-3 Km arriba del campamento las Pavas;250;300;Steyermark, J., G.C.K. & E. Dunsterville 112930;1977-01-14;VEN;;;Morales & García 2006
+Leucobryum martianum;5;Amaruay-tepui;550;810;Liesner, R. & Holst, B. 20353, 20354;1986-04-26;VEN;;;Morales & García 2006
+Leucobryum martianum;5;Meseta del Jaua. Cerro Jaua. Río Marajano;1850;1920;Steyermark, J., Carreño, V. & Brewer, Ch. 109789;1974-03-04;VEN;;;Morales & García 2006
+Leucobryum martianum;5;Meseta del Jaua. Cerro Sarisariñama, cumbre, porción NE inteRíor;1100;;Steyermark, J., Carreño, V. & Brewer, Ch. 109081;1974-02-18;VEN;;;Morales & García 2006
+Leucobryum martianum;5;;;;Brewer-Carias, Ch. s/n ;1976-02-10;VEN;;;Morales & García 2006
+Leucobryum martianum;5;Macizo del Chimantá, sector centro- noreste del Chimantá-tepui, caño Chimantá;2000;;Steyermark, J., Huber, O. & Carreño, V. 12812- A;1983-01-26;VEN;;;Morales & García 2006
+Leucobryum martianum;7;Río San Gián, al E de los Tanques, al S de Borburata;750;1100;Steyermark, J. & Steyermark, C. 95388;1966-03-31;VEN;;;Morales & García 2006
+Leucobryum martianum;15;Al N de Mérida;;;Vareschi, V. & Lasser, T. s/n ;1951-04-28;VEN;;;Morales & García 2006
+Leucobryum martianum;20;Península de Paria, Cerro de Río Arriba, al O del Cerro Humo, Río Santa Isabel;600;700;Steyermark, J. & Rabe, M. 96198;1966-08-09;VEN;;;Morales & García 2006
+Leucobryum martianum;23;El Amparo hacia Candelaria, 7-10 Km al N de Salom;1200;1300;Steyermark, J., Carreño, V. & Diederichs, E. 106767;1972-12-27;VEN;;;Morales & García 2006
+Leucobryum martianum;25;Valle del Río Socuy, Gran Sabana;2400;2800;Griffin, D. 343;1975-07-07;VEN;;;Morales & García 2006
+Leucobryum microcarpum;;Sin localidad;;;Fendler 43;;;;;Pittier 1936
+Leucobryum microcarpum;;Sin localidad;;;;;;;;Churchill et al. 2000
+Leucobryum polakowskyi;15;Páramo de Chacantá, arriba y al sur de Pueblo Nuevo;;;;;MO;08°26'N;071°25'W;Tropicos.org
+Leucobryum polakowskyi;;Sin localidad;;;;;;;;Churchill et al. 2000
+Leucobryum polakowskyi;15;Along Mérida - La Azulita road 1 Km above La Chorrera;;;;;MO;08°35'N;071°17'W;Tropicos.org
+Leucobryum polakowskyi;5;Ptari-tepui a lo largo de la base este;;;;;;;;
+Leucobryum subobtusifolium;16;;;;;;;;;
+Leucobryum subobtusifolium;3;;;;;;;;;
+Ochrobryum gardneri;5;Ptari-tepui;;;;;;;;
+Ochrobryum sessile;4;Parque Nacional Henri Pittier;;;;;;;;
+Ochrobryum sessile;;Sin localidad;;;;;;;;Churchill et al. 2000
+Ochrobryum sessile;7;Entre Valencia y Maracay;;;;;;;;
+Ochrobryum subulatum;5;Vecindades de Matacuchillo, 22-25 Km oeste-suroeste de Santa Elena, ca. limites entre Venezuela y Brasil;;;;;MO;04°25'N;061°20'W;Tropicos.org
+Ochrobryum subulatum;;Sin localidad;;;;;;;;Churchill et al. 2000
+Ochrobryum subulatum;15;Río Caparo;;;;;MO;07°41'N;071°28'W;Tropicos.org
+Steyermarkiella anomalodictya;5;;;;;;;;;
+Steyermarkiella anomalodictya;;Sin localidad;;;;;;;;Churchill et al. 2000
+Leucodon curvirostris;22;Páramo El Jabón, al SE y arriba de Carache;;;;;MO;09°34'N;070°07'W;Tropicos.org
+Leucodon curvirostris;;Sin localidad;;;;;;;;Churchill et al. 2000
+Leucodon curvirostris;17;Alrededores de la Cueva del Guácharo, Caripe;;;Dumont, K., Morillo, G., Samuels, G. & Cain, R. VE- 7779;1972-07-18;VEN;;;Morales & García 2006
+Leucodon curvirostris;22;Pico de Jabón & Páramo de Tumal SE de la Laguna de Termal, 12 Km SE de Carache;2550;2600;Dorr, L. & Barnett, L. 5167;1988-05-12;VEN;;;Morales & García 2006
+Leucodon subgracilis;21;;;;;;;;;
+Leucodon subgracilis;;Sin localidad;;;;;;;;Churchill et al. 2000
+Leucodon subgracilis;21;Río Quinimarí, Peña de Pata de Judío y el pié de salto de Chorrejón de la Mota de la Peña de Ventana;2500;2800;Steyermark, J., G.C.K. & E. Dunsterville 100759;1968-01-12;VEN;;;Morales & García 2006
+Leucomium strumosum;1;Río Casiquiare) entre el Salano y la boca del Río Pacimoni;;;;;;;;
+Leucomium strumosum;4;El Portachuelo entre Maracay y Ocumare;;;;;;;;
+Leucomium strumosum;5;Macizo de Jaua, Chimantá;;;;;;;;
+Leucomium strumosum;9;Delta del Orinoco cerca de Mauaos;;;;;;;;
+Leucomium strumosum;17;El páramo noreste de Las Delicias;;;;;;;;
+Leucomium strumosum;20;Península de Paria, Cerro de Humo;;;;;;;;
+Leucomium strumosum;25;"Vegas del Río Lora; Cuenca del Río Socuy y el bosque nublado llamado ""el Páramo"" arriba de la ""gran sabana"", San José de Los Altos";;;;;;;;
+Leucomium strumosum;25;Vegas del Río Lora;;;Pittier 11936;;;;;Pittier 1936
+Leucomium strumosum;1;Río Mawarinuma. Cañon Grande, campamento base La Neblina;140;;Buck, W. 11195, 11013, 11021, 11493, 11304;1984-02-01;VEN;;;Morales & García 2006
+Leucomium strumosum;1;Río Mawarinuma. Cañon Grande, campamento base La Neblina;140;;Buck, W. 12950;1985-02-18;VEN;;;Morales & García 2006
+Leucomium strumosum;1;;;;Miller, J. 1738;1984-07-06;VEN;;;Morales & García 2006
+Leucomium strumosum;4;Rancho Grande. Pico Periquito;1300;;Mägdefrau, K. 353, 371;1958-02-24;VEN;;;Morales & García 2006
+Leucomium strumosum;4;Rancho Grande. Parque Nacional Henri Pittier;;;Vareschi, V. 21-B, 8, 21, 9 ;1950-06-23;VEN;;;Morales & García 2006
+Leucomium strumosum;5;Gran Sabana. 5Km S de San Ignacio de Yuruaní;850;;Liesner, R. 24454;1988-05-09;VEN;;;Morales & García 2006
+Leucomium strumosum;10;El Junquito;1700;;Vareschi, V. 37;1950-07-02;VEN;;;Morales & García 2006
+Leucomium strumosum;20;Península de Paria. Cerro de Humo. Río Santa Isabel;1060;;Steyermark, J. 94858;1966-03-01;VEN;;;Morales & García 2006
+Leucomium strumosum;20;Península de Paria. Cerro de Humo. Entre la Laguna y Roma, al NO de Irapa;800;1000;Steyermark, J. 95113;1966-03-05;VEN;;;Morales & García 2006
+Leucomium strumosum;21;W of El Piñal, W of brige over Río Frío ;;;Steyermark, J. 96709;1966-08-29;VEN;;;Morales & García 2006
+Leucomium strumosum;23;El Amparo, 7-11 Km al N de Salom;1200;1300;Steyermark, J. & Carreño, V. 111463;1975-03-22;VEN;;;Morales & García 2006
+Leucomium strumosum;23;Sierra de Aroa. Cerro Negro, Río Cocorotico;1150;1350;Steyermark, J. & Wessels, G. 100435;1967-11-14;VEN;;;Morales & García 2006
+Leucomium strumosum;25;Río Lara;;;Pittier, H. 10936;1922-12-13;VEN;;;Morales & García 2006
+Leucomium strumosum;25;Valle del Río Socuy, Gran Sabana;2400;2800;Griffin, D. 300;1975-07-07;VEN;;;Morales & García 2006
+Leucomium strumosum;25;Entre el Campamento San José de los Altos y Topochalito;2200;2400;Griffin, D. 13, 104, 84;1975-07-07;VEN;;;Morales & García 2006
+Leucomium steerei;5;Cerro Sarisariñama, Sima Mayor;;;;;MO;04°41'N;064°11'W;Tropicos.org
+Leucomium steerei;;Sin localidad;;;;;;;;Churchill et al. 2000
+Rhyncostegiopsis flexuosa;15;;3325;;RR1006-1;;MERC;;;
+Rhynchostegiopsis tunguaraguana;15;La Mucuy;2250;;A. Magallanes;2004-05-11;MERC, VEN;;;Morales & García 2006
+Rhynchostegiopsis tunguaraguana;21;;;;;;;;;
+Rhynchostegiopsis tunguaraguana;22;Páramo de Guaramacal;;;;;;;;
+Rhynchostegiopsis tunguaraguana;21;Río Qunimarí, Quebrada Las Copas;2500;2630;Steyermark, J., G.C.K. & E. Dunsterville 100692;1963-01-11;VEN;;;Morales & García 2006
+Rhynchostegiopsis tunguaraguana;22;Páramo de Guaramacal;2800;;Dorr, L., Barnett, L., Cuello, N. & Diggs, G. Jr 5034;1988-04-29;VEN;;;Morales & García 2006
+Groutiella apiculata;5;;;;;;;;;
+Groutiella apiculata;;Sin localidad;;;;;;;;Churchill et al. 2000
+Groutiella apiculata;15;;;;;;;;;
+Groutiella apiculata;10;;;;;;;;;
+Groutiella apiculata;17;;;;;;;;;
+Groutiella apiculata;14;;;;;;;;;
+Groutiella apiculata;9;Río Grande, 33 Km al NE de el Palmar;320;;Steyermark, J. 93107;1964-02-09;VEN;;;Morales & García 2006
+Groutiella apiculata;10;Cerro Naiguatá;900;1000;Steyermark, J. 97518;1966-10-09;VEN;;;Morales & García 2006
+Groutiella apiculata;10;Cerro Naiguatá;900;1000;Steyermark, J. 92026;1963-11-15;VEN;;;Morales & García 2006
+Groutiella apiculata;14;S de Terepaima, 20 Km al S de Cabudare;1200;1300;Steyermark, J., Delascio, F., G.C.K. & E. Dunsterville 103430;1970-08-03;VEN;;;Morales & García 2006
+Groutiella apiculata;12;Sierra de San Luis, entre Curimagua y la bifurcación del camino al Hotel Parador;1200;1400;Steyermark, J. 99075;1967-07-18;VEN;;;Morales & García 2006
+Groutiella apiculata;12;Cerro Santa Ana;300;400;Steyermark, J. & Braun, A. 94558;1966-01-24;VEN;;;Morales & García 2006
+Groutiella apiculata;15;Along the La Pedregosa of the Chama river at El Maciegal;1900;;Griffin, D., López, M. & Ruiz, L. 017508;1972-07-01;VEN;;;Morales & García 2006
+Groutiella apiculata;20;Península de Paria. Fila entre Manacal y Cuchilla de cueva de Tigre, Río Nuevo, Cerro de Humo;750;800;Steyermark, J. & Rabe, M. 82766;1966-08-13;VEN;;;Morales & García 2006
+Groutiella apiculata;20;Península de Paria. Cerro de Humo;800;1000;Steyermark, J. 95111;1966-03-05;VEN;;;Morales & García 2006
+Groutiella husnotii;17;Caripe, S facing mountain side directly N of Caripe;1220;;Ronald A. Pursell 8468 ;1967-03-17;MO;10°12'N;063°29'W;Tropicos.org 
+Groutiella husnotii;;Sin localidad;;;;;;;;Churchill et al. 2000
+Groutiella husnotii;17;S facing mountain side directly N of Caripe;1220;;Ronald A. Pursell 8469;1967-03-17;MO;10°12'N;063°29'W;Tropicos.org 
+Groutiella husnotii;17;S facing mountain side directly N of Caripe;1220;;Ronald A. Pursell 8479;1967-03-17;MO;10°12'N;063°29'W;Tropicos.org 
+Groutiella husnotii;17;Coffee plantation on NE facing mountain slope E of Santa Ines (vicinity of Caripe;1030;;Ronald A. Pursell 8955;1967-05-22;MO;10°12'N;063°29'W;Tropicos.org 
+Groutiella husnotii;17;NE facing mountain slope E of Sante Ines (vicinity of Caripe).;1030;;Ronald A. Pursell 8964;1967-05-22;MO;10°12'N;063°29'W;Tropicos.org 
+Groutiella husnotii;12;;;;;;;;;
+Groutiella husnotii;23;Selva macrotermica siempreverde con Roystonea venezuelensis, Scheelea y Bactris y lugares pantanosos abiertos, 7 kilometros al oeste de Guayabo, cerca de La Carbonera y Taria;500;;Julian A. Steyermark 94467 ;1966-01-26;MO;;;Tropicos.org 
+Groutiella husnotii;12;Sierra de San Luis. Montaña de Paraguariba;1300;;Steyermark, J. 99414;1967-07-21;VEN;;;Morales & García 2006
+Groutiella husnotii;12;Sierra de San Luis. Entre la Tabla y la bifurcación de la carrera hacia el Hotel Parador;100;1300;Steyermark, J. 99049;1967-07-18;VEN;;;Morales & García 2006
+Groutiella husnotii;23;7 Km al O de Guayabo, cerca de la Carbonera y Taria;500;;Steyermark, J. & Braun, A. 94467;1966-01-26;VEN;;;Morales & García 2006
+Groutiella maracaibensis;;Sin localidad;;;;;;;;Churchill et al. 2000
+Groutiella mucronifolia;14;Cumbre del Cerro Gordo;900;;Saer 121;;;;;Pittier 1936
+Groutiella mucronifolia;5;Roraima;;;;;;;;
+Groutiella obtusa;1;Río Negro, Cerro de La Neblina, camp. IV, 15 Km NNE del Pico Phels;780;;Liesner, R. 16772 A;1984-03-15;VEN;;;Morales & García 2006
+Groutiella obtusa;;Sin localidad;;;;;;;;Churchill et al. 2000
+Groutiella tomentosa;17;;;;;;;;;
+Groutiella tomentosa;;Sin localidad;;;;;;;;Churchill et al. 2000
+Groutiella tomentosa;10;;;;;;;;;
+Groutiella tomentosa;5;;;;;;;;;
+Groutiella tomentosa;3;;;;;;;;;
+Groutiella tomentosa;5;Río Cuyuní, Huacawa- kú, S del Dorado;;;Steyermark, J., G.C.K. & E. Dunsterville 104388;1970-12-23;VEN;;;Morales & García 2006
+Groutiella wagneriana;10;Cerca de Galipán ;1300;;Wagener 419;;;;;Pittier 1936
+Groutiella wagneriana;;Sin localidad;;;;;;;;Churchill et al. 2000
+Macrocoma tenuis;;;;;;;;;;
+Macrocoma tenuis;;Sin localidad;;;;;;;;Churchill et al. 2000
+Macrocoma tenuis subsp. sullivantii;22;Páramo El Jabón, al SE y arriba de Carache;;;;;MO;09°34'N;070°07'W;Tropicos.org
+Macrocoma sullivantii;15;;;;;;;;;Moreno 1990
+Macrocoma sullivantii;20;;;;;;;;;
+Macromitrium acutissimum;4;;;;;;;;;
+Macromitrium acutissimum;;Sin localidad;;;;;;;;Churchill et al. 2000
+Macromitrium cirrosum;18;Isla de Margarita;;;;;;;;
+Macromitrium cirrosum;;Sin localidad;;;;;;;;Churchill et al. 2000
+Macromitrium cirrosum;5;Auyan-tepui;;;;;;;;
+Macromitrium cirrosum;17;;;;;;;;;
+Macromitrium cirrosum;12;Península de Paraguaná, Cerro Santa Ana;;;;;;;;
+Macromitrium cirrosum;1;Cerro de La Neblina, NE  end of NW Plateau;1690;;Buck, W. 12921;1985-02-12;VEN;;;Morales & García 2006
+Macromitrium cirrosum;1;Sierra Parima. Río Orinoco;1300;;Steyermark, J. 105942, 105985, 105985 B;1972-05-18;VEN;;;Morales & García 2006
+Macromitrium cirrosum;5;Serranía Guanay, sector nororiental, Río Parguaza;1700;;Huber, O. 11021;1985-10-21;VEN;;;Morales & García 2006
+Macromitrium cirrosum;5;Meseta de Jaua. Cerro Jaua. Cumbre de la porción Central Occidental de la Meseta, Río Kanarakuni;1922;2100;Steyermark, J. 98131;1967-03-22;VEN;;;Morales & García 2006
+Macromitrium cirrosum;5;NO de Drizzly Camp., Río Churún, O del salto Churún;;;Steyermark, J. 93403;1964-05-05;VEN;;;Morales & García 2006
+Macromitrium cirrosum;5;Cumbre de la parte SE del brazo NO, Río Lomita Camp., ;1800;;Steyermark, J.  93575;1964-05-10;VEN;;;Morales & García 2006
+Macromitrium cirrosum;10;Entre La Chivera y el Hotel Humbolt. Sierra de Ávila;2000;;Steyermark, J., Wurdack, J. & Prance, G. 95873;1966-06-16;VEN;;;Morales & García 2006
+Macromitrium cirrosum;12;Sierra de San Luis, entre la Chapa y Uria;1400;;Steyermark, J. 99180;1967-07-19;VEN;;;Morales & García 2006
+Macromitrium cirrosum;12;Sierra de San Luis. Hotel Parador;1450;;Steyermark, J. 98909;1967-07-16;VEN;;;Morales & García 2006
+Macromitrium cirrosum;15;Parque Nacional Sierra Nevada, 2 Km S of Mérida;2550;2650;Kelly, D., O´Donovan, G. & Feehan, J. 10784- A, 10669- A;1995-08-11;VEN;;;Morales & García 2006
+Macromitrium cirrosum;15;Parque Nacional Sierra Nevada, 2 Km S of Mérida;2550;2650;Kelly, D., O´Donovan, G. & Feehan, J. 10690-A;1995-09-06;VEN;;;Morales & García 2006
+Macromitrium cirrosum;15;Parque Nacional Sierra Nevada, 2 Km S of Mérida;2550;2650;Kelly, D., O´Donovan, G. & Feehan, J. 10663, 10780-A, 10667;1995-08-05;VEN;;;Morales & García 2006
+Macromitrium cirrosum;15;Parque Nacional Sierra Nevada, 2 Km S of Mérida;2550;2650;Kelly, D., O´Donovan, G. & Feehan, J. 10677;1995-08-22;VEN;;;Morales & García 2006
+Macromitrium cirrosum;15;Parque Nacional Sierra Nevada, 2 Km S of Mérida;2550;2650;Kelly, D., O´Donovan, G. & Feehan, J. 10657;1995-08-25;VEN;;;Morales & García 2006
+Macromitrium cirrosum;15;Parque Nacional Sierra Nevada, 2 Km S of Mérida;2550;2650;Kelly, D., O´Donovan, G., Feehan, J. & Drangeid, S. 10775;1995-07-27;VEN;;;Morales & García 2006
+Macromitrium cirrosum;15;Parque Nacional Sierra Nevada, 2 Km S of Mérida;2550;2650;Kelly, D., O´Donovan, G., Feehan, J. & Drangeid, S. 10795;1995-08-08;VEN;;;Morales & García 2006
+Macromitrium cirrosum;15;Parque Nacional Sierra Nevada, 2 Km S of Mérida;2550;2650;Kelly, D. & O´Donovan, G. 10622;1995-08-25;VEN;;;Morales & García 2006
+Macromitrium cirrosum;20;Península de Paria. Cerro de Humo, Río Sta. Isabel;1060;;Steyermark, J. 94879-A;1966-03-01;VEN;;;Morales & García 2006
+Macromitrium cirrosum;21;Río Quinimarí, Peña de Pata de Judío y salto de Chorrejón de la Mota de la Peña de Ventana de la Revancha;2500;2800;Steyermark, J., G.C.K. & E. Dunsterville 100750;1968-01-12;VEN;;;Morales & García 2006
+Macromitrium cirrosum;21;Río Quinimarí, Las Copas, Peña de Pata de Judío;2500;2630;Steyermark, J., G.C.K. & E. Dunsterville 100704;1968-01-11;VEN;;;Morales & García 2006
+Macromitrium cirrosum;21;Río Quinimarí, Las Copas, Peña de Pata de Judío;2500;2630;Steyermark, J., G.C.K. & E. Dunsterville 100617;1968-01-10;VEN;;;Morales & García 2006
+Macromitrium cirrosum;21;Páramo de la Negra, Carretera hacia Pregonero;2700;2900;Steyermark, J. & Rabe, M 96906;1966-08-29;VEN;;;Morales & García 2006
+Macromitrium cirrosum;21;Páramo de Tamá, arriba de Betania y Tamá;2300;2475;Steyermark, J., G.C.K. & E. Dunsterville 98704, 98790;1967-05-22;VEN;;;Morales & García 2006
+Macromitrium cirrosum;21;Páramo de Tamá, arriba de Betania y Tamá;2300;2475;Steyermark, J., G.C.K. & E. Dunsterville98443, 98405;1967-05-18;VEN;;;Morales & García 2006
+Macromitrium cirrosum;21;Entre Boca de Monte y Zumbador;3000;;Steyermark, J. & Rabe, M. 96843;1966-08-28;VEN;;;Morales & García 2006
+Macromitrium crosbyorum;;Sin localidad;;;;;;;;Churchill et al. 2000
+Macromitrium contextum;15;;;;;;;;;
+Macromitrium contextum;17;;;;;;;;;
+Macromitrium contextum;10;Selvas de Galipán;1600;;Pittier 9913-14;;;;;Pittier 1936
+Macromitrium densifolium;;Sin localidad;;;;;;;;Pittier 1936
+Macromitrium fendleri;;Sin localidad;;;Fendler 55, tipo;;;;;Pittier 1936
+Macromitrium fendleri;;Sin localidad;;;;;;;;Churchill et al. 2000
+Macromitrium fusco-aureum;;Sin localidad;;;;;;;;Churchill et al. 2000
+Macromitrium galipense;16;Cerca de Galipán;2000;;Wagener;;;;;Pittier 1936
+Macromitrium galipense;;Sin localidad;;;;;;;;Churchill et al. 2000
+Macromitrium galipense;10;;;;;;;;;
+Macromitrium guatemalense;;Sin localidad;;;Fendler 54, 63, tipos ;;;;;Pittier 1936
+Macromitrium guatemalense;;Sin localidad;;;;;;;;Churchill et al. 2000
+Macromitrium guatemalense;4;;;;;;;;;
+Macromitrium guatemalense;15;;;;;;;;;
+Macromitrium guatemalense;21;;;;;;;;;
+Macromitrium guatemalense;5;;;;;;;;;
+Macromitrium guatemalense;10;;;;;;;;;
+Macromitrium guatemalense;5;Río Cuyuní, al S de el Dorado;1300;1380;Steyermark, J., G.C.K. & E. Dunsterville 104261, 104303;1970-12-22;VEN;;;Morales & García 2006
+Macromitrium guatemalense;10;Costa de Maya, al NO de la Colonia Tovar;2020;;Steyermark, J., Davidse, G. & Liesner, R. 127804;1982-12-02;VEN;;;Morales & García 2006
+Macromitrium guatemalense;10;Entre el Junquito y la Colonia Tovar;2200;;Steyermark, J. & Rabe, M. 95988;1966-07-31;VEN;;;Morales & García 2006
+Macromitrium guatemalense;10;Fila Maestra 8-11 Km, al O-NO de la Colonia Tovar, Pto. Maya;2000;2200;Steyermark, J. 91551;1963-07-12;VEN;;;Morales & García 2006
+Macromitrium leprieurii;5;Auyan-tepui;;;;;;;;
+Macromitrium leprieurii;;Sin localidad;;;;;;;;Churchill et al. 2000
+Macromitrium leprieurii;5;Auyan-tepui, parte SE del brazo NO, al O del Salto Churún;1850;;Steyermark, J. 93404;1964-05-05;VEN;;;Morales & García 2006
+Macromitrium leprieurii;5;Carretera el Dorado hacia Sta. Elena de Uairen;1200;1400;Steyermark, J., Steyermark, C., Wurdack, R. & Wiehler, H. 106560;1972-12-07;VEN;;;Morales & García 2006
+Macromitrium hymenostomum;20;Tumiriquire;;;;;;;;
+Macromitrium incurvifolium;15;;;;;;;;;
+Macromitrium longifolium;1;Cerro de La Neblina, summit camp #2, 2.8 Km NE of Pico Phelps;2085;2100;William Buck 12656;1985-01-29;MO;00°49'N;065°59'W;Tropicos.org
+Macromitrium longifolium;;Sin localidad;;;;;;;;Churchill et al. 2000
+Macromitrium longifolium;10;Departamento Libertador: camino Costa de Maya, hacia San Antonio y Hacienda Santa Luisa, NE de la Colonia Tovar ;2020;;Julian A. Steyermark & et al. 127796;1982-12-08;MO;10°27'N;067°21'W;Tropicos.org
+Macromitrium longifolium;15;Páramo El Batallón, entre El Portachuelo y la Laguna El Cienegón ;3000;3350;Griffin, PV-1126;1984-02-27;FLAS, MO;08°05'N;071°55'W;Tropicos.org
+Macromitrium longifolium;16;Silla de Caracas;;;Moritz 103;;;;;Pittier 1936
+Macromitrium longifolium;4;Colonia Tovar;;;"Pitt. 9973, 9975; Allart 432";;;;;Pittier 1937
+Macromitrium longifolium;1;Cerro de La Neblina, campamento 1;1880;;Buck, W. 10708;1984-02-07;VEN;;;Morales & García 2006
+Macromitrium longifolium;1;Cerro de La Neblina, 2-2,8 Km NE de Pico Phelps;;;Buck, W. 12603;1985-01-29;VEN;;;Morales & García 2006
+Macromitrium longifolium;4;4,8 Km of juction of Colonia Tovar- Carayaca;2400;;Steyermark, J. 91674;1963-10-17;VEN;;;Morales & García 2006
+Macromitrium longifolium;4;Colonia Tovar;1800;2000;Allart, L. 432;1924-12-01;VEN;;;Morales & García 2006
+Macromitrium longifolium;4;Alto de Nor León, en el camino de la Colonia Tovar;2000;;Pittier, H. 9297;1921-03-19;VEN;;;Morales & García 2006
+Macromitrium longifolium;10;Costa de Maya, al NO de la Colonia Tovar;2020;;Steyermark, J., Davidse, G. & Liesner, R. 127796;1982-12-08;VEN;;;Morales & García 2006
+Macromitrium longifolium;22;Carretera vieja entre Trujillo y Boconó, entre Urbina y San Rafael;2300;2500;Steyermark, J. & Rabe, M. 97293;1966-09-03;VEN;;;Morales & García 2006
+Macromitrium longifolium;22;;;;;;;;;
+Macromitrium longifolium var. brevifolium;10;Cerca de Galipán;2000;;Wagener 418;;;;;Pittier 1936
+Macromitrium longifolium var. brevifolium;10;Alto de Ñor León ;2000;;Pitt. 9279;;;;;Pittier 1936
+Macromitrium macrothele;10;Cerros de Galipán;1700;;Funck & Schilm 364;;;;;Pittier 1937
+Macromitrium macrothele;;Sin localidad;;;;;;;;Churchill et al. 2000
+Macromitrium macrothele;15;La Lagunita;2000;;Funck & Schilm 993;;;;;Pittier 1938
+Macromitrium microstomum;4;;;;;;;;;
+Macromitrium microstomum;;Sin localidad;;;;;;;;Churchill et al. 2000
+Macromitrium microstomum;24;;;;;;;;;
+Macromitrium parvirete;10;;;;;;;;;
+Macromitrium parvirete;4;Colonia Tovar;2000;;Steyermark, J. & Wiehler, H. 106526;1972-12-01;VEN;;;Morales & García 2006
+Macromitrium pellucidum;1;Salto Yureba, Caño Yureba. Bajo Ventuari;120;150;Delascio, F. & Guánchez, F. 10773, 10769;1981-12-24;VEN;;;Morales & García 2006
+Macromitrium pellucidum;;Sin localidad;;;;;;;;Churchill et al. 2000
+Macromitrium perichaetiale;4;;;;;;;;;
+Macromitrium perichaetiale;;Sin localidad;;;;;;;;Churchill et al. 2000
+Macromitrium perichaetiale;5;;;;;;;;;
+Macromitrium perichaetiale;25;"Cuenca del río Socuy y el bosque nublado llamado ""el páaramo"" arriba de la ""gran sabana";;;;;;;;
+Macromitrium perichaetiale;12;;;;;;;;;
+Macromitrium perichaetiale;4;Rancho Grande. Pico Periquito;1400;;Mägdefrau, K. 319;1958-02-24;VEN;;;Morales & García 2006
+Macromitrium perichaetiale;5;Río Venamo;;;Steyermark, J., G.C.K. & E. Dunsterville 92421;1963-12-29;VEN;;;Morales & García 2006
+Macromitrium perichaetiale;5;Cerro Venamo, Río Venamo;1000;;Steyermark, J., G.C.K. & E. Dunsterville 92273, 92263;1963-12-27;VEN;;;Morales & García 2006
+Macromitrium perichaetiale;25;Valle del Río Socuy;2400;2800;Griffin, D. 342;1975-07-07;VEN;;;Morales & García 2006
+Macromitrium podocarpi;4;Parque Nacional Macarao. Pico Jeremba, en las cercanias de la carretera Junquito- Colonia Tovar;2604;;Morales, Thalia 1489;2008-08-13;MO;10°24'N;067°13'W;Tropicos.org
+Macromitrium podocarpi;;Sin localidad;;;;;;;;Churchill et al. 2000
+Macromitrium podocarpi;5;Auyan-tepui;;;;;;;;
+Macromitrium podocarpi;5;"Auyan-tepui. Al NO del ""Drizzly camp"" Río Churún, al O del Salto Churún";1850;;Steyermark, J. 93407;1964-05-05;VEN;;;Morales & García 2006
+Macromitrium podocarpi;5;Al NE del Alto de la Aguada;1400;1700;Dorr, L., Aymard, G., Barnett, L., Cuello, N. & Diggs, G. Jr 4866;1988-04-18;VEN;;;Morales & García 2006
+Macromitrium podocarpi;5;Cerro Guaquinima. In central part of upper plateau;1000;;Sipman, H. 26693;1990-02-06;VEN;;;Morales & García 2006
+Macromitrium podocarpi;15;Laguna El Suero desde La Mucuy, Parque Nacional Sierra Nevada, E de Tabay ;;;Dorr, L. & Barnett, L. 5207;1988-05-19;VEN;;;Morales & García 2006
+Macromitrium proliferum;;;;;Fendler 60, tipo;;;;;Pittier 1936
+Macromitrium proliferum;;Sin localidad;;;;;;;;Churchill et al. 2000
+Macromitrium proliferum;5;;;;;;;;;
+Macromitrium punctatum;17;NE-facing mountain slope E of Santa Inés (vicinity of Caripe;;;;;MO;10°12'N;063°29'W;Tropicos.org
+Macromitrium punctatum;;Sin localidad;;;;;;;;Churchill et al. 2000
+Macromitrium punctatum;10;;;;;;;;;
+Macromitrium punctatum;10;Galipán;1600;;Pittier, H. 9913-9914;1921-11-25;VEN;;;Morales & García 2006
+Macromitrium pyriforme;10;;;;;;;;;Pursell 1973
+Macromitrium pyriforme;;Sin localidad;;;;;;;;Churchill et al. 2000
+Macromitrium retusulum;;Sin localidad;;;Fendler 57, tipo;;;;;Pittier 1936
+Macromitrium retusulum;;Sin localidad;;;;;;;;Churchill et al. 2000
+Macromitrium rhaphidophyllum;;Sin localidad;;;Fendler 57, tipo;;;;;Pittier 1936
+Macromitrium rhaphidophyllum;;Sin localidad;;;;;;;;Churchill et al. 2000
+Macromitrium richardii;10;;;;;;;;;
+Macromitrium richardii;;Sin localidad;;;;;;;;Churchill et al. 2000
+Macromitrium richardii;17;;;;;;;;;
+Macromitrium richardii;10;Entre el Junquito y la Colonia Tovar;2400;;Steyermark, J. 94798;;VEN;;;Morales & García 2006
+Macromitrium stellulatum;1;;;;;;;;;
+Macromitrium stellulatum;;Sin localidad;;;;;;;;Churchill et al. 2000
+Macromitrium stellulatum;15;Entre Mucuchachi y Canaguá;;;;;;;;
+Macromitrium stellulatum;5;Guayana (Orinoco);;;;;;;;
+Macromitrium stellulatum;4;Pico Codazzi;2000;2150;Steyermark, J., Huber, O. & Carreño, V. 115429;1977-12-03;VEN;;;Morales & García 2006
+Macromitrium stellulatum;5;Reserva Forestal de Caparo, parte N entre pica 6 y 7, E de El Catón,  18-20 Km al SE del Campamento Cachicamo;100;;Steyermark, J., Bunting, G. & Blanco, C. 102082;1968-04-10;VEN;;;Morales & García 2006
+Macromitrium stricticuspis;7;;;;;;;;;
+Macromitrium stricticuspis;;Sin localidad;;;;;;;;Churchill et al. 2000
+Macromitrium subcirrhosum;1;Cerro de La Neblina, summit camp XII, near Brazilian frontier, 2 Km SW of Pico Phelps;1950;;William Buck 13016;1985-02-26;MO;00°48'N;066°00'W;Tropicos.org
+Macromitrium subcirrhosum;;Sin localidad;;;;;;;;Churchill et al. 2000
+Macromitrium subcirrhosum;1;Cerro de La Neblina, 2-2,8 Km NE de Pico Phelps;2085;2100;Buck, W. 12689;1985-01-29;VEN;;;Morales & García 2006
+Macromitrium subnitidum;;Sin localidad;;;Fendler;;;;;Pittier 1936
+Macromitrium subnitidum;;Sin localidad;;;;;;;;Churchill et al. 2000
+Macromitrium subpaucidens;4;Aragua;;;;;;;;
+Macromitrium subpaucidens;;Sin localidad;;;;;;;;Churchill et al. 2000
+Macromitrium subscabrum;4;Aragua;;;;;;;;Moreno 1990
+Macromitrium swainsonii;;Sin localidad;;;;;;;;Churchill et al. 2000
+Macromitrium trachypodium;15;Páramo de Los Granates, Sierra de Santo Domingo, cerca de la Laguna Brava;3400;;Dana G. Griffin, III & Manuel López-Figueiras Manuel López-Figueiras PV-929 ;1985-02-19;MO;08°47'N;070°41'W;Tropicos.org
+Macromitrium trachypodium;;Sin localidad;;;;;;;;Churchill et al. 2000
+Macromitrium trachypodium;22;Páramo de Guiriguay, arriba del pueblo de Las Piedras. Entre río Burate y Peñas Blancas;3200;;Griffin PV-1524;1985-03-14;MO;08°56'N;070°30'W;Tropicos.org
+Macromitrium trachypodium;21;4,6 Km al ESE de Zumbador, sobre la carretera hacia Queniquea;2621;;Luteyn, J. & Lebrón-Luteyn, M. 9867, 9861;1984-04-13;VEN;;;Morales & García 2006
+Macromitrium ulophyllum;1;Cerro Marahuaca;;;;;;;;
+Macromitrium ulophyllum;;Sin localidad;;;;;;;;Churchill et al. 2000
+Macromitrium ulophyllum;1;Alto Orinoco (Cerro Duida);2270;;H. H. Tate 596;;;;;Pittier 1936
+Macromitrium ulophyllum;5;Ptari-tepui, Monte Roraima;;;;;;;;
+Macromitrium ulophyllum;1;Cerro de La Neblina;1880;;Buck, W. 10719;1984-02-07;VEN;;;Morales & García 2006
+Macromitrium ulophyllum;1;Cerro de La Neblina, camp. VI, 3,5 Km W de Pico Zuloaga;;;Thomas, W. & Plowman, T. 3134, 3051;1984-04-13;VEN;;;Morales & García 2006
+Macromitrium ulophyllum;1;Cumbre del Cerro Marahuaca;2480;2580;Guariglia, M., Holmgren, N., Luteyn, J., Mori, S. & Steyermark, J. 1616, 1612;1982-01-31;VEN;;;Morales & García 2006
+Macromitrium ulophyllum;1;Cumbre del Cerro Marahuaca, extremo NE;2580;2600;Steyermark, J., Delascio, F. 129330, 129310;1983-03-30;VEN;;;Morales & García 2006
+Macromitrium ulophyllum;1;Cumbre del Cerro Marahuaca, extremo NE;;;Steyermark, J., Brewer, Ch. & Liesner, R. 124472, 124502;1981-02-16;VEN;;;Morales & García 2006
+Macromitrium ulophyllum;5;Macizo de Chimantá, sector oriental  del Chimantá-tepui, Río Tirica;2450;;Steyermark, J., Huber, O. & Carreño, V. 128967;1983-02-07;VEN;;;Morales & García 2006
+Macromitrium ulophyllum;5;Macizo de Chimantá, sector centro-noreste del Chimantá- tepui, Caño Chimantá;2000;;Steyermark, J., Huber, O. & Carreño, V. 128050-A, 128047, 128063;1983-01-26;VEN;;;Morales & García 2006
+Macromitrium ulophyllum;5;Laguna de Canaima, Campamento de AVENSA;400;;Steyermark, J., Huber, O. & Carreño, V. 127947;1983-01-25;VEN;;;Morales & García 2006
+Macromitrium ulophyllum;5;Cumbre de Aprada-tepui;2460;2500;Steyermark, J., Huber, O., Carreño, V., Mc Diarmid, R. & Brewer, Ch. 115912, 115880;1978-02-25;VEN;;;Morales & García 2006
+Macromitrium ulophyllum;5;Macizo de Chimantá, Amuri-tepui;1950;;Steyermark, J., Huber, O. & Carreño, V. 128677;1983-02-02;VEN;;;Morales & García 2006
+Macromitrium ulophyllum;5;Meseta de Jaua. Cerro Jaua, cumbre de la porción central- occidental, Río Kanarakuni;1922;2100;Steyermark, J. 98076;1967-03-22;VEN;;;Morales & García 2006
+Macromitrium venezuelense;;Sin localidad;;;;;;;;Pursell 1973
+Macromitrium venezuelense;;Sin localidad;;;;;;;;Churchill et al. 2000
+Schlotheimia angustata;4;;;;;;;;;
+Schlotheimia angustata;10;;;;;;;;;
+Schlotheimia angustata;10;E of Colonia Tovar;2000;;Steyermark, J. & Wiehler, H. 106538;1972-12-01;VEN;;;Morales & García 2006
+Schlotheimia jamesonii;10;Alto de Ñor León. Camino a la Colonia Tovar;2000;;Pitt. 9280;;;;;Pittier 1936
+Schlotheimia jamesonii;12;;;;;;;;;
+Schlotheimia fuscoviridis;20;;;;;;;;;
+Schlotheimia fuscoviridis;;Sin localidad;;;;;;;;Churchill et al. 2000
+Schlotheimia fuscoviridis;20;Península de Paria, entre Manacal y Cuchilla de Cueva de Tigre, Río Nuevo, al O del Cerro Humo;750;800;Steyermark, J. & Rabe, M. 96417;1966-08-13;VEN;;;Morales & García 2006
+Schlotheimia glauca;10;Cerros de Galipán;;;Allart, L. 156;1924-11-15;VEN;;;"Morales & García 2006; Pittier 1936"
+Schlotheimia glauca;;Sin localidad;;;;;;;;Churchill et al. 2000
+Schlotheimia grandi-areolata;;Sin localidad;;;Fendler 58 a, tipo;;;;;Pittier 1936
+Schlotheimia grandi-areolata;;Sin localidad;;;;;;;;Churchill et al. 2000
+Schlotheimia lasiomitria;7;;;;;;;;;Pursell 1973
+Schlotheimia lasiomitria;;Sin localidad;;;;;;;;Churchill et al. 2000
+Schlotheimia pungentissima;;Sin localidad;;;Fendler 58 c, tipo;;;;;Pittier 1936
+Schlotheimia pungentissima;;Sin localidad;;;;;;;;Churchill et al. 2000
+Schlotheimia rugifolia;4;Along Río San Carlos, 8,8 Km north of Pie de Cerro, north of La Victoria;900;1150;Steyermark & Liesner;1980-03-25;MO;10°21'N;067°18'W;Tropicos.org
+Schlotheimia rugifolia;;Sin localidad;;;;;;;;Churchill et al. 2000
+Schlotheimia rugifolia;5;Hato La Vergareña, ca. 75 Km south of Cd. Piar;200;;Pursell 8044;1967-02-15;MO;06°50'N;063°20'W;Tropicos.org
+Schlotheimia rugifolia;5;Cerca de Ciudad Piar, Macizo de Jaua, Auyan-tepui;;;;;;;;
+Schlotheimia rugifolia;5;En el drenaje del Río Cuyuní, sur de El Dorado;1300;1380;Steyermark, Julian 104283;1970-12-28;MO;05°50'N;061°30'W;Tropicos.org
+Schlotheimia rugifolia;5;Meseta de Jaua: Cerro Jaua, cumbre, borde del tributaRío del Río Marajano;1750;1800;Steyermark, Julian 109407;1974-12-28;MO;"04°48'50""N";"064°34'10""W";Tropicos.org
+Schlotheimia rugifolia;5;Meseta de Jaua: Cerro Jaua, cumbre, borde del tributaRío del Río Marajano;1750;1800;Steyermark, Julian 109380;1974-12-28;MO;"04°48'50""N";"064°34'10""W";Tropicos.org
+Schlotheimia rugifolia;5;En el drenaje del Río Cuyuní, sur de El Dorado;1300;1380;Steyermark, Julian 104302;1970-12-28;MO;05°50'N;061°30'W;Tropicos.org
+Schlotheimia rugifolia;10;Caracas;;;Moritz;;;;;Pittier 1936
+Schlotheimia rugifolia;14;Serranía al norte de Barquisimeto;800;;Saer 76;;;;;Pittier 1936
+Schlotheimia rugifolia;1;Sierra de Parima, Río Orinoco;1300;;Steyermark, J. 106131, 105930;1972-05-18;VEN;;;Morales & García 2006
+Schlotheimia rugifolia;4;Cerro la Ojedeña, al S de el Consejo;1500;;Steyermark, J. & Perkins, W. 122095;1980-05-04;VEN;;;Morales & García 2006
+Schlotheimia rugifolia;4;Choroní;1600;;Mägdefrau, K. 501;1958-02-28;VEN;;;Morales & García 2006
+Schlotheimia rugifolia;4;Río San Carlos, 8,8 Km N of pie de Cerro, N of La Victoria;900;1150;Steyermark, J. & Liesner, R. 121901;1980-03-25;VEN;;;Morales & García 2006
+Schlotheimia rugifolia;5;Meseta de Jaua, cumbre Cerro Jaua, porción SO, Río Marajano;1750;1800;Steyermark, J., Carreño, V. & Brewer, Ch. 109407;1974-02-22;VEN;;;Morales & García 2006
+Schlotheimia rugifolia;5;Meseta de Jaua, cumbre Cerro Jaua, porción SO, Río Marajano;1750;1800;Steyermark, J., Carreño, V. & Brewer, Ch.109380;1974-02-11;VEN;;;Morales & García 2006
+Schlotheimia rugifolia;5;Río Cuyuní, al S del Dorado;1300;1380;Steyermark, J., G.C.K. & E. Dunsterville 104302, 104283;1970-02-22;VEN;;;Morales & García 2006
+Schlotheimia rugifolia;5;Auyan-tepui, cumbre de la parte SO, Río Churún;2050;;Steyermark, J. 64010;1964-05-16;VEN;;;Morales & García 2006
+Schlotheimia rugifolia;10;4,8 Km E of junction of Colonia Tovar-Carayaca road;2400;;Steyermark, J. 91673;1963-10-17;VEN;;;Morales & García 2006
+Schlotheimia rugifolia;10;El Junquito ;1800;;Pittier, H. 13767;1936-12-04;VEN;;;Morales & García 2006
+Schlotheimia rugifolia;10;Alto Ñor León, camino de Macarao a Colonia Tovar;2000;;Pittier, H. 9280;1921-03-19;VEN;;;Morales & García 2006
+Schlotheimia rugifolia;14;Alrededores de Barquisimeto;;;Saer, J. 76;1923-10-01;VEN;;;Morales & García 2006
+Schlotheimia rugifolia;16;Los Guayabitos, El Volcán, SE of Baruta;1350;1400;Steyermark, J. 91645;1963-10-11;VEN;;;Morales & García 2006
+Schlotheimia rugifolia;20;Quebrada Nivardo, arriba de Mundo Nuevo, al O de Cerro Humo;700;750;Steyermark, J. & Rabe, M. 96106;1966-08-07;VEN;;;Morales & García 2006
+Schlotheimia torquata;4;;;;;;;;;Pursell 1973
+Schlotheimia torquata;;Sin localidad;;;;;;;;Churchill et al. 2000
+Schlotheimia torquata;5;;;;;;;;;Pursell 1973
+Schlotheimia torquata;10;;;;;;;;;Pursell 1973
+Schlotheimia torquata;17;;;;;;;;;Pursell 1973
+Schlotheimia trichomitria;17;El Cocollar;;;Moritz 59;;;;;
+Schlotheimia trichomitria;;Sin localidad;;;;;;;;Churchill et al. 2000
+Schlotheimia trichomitria;5;Chimantá Massif: Torono-tepuí. Slopes on summit above valley of Caño Mojado;2030;2150;Stetermark & Wurdack 1033;1955-02-21;MO;05°12'N;062°10'W;Tropicos.org
+Schlotheimia trichomitria;5;Chimantá Massif: Central section. Near Summit Camp.;1925;;Stetermark & Wurdack 278;1955-01-31;MO;05°17'N;062°08'W;Tropicos.org
+Schlotheimia trichomitria;5;Chimantá Massif: Torono-tepuí. Slopes on summit above valley of Caño Mojado;1970;;Stetermark & Wurdack 708;1955-02-09;MO;05°12'N;062°10'W;Tropicos.org
+Schlotheimia trichomitria;10;;;;;;;;;Pursell 1973
+Meesia triquetra;15;Sierra Nevada de Santo Domingo, Páramo de Mucubají, ca. Laguna Grande along road to Laguna Negra;3500;;;;;;;Tropicos.org (ANBRY)
+Meesia triquetra;;Sin localidad;;;;;;;;Churchill et al. 2000
+Barbella conferva;;Sin localidad;;;;;;;;Churchill et al. 2000
+Cryptopapillaria penicillata;10;El Volcán. Los Guayabitos;1350;;Mägdefrau, K. 43;1957-12-29;VEN;;;Morales & García 2006
+Cryptopapillaria penicillata;;Sin localidad;;;;;;;;Churchill et al. 2000
+Cryptopapillaria penicillata;10;Portachuelo and Peñita and Carayaca, between Colonia Tovar- Junquito road and Hacienda El Limón;1300;1500;Steyermark, J. 94787;1966-02-12;VEN;;;Morales & García 2006
+Cryptopapillaria penicillata;10;Cerro Naiguatá, Loma de las Delicias, entre Quebrada de Basenilla y Quebrada Guayoyo;1000;1300;Steyermark, J. 92100;1963-11-15;VEN;;;Morales & García 2006
+Cryptopapillaria penicillata;10;Entre Geremba y Portachuelo, 2 millas de la intersección Junquito- Colonita Tovar;1700;;Steyermark, J. & Rabe, M. 96000;1966-07-31;VEN;;;Morales & García 2006
+Cryptopapillaria penicillata;15;Páramo la Negra above the twon of Bailadores;3000;;Griffin, D., López, M. & Ruiz, L. 17429;1972-07-01;VEN;;;Morales & García 2006
+Cryptopapillaria penicillata;22;Entre la Peña y agua de Obispo, 22- 28 Km de Carache;2400;2500;Steyermark, J. 104995;1971-03-01;VEN;;;Morales & García 2006
+Cryptopapillaria penicillata;25;Sierra de Perijá, Río Omira- kuná;1440;1460;Steyermak, J., G.C.K. & E. Dunsterville 105534, 105609;1972-03-22;VEN;;;Morales & García 2006
+Floribundaria flaccida;17;;;;;;;;;
+Lepyrodontopsis trichophylla;10;Camino Costa de Maya, NE de la Colonia Tovar, 3-5 Km desde la carretera principal. La Victoria-Colonia Tovar ;2100;;Steyermark, Davidse y Liesner 127879;1982-12-09;MO, VEN;10°25'N;067°20'W;"Tropicos.org; Morales & García 2006"
+Lepyrodontopsis trichophylla;;Sin localidad;;;;;;;;Churchill et al. 2000
+Lepyrodontopsis trichophylla;21;10 Km east of La Fundación, above Represa Dorada;800;;Liesner & Gonzáles 10516;1981-03-14;MO;07°48'N;071°47'W;Tropicos.org
+Lepyrodontopsis trichophylla;20;Península de Paria. Cerro de Río Arriba, Río Santa Isabel;600;700;Steyermark, J. & Rabe, M. 96204;1966-08-09;VEN;;;Morales & García 2006
+Meteoridium remotifolium;5;Monte Roraima, Auyan-tepui;;;;;;;;
+Meteoridium remotifolium;;Sin localidad;;;;;;;;Churchill et al. 2000
+Meteoridium remotifolium;15;;;;Moritz 166;;;;;Pittier 1936
+Meteoridium remotifolium;17;Cerca de Caripe;;;;;;;;
+Meteoridium remotifolium;20;Cerro Turimiquire ;;;;;;;;
+Meteoridium remotifolium;21;;;;;;;;;
+Meteoridium remotifolium;25;San José de Los Altos;;;;;;;;
+Meteoridium remotifolium;1;Sierra Parima, Río Orinoco;1300;;Steyermark, J. 106098, 105976 ;1972-05-18;MO;;;Tropicos.org
+Meteoridium remotifolium;1;Cerro de La Neblina massif - camp VII. Ca. 5,3 Km NE of Pico Phelps;1730;1850;Sastre 341;1984-11-29;MO;00°51'N;065°58'W;Tropicos.org
+Meteoridium remotifolium;4;Fila Paloma, S de las Tejerias on road toward Tiara;1100;;Steyermark, J. & Steyermark, C. 110022;1974-06-24;MO;10°08'N;067°09'W;Tropicos.org
+Meteoridium remotifolium;4;Parque Nacional Henri Pittier Rancho Grande. Bosque nublado ;1450;1511;Morales, Thalia 1732 ;2009-01-19;MO;10°21'N;067°41'W;Tropicos.org
+Meteoridium remotifolium;4;Distrito Ricaurte: along Río Tuy, 3.5 Km SE of Colonia Tovar ;1080;1120;Julian A. Steyermark 121967 ;1980-03-29;MO;"10°23'20""N";"067°15'20""W";Tropicos.org
+Meteoridium remotifolium;5;Meseta del Jaua: Cumbre, Porción SO;1750;1800;Steyermark, J., Carreño, V. & Brewer, Ch. 109508 ;1974-02-28;MO;04°48'N;064°34'W;Tropicos.org
+Meteoridium remotifolium;5;;;;Steyermark, J., Carreño, V. & Brewer, Ch. 109529;1974-02-26;MO;;;Tropicos.org
+Meteoridium remotifolium;5;Río Botanamo, al N de Anacoco;100;;Delascio, F. & Lopez, R. 8101 ;1979-08-01;MO;;;Tropicos.org
+Meteoridium remotifolium;5;El Peñon;1800;;Steyermark, J. 94080 ;1964-05-17;MO;;;Tropicos.org
+Meteoridium remotifolium;10;Entre Portachuelo, Peñita y Carayaca. Hacienda el Limón;1300;1500;Steyermark, J. 94442, 94446 ;1965-10-12;MO;;;Tropicos.org
+Meteoridium remotifolium;14;Entre la Encrucijada y el camino al Parque Nacional Yacambú de El Blanquito, 10-15 Km SSE de Sanare;1750;1800;Steyermark, J., Delascio, F., G.C.K. & Dunsterville, E. 103531 ;1970-08-07;MO;09°44'N;069°38'W;Tropicos.org
+Meteoridium remotifolium;14;Fila de Terepaima,21-23 Km al sur de Cabudare, entre el Alto de Chuparral y la Loma Redonda;1300;1460;Steyermark, J., Delascio, F., G.C.K. & E. Dunsterville 10341, 103410 ;1970-08-04;MO;08°29'N;071°17'W;Tropicos.org
+Meteoridium remotifolium;14;Cubiro y Escalera;1600;2000;Steyermark, J., Carreño, V. & Nehlin, S. 110233, 110186;1974-07-07;MO;;;Tropicos.org
+Meteoridium remotifolium;14;Parque Nacional Yacambú. 18 Km del Paso de Angostura, SE de Sanare;1680;;Steyermark, J. & Carreño, V. 108844;1973-12-29;MO;;;Tropicos.org
+Meteoridium remotifolium;14;Sierra de Portuguesa, 8 Km from Sanare;1500;1800;Meijer 94 A;1979-07-29;MO;09°45'N;069°39'W;Tropicos.org
+Meteoridium remotifolium;14;Sierra de Portuguesa, 8 Km from Sanare;1500;1800;Meijer 94 D;1979-07-29;MO;09°45'N;069°39'W;Tropicos.org
+Meteoridium remotifolium;14;Sierra de Portuguesa, 8 Km from Sanare;1500;1800;Meijer 119 A;1979-07-29;MO;09°45'N;069°39'W;Tropicos.org
+Meteoridium remotifolium;14;Parque Nacional Yacambú, Sierra de Portuguesa;1400;1900;Griffin, D. III 155;;MO;09°38'N;069°32'W;Tropicos.org
+Meteoridium remotifolium;14;Parque Nacional Yacambú. 10 Km al SE de Sanare;1600;;Steyermark, J. & Wiehler, H. 106671, 106674 ;1972-12-15;MO;;;Tropicos.org
+Meteoridium remotifolium;14;Fila de Terepaima,21-23 Km al sur de Cabudare;1300;1460;Steyermark & et al. 21289;1970-08-04;MO;08°29'N;071°17'W;Tropicos.org
+Meteoridium remotifolium;15;La Pedregosa, tributaRío del Chama y el Maciegal  ;1980;;Griffin, D. III 017482;1972-07-01;MO;08°37'N;071°40'W;Tropicos.org
+Meteoridium remotifolium;15;Bergwald am Mucuy oberhalb Tabay;2600;;Mägdefrau, K. 1579 ;1967-04-14;MO;;;Tropicos.org
+Meteoridium remotifolium;19;15 Km al E de Chabasquén, 67 Km al NNO de Guanare;1450;1520;Steyermark, J., Liesner, R. & Stergios, B. 126723 ;1982-10-31;MO;09°26'N;069°54'W;Tropicos.org
+Meteoridium remotifolium;19;15 Km al E de Chabasquén, 67 Km al NNO de Guanare;1450;1520;Steyermark, J., Liesner, R. & Stergios, B. 126846;1982-10-31;MO;09°26'N;069°54'W;Tropicos.org
+Meteoridium remotifolium;19;Entre la Estación y la Laguna, 15-18 Km NNO de Ospino;700;1800;Steyermark, J., Liesner, R. & Aymard, G. 126996 ;1982-11-01;MO;09°27'N;069°31'W;Tropicos.org
+Meteoridium remotifolium;19;50 Km WNW of Guanare, 15-17 Km N of Chabasquén;1300;1500;Liesner 12786;1982-03-15;MO;09°28'N;069°55'W;Tropicos.org
+Meteoridium remotifolium;20;Península de Paria. Cerro de Humo, Río Santa Isabel, alrededor de 14 Km;1060;;Steyermark, J. 94856 ;1966-03-01;MO;10°38'N;062°58'W;Tropicos.org
+Meteoridium remotifolium;21;Páramo de Tamá, Quebrada Buena Vista;2300;2450;Steyermark, J., G.C.K. & E. Dunsterville 98689 ;1967-05-22;MO;;;Tropicos.org
+Meteoridium remotifolium;21;Río Quinimarí, Cerro las Copas;2500;2700;Steyermark, J., G.C.K. & E. Dunsterville 100958-A ;1968-01-15;MO;;;Tropicos.org
+Meteoridium remotifolium;21;;;;Steyermark, J., G.C.K. & E. Dunsterville 100657;1968-01-11;MO;;;Tropicos.org
+Meteoridium remotifolium;21;Páramo de Tamá, Quebrada Buena Vista;2300;2450;Steyermark, J., G.C.K. & E. Dunsterville 98409 ;1967-05-22;MO;;;Tropicos.org
+Meteoridium remotifolium;21;Entre la Grita y Sabana Grande;1600;;Steyermark, J. & Rabe, M. 96851 ;1966-08-29;MO;;;Tropicos.org
+Meteoridium remotifolium;21;Entre Escuque y la Mesa de San Pedro;1300;1650;Steyermark, J. 104736 ;1971-02-20;MO;;;Tropicos.org
+Meteoridium remotifolium;21;10 Km E of La Fundación, around Represa Dorada;800;;Ronald L. Liesner & Angel C. González 10513;1981-03-14;MO;"07°48'00""N";"071°47'00""W";Tropicos.org
+Meteoridium remotifolium;21;La Buenaña, ca. 35 Km SSE of San Cristóbal, 6-12 Km W of Quebrada Colorado.;600;1200;Ronald L. Liesner & Angel C. González 10923-B;1981-03-21;MO;"07°28'00""N";"072°09'00""W";Tropicos.org
+Meteoridium remotifolium;21;Distr. Uribante. Empresa Las Cuevas near La Fundación;900;;H. van der Werff & Angel C. González 5072;1983-07-07;MO;"08°50'00""N";"071°47'00""W";Tropicos.org
+Meteoridium remotifolium;21;Quebrada Agua Azul, south of El Reposo, 14 Km SE of Delicias;2150;2300;Julian A. Steyermark & Ronald L. Liesner 118295;1979-07-23;MO;"07°31'00""N";"072°24'00""W";Tropicos.org
+Meteoridium remotifolium;21;Páramo La Negra, just across border from state of Mérida;2400;;Dana G. Griffin, III & et al. 2214;1972-08-07;MO;"10°27'00""N";"069°27'00""W";Tropicos.org
+Meteoridium remotifolium;21;Junin: Páramo de Tamá, above the village of Villa Páez;2340;;Dana G. Griffin, III 941;1976-06-01;MO;"07°25'00""N";"072°26'00""W";Tropicos.org
+Meteoridium remotifolium;21;Junin: Páramo de Tamá, above the village of Villa Páez;2370;;Dana G. Griffin, III 943;1976-06-01;MO;"07°25'00""N";"072°26'00""W";Tropicos.org
+Meteoridium remotifolium;21;Junin: Páramo de Tamá, above the village of Villa Páez;2340;;Dana G. Griffin, III 929;1976-06-01;MO;"07°25'00""N";"072°26'00""W";Tropicos.org
+Meteoridium remotifolium;21;Jauregui: Páramo El Rosal, between La Grita and San José de Bolívar;;;Dana G. Griffin, III 608;1976-06-01;MO;"08°02'00""N";"071°58'00""W";Tropicos.org
+Meteoridium remotifolium;21;Junin: Páramo de Tamá, above the village of Villa Páez;;;Dana G. Griffin, III 266;1976-06-01;MO;"07°25'00""N";"072°26'00""W";Tropicos.org
+Meteoridium remotifolium;21;Junin: Páramo de Tamá, above the village of Villa Páez;;;Dana G. Griffin, III 446;1976-06-01;MO;"07°25'00""N";"072°26'00""W";Tropicos.org
+Meteoridium remotifolium;21;Junin: Páramo de Tamá, above the village of Villa Páez;2600;;Dana G. Griffin, III 853;1976-06-01;MO;"07°25'00""N";"072°26'00""W";Tropicos.org
+Meteoridium remotifolium;21;Junin: Páramo de Tamá, above the village of Villa Páez;;;Dana G. Griffin, III 429;1976-06-01;MO;"07°25'00""N";"072°26'00""W";Tropicos.org
+Meteoridium remotifolium;21;Junin: Páramo de Tamá, above the village of Villa Páez;;;Dana G. Griffin, III 437;1976-06-01;MO;"07°25'00""N";"072°26'00""W";Tropicos.org
+Meteoridium remotifolium;21;Junin: Páramo de Tamá, above the village of Villa Páez;;;Dana G. Griffin, III 113;1976-06-01;MO;"07°25'00""N";"072°26'00""W";Tropicos.org
+Meteoridium remotifolium;21;Junin: Páramo de Tamá, above the village of Villa Páez;;;Dana G. Griffin, III 394;1976-06-01;MO;"07°25'00""N";"072°26'00""W";Tropicos.org
+Meteoridium remotifolium;21;Junin: Páramo de Tamá, above the village of Villa Páez;;;Dana G. Griffin, III 368;1976-06-01;MO;"07°25'00""N";"072°26'00""W";Tropicos.org
+Meteoridium remotifolium;21;Junin: Páramo de Tamá, above the village of Villa Páez;;;Dana G. Griffin, III 338;1976-06-01;MO;"07°25'00""N";"072°26'00""W";Tropicos.org
+Meteoridium remotifolium;21;Junin: Páramo de Tamá, above the village of Villa Páez;2100;;Ruiz- Teran 285;1975-08-01;MO;;;Tropicos.org
+Meteoridium remotifolium;21;Junin: Páramo de Tamá, above the village of Villa Páez;2340;;Ruiz- Teran 929;1975-08-01;MO;;;Tropicos.org
+Meteoridium remotifolium;21;Junin: Páramo de Tamá, above the village of Villa Páez;2405;;Dana G. Griffin, III 903;1976-06-01;MO;"07°25'00""N";"072°26'00""W";Tropicos.org
+Meteoridium remotifolium;21;Junin: Páramo de Tamá, above the village of Villa Páez;;;Dana G. Griffin, III 271;1976-08-01;MO;"07°25'00""N";"072°26'00""W";Tropicos.org
+Meteoridium remotifolium;21;Junin: Páramo de Tamá, above the village of Villa Páez;;;Dana G. Griffin, III 87;1976-06-01;MO;"07°25'00""N";"072°26'00""W";Tropicos.org
+Meteoridium remotifolium;21;Junin: Páramo de Tamá, above the village of Villa Páez;;;Dana G. Griffin, III 87;1976-06-01;MO;"07°25'00""N";"072°26'00""W";Tropicos.org
+Meteoridium remotifolium;21;Junin: Páramo de Tamá, above the village of Villa Páez;;;Dana G. Griffin, III 94;1976-06-01;MO;"07°25'00""N";"072°26'00""W";Tropicos.org
+Meteoridium remotifolium;21;Junin: Páramo de Tamá, above the village of Villa Páez;2000;;Dana G. Griffin, III 95;1976-06-01;MO;"07°25'00""N";"072°26'00""W";Tropicos.org
+Meteoridium remotifolium;21;Junin: Páramo de Tamá, above the village of Villa Páez;;;Dana G. Griffin, III 100;1976-06-01;MO;"07°25'00""N";"072°26'00""W";Tropicos.org
+Meteoridium remotifolium;21;Junin: Páramo de Tamá, above the village of Villa Páez;;;Dana G. Griffin, III 106;1976-06-01;MO;"07°25'00""N";"072°26'00""W";Tropicos.org
+Meteoridium remotifolium;21;Junin: Páramo de Tamá, above the village of Villa Páez;;;Dana G. Griffin, III 78;1976-06-01;MO;"07°25'00""N";"072°26'00""W";Tropicos.org
+Meteoridium remotifolium;21;Junin: Páramo de Tamá, above the village of Villa Páez;;;Dana G. Griffin, III 84;1976-06-01;MO;"07°25'00""N";"072°26'00""W";Tropicos.org
+Meteoridium remotifolium;21;Junin: Páramo de Tamá, above the village of Villa Páez;;;Dana G. Griffin, III 285;1976-06-01;MO;"07°25'00""N";"072°26'00""W";Tropicos.org
+Meteoridium remotifolium;21;Junin: Páramo de Tamá, above the village of Villa Páez;;;Dana G. Griffin, III 184;1976-06-01;MO;"07°25'00""N";"072°26'00""W";Tropicos.org
+Meteoridium remotifolium;21;Junin: Páramo de Tamá, above the village of Villa Páez;;;Dana G. Griffin, III 60;1976-06-01;MO;"07°25'00""N";"072°26'00""W";Tropicos.org
+Meteoridium remotifolium;21;Along Quebrada Agua Azul, south of El Reposo, 14 Km SE of Delicias.;2150;2300;Julian A. Steyermark & Ronald L. Liesner 118356A;1976-06-01;MO;"07°31'00""N";"072°24'00""W";Tropicos.org
+Meteoridium remotifolium;21;Along Quebrada Agua Azul, south of El Reposo, 14 Km SE of Delicias.;2150;2300;Julian A. Steyermark & Ronald L. Liesner 118362A;1976-06-01;MO;"07°31'00""N";"072°24'00""W";Tropicos.org
+Meteoridium remotifolium;22;Entre Trujillo y Boconó, Urbina y San Rafael;2300;2500;Steyermark, J. & Rabe, M. 97289;1966-09-03;VEN;;;Morales & García 2006
+Meteoridium remotifolium;22;Entre Boconó y Guaramacal;2100;2300;Steyermark, J. & Rabe, M. 97321 ;1966-09-04;VEN;;;Morales & García 2006
+Meteoridium remotifolium;23;Quebrada Honda, 17 Km del pueblo de Aroa;1100;;Steyermark, J. 105412 ;1972-01-23;VEN;;;Morales & García 2006
+Meteoridium remotifolium;25;Sierra de Perijá;1600;;Griffin, D. 246, 247;1975-07-07;VEN;;;Morales & García 2006
+Meteoridium remotifolium;25;Sierra de Perijá, campamento San José de los Altos;1800;;Griffin, D. 227 ;1975-07-07;VEN;;;Morales & García 2006
+Meteoridium tenuissimum;21;;;;;;;;;
+Meteoridium tenuissimum;22;;;;;;;;;
+Meteorium denticulatum;17;;;;;;;;;
+Meteorium denticulatum;;Sin localidad;;;;;;;;Churchill et al. 2000
+Meteorium denticulatum;20;,;50;;Steyermark, J. & Agostini, G. 90931;1962-07-28;VEN;;;Morales & García 2006
+Meteorium deppei;15;;;;;;;;;
+Meteorium deppei;;Sin localidad;;;;;;;;Churchill et al. 2000
+Meteorium deppei;17;Cerca de Caripe;;;;;;;;
+Meteorium deppei;25;San José de Los Altos;;;;;;;;
+Meteorium deppei;10;Caracas;;;;;;;;Pittier 1936
+Meteorium illecebraria;;Sin localidad;;;;;;;;
+Meteorium illecebraria;;Sin localidad;;;;;;;;Churchill et al. 2000
+Meteorium nigrescens;9;;;;;;;;;
+Meteorium nigrescens;;Sin localidad;;;;;;;;Churchill et al. 2000
+Meteorium nigrescens;17;;;;;;;;;
+Meteorium nigrescens;10;Caracas;;;;;;;;
+Meteorium nigrescens;16;Silla de Caracas;;;;;;;;Pittier 1936
+Meteorium nigrescens;16;Las Lagunas ;;;Morizt 110 ;;;;;Pittier 1936
+Meteorium nigrescens;2;Colinas montañosas entre Río León de Quebrada Danta y Río Zumbador;;;;;;;;
+Meteorium nigrescens;17;Cerca de Caripe, Cerro la cueva de Doña Anita, Cueva del Guácharo;;;;;;;;
+Meteorium nigrescens;2;Río León of Quebrada Danta and Río Zumbador, NE of Bergatín;500;600;Steyermark, J. 61127;1945-02-24;VEN;;;Morales & García 2006
+Meteorium nigrescens;5;San Martín de Turumbán, SO de Tumeremo, Río Cuyuní;100;120;Delascio, F., Haiek, G., López, R., Garofalo, B. & Martínez, I. 7973;1979-08-01;VEN;;;Morales & García 2006
+Meteorium nigrescens;16;De Caucagua;60;;Medina, E. 301, 302;1955-04-01;VEN;;;Morales & García 2006
+Meteorium nigrescens;15;Alrededores de Mérida- La Azulita y la Chorrera;1800;;Griffin, D. , López, M. & Ruiz, L. 17517;1972-07-01;VEN;;;Morales & García 2006
+Meteorium nigrescens;15;Mucuy;2270;;Vareschi, V. & Panier 657;1952-04-08;VEN;;;Morales & García 2006
+Meteorium nigrescens;17;Guácharo;950;;Steyermark, J. 62312;1945-04-23;VEN;;;Morales & García 2006
+Meteorium nigrescens;20;Península de Paria, Fila entre Manacal y Cuchilla de Cueva de Tigre, Río Nuevo;750;800;Steyermark, J. & Rabe, M. 96423;1966-08-13;VEN;;;Morales & García 2006
+Meteorium sinuatum;15;Páramo de los Granates, finca de Los Granates;3000;3100;Griffin, D. III PV-953;1985-02-20;MO;08°47'N;070°41'W;Tropicos.org
+Meteorium sinuatum;;Sin localidad;;;;;;;;Churchill et al. 2000
+Meteorium teres;4;;;;;;;;;
+Meteorium teres;;Sin localidad;;;;;;;;Churchill et al. 2000
+Papillaria laevifolia;10;;;;;;;;;
+Papillaria laevifolia;;Sin localidad;;;;;;;;Churchill et al. 2000
+Papillaria laevifolia;16;;;;;;;;;
+Papillaria nigrescens var. illecebra;10;;;;;;;;;Moreno 1990
+Pilotrichella flexilis;4;Cerca de la Colonia Tovar;;;;;;;;
+Pilotrichella flexilis;;Sin localidad;;;;;;;;Churchill et al. 2000
+Pilotrichella flexilis;5;;;;;;;;;
+Pilotrichella flexilis;5;;;;;;;;;
+Pilotrichella flexilis;7;;;;;;;;;
+Pilotrichella flexilis;12;;;;;;;;;
+Pilotrichella flexilis;10;Galipán;1700;;Moritz 107, 178. Funck & Schlim 37;;;;;Pittier 1936
+Pilotrichella flexilis;10;Ávila;2100;;;;;;;Pittier 1936
+Pilotrichella flexilis;14;;;;;;;;;
+Pilotrichella flexilis;15;;;;;;;;;
+Pilotrichella flexilis;17;Cerro Negro arriba de la Sabana las Piedras al noreste de Caripe;;;;;;;;
+Pilotrichella flexilis;21;;;;;;;;;
+Pilotrichella flexilis;22;;;;;;;;;
+Pilotrichella flexilis;19;;;;;;;;;
+Pilotrichella flexilis;23;;;;;;;;;
+Pilotrichella flexilis;25;,;;;;;;;;
+Pilotrichella flexilis;4;El Portachuelo, entre Maracay y Ocumare;;;Pittier, H. 11408;1924-01-20;VEN;;;Morales & García 2006
+Pilotrichella flexilis;4;Al NE del Alto de la Aguada;;;Dorr, L., Aymard, G., Barnett, L., Cuello, N. & Diggs, G. Jr 4872;1988-04-18;VEN;;;Morales & García 2006
+Pilotrichella flexilis;4;Maracay. Rancho Grande. Pico Periquito;1300;;Mägdefrau, K. 328;1958-02-24;VEN;;;Morales & García 2006
+Pilotrichella flexilis;7;Entre los Tanques y la Toma, Río San Gián, arriba de la Planta Eléctrica;750;;Steyermark, J. & Steyermark, C. 95564;1966-03-27;VEN;;;Morales & García 2006
+Pilotrichella flexilis;5;Meseta del Jaua, Cerro Jaua, cumbre, porción SO, Río Marajuano;1750;1800;Steyermark, J., Carreño, V. & Brewer-Carias, C. 109321A;1974-02-22;VEN;;;Morales & García 2006
+Pilotrichella flexilis;10;Costa de Maya, al NO de la Colonia Tovar;2100;2240;Steyermark, J., Davidse, G. & Liesner, R. 127943, 127874;1982-12-09;VEN;;;Morales & García 2006
+Pilotrichella flexilis;10;8 Km W of junction of Colonia Tovar- Carayaca road;;;Steyermark, J. 91691;1963-10-17;VEN;;;Morales & García 2006
+Pilotrichella flexilis;10;Entre el Junquito y Colonia Tovar;;;Steyermark, J. 9161;1963-10-01;VEN;;;Morales & García 2006
+Pilotrichella flexilis;12;Sierra de San Luis, Montaña de Paraguariba, río abajo el salto;;;Steyermark, J. 99462;1967-07-23;VEN;;;Morales & García 2006
+Pilotrichella flexilis;12;Sierra de San Luis, Vecindad del Hotel Parador, al S de la Tabla;1450;;Steyermark, J. 98932;1967-07-16;VEN;;;Morales & García 2006
+Pilotrichella flexilis;12;Sierra de San Luis, Vecindad del Hotel Parador, al S de la Tabla;1450;;Steyermark, J. 99435;1967-07-22;VEN;;;Morales & García 2006
+Pilotrichella flexilis;12;Sierra de San Luis, Vecindad del Hotel Parador, al S de la Tabla;1450;;Steyermark, J. 98991;1967-07-17;VEN;;;Morales & García 2006
+Pilotrichella flexilis;12;Sierra de San Luis, entre Curimagua y San Luis;1300;1400;Steyermark, J. 99123;1967-07-18;VEN;;;Morales & García 2006
+Pilotrichella flexilis;12;Cerro Santa Ana;600;700;Steyermark, J. & Braun, A. 94564;1966-01-24;VEN;;;Morales & García 2006
+Pilotrichella flexilis;14;Laguna Negra. Loma de los Naranjos, montaña de Macanillal y fila de San Esteban, 10 a 19 Km al S de Río Claro;1300;1500;Steyermark, J., Smith, R. & Carreño, V. 111515, 111556;1975-03-24;VEN;;;Morales & García 2006
+Pilotrichella flexilis;14;Parque Nacional Yacambú de el Blanquito, 10-15 Km al S- SE de Sanare;1750;1800;Steyermark, J., Delascio, F., G.C.K. & E. Dunsterville 103540;1970-08-07;VEN;;;Morales & García 2006
+Pilotrichella flexilis;14;A lo largo del camino hacia Yacambú, 10 Km al S-SE de Sanare;1640;;Steyermark, J., Delascio, F., G.C.K. & E. Dunsterville 103588;1970-08-08;VEN;;;Morales & García 2006
+Pilotrichella flexilis;14;Río Tocuyo, 20-21 Km al S de Humocaro Alto, hacia Guaitó;1900;;Steyermark, J. & Carreño, V. 111128;1974-10-13;VEN;;;Morales & García 2006
+Pilotrichella flexilis;14;Terepaima, 20 Km al S de Cabudare;1200;1300;Steyermark, J., Delascio, F., G.C.K. & E. Dunsterville 103304;1970-08-03;VEN;;;Morales & García 2006
+Pilotrichella flexilis;14;Parque Nacional Yacambú, al SE de la Qda. Negra, S- SE de Sanare;1450;;Steyermark, J. & Carreño, V. 108828;1973-12-29;VEN;;;Morales & García 2006
+Pilotrichella flexilis;14;Parque Nacional Yacambú, al SE de la Qda. Negra, S- SE de Sanare;1450;;Steyermark, J. & Carreño, V. 103451;1970-08-06;VEN;;;Morales & García 2006
+Pilotrichella flexilis;15;Parque Nacional Sierra Nevada, 2 Km S of Mérida;2550;2650;Kelly, D., O`Donovan, G., Feehan, J. & Drangeid, S. 10599, 10839, 10761, 10822, 11229, 10606;1995-08-25;VEN;;;Morales & García 2006
+Pilotrichella flexilis;15;Parque Nacional Sierra Nevada, 2 Km S of Mérida;2550;2650;Kelly, D., O`Donovan, G., Feehan, J. & Drangeid, S. 10755, 10790;1995-09-06;VEN;;;Morales & García 2006
+Pilotrichella flexilis;15;Parque Nacional Sierra Nevada, 2 Km S of Mérida;2550;2650;Kelly, D., O`Donovan, G., Feehan, J. & Drangeid, S. 11214;1995-08-01;VEN;;;Morales & García 2006
+Pilotrichella flexilis;15;Parque Nacional Sierra Nevada, 2 Km S of Mérida;2550;2650;Kelly, D., O`Donovan, G., Feehan, J. & Drangeid, S. 10740;1995-08-17;VEN;;;Morales & García 2006
+Pilotrichella flexilis;15;Parque Nacional Sierra Nevada, 2 Km S of Mérida;2550;2650;Kelly, D., O`Donovan, G., Feehan, J. & Drangeid, S. 10668a, 10793-A, 106732- A;1995-08-08;VEN;;;Morales & García 2006
+Pilotrichella flexilis;15;Parque Nacional Sierra Nevada, 2 Km S of Mérida;2550;2650;Kelly, D., O`Donovan, G., Feehan, J. & Drangeid, S. 10830;1995-09-01;VEN;;;Morales & García 2006
+Pilotrichella flexilis;15;Parque Nacional Sierra Nevada, 2 Km S of Mérida;2550;2650;Kelly, D., O`Donovan, G., Feehan, J. & Drangeid, S. 10599, 10778-A;1995-08-05;VEN;;;Morales & García 2006
+Pilotrichella flexilis;15;Parque Nacional Sierra Nevada, 2 Km S of Mérida;2550;2650;Kelly, D., O`Donovan, G., Feehan, J. & Drangeid, S. 10819;1995-08-31;VEN;;;Morales & García 2006
+Pilotrichella flexilis;15;Parque Nacional Sierra Nevada, 2 Km S of Mérida;2550;2650;Kelly, D., O`Donovan, G., Feehan, J. & Drangeid, S. 10822;1995-08-25;VEN;;;Morales & García 2006
+Pilotrichella flexilis;15;22-27 Km S of Tovar along road to Canaguá;2100;2256;Luteyn, J. & Cotton, E. 9948;1984-04-16;VEN;;;Morales & García 2006
+Pilotrichella flexilis;15;Pico Espejo. La Aguada;;;Mägdefrau, K. 681;1958-04-02;VEN;;;Morales & García 2006
+Pilotrichella flexilis;15;El Valle between San Javier and the forest slopes of the Sierra de La Culata;2325;;Griffin, D., López, M. & Ruiz, L. 17476;1972-07-01;VEN;;;Morales & García 2006
+Pilotrichella flexilis;15;Cerro de las flores;2300;;Mägdefrau, K. 614;1958-03-31;VEN;;;Morales & García 2006
+Pilotrichella flexilis;15;Páramo Monsalves;;;Vareschi, V. & Panme 1810, 654;1952-06-10;VEN;;;Morales & García 2006
+Pilotrichella flexilis;15;Bergwald am Mucuy oberhalb Tabay;2600;;Mägdefrau, K. 1581;1967-04-14;VEN;;;Morales & García 2006
+Pilotrichella flexilis;15;Río Capaz, arriba de la Azulita;2100;2400;Steyermark, J. & Rabe, M. 97125;1966-09-01;VEN;;;Morales & García 2006
+Pilotrichella flexilis;15;Bosque de musgos al N de Mérida;;;Vareschi, V. & Lasser, T. 451;1951-04-28;VEN;;;Morales & García 2006
+Pilotrichella flexilis;19;15 Km al E de Chabasquén, 67 Km al N-NO de Guanare;1450;1520;Steyermark, J., Liesner, R. & Stergios, B. 126620, 126695, 126705;1982-10-29;VEN;;;Morales & García 2006
+Pilotrichella flexilis;21;Cerro San Isidro, N de El Reposa, Quebrada Agua Caliente;1450;1520;Davidse, G. & Gonzáles, A. 22105;1982-11-13;VEN;;;Morales & García 2006
+Pilotrichella flexilis;21;Entre Michelena y Boca de Monte, al O del Zumbador;2000;2400;Steyermark, J. & Rabe, M. 96823;1966-08-28;VEN;;;Morales & García 2006
+Pilotrichella flexilis;21;Río Quinimarí, Peña Pata de Judío;2500;2630;Steyermark, J., G.C.K. & E. Dunsterville 100684;1968-01-11;VEN;;;Morales & García 2006
+Pilotrichella flexilis;21;Páramo de la Negra en la carretera hacia Pregonero;2700;2900;Steyermark, J. & Rabe, M. 96893;1966-08-29;VEN;;;Morales & García 2006
+Pilotrichella flexilis;21;Páramo de Tamá;2475;2550;Steyermark, J., G.C.K. & E. Dunsterville 98463;1967-05-18;VEN;;;Morales & García 2006
+Pilotrichella flexilis;22;Entre Boconó y Guaramacal;2100;2300;Steyermark, J. & Rabe, M. 97349, 97346;1966-09-04;VEN;;;Morales & García 2006
+Pilotrichella flexilis;22;Entre Carache y Agua de Obispo, 15,7 Km NE de Carache;2400;;Dorr, L., Rivero, R., Barnett, L. & Díaz, W. 5058;1988-05-10;VEN;;;Morales & García 2006
+Pilotrichella flexilis;22;Carretera vieja entre Trujillo y Boconó, entre Urbina y San Rafael;2300;2500;Steyermark, J. & Rabe, M. 97259;1966-09-03;VEN;;;Morales & García 2006
+Pilotrichella flexilis;23;Montaña de María Lionza, Quebrada Quibayo;250;1000;Steyermark, J., Sobrevila, C., Fernández, D. & Beatriz, A. 125136, 1251;1981-03-14;VEN;;;Morales & García 2006
+Pilotrichella flexilis;23;El Amparo hacia Candelaria, a 7 Km al N de Salom;1220;1250;Steyermark, J. 106266;1972-06-17;VEN;;;Morales & García 2006
+Pilotrichella flexilis;25;Sierra de Perijá, a lo largo de la trocha hacia Topochalito;200;2400;Griffin, D. 219;1975-07-07;VEN;;;Morales & García 2006
+Pilotrichella flexilis;25;Valle del Río Socuy, Gran Sabana ;2400;2800;Griffin, D. 257, 273;1975-07-07;VEN;;;Morales & García 2006
+Pilotrichella flexilis;25;Entre el Campamento San José de los Altos y Topochalito;2200;2400;Griffin, D. 128;1975-07-07;VEN;;;Morales & García 2006
+Pilotrichella pachygaster;15;;;;;;;;;
+Pilotrichella pachygaster;;Sin localidad;;;;;;;;Churchill et al. 2000
+Pilotrichella rigida;4;;;;;;;;;
+Pilotrichella rigida;;Sin localidad;;;;;;;;Churchill et al. 2000
+Pilotrichella rigida;15;;;;;;;;;
+Pilotrichella rigida;17;Cerca de Caripe;;;;;;;;
+Pilotrichella rigida;4;Rancho Grande;;;Schäfer s/n;1953-01-01;VEN;;;Morales & García 2006
+Pilotrichella viridis;4;;;;;;;;;
+Pilotrichella viridis;;Sin localidad;;;;;;;;Churchill et al. 2000
+Pilotrichella viridis;2;Entre Río León de Quebrada Danta y el Río Zumbador;;;;;;;;
+Pilotrichella viridis;10;;;;;;;;;
+Pilotrichella viridis;2;Río León, Quebrada Danta y río Zumbador, al NE de Bergatín;;;Steyermark, J. 61131;1945-02-24;VEN;;;Morales & García 2006
+Pilotrichella viridis;4;Rancho Grande;;;Vareschi, V. 10, 10a;1950-06-25;VEN;;;Morales & García 2006
+Pilotrichella quadrangularis;4;;;;;;;;;
+Pilotrichella quadrangularis;17;;;;;;;;;
+Squamidium brasiliense;1;;;;;;;;;Moreno 1990
+Squamidium diversicoma;4;Parque Nacional Henri Pittier;;;;;;;;
+Squamidium diversicoma;;Sin localidad;;;;;;;;Churchill et al. 2000
+Squamidium diversicoma;14;Parque Nacional Yacamb;;;;;;;;
+Squamidium diversicoma;15;Sierra Nevada, camino a la Laguana Coromoto;;;;;;;;
+Squamidium isocladum;15;Sierra Nevada, camino hacia la Laguna La Coromoto;;;;;;;;
+Squamidium isocladum;;Sin localidad;;;;;;;;Churchill et al. 2000
+Squamidium isocladum;15;Dtto Campo Elias IKm arriba de la Chorrera;;;;;;;;
+Squamidium leucotrichum;5;"Auyan-tepui; Piar, summit of Amaruay-tepui. South side E half";;;;;MO;05°55'N;"062°13'W;";Tropicos.org
+Squamidium leucotrichum;;Sin localidad;;;;;;;;Churchill et al. 2000
+Squamidium leucotrichum;5;Distrito Piar: Macizo del Chimantá. Sector centro-noreste del Chimantá-tepui, cabeceras orientales del Caño Chimantá;;;;;MO;05°18'N;062°09'W;Tropicos.org
+Squamidium leucotrichum;5;Meseta Del Jaua: Cerro Jaua, Cumbre;;;;;MO;04°48'N;064°34'W;Tropicos.org
+Squamidium leucotrichum;5;Cerro El Picacho and vicinity, E of Hato de Nuria, E of Miamo ;;;;;MO;07°39'N;061°45'W;Tropicos.org
+Squamidium leucotrichum;5;Distrito Piar: Macizo del Chimantá. Sección oriental del Chimantá-tepui, cabeceras del afluente derecho supeRíor del río Tirica ;;;;;MO;05°18'N;"062°03'W;";Tropicos.org
+Squamidium leucotrichum;10;Entre Junquito and Colonia Tovar ;;;;;MO;10°25'N;067°10'W;Tropicos.org
+Squamidium leucotrichum;4;Old road between Petaquire and Carayaca, between Colonia Tovar-Junquito road and Hacienda El Limón ;;;;;MO;10°25'N;067°10'W;Tropicos.org
+Squamidium leucotrichum;12;Entre Estado Lara y Estado Falcón: Disputed area between Estado Falcón and Lara, Cerro Socopo ;;;;;MO;10°28'N;070°47'W;Tropicos.org
+Squamidium leucotrichum;12;Sierra San Luis: Paraguariba, 2 Km NE de la cumbre de Cerro Galicia ;;;;;MO;11°07'N;069°40'W;Tropicos.org
+Squamidium leucotrichum;14;Cerro Cerrón, disputed area between Estado Lara and Falcón ;;;;;MO;10°18'N;070°40'W;Tropicos.org
+Squamidium leucotrichum;14; Distrito Palavecino: Fila de Terepaima, 21-23 Km al sur de Cabudare;;;;;MO;08°29'N;071°17'W;Tropicos.org
+Squamidium leucotrichum;14;Distrito Jiménez: entre la Encrucijada y el camino al Parque Nacional Yacambú de El Blanquito, 10-15 Km SSE de Sanare ;;;;;MO;09°44'N;069°38'W;Tropicos.org
+Squamidium leucotrichum;14;Sierra de Portuguesa, 8 Km from Sanare ;;;;;MO;09°45'N;069°39'W;Tropicos.org
+Squamidium leucotrichum;15;Sierra Nevada de Mérida, along trail between La Aguada and La Montaña;;;;;MO;08°25'N;071°29'W;Tropicos.org
+Squamidium leucotrichum;19;15 Km al Easte de Chabasquén, 67 Km al NNO de Guanare;;;;;MO;09°26'N;069°54'W;Tropicos.org
+Squamidium leucotrichum;19;15 Km al este de Chabasquén, 67 Km al NNO de Guanare ;;;;;MO;09°26'N;069°54'W;Tropicos.org
+Squamidium leucotrichum;19;50 Km WNW of Guanare, 15-17 Km N of Chabasquén ;;;;;MO;09°28'N;069°55'W;Tropicos.org
+Squamidium leucotrichum;20;Península de Paria: Cerro de Humo, noroeste de Irapa ;;;;;MO;10°35'N;062°30'W;Tropicos.org
+Squamidium leucotrichum;21;On Río San Buena, 10 Km west of La Fundacion, around Represa Dorada;;;;;MO;07°47'N;071°46'W;Tropicos.org
+Squamidium leucotrichum;21;Abajo del Páramo de El Zumbador, hacia el pueblo de El Zumbador ;;;;;MO;07°59'N;072°09'W;Tropicos.org
+Squamidium leucotrichum;21;Zumbador, entre Zumbador y Queniquea ;;;;;MO;07°55'N;072°00'W;Tropicos.org
+Squamidium leucotrichum;22;"Above the town of Boconó sin coordenadas; Distrito Boconó: páramo de Guaramacal above town of Boconó ";;;;;MO;09°12'N;070°13'W;Tropicos.org
+Squamidium leucotrichum;4;;;;;;;;;
+Squamidium leucotrichum;17;;;;;;;;;
+Squamidium leucotrichum;23;;;;;;;;;
+Squamidium leucotrichum;25;"San José de Los Altos, Entre San José de Los Altos y el bosque llamado ""el páramo"" arriba de la ""gran sabana""";;;;;;;;
+Squamidium leucotrichum;18;Cerro Copey, LA Sierra,  ;;;;;;;;
+Squamidium leucotrichum;16;Volcán de Oritopo;;;;;;;;
+Squamidium leucotrichum;19;15 Km al este de Chubasquen. ;;;;;;;;
+Squamidium leucotrichum;1;Cerro de La Neblina, 2-2.8 Km NE de Pico Phelps;2085;2100;Buck, W. 12627 ;1985-01-29;VEN;;;Morales & García 2006
+Squamidium leucotrichum;5;Cerro Guaiquinima, Near NE edge of upper plateau;1100;;Sipman, H. 26929 ;1990-02-09;VEN;;;Morales & García 2006
+Squamidium leucotrichum;5;Meseta de Jaua. Cerro Jaua, porción SO. Río Marajano;1750;1800;Steyermark, J., Carreño, V. & Diederichs, E. 109476;1974-02-22;VEN;;;Morales & García 2006
+Squamidium leucotrichum;5;Meseta de Jaua. Cerro Jaua, Río Kanarakuni;1922;2100;Steyermark, J. 98100 ;1967-03-22;VEN;;;Morales & García 2006
+Squamidium leucotrichum;5;Auyan-tepui, valle de Kamarata;1480;;Steyermark, J. 94129, 94127-B;1964-05-18;VEN;;;Morales & García 2006
+Squamidium leucotrichum;5;Auyan-tepui. Cumbre de la parte SE del brazo NO;1800;;Steyermark, J. 93651 ;1964-05-10;VEN;;;Morales & García 2006
+Squamidium leucotrichum;5;Auyan-tepui, vecindad de El Peñon;1800;;Steyermark, J. 94088 ;1964-05-18;VEN;;;Morales & García 2006
+Squamidium leucotrichum;5;Auyan-tepui. Cumbre de la parte N de la sección S, Río Churún;1660;;Steyermark, J. 93745 ;1964-05-12;VEN;;;Morales & García 2006
+Squamidium leucotrichum;5;Macizo de Chimantá. Caño Chimantá;2000;;Steyermark, J., Huber, O. & Carreño, V. 128052 ;1983-01-26;VEN;;;Morales & García 2006
+Squamidium leucotrichum;5;Macizo del Chimantá. Apacará-tepui;2200;;Steyermark, J., Huber, O. & Carreño, V. 128414 ;1983-01-30;VEN;;;Morales & García 2006
+Squamidium leucotrichum;5;Sierra Pakaraima. Río Paragua;1400;;Steyermark, J. 107370 ;1973-05-04;VEN;;;Morales & García 2006
+Squamidium leucotrichum;7;Entre los Tanques y la Toma, Río San Gián, arriba de la Planta Eléctrica, al S de Borburata, ;750;;Steyermark, J. & Steyermark, C. 95486, 95509, 95518;1966-03-27;VEN;;;Morales & García 2006
+Squamidium leucotrichum;10;Entre Portachuelo y Peñita. Carayaca, entre Colonia Tovar-Junquito. Hacienda el Limón;1300;1500;Steyermark, J. 94789;1966-02-12;VEN;;;Morales & García 2006
+Squamidium leucotrichum;10;Zone between Junquito and Colonia Tovar;2200;;Steyermark, J. & Rabe, M. 95987 ;1966-07-31;VEN;;;Morales & García 2006
+Squamidium leucotrichum;12;Sierra de San Luis. Vencindades del Hotel Parador al S de La Tabla;1400;1500;Steyermark, J. 99004;1967-07-17;VEN;;;Morales & García 2006
+Squamidium leucotrichum;14;La Encrucijada y el camino al Parque Nacional Yacambú;1750;1800;Steyermark, J., Delascio, F., G.C.K. & E. Dunsterville 103545;1970-08-07;VEN;;;Morales & García 2006
+Squamidium leucotrichum;14;A 7-9 Km al S de Agua Negra, 21-23 Km al E de Cubiro;1850;1950;Steyermark, J., Carreño, V. & Nehlin, S. 110160 ;1974-07-06;VEN;;;Morales & García 2006
+Squamidium leucotrichum;14;A 3-6 Km al S de Agua Negra, 17-20 Km al E de Cubiro;1600;1800;Steyermark, J., Carreño, V. & Nehlin, S. 110118 ;1974-07-05;VEN;;;Morales & García 2006
+Squamidium leucotrichum;15;Parque Nacional de Sierra Nevada, 2 Km S of Mérida;2550;2650;Kelly, D., O´Donovan, G., Feehan, J. & Drangeid, S. 11246 ;1995-08-04;VEN;;;Morales & García 2006
+Squamidium leucotrichum;15;;;;Kelly, D., O´Donovan, G., Feehan, J. & Drangeid, S.10838-A;1995-08-16;VEN;;;Morales & García 2006
+Squamidium leucotrichum;15;;;;Kelly, D., O´Donovan, G., Feehan, J. & Drangeid, S. 10682-A ;1995-08-22;VEN;;;Morales & García 2006
+Squamidium leucotrichum;15;19-21 Km S de Tovar a lo largo de la carretera hacia Canaguá,;2130;2150;Luteyn, J. & Lebrón-Luteyn, M. 9992 ;1984-04-16;VEN;;;Morales & García 2006
+Squamidium leucotrichum;15;Sierra de Mérida. Entre La Aguada y La Montaña;2700;;Griffin, D., Lopéz, M. & Ruíz, L. 017468, 17468 ;1972-07-01;VEN;;;Morales & García 2006
+Squamidium leucotrichum;19;15 Km al E de Chabasquén, 67 Km al N-NO de Guanare;1450;1520;Steyermark, J., Liesner, R. & Stergios, B. 126897 ;1982-10-29;VEN;;;Morales & García 2006
+Squamidium leucotrichum;19;;;;Steyermark, J., Liesner, R. & Stergios, B.126799;1982-10-29;VEN;;;Morales & García 2006
+Squamidium leucotrichum;20;Cerro Turumuquire;2360;2500;Steyermark, J. 62594 ;1945-05-06;VEN;;;Morales & García 2006
+Squamidium leucotrichum;20;Península de Paria. Cerro Humo, entre la Laguna y Roma, al NO de Irapa;800;1000;Steyermark, J. 95106 ;1966-03-05;VEN;;;Morales & García 2006
+Squamidium leucotrichum;21;Cabeceras del Río Quinimarí, Quebrada las Copas;2400;;Steyermark, J., G.C.K. & E. Dunsterville 100587, 100551 ;1968-01-10;VEN;;;Morales & García 2006
+Squamidium leucotrichum;21;Páramo de Tamá, arriba de Betania y Tamá;2300;2450;Steyermark, J., G.C.K. & E. Dunsterville 98696 ;1967-05-22;VEN;;;Morales & García 2006
+Squamidium leucotrichum;25;Entre el Campamento San José de los Altos y Topochalito;2200;2400;Griffin, D. 10 ;1975-07-07;VEN;;;Morales & García 2006
+Squamidium livens;15;Dtto Libertador , El Valle;;;;;;;;
+Squamidium livens;;Sin localidad;;;;;;;;Churchill et al. 2000
+Squamidium livens;20;Península de Paria;;;;;;;;
+Squamidium livens;21;Distrito Junín Páramo de Tamá arriba de Villa Paez;;;;;;;;
+Squamidium livens;15;El Valle between San Javier, Sierra de la Culata;2325;;Griffin, D., López, M. & Ruiz, L. 17438;1972-07-01;VEN;;;Morales & García 2006
+Squamidium macrocarpum;5;;;;;;;;;
+Squamidium macrocarpum;;Sin localidad;;;;;;;;Churchill et al. 2000
+Squamidium macrocarpum;12;Parque Nacional Quebrada  del la Cueva El Toro;;;;;;;;
+Squamidium macrocarpum;9;;;;;;;;;
+Squamidium macrocarpum;23;;;;;;;;;
+Squamidium macrocarpum;21;;;;;;;;;
+Squamidium macrocarpum;5;Al NE del Alto de la Aguada;1400;1700;Dorr, L., Aymard, G., Barnett, L., Cuello, N. & Diggs, G. Jr 4868 ;1988-04-18;VEN;;;Morales & García 2006
+Squamidium macrocarpum;23;Cerro la Chapa, al N de Nirgua;1200;1400;Steyermark, J., Bunting, G. & Wessels, G. 100227 ;1967-11-09;VEN;;;Morales & García 2006
+Squamidium macrocarpum;14;Fila de Terepaima, entre el Alto de Chuparral y la Loma Redonda, 21-23 Km al S de Cabudare, ;1300;1460;Steyermark, J., Delascio, F., G.C.K. & E. Dunsterville 103409 ;1970-08-04;VEN;;;Morales & García 2006
+Squamidium macrocarpum;20;Península de Paria. Cerro Humo, entre la Laguna y Roma, NO de Irapa;800;1000;Steyermark, J. 95104 ;1966-03-05;VEN;;;Morales & García 2006
+Squamidium macrocarpum;21;4.6 Km al ESE de Zumbador, en la carretera hacia Queniquea;2621;;Luteyn, J. & Lebrón-Luteyn, M. 9857 ;1984-04-13;VEN;;;Morales & García 2006
+Squamidium nigricans;4;"Hacienda Santa Barbara - el Loro, near San Casimiro 10°00'N 067°01'W; Parque Nacional ""H. Pittier"", Rancho Grande ";;;;;MO;10°25'N;067°39'W;Tropicos.org
+Squamidium nigricans;;Sin localidad;;;;;;;;Churchill et al. 2000
+Squamidium nigricans;4;Origen del Río El Castaño, Curva de Las Locas, Comienzo Regresiva del Diablo, Parque Nacional Henry Pittier ;;;;;MO;10°21'N;067°38'W;Tropicos.org
+Squamidium nigricans;7;Entre Los Tanques y La Toma, cabeceras del Río San Gián, arriba de la Planta Eléctrica, al sur de Borburata ;;;;;MO;10°26'N;067°57'W;Tropicos.org
+Squamidium nigricans;15;Norte de Torondoy;;;;;MO;;;Tropicos.org
+Squamidium nigricans;15;Along the Mérida-La Azulita road 1 Km above La Chorrera;;;;;MO;08°35'N;071°17'W;Tropicos.org
+Squamidium nigricans;15;"Along the ""La Pedregosa"" tributary of the Chama River. Finca ""El Maciegal"" de Dr. Ruiz-Terán ";;;;;MO;;;Tropicos.org
+Squamidium nigricans;15;Along teh Mérida-La Azulita Rd. In the La Carbonera area. Finca San Eusebio ;;;;;MO;06°01'N;073°41'W;Tropicos.org
+Squamidium nigricans;15;Finca of Dr. Luis Ruiz T. Along La Pedregosa, tributary of Chama River ;;;;;MO;08°37'N;071°40'W;Tropicos.org
+Squamidium nigricans;21;Entre Bramón y Las Delicias, Distrito Junin: pa?amo de Tamá, above the village of Villa Páez ;;;;;MO;07°25'N;072°26'W;Tropicos.org
+Squamidium nigricans;21;Along Quebrada Agua Azul, south of El Reposo, 14 Km SE of Delicias ;;;;;MO;07°31'N;072°24'W;Tropicos.org
+Squamidium nigricans;17;Cerro Negro arriba de la Sabana Las Piedras, Caripe ;;;;;MO;10°12'N;063°29'W;Tropicos.org
+Squamidium nigricans;25;San José de Los Altos;;;;;;;;
+Squamidium nigricans;4;Estación Biológica Rancho Grande;1140;;Mägdefrau, K. 412 ;1958-02-26;VEN;;;Morales & García 2006
+Squamidium nigricans;4;Estación Biológica Rancho Grande, Puerta Chuelo-Ocumare;1000;;Mägdefrau, K. 415 ;1958-02-27;VEN;;;Morales & García 2006
+Squamidium nigricans;7;Entre los Tanques y la Toma, Río San Gián, arriba de la Planta Eléctrica, al S de Borburata;750;;Steyermark, J. & Steyermark, C. 95532 ;1966-03-27;VEN;;;Morales & García 2006
+Squamidium nigricans;10;Caracas;;;Moritz 105, 196, 179;;;;;Pittier 1936
+Squamidium nigricans;10;Entre Portachuelo y Peñita, Río Chichiriviche;1300;1500;Steyermark, J. 97581 ;1966-11-11;VEN;;;Morales & García 2006
+Squamidium nigricans;15;Along the Mérida-La Azulita road in the Carbonera area. Finca San Eusebio;1820;;Griffin, D., López, M. & Ruiz, L. 17519 ;1972-07-01;VEN;;;Morales & García 2006
+Squamidium nigricans;17;Cerro Negro, al NO de Caripe;;;Steyermark, J. 62082, 62080 ;1945-04-15;VEN;;;Morales & García 2006
+Squamidium nigricans;21;Páramo el Zumbador, entre Zumbador y Queniquea;2600;2800;Steyermark, J. 105068;1971-03-03;VEN;;;Morales & García 2006
+Squamidium nigricans;22;Salto la Nevera, 15 Km al S de la Puerta;1800;;Steyermark, J. & Rabe, M. 97204 ;1966-09-03;VEN;;;Morales & García 2006
+Squamidium nigricans;25;Sierra de Perijá;1600;;Griffin, D. 346 ;1975-07-07;VEN;;;Morales & García 2006
+Squamidium nigricans var. pendulum;7;;;;;;;;;
+Squamidium nigricans var. pendulum;15;;;;;;;;;
+Squamidium nigricans var. pendulum;10;;;;;;;;;
+Toloxis imponderosa;15;;;;;;;;;
+Toloxis imponderosa;21;;;;;;;;;
+Toloxis imponderosa;4;Parque Nacional Henri Pittier, Las Delicias on route to Choroní pass;1200;1400;Steyermark, J. 100156;1967-12-07;VEN;;;Morales & García 2006
+Toloxis imponderosa;4;Maracay. Rancho Grande;1000;;Mägdefrau, K. 450;1958-02-27;VEN;;;Morales & García 2006
+Toloxis imponderosa;15;Parque Nacional Sierra Nevada, 2 Km S of Mérida;2550;2650;Kelly, D., O´Donovan, G. & Feehan, J. 10847- A ;1995-08-08;VEN;;;Morales & García 2006
+Toloxis imponderosa;15;La Mucuy. Parque Nacional de Sierra Nevada;2300;;Griffin, D., López, M. & Ruiz, L. 17433;1972-07-01;VEN;;;Morales & García 2006
+Toloxis imponderosa;15;Bergwald and Mucuy oberhalb Tabay;2600;;Mägdefrau, K. 1591;1967-04-14;VEN;;;Morales & García 2006
+Toloxis imponderosa;15;Carretera La Azulita y la Chorrera;1800;;Griffin, D., López, M. & Ruiz, L. 17479;1972-07-01;VEN;;;Morales & García 2006
+Toloxis imponderosa;15;El Valle between San Javier, Sierra de la Culata;2350;;Griffin, D., López, M. & Ruiz, L. 17478;1972-07-01;VEN;;;Morales & García 2006
+Toloxis imponderosa;15;Cerro de las flores;2100;;Mägdefrau, K. 622;1958-03-31;VEN;;;Morales & García 2006
+Toloxis imponderosa;21;Río Quinimarí, Peña de Pata de Judío, y salto de Chorrejón de la Mota de la Peña de Ventana ;2500;2800;Steyermark, J., G.C.K. & E. Dunsterville 100758, 100760;1968-01-12;VEN;;;Morales & García 2006
+Toloxis imponderosa;21;Río Quinimarí, Peña de Pata de Judío, y salto de Chorrejón de la Mota de la Peña de Ventana ;2500;2800;Steyermark, J., G.C.K. & E. Dunsterville 100681;1968-01-11;VEN;;;Morales & García 2006
+Toloxis imponderosa;21;Páramo de Tamá, arriba de Betania y Tamá, cerca de la Quebrada Buena vista;2300;2450;Steyermark, J., G.C.K. & E. Dunsterville 98703, 98701, 98723;1967-05-22;VEN;;;Morales & García 2006
+Plagiomnium rhynchophorum;5;;;;;;;;;
+Plagiomnium rhynchophorum;;Sin localidad;;;;;;;;Churchill et al. 2000
+Plagiomnium rhynchophorum;15;;;;;;;;;
+Plagiomnium rhynchophorum;21;Páramo de la Negra en la carretera hacia Pregonero;2700;2900;Steyermark, J. & Rabe, M. 96922;1966-08-29;VEN;;;Morales & García 2006
+Plagiomnium rhynchophorum;21;Entre Michelena y Boca de Monte, al O del Zumbador;1700;;Steyermark, J. & Rabe, M. 96784;1966-08-28;VEN;;;Morales & García 2006
+Plagiomnium rostratum;2;Quebrada negra. Río Zumbador;500;600;Steyermark, J. 61153;1994-02-24;VEN;;;Morales & García 2006
+Plagiomnium rostratum;17;Caripe, Cerro negro, above la Sabana de las Piedras, NO of Caripe;2500;2180;Steyermark, J. 62056;1945-04-15;VEN;;;Morales & García 2006
+Plagiomnium rostratum;20;Guanaguana;;;Moritz;;;;;Pittier 1936
+Plagiomnium rostratum;10;El Ávila, Galipán;1730;;Funck & Schlim 365;;;;;Pittier 1936
+Plagiomnium rostratum;10;Cabeceras de Catuche;;;Pittier 9589 a;;;;;Pittier 1936
+Plagiomnium rostratum;15;Jají;;;Moritz;;;;;Pittier 1936
+Plagiomnium rostratum;17;Caripe;;;Moritz 96, 126, 160;;;;;Pittier 1936
+Plagiomnium rostratum;16;Cerca de Galipán;;;;;;;;
+Plagiomnium rostratum;5;Roraima;;;;;;;;
+Plagiomnium undulatum;10;Las Queseras, cerca de Caracas;1300;1400;Allart, L. 135;1924-10-01;VEN;;;"Morales & García 2006; Pittier 1936"
+Plagiomnium undulatum;4;Colonia Tovar;2000;2100;Allart, L. 441, Pittier 10016;1924-12-01;VEN;;;"Morales & García 2006; Pittier 1936"

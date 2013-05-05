@@ -1,0 +1,22 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                    http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+<entity name="entities\Sustrato" table="sustrato">
+	<id name="id" type="integer" column="id">
+		<generator strategy="AUTO" />
+	</id>
+
+	<field name="name" column="nombre" type="string" length="100" />
+
+	<!-- Relacion con Taxon -->
+    <many-to-many field="taxons" target-entity="Taxon" mapped-by="sustratos" />
+
+	<!-- Relacion con Sustrato (Jerarquia) -->
+	<one-to-many field="children" target-entity="Sustrato" mapped-by="parent" />
+	<many-to-one field="parent" target-entity="Sustrato" mapped-by="children" />
+	
+</entity>
+
+</doctrine-mapping>

@@ -1,0 +1,196 @@
+/* 
+ * Contenedores
+*/ 
+
+.main {
+	height: 500px;
+}
+
+.header_logo {
+	height: 104px;
+	margin-top: 20px;
+}
+
+.header_menu {
+	height: 55px;
+	background-color: #b0afa5;
+	padding: 0;
+}
+
+.main_search {
+	height: 70px;
+	background: url('../images/main_search/busqueda.jpg') no-repeat;
+	padding-top:14px;
+}
+
+.destacados {
+	height: 400px;
+	border: 1px solid #000;
+}
+
+.mdv_datos {
+	height: 400px;
+	border: 1px solid #000;
+}
+
+.ultimas_especies {
+	height: 250px;
+	border: 1px solid #000;
+}
+
+.mas_consultados {
+	height: 250px;
+	border: 1px solid #000;
+}
+
+.contenido_central {
+	height: 500px;
+}
+
+.footer {
+	height: 150px;
+}
+
+.search_results {
+	min-height: 200px;
+	height: auto;
+}
+
+/*
+ * Menu principal
+*/
+
+#nav {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+#nav li {
+	margin: 0;
+	padding: 0;
+	float: left;
+}
+
+#nav li a {
+	display: block;
+	width: auto;
+	height: 55px;
+	padding: 0 10px 0;
+	line-height: 55px;
+	text-decoration: none;
+	text-align: center;
+	font-size: 16px;
+	color: #170c0a;
+	background-color: #b0afa5;
+	border-right: solid 2px #ffffff;
+}
+
+#nav li a:hover {
+	background-color: #cac8be;
+	color: #870402;
+	text-decoration: underline;
+}
+
+#nav li#nav_home a{
+	padding: 0;
+	background: url('../images/menu/home.png') no-repeat;
+	width: 56px;
+}
+
+#nav li#nav_home a:hover{
+	padding: 0;
+	background: url('../images/menu/home_hover.png') no-repeat;
+	width: 56px;
+}
+
+/*
+ * Main Search
+ */
+
+.search {
+	width: 697px;
+	height: auto;	
+	padding: 0;
+	float: left;
+}
+
+.advanced_search {
+	width: 233px;
+	height: auto;
+	padding: 0;
+	float: left;
+}
+
+.advanced_search img#advanced_button {
+	background: url('../images/main_search/avanzado.jpg') no-repeat;
+	width: 233px;
+	height: 46px;
+	border: 0;
+}
+
+.main_search_field {
+	padding: 0;
+	display: inline-block;
+	margin-left: 10px;
+}
+
+.main_search_field #search_layer {
+	display: inline-block;
+	padding: 0px 5px 0px;
+	background-color: #ffffff;
+}
+
+.main_search_field label {
+	font-size: 16px;
+	color: #ffffff;
+}
+
+.main_search_field input {
+	border-color: #ffffff;
+}
+
+.main_search_field button {
+	padding: 0;
+	border: none;
+    background: none;
+}
+/*
+ * Menu footer
+ */
+
+table#footer_nav {
+	width: 100%;
+	border-collapse: collapse;
+	text-align: left;
+}
+
+table#footer_nav thead {
+	background-color: #4a3b38;
+	font-size: 14px;
+	color: #ffffff;
+	border: 1px solid #ffffff;
+}
+
+table#footer_nav th {
+	padding: 15px 5px 5px;
+}
+
+table#footer_nav tbody {
+	font-size: 14px;
+	color: #ffffff;
+	background-color: #676662;
+	border: 1px solid #ffffff;
+}
+
+table#footer_nav td {
+	padding: 5px 5px 0;
+}
+
+table#footer_nav td#licence {
+	background-color: #000000;
+	height: 50px;
+	border: 1px solid #ffffff;
+	text-align: center;
+	vertical-align: middle;
+}

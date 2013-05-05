@@ -1,0 +1,19 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                    http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+<entity name="entities\CambioClimatico" table="cambio_climatico">
+	<id name="id" type="integer" column="id">
+		<generator strategy="AUTO" />
+	</id>
+
+	<field name="criterion" column="criterio" type="string" length="100" />
+	<field name="author" column="autor" type="string" length="100" />
+
+	<!-- Relacion con Taxon -->
+	<many-to-many field="taxons" target-entity="Taxon" mapped-by="cambios_climaticos" />
+
+</entity>
+
+</doctrine-mapping>

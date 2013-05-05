@@ -1,0 +1,133 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                    http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+<entity name="entities\Taxon" table="taxon" repository-class="repositories\TaxonRepository">
+	<id name="id" type="integer" column="id">
+		<generator strategy="AUTO" />
+	</id>
+
+	<field name="name" column="nombre" type="string" length="500" nullable="FALSE" />
+	<field name="acceptedName" column="nombre_aceptado" type="boolean" nullable="TRUE" />
+	<field name="rank" column="rank" type="integer" nullable="FALSE" />
+	<field name="authorInitials" column="siglas_autor" type="string" length="100" nullable="TRUE" />
+	<field name="endemic" column="endemico" type="boolean" nullable="TRUE" />
+	<field name="synonimClasification" column="clasificacion_sinonimo" type="integer" nullable="TRUE" />
+	<field name="globalDistribution" column="distribucion_mundial" type="text" nullable="TRUE" />
+	<field name="tropicalAndeanDistribution" column="distribucion_andinotropical" type="text" nullable="TRUE" />
+	<field name="VDWDistribution" column="distribucion_van_der_wijk" type="text" nullable="TRUE" />
+	<field name="reviewEditor" column="editor_revision" type="string" length="100" nullable="TRUE" />
+	<field name="reviewDate" column="fecha_revision" type="datetime" nullable="TRUE" />
+	<field name="reviewComments" column="comentarios_revision" type="text" nullable="TRUE" />
+	<field name="imageDir" column="directorio_imagenes" type="string" length="200" nullable="TRUE" />
+
+	<!-- Relacion con Taxon (Jerarquia Taxonomica) -->
+	<one-to-many field="children_hierarchy" target-entity="Taxon" mapped-by="parent_hierarchy" />
+	<many-to-one field="parent_hierarchy" target-entity="Taxon" inversed-by="children_hierarchy">
+		<join-column name="parent_hierarchy_id" referenced-column-name="id" />
+		<cascade>
+			<cascade-persist />
+		</cascade>
+	</many-to-one>
+	
+	<!-- Relacion con Taxon (Sinonimos) -->
+	<one-to-many field="children_synonyms" target-entity="Taxon" mapped-by="parent_synonyms" />
+	<many-to-one field="parent_synonyms" target-entity="Taxon" inversed-by="children_synonyms">
+		<join-column name="parent_synonyms_id" referenced-column-name="id" />
+		<cascade>
+			<cascade-persist />
+		</cascade>
+	</many-to-one>
+
+	<!-- Relacion con Sustrato -->
+	<many-to-many field="sustratos" target-entity="Sustrato" inversed-by="taxons">
+		<join-table name="taxon_sustrato">
+			<join-columns>
+				<join-column name="taxon_id" referenced-column-name="id" />
+			</join-columns>
+			<inverse-join-columns>
+				<join-column name="sustrato_id" referenced-column-name="id" />
+			</inverse-join-columns>
+		</join-table>
+	</many-to-many>
+
+	<!-- Relacion con Ecorregion -->
+	<many-to-many field="ecorregiones" target-entity="Ecorregion" inversed-by="taxons">
+		<join-table name="taxon_ecorregion">
+			<join-columns>
+				<join-column name="taxon_id" referenced-column-name="id" />
+			</join-columns>
+			<inverse-join-columns>
+				<join-column neme="ecorregion_id" referenced-column-name="id" />
+			</inverse-join-columns>
+		</join-table>
+	</many-to-many>
+
+	<!-- Relacion con Nota -->
+	<one-to-many field="notas" target-entity="Nota" mapped-by="taxon">
+		<cascade>
+			<cascade-persist />
+		</cascade>
+	</one-to-many>
+
+	<!-- Relacion con Ecosistema -->
+	<many-to-many field="ecosistemas" target-entity="Ecosistema" inversed-by="taxons">
+		<join-table name="taxon_ecosistema">
+			<join-columns>
+				<join-column name="taxon_id" referenced-column-name="id" />
+			</join-columns>
+			<inverse-join-columns>
+				<join-column name="ecosistema_id" referenced-column-name="id" />
+			</inverse-join-columns>
+		</join-table>
+	</many-to-many>
+
+	<!-- Relacion con Cambio climatico -->
+	<many-to-many field="cambios_climaticos" target-entity="CambioClimatico" inversed-by="taxons">
+		<join-table name="taxon_cambio_climatico">
+			<join-columns>
+				<join-column name="taxon_id" referenced-column-name="id" />
+			</join-columns>
+			<inverse-join-columns>
+				<join-columns name="cambio_climatico_id" referenced-column-name="id" />
+			</inverse-join-columns>
+		</join-table>
+		<cascade>
+			<cascade-persist />
+		</cascade>
+	</many-to-many>
+
+	<!-- Relacion con Lista roja -->
+	<many-to-many field="listas_rojas" target-entity="ListaRoja" inversed-by="taxons">
+		<join-table name="taxon_lista_roja">
+			<join-columns>
+				<join-column name="taxon_id" referenced-column-name="id" />
+			</join-columns>
+			<inverse-join-columns>
+				<join-column name="lista_roja_id" referenced-column-name="id" />
+			</inverse-join-columns>
+		</join-table>
+		<cascade>
+			<cascade-persist />
+		</cascade>
+	</many-to-many>
+
+	<!-- Relacion con Localidad -->
+	<many-to-many field="localidades" target-entity="Localidad" inversed-by="taxons">
+		<join-table name="taxon_localidad">
+			<join-columns>
+				<join-column name="taxon_id" referenced-column-name="id" />
+			</join-columns>
+			<inverse-join-columns>
+				<join-column name="localidad_id" referenced-column-name="id" />
+			</inverse-join-columns>
+		</join-table>
+		<cascade>
+			<cascade-persist />
+		</cascade>
+	</many-to-many>
+
+</entity>
+
+</doctrine-mapping>

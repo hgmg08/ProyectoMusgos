@@ -1,0 +1,23 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                    http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+<entity name="entities\Estado" table="estado">
+	<id name="id" type="integer" column="id">
+		<generator strategy="AUTO" />
+	</id>
+
+	<field name="name" column="nombre" type="string" length="100" />
+	<field name="FVCode" column="codigo_fv" type="string" length="10" />
+	<field name="ISOCode" column="codigo_iso" type="string" length="10" />
+
+	<!-- Relacion con Localidad -->
+	<one-to-many field="localidad" target-entity="Localidad" mapped-by="estado" />
+	
+	<!-- Relacion con Municipio -->
+	<one-to-many field="municipio" target-entity="Municipio" mapped-by="estado" />
+
+</entity>
+
+</doctrine-mapping>

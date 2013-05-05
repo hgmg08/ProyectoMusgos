@@ -1,0 +1,21 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                    http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+<entity name="entities\Nota" table="nota">
+	<id name="id" type="integer" column="id">
+		<generator strategy="AUTO" />
+	</id>
+
+	<field name="content" column="contenido" type="text" />
+	<field name="creationDate" column="fecha_creacion" type="datetime" />
+
+	<!-- Relacion con Taxon -->
+	<many-to-one field="taxon" target-entity="Taxon" inversed-by="notas">
+		<join-column name="nota_id" referenced-column-name="id" />
+	</many-to-one>
+
+</entity>
+
+</doctrine-mapping>

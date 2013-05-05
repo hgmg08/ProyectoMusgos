@@ -1,0 +1,13 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                    http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+<mapped-superclass name="entities\BaseInfo">
+	<field name="creationDate" column="fecha_creacion" type="datetime" />
+	<field name="modificationDate" column="fecha_modificacion" type="datetime" nullable="TRUE" />
+	<field name="comments" column="comentarios" type="text" nullable="TRUE" />
+	<field name="status" column="estado" type="integer" />
+</mapped-superclass>
+
+</doctrine-mapping>
