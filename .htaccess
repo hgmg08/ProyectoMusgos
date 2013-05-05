@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #
 # Apache/PHP/Drupal settings:
 #
@@ -114,3 +115,10 @@ DirectoryIndex index.php
 </IfModule>
 
 # $Id$
+=======
+RewriteEngine on
+RewriteCond $1 !^(index\.php|images|css|robots\.txt)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php/$1 [L,QSA]
+>>>>>>> 7661bf5b5f337cd309388e7282f487feacb9ca4c
