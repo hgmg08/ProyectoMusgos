@@ -56,6 +56,10 @@
 	height: auto;
 }
 
+.taxon_page {
+	height: auto;
+}
+
 /*
  * Menu principal
 */
@@ -193,4 +197,30 @@ table#footer_nav td#licence {
 	border: 1px solid #ffffff;
 	text-align: center;
 	vertical-align: middle;
+}
+
+/*
+ * Taxon page
+ */
+
+#TaxonPage {
+	margin: 15px 40px;
+	min-height: 200px;
+}
+
+#TaxonPage ul {
+	color: #d90104;
+}
+
+#TaxonPage li > span {
+    color: #000000;
+}
+
+#reviewAuthor {
+	list-style: none;
+}
+
+#LocationPage {
+	margin-top: 10px;
+	min-height: 200px;
 }

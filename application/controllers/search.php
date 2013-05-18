@@ -22,7 +22,7 @@ class Search extends CI_Controller {
 		$this->twiggy->set('results', json_encode($results));
 		$this->twiggy->set('search', $name);
 			
-		$this->twiggy->title('Musgos de Venezuela')->prepend('Busqueda');
+		$this->twiggy->title('Musgos de Venezuela')->append('Busqueda');
 		$this->twiggy->template('main/search')->display();
 	}
 

@@ -36,6 +36,4 @@ class TaxonRepository extends EntityRepository
 		return $query->getResult(Query::HYDRATE_ARRAY);
 	}
 	
-	
-	
 }

@@ -449,9 +449,21 @@ class Taxon extends BaseInfo
      * @param entities\Taxon $childrenHierarchy
      * @return Taxon
      */
-    public function addTaxon(\entities\Taxon $childrenHierarchy)
+    public function setChildrenHierarchy(\entities\Taxon $childrenHierarchy)
     {
         $this->children_hierarchy[] = $childrenHierarchy;
+        return $this;
+    }
+	
+	/**
+     * Add children_synonyms
+     *
+     * @param entities\Taxon $childrenSynonym
+     * @return Taxon
+     */
+    public function setChildrenSynonyms(\entities\Taxon $childrenSynonym)
+    {
+        $this->children_synonyms[] = $childrenSynonym;
         return $this;
     }
 
@@ -671,5 +683,17 @@ class Taxon extends BaseInfo
     public function getLocalidades()
     {
         return $this->localidades;
+    }
+
+    /**
+     * Add children_hierarchy
+     *
+     * @param entities\Taxon $childrenHierarchy
+     * @return Taxon
+     */
+    public function addSynonym(\entities\Taxon $childrenHierarchy)
+    {
+        $this->children_hierarchy[] = $childrenHierarchy;
+        return $this;
     }
 }

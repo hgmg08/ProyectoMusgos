@@ -16,9 +16,6 @@
 	<field name="type" column="tipo" type="string" length="100" nullable="TRUE" />
 	<field name="quote" column="cita_corta" type="string" length="100" nullable="FALSE" />
 
-	<!-- Relacion con Taxon -->
-    <many-to-many field="taxons" target-entity="Taxon" mapped-by="publications" />
-
 	<!-- Relacion con Localidad -->
 	<many-to-many field="localidades" target-entity="Localidad" inversed-by="publications">
 		<join-table name="publicacion_localidad">

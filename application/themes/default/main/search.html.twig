@@ -43,7 +43,6 @@
                 localizationobj.pagerrangestring = " de ";
                 localizationobj.pagernextbuttonstring = "Siguiente";
                 localizationobj.pagerpreviousbuttonstring = "Anterior";
-                
                 return localizationobj;
             }
             
@@ -53,6 +52,7 @@
                 height: 330,
                 source: dataAdapter,
                 theme: theme,
+                enablebrowserselection: true,
                 altrows: true,
                 altstart: 1,
                 altstep: 1,
@@ -64,16 +64,11 @@
                     { text: 'Autor', datafield: 'Author' }
                 ]
            	});
-           	
-           	//Event Binding Complete
-           	$("#resultsGrid").on('bindingcomplete', function () {
-                $("#resultsGrid").jqxGrid('autoresizecolumns');
-            });
-            
+
             //Event Row Select
             $("#resultsGrid").on('rowselect', function (event) {
-            	window.location = '{{ base_url('') }}';
-                console.log(event.args);
+            	var args = event.args
+            	window.location = '{{ base_url('taxon') }}' + '/' + args.row.id;
             });
        });
     </script>

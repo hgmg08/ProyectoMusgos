@@ -207,10 +207,16 @@ class Taxon extends \entities\Taxon implements \Doctrine\ORM\Proxy\Proxy
         return parent::getId();
     }
 
-    public function addTaxon(\entities\Taxon $childrenHierarchy)
+    public function setChildrenHierarchy(\entities\Taxon $childrenHierarchy)
     {
         $this->__load();
-        return parent::addTaxon($childrenHierarchy);
+        return parent::setChildrenHierarchy($childrenHierarchy);
+    }
+
+    public function setChildrenSynonyms(\entities\Taxon $childrenSynonym)
+    {
+        $this->__load();
+        return parent::setChildrenSynonyms($childrenSynonym);
     }
 
     public function getChildrenHierarchy()
@@ -331,6 +337,12 @@ class Taxon extends \entities\Taxon implements \Doctrine\ORM\Proxy\Proxy
     {
         $this->__load();
         return parent::getLocalidades();
+    }
+
+    public function addSynonym(\entities\Taxon $childrenHierarchy)
+    {
+        $this->__load();
+        return parent::addSynonym($childrenHierarchy);
     }
 
     public function setCreationDate($creationDate)
