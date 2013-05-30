@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 29-05-2013 a las 23:44:30
+-- Tiempo de generación: 30-05-2013 a las 00:08:59
 -- Versión del servidor: 5.1.67-log
 -- Versión de PHP: 5.3.9-pl0-gentoo
 
@@ -6061,7 +6061,7 @@ INSERT INTO `publicacion` (`id`, `autor`, `titulo`, `anyo`, `revista`, `colacion
 (61, 'Ochi, H', 'Revision of the neotropical Bryoideae, Musci I. ', 1980, 'Journal of the Faculty of Education, Tottori University, Natural Science', '29: 49-154', 'Revisión', 'Ochi 1980'),
 (62, 'Ochi, H', 'A revision of the neotropical Bryoideae, Musci II', 1981, 'Journal of the Faculty of Education, Tottori University, Natural Science', NULL, 'Revisión', 'Ochi 1981'),
 (63, 'Pittier, H', 'Los musgos de Venezuela', 1936, 'Bol. Soc. Venez. Ci. Nat', '3: 353-389', 'Listado', 'Pittier 1936'),
-(64, 'Potentini, M. F', 'Caracterización Briofitica de Humedales en la Sierra del Norte de Merida, Venezuela. Tesis de Maestría. Universidad de Los Andes. Facultad de Ciencias. Centro Jardín Botánico de Mérida. Mérida. Venezuela. ', 2008, 'Tesis', NULL, 'Tesis', 'Potentini 2008'),
+(64, 'Potentini, M. F', 'Caracterización Briofitica de Humedales en la Sierra del Norte de Merida, Venezuela. Tesis de Maestría. Universidad de Los Andes. Facultad de Ciencias. Centro Jardín Botánico de Mérida. Mérida. Venezuela', 2008, 'Tesis', NULL, 'Tesis', 'Potentini 2008'),
 (65, 'Pursell, R', 'Un censo de los musgos de Venezuela', 1973, ' Bryologist', '76: 473-500', 'Revisión', 'Pursell 1973'),
 (66, 'Robinson, H', 'Cheilothela vaginata and Syrrhopodon steyermarkii, two new moss species from Venezuela', 1972, 'Phytologia', '23: 390392', 'Nuevos reportes', 'Robinson 1972'),
 (67, 'Tropicos.org', 'Missouri Botanical Garden. <http://www.tropicos.org>', 2012, NULL, NULL, 'Base de Datos', 'Tropicos.org'),
