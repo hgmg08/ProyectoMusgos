@@ -23,13 +23,13 @@ class TaxonRepository extends EntityRepository
 	{
 		if ($exact) {
 			$query = $this->_em->createQuery(
-				"SELECT t FROM entities\Taxon t WHERE t.name = :name ORDER BY t.name"
+				"SELECT t FROM entities\Taxon t WHERE t.name = :name AND t.rank IN(6,7,8) ORDER BY t.name"
 			);
 			$query->setParameter('name', $taxon_name);
 		}
 		else {
 			$query = $this->_em->createQuery(
-			"SELECT t FROM entities\Taxon t WHERE t.name LIKE :name ORDER BY t.name"
+				"SELECT t FROM entities\Taxon t WHERE t.name LIKE :name AND t.rank IN(6,7,8) ORDER BY t.name"
 			);
 			$query->setParameter('name', "%$taxon_name%");
 		}

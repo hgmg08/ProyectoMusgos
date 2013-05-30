@@ -112,12 +112,14 @@ class Taxon extends CI_Controller {
 		foreach ($sus as $s) {
 			if ($s->getParent() != null) {
 				$sust[] = $s->getName();
+				$habi[] = $s->getParent()->getName();
 			}
 			
 			else {
 				$habi[] = $s->getName();
 			}
 		}
+		
 		$sustrato = implode(", ", $sust);
 		$habitat = implode(", ", $habi);
 		
@@ -130,7 +132,7 @@ class Taxon extends CI_Controller {
 		}
 			
 		//Basionimo
-		foreach ($sinonimos as $s) {
+		foreach ($sin as $s) {
 			if ($s->getSynonimClasification() == 2) {
 				$basionimo = $s;
 				break;

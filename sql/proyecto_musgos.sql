@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 3.4.9
+-- version 4.0.1
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 20-04-2013 a las 16:10:23
--- Versión del servidor: 5.1.56
+-- Tiempo de generación: 29-05-2013 a las 23:44:30
+-- Versión del servidor: 5.1.67-log
 -- Versión de PHP: 5.3.9-pl0-gentoo
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -34,6 +34,11 @@ CREATE TABLE IF NOT EXISTS `cambio_climatico` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
+--
+-- Truncar tablas antes de insertar `cambio_climatico`
+--
+
+TRUNCATE TABLE `cambio_climatico`;
 -- --------------------------------------------------------
 
 --
@@ -47,6 +52,11 @@ CREATE TABLE IF NOT EXISTS `ecorregion` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
+--
+-- Truncar tablas antes de insertar `ecorregion`
+--
+
+TRUNCATE TABLE `ecorregion`;
 --
 -- Volcado de datos para la tabla `ecorregion`
 --
@@ -78,6 +88,11 @@ CREATE TABLE IF NOT EXISTS `ecosistema` (
   KEY `IDX_B4CFDC2B727ACA70` (`parent_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=22 ;
 
+--
+-- Truncar tablas antes de insertar `ecosistema`
+--
+
+TRUNCATE TABLE `ecosistema`;
 --
 -- Volcado de datos para la tabla `ecosistema`
 --
@@ -120,6 +135,11 @@ CREATE TABLE IF NOT EXISTS `estado` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=26 ;
 
+--
+-- Truncar tablas antes de insertar `estado`
+--
+
+TRUNCATE TABLE `estado`;
 --
 -- Volcado de datos para la tabla `estado`
 --
@@ -167,6 +187,11 @@ CREATE TABLE IF NOT EXISTS `lista_roja` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=39 ;
 
+--
+-- Truncar tablas antes de insertar `lista_roja`
+--
+
+TRUNCATE TABLE `lista_roja`;
 --
 -- Volcado de datos para la tabla `lista_roja`
 --
@@ -235,6 +260,11 @@ CREATE TABLE IF NOT EXISTS `localidad` (
   KEY `IDX_4F68E0109F5A440B` (`estado_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5306 ;
 
+--
+-- Truncar tablas antes de insertar `localidad`
+--
+
+TRUNCATE TABLE `localidad`;
 --
 -- Volcado de datos para la tabla `localidad`
 --
@@ -5574,6 +5604,11 @@ CREATE TABLE IF NOT EXISTS `municipio` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=335 ;
 
 --
+-- Truncar tablas antes de insertar `municipio`
+--
+
+TRUNCATE TABLE `municipio`;
+--
 -- Volcado de datos para la tabla `municipio`
 --
 
@@ -5929,6 +5964,11 @@ CREATE TABLE IF NOT EXISTS `nota` (
   KEY `IDX_C8D03E0DA98F9F02` (`nota_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
+--
+-- Truncar tablas antes de insertar `nota`
+--
+
+TRUNCATE TABLE `nota`;
 -- --------------------------------------------------------
 
 --
@@ -5949,6 +5989,11 @@ CREATE TABLE IF NOT EXISTS `publicacion` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=76 ;
 
 --
+-- Truncar tablas antes de insertar `publicacion`
+--
+
+TRUNCATE TABLE `publicacion`;
+--
 -- Volcado de datos para la tabla `publicacion`
 --
 
@@ -5966,9 +6011,9 @@ INSERT INTO `publicacion` (`id`, `autor`, `titulo`, `anyo`, `revista`, `colacion
 (11, 'Churchill, S. & Griffin III, D', 'A Checklist of plant diversity, geographical distribution and botanical literature', 1999, 'Mem. New York Bot. Gard.', '84: 53-64', 'Revisión', 'Churchill & Griffin III 1999'),
 (12, 'Crosby, M. R', 'A Revision of the Tropical American Moss Genus Pilotrichum', 1969, 'Bryologist', 'Vol. 72, No. 3 , pp. 275-343', 'Revisión', 'Crosby 1969'),
 (13, 'Crosby, M. R., Allen, B. & Magill, R.', 'A Review of the Moss genus Hypnella', 1985, 'Bryologist', '88: 121-129', 'Revisión', 'Crosby et al. 1985'),
-(14, 'Crum, H. A', 'Comments on Sphagnum capillaceum', 1975, 'Contr. Univ. Mich. Herb.', '11(2): 89-93', '', 'Crum 1975'),
+(14, 'Crum, H. A', 'Comments on Sphagnum capillaceum', 1975, 'Contr. Univ. Mich. Herb.', '11(2): 89-93', NULL, 'Crum 1975'),
 (15, 'Crum, H. A', 'New species of Sphagnum from South America', 1993, 'J. Hattori Bot. Lab.', '74: 145-154', 'Nuevos reportes', 'Crum 1993'),
-(16, 'Crum, H. A', 'Miscellaneous notes on Sphagnum-12', 2002, 'Novon', '12: 441-445', '', 'Crum 2002'),
+(16, 'Crum, H. A', 'Miscellaneous notes on Sphagnum-12', 2002, 'Novon', '12: 441-445', NULL, 'Crum 2002'),
 (17, 'Delgadillo, C., Bello, B. & Cárdenas, A', 'LATMOSS. A catalogue of neotropical mosses', 1995, 'Monographs in Systematic Botany from the Missouri Botanical Garden ', '56: 1191', 'Revisión', 'Delgadillo et al. 1995'),
 (18, 'Fife, A. J', 'Taxonomic and nomenclatural observations on the Funariaceae. 4. A review of Entosthodon laxus with incidental notes on E. obtusifolius', 1986, 'Bryologist', '89: 302309', 'Revisión', 'Fife 1986'),
 (19, 'Flowers, S', 'Monograph of the genus Anacolia', 1952, 'Bulletin of the Torrey Botanical Club', '79: 161-183', 'Revisión', 'Flowers 1952'),
@@ -5983,12 +6028,12 @@ INSERT INTO `publicacion` (`id`, `autor`, `titulo`, `anyo`, `revista`, `colacion
 (28, 'Griffin III, D', 'New Records for Moss Flora of Venezuela', 1979, 'Bryologist', '82(4), 1979 pp. 618-619', 'Nuevos reportes', 'Griffin III 1979'),
 (29, 'Griffin III, D', 'A comparison of Breutelia subarcuata (C. Muell.) Schimp. in Besch. and B. chrysea (C. Muell.) Jaeg. in Latin America', 1984, 'Bryologist ', '87: 233237', 'Revisión', 'Griffin III 1984a'),
 (30, 'Griffin III, D', 'Studies on Colombian cryptogams XXII: The Breutelia subarcuata complex in Colombia and neighboring areas', 1984, 'Acta Bot. Neerl', '33: 275282', 'Nuevos reportes', 'Griffin III 1984b'),
-(31, 'Griffin III, D', 'A New Hookeriopsis from the páramos of Venezuela', 1986, 'J. Bryol. ', '14: 297-299', 'Nuevos reportes', 'Griffin III 1986a'),
+(31, 'Griffin III, D', 'A New Hookeriopsis from the páramos of Venezuela', 1986, 'J. Bryol', '14: 297-299', 'Nuevos reportes', 'Griffin III 1986a'),
 (32, 'Griffin III, D', 'Oreoweisia (Dicranaceae, Musci) in tropical America: an annotated key to species', 1986, 'Cyptogamie, Bryol. Lichénol', '7(4): 433-438', 'Nuevos reportes', 'Griffin III 1986b'),
-(33, 'Griffin III, D', 'Two Previously Undescribed Species of Musci (Ditrichaceae and Grimmiaceae) from the Paramos of Venezuela', 1987, '', '', 'Nuevos reportes', 'Griffin III 1987'),
+(33, 'Griffin III, D', 'Two Previously Undescribed Species of Musci (Ditrichaceae and Grimmiaceae) from the Paramos of Venezuela', 1987, NULL, NULL, 'Nuevos reportes', 'Griffin III 1987'),
 (34, 'Griffin III, D', 'Two new pentastichous species of Zigodon from high elevation in Venezuela', 1990, 'Cryptogamie, Bryol. Lichénol', '11: 163-168.', 'Nuevos reportes', 'Griffin III 1990'),
 (35, 'Griffin III, D & Buck, W. R', 'Taxonomic and Phylogenetic Studies on the Bartramiaceae', 1989, 'Bryologist ', 'Vol. 92, No. 3, pp. 368-380', 'Estudio taxonómico y filogenético ', 'Griffin III & Buck 1989'),
-(36, 'Griffin III, D & Steere ', 'Informe preliminar sobre la flora de la cumbre del Cerro Marahuaca, por Julian Steyermark, Basset Maguire y Colaboradores', 1984, '', '', 'Listado', 'Griffin III & Steere 1984'),
+(36, 'Griffin III, D & Steere ', 'Informe preliminar sobre la flora de la cumbre del Cerro Marahuaca, por Julian Steyermark, Basset Maguire y Colaboradores', 1984, NULL, NULL, 'Listado', 'Griffin III & Steere 1984'),
 (37, 'Hedenäs, L', 'Amblystegiaceae (Musci). New York Botanical Garden Press on behalf of Organization for Flora Neotropica. ', 2003, 'Flora Neotropica', 'Vol. 89: 1-107', 'Nuevos reportes', 'Hedenäs 2003'),
 (38, 'Ireland, R. & Buck, W', 'Stereophyllaceae', 1994, 'Flora Neotropica', 'Vol. 65:  1-49', 'Revisión', 'Ireland & Buck 1994'),
 (39, 'Lara, F., Mazimpaca, V. & Garillete, R', 'Some interesting Orthotrichum records from Venezuela', 1999, 'Tropical Bryology', '17: 1-4', 'Nuevos reportes', 'Lara et al. 1999'),
@@ -5996,11 +6041,11 @@ INSERT INTO `publicacion` (`id`, `autor`, `titulo`, `anyo`, `revista`, `colacion
 (41, 'León, Y., Pócs. T. & Rico, R', 'Nuevos registros para la brioflora de los andes venezolanos', 1996, 'Cryptogamie, Bryologie Liquenólogie', '19 (1): 1-25', 'Nuevos reportes', 'León et al. 1998'),
 (42, 'León, Y', 'Nuevos registros de musgos (Bryophyta) para el Estado Mérida y Venezuela', 2005, 'Plantula ', '3(3): 149-152', 'Nuevos reportes', 'León 2005'),
 (43, 'León, Y', 'Propuesta de algunas especies de la familia Cryphaeaceae (Musci). para la lista roja de briofitos de Sudamérica', 2008, 'Cryptogamie, Bryologie', '29 (2): 1-000', 'Lista Roja', 'León 2008'),
-(44, 'León, Y., Ussher, M. S., Kiyota S. & Meléndez, P', 'Catálogo MERF (en construcción)', 2012, '', '', 'Listado', 'León et al. 2012'),
+(44, 'León, Y., Ussher, M. S., Kiyota S. & Meléndez, P', 'Catálogo MERF (en construcción)', 2012, NULL, NULL, 'Listado', 'León et al. 2012'),
 (45, 'Lewinski, J', 'Orthotrichum spanotrichum Lewinski sp. nov. from Venezuela', 1993, 'Lindbergia', '18: 116-120', 'Nuevos reportes', 'Lewinski 1993'),
 (46, 'Lewisnki, J', 'Miscellaneous notes on Orthotrichum (Bryophyta) 1-3', 1994, 'Hattori Bot. Lab', '45:49', 'Revisión', 'Lewinski 1994'),
 (47, 'Lewisnki, J', 'Orthotrichum pallens Brid. New to Venezuela', 1986, 'Bryologist', '89(2): 163-164', 'Nuevos reportes', 'Lewinski 1986'),
-(48, 'Linares, E. L. & Uribe, J', 'Libro rojo de briófitas de Colombia. Serie Libros Rojos de Especies Amenazadas de Colombia. Instituto de Ciencias Naturales - Universidad Nacional de Colombia y Ministerio del Medio Ambiente. Bogotá, Colombia', 2002, '', '170 pp', 'Revisión', 'Linares y Uribe, J. 2002'),
+(48, 'Linares, E. L. & Uribe, J', 'Libro rojo de briófitas de Colombia. Serie Libros Rojos de Especies Amenazadas de Colombia. Instituto de Ciencias Naturales - Universidad Nacional de Colombia y Ministerio del Medio Ambiente. Bogotá, Colombia', 2002, NULL, '170 pp', 'Revisión', 'Linares y Uribe, J. 2002'),
 (49, 'López-Figueiras, M', 'Lista preliminar de musgos del Estado Merida [Venezuela]', 1976, 'Rev. Fac. Farmacia. ULA.', '18: 31-39', 'Listado', 'López-Figueiras 1976'),
 (50, 'Luteyn, J. L', 'Páramos: A checklist of Plant Diversity, Geographical Distribution and Botanical Litarature ', 1999, 'Mem. New York Bot. Gard.', '84: 53-64', 'Revisión', 'Luteyn 1999'),
 (51, 'Lüth, M. & Schäfer-Verwimp, A', 'Additions to Bryophyte Flora of the Neotropics', 2004, 'Tropical Bryology', '25: 7-17', 'Nuevos reportes', 'Lüth & Schäfer-Verwimp 2004'),
@@ -6009,25 +6054,25 @@ INSERT INTO `publicacion` (`id`, `autor`, `titulo`, `anyo`, `revista`, `colacion
 (54, 'Manuel, M. G', 'Studies in Cryphaeaceae II. A review of the monotypic genus Dendropogonella Britt', 1973, 'Bryologist ', '76: 521527', 'Listado', 'Manuel 1973'),
 (55, 'Morales, T', 'Musgos (Bryophyta) del Parque Nacional Avila, Sectores Cerro El Ávila - Lagunazo,Venezuela', 2009, 'Caldasia ', '31(2): 251-267', 'Nuevos reportes', 'Morales 2009'),
 (56, 'Morales, T & García, M', 'Catalogo anotado de las especies venezolanas de musgos (Bryophyta) pertenecientes al Herbario Nacional de Venezuela', 2006, 'Tropical Bryology ', '28: 103-147', 'Revisión', 'Morales & García 2006'),
-(57, 'Moreno, E', 'Los Musgos de Venezuela: elementos para su estudio. Trabajo de ascenso. Universidad Experimental Libertador, Instituto Pedagogico de Caracas, Departamento de Biología y Quimica, Caracas, Venezuela.', 1990, '', '', 'Trabajo de ascenso ', 'Moreno 1990'),
+(57, 'Moreno, E', 'Los Musgos de Venezuela: elementos para su estudio. Trabajo de ascenso. Universidad Experimental Libertador, Instituto Pedagogico de Caracas, Departamento de Biología y Quimica, Caracas, Venezuela.', 1990, NULL, NULL, 'Trabajo de ascenso ', 'Moreno 1990'),
 (58, 'Moreno, E. & Morales, T', 'Lista comentada de los musgos (Bryophyta) en la región central de la Cordillera de la Costa venezolana colectados por E. Rutkis. I', 2008, 'Cryptogamie, Bryologie ', '29(2): 165-181', 'Revisión', 'Moreno & Morales 2008'),
 (59, 'Müller, C', 'Musci Venezuelenses novi a Prof. C. Goebel collecti', 1897, 'Flora ', '83: 327-341', 'Nuevos reportes', 'Müller 1897'),
-(60, 'Muñoz, J', 'A revision of Grimmia (Musci, Grimmiaceae) in the Americas. 1: Latin America', 1999, 'Ann. Missouri Bot. Gard.', '86: 118-191', 'Revisión', 'Muñoz 1999'),
+(60, 'Muñoz, J', 'A revision of Grimmia (Musci, Grimmiaceae) in the Americas. 1: Latin America', 1999, 'Ann. Missouri Bot. Gard', '86: 118-191', 'Revisión', 'Muñoz 1999'),
 (61, 'Ochi, H', 'Revision of the neotropical Bryoideae, Musci I. ', 1980, 'Journal of the Faculty of Education, Tottori University, Natural Science', '29: 49-154', 'Revisión', 'Ochi 1980'),
-(62, 'Ochi, H', 'A revision of the neotropical Bryoideae, Musci II', 1981, 'Journal of the Faculty of Education, Tottori University, Natural Science', '', 'Revisión', 'Ochi 1981'),
-(63, 'Pittier, H', 'Los musgos de Venezuela', 1936, 'Bol. Soc. Venez. Ci. Nat.', '3: 353-389', 'Listado', 'Pittier 1936'),
-(64, 'Potentini, M. F', 'Caracterización Briofitica de Humedales en la Sierra del Norte de Merida, Venezuela. Tesis de Maestría. Universidad de Los Andes. Facultad de Ciencias. Centro Jardín Botánico de Mérida. Mérida. Venezuela. ', 2008, 'Tesis', '', 'Tesis', 'Potentini 2008'),
+(62, 'Ochi, H', 'A revision of the neotropical Bryoideae, Musci II', 1981, 'Journal of the Faculty of Education, Tottori University, Natural Science', NULL, 'Revisión', 'Ochi 1981'),
+(63, 'Pittier, H', 'Los musgos de Venezuela', 1936, 'Bol. Soc. Venez. Ci. Nat', '3: 353-389', 'Listado', 'Pittier 1936'),
+(64, 'Potentini, M. F', 'Caracterización Briofitica de Humedales en la Sierra del Norte de Merida, Venezuela. Tesis de Maestría. Universidad de Los Andes. Facultad de Ciencias. Centro Jardín Botánico de Mérida. Mérida. Venezuela. ', 2008, 'Tesis', NULL, 'Tesis', 'Potentini 2008'),
 (65, 'Pursell, R', 'Un censo de los musgos de Venezuela', 1973, ' Bryologist', '76: 473-500', 'Revisión', 'Pursell 1973'),
 (66, 'Robinson, H', 'Cheilothela vaginata and Syrrhopodon steyermarkii, two new moss species from Venezuela', 1972, 'Phytologia', '23: 390392', 'Nuevos reportes', 'Robinson 1972'),
-(67, 'Tropicos.org', 'Missouri Botanical Garden. <http://www.tropicos.org>', 2012, '', '', 'Base de Datos', 'Tropicos.org'),
-(68, 'Tropicos.org (ANBRY)', 'Missouri Botanical Garden.  <http://www.tropicos.org>', 2012, '', '', 'Base de Datos', 'Tropicos.org (ANBRY)'),
-(69, 'Ussher, M. S 2003', 'Musgos terrestres del Bosque Nublado de la Sierra Nevada de Mérida. Tesis de pregrado. Universidad de Los Andes. Facultad de Ciencias. Centro Jardín Botánico de Mérida. Mérida. Venezuela. ', 2003, '', '', 'Tesis', 'Ussher 2003'),
+(67, 'Tropicos.org', 'Missouri Botanical Garden. <http://www.tropicos.org>', 2012, NULL, NULL, 'Base de Datos', 'Tropicos.org'),
+(68, 'Tropicos.org (ANBRY)', 'Missouri Botanical Garden.  <http://www.tropicos.org>', 2012, NULL, NULL, 'Base de Datos', 'Tropicos.org (ANBRY)'),
+(69, 'Ussher, M. S 2003', 'Musgos terrestres del Bosque Nublado de la Sierra Nevada de Mérida. Tesis de pregrado. Universidad de Los Andes. Facultad de Ciencias. Centro Jardín Botánico de Mérida. Mérida. Venezuela. ', 2003, NULL, NULL, 'Tesis', 'Ussher 2003'),
 (70, 'Ussher M. S. & León, Y.', 'New bryophyte records for Venezuela, the state of Mérida and the Sierra Nevada National Park', 2010, 'Tropical Bryology', '32: 60-73', 'Nuevos reportes ', 'Ussher & León 2010'),
-(71, 'León, Y., Ussher, M. S. & Rojas, C. A', 'Musgos p.p. (Bartramia mathewsii ssp. synoica Fransén, Campylopus longicellularis J.-P. Frahm, Eucamptodontopsis tortuosa H. Rob., Hookeriopsis venezuelensis E.B. Bartram, Leiomela lopezii D. Griffin III., Orthotrichum spanotrichum Lewinsky, Orthotrichum tenuicaule Lewinsky, Pleuridium venezuelanu', 2013, '', '', 'Lista Roja', 'León et al. 2013a'),
-(72, 'León, Y., Ussher, M. S., Rojas, C. A. & Laborda, J', 'Musgos p.p. (Aloinella venezuelana Griffin, Calyptrochaeta nutans (Hampe) S. P. Churchill, Didymodon paramicola (H. Rob.) O. Werner, J.A. Jimenez & R.M Ros, Pilotrichum andersonii Crosby, Syrrhopodon steyermarkii H. Rob.) En: Libro rojo de la Flora Venezolana (Huérfano, A., I. Fedón y J. Mostacero', 2013, '', '', 'Lista Roja', 'León et al. 2013b'),
-(73, 'Ussher, M. S. & León, Y', 'Musgos p.p. (Ditrichum bogotense (Hampe) Broth., Sphagnum fraudulentum H. A. Crum, Sphagnum funkiae H. A. Crum, Sphagnum juliforme H.A. Crum, Sphagnum liesneri  H. A. Crum, Sphagnum reclinatum H. A. Crum, Sphagnum simplicicaulis H. A. Crum, Sphagnum sipmanii  H. A. Crum, Trachyxiphium steerei (D. ', 2013, '', '', 'Lista Roja', 'Ussher & León 2013'),
-(74, 'Ussher, M. S., León, Y. & Laborda, J', 'Musgos p.p. (Trachyxiphium glanduliferum (Hampe) S.P. Churchill & E. Linares) En: Libro rojo de la Flora Venezolana (Huérfano, A., I. Fedón y J. Mostacero, eds.) 2da. Edición. Provita  Fundación Polar  Fundación Instituto Botánico de Venezuela. En prensa. ', 2013, '', '', 'Lista Roja', 'Ussher et al. 2013'),
-(75, 'León, Y. & Ussher, M. S', 'Musgos p.p. (Cyrto-hypnum frontinoae (Müll. Hal.) S.P. Churchill & E. Linares) En: Libro rojo de la Flora Venezolana (Huérfano, A., I. Fedón y J. Mostacero, eds.) 2da. Edición. Provita  Fundación Polar  Fundación Instituto Botánico de Venezuela. En prensa.', 2013, '', '', 'Lista Roja', 'León & Ussher 2013');
+(71, 'León, Y., Ussher, M. S. & Rojas, C. A', 'Musgos p.p. (Bartramia mathewsii ssp. synoica Fransén, Campylopus longicellularis J.-P. Frahm, Eucamptodontopsis tortuosa H. Rob., Hookeriopsis venezuelensis E.B. Bartram, Leiomela lopezii D. Griffin III., Orthotrichum spanotrichum Lewinsky, Orthotrichum tenuicaule Lewinsky, Pleuridium venezuelanu', 2013, NULL, NULL, 'Lista Roja', 'León et al. 2013a'),
+(72, 'León, Y., Ussher, M. S., Rojas, C. A. & Laborda, J', 'Musgos p.p. (Aloinella venezuelana Griffin, Calyptrochaeta nutans (Hampe) S. P. Churchill, Didymodon paramicola (H. Rob.) O. Werner, J.A. Jimenez & R.M Ros, Pilotrichum andersonii Crosby, Syrrhopodon steyermarkii H. Rob.) En: Libro rojo de la Flora Venezolana (Huérfano, A., I. Fedón y J. Mostacero', 2013, NULL, NULL, 'Lista Roja', 'León et al. 2013b'),
+(73, 'Ussher, M. S. & León, Y', 'Musgos p.p. (Ditrichum bogotense (Hampe) Broth., Sphagnum fraudulentum H. A. Crum, Sphagnum funkiae H. A. Crum, Sphagnum juliforme H.A. Crum, Sphagnum liesneri  H. A. Crum, Sphagnum reclinatum H. A. Crum, Sphagnum simplicicaulis H. A. Crum, Sphagnum sipmanii  H. A. Crum, Trachyxiphium steerei (D. ', 2013, NULL, NULL, 'Lista Roja', 'Ussher & León 2013'),
+(74, 'Ussher, M. S., León, Y. & Laborda, J', 'Musgos p.p. (Trachyxiphium glanduliferum (Hampe) S.P. Churchill & E. Linares) En: Libro rojo de la Flora Venezolana (Huérfano, A., I. Fedón y J. Mostacero, eds.) 2da. Edición. Provita  Fundación Polar  Fundación Instituto Botánico de Venezuela. En prensa. ', 2013, NULL, NULL, 'Lista Roja', 'Ussher et al. 2013'),
+(75, 'León, Y. & Ussher, M. S', 'Musgos p.p. (Cyrto-hypnum frontinoae (Müll. Hal.) S.P. Churchill & E. Linares) En: Libro rojo de la Flora Venezolana (Huérfano, A., I. Fedón y J. Mostacero, eds.) 2da. Edición. Provita  Fundación Polar  Fundación Instituto Botánico de Venezuela. En prensa.', 2013, NULL, NULL, 'Lista Roja', 'León & Ussher 2013');
 
 -- --------------------------------------------------------
 
@@ -6044,6 +6089,11 @@ CREATE TABLE IF NOT EXISTS `publicacion_localidad` (
   KEY `IDX_5054702B67707C89` (`localidad_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Truncar tablas antes de insertar `publicacion_localidad`
+--
+
+TRUNCATE TABLE `publicacion_localidad`;
 --
 -- Volcado de datos para la tabla `publicacion_localidad`
 --
@@ -9791,6 +9841,11 @@ CREATE TABLE IF NOT EXISTS `sustrato` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=50 ;
 
 --
+-- Truncar tablas antes de insertar `sustrato`
+--
+
+TRUNCATE TABLE `sustrato`;
+--
 -- Volcado de datos para la tabla `sustrato`
 --
 
@@ -9878,6 +9933,11 @@ CREATE TABLE IF NOT EXISTS `taxon` (
   KEY `IDX_5B6723AB86D11A00` (`parent_synonyms_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1927 ;
 
+--
+-- Truncar tablas antes de insertar `taxon`
+--
+
+TRUNCATE TABLE `taxon`;
 --
 -- Volcado de datos para la tabla `taxon`
 --
@@ -11525,7 +11585,7 @@ INSERT INTO `taxon` (`id`, `parent_hierarchy_id`, `parent_synonyms_id`, `fecha_c
 (1635, NULL, 516, '2013-04-20 15:54:42', NULL, NULL, 2, 'Ditrichum venezuelanum', NULL, 6, 'Griffin', NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1636, NULL, 829, '2013-04-20 15:54:43', NULL, NULL, 2, 'Micromitrium maracaibense', NULL, 6, 'Broth.', NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1637, NULL, 560, '2013-04-20 15:54:44', NULL, NULL, 2, 'Erpodium biseriatum', NULL, 6, '(Austin) Austin', NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1638, NULL, 837, '2013-04-20 15:54:45', NULL, NULL, 2, '!Macromitrium hymenostomum', NULL, 6, 'Mont.', NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1638, NULL, 837, '2013-04-20 15:54:45', NULL, NULL, 2, 'Macromitrium hymenostomum', NULL, 6, 'Mont.', NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1639, NULL, 551, '2013-04-20 15:54:46', NULL, NULL, 2, 'Campylodontium onustum', NULL, 6, '(Hampe) Jaeg.', NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1640, NULL, 551, '2013-04-20 15:54:48', NULL, NULL, 2, 'Mesonodon onustus', NULL, 6, 'Hampe', NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1641, NULL, 754, '2013-04-20 15:54:49', NULL, NULL, 2, 'Bryosedgwickia pallidissima', NULL, 6, '(C.Müll.) Biz. Ex P. Varde', NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -11568,7 +11628,7 @@ INSERT INTO `taxon` (`id`, `parent_hierarchy_id`, `parent_synonyms_id`, `fecha_c
 (1677, NULL, 734, '2013-04-20 15:55:06', NULL, NULL, 2, 'Hookeriopsis plumicaulis', NULL, 6, '(Müll. Hal.) Broth.', NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1678, NULL, 1091, '2013-04-20 15:55:06', NULL, NULL, 2, 'Hookeriopsis subfalcata', NULL, 6, '(Hampe) A. Jaeger', NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1679, NULL, 1084, '2013-04-20 15:55:07', NULL, NULL, 2, 'Hookeriopsis undata', NULL, 6, '(Hedw.) A. Jaeger', NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1680, NULL, 1067, '2013-04-20 15:55:08', NULL, NULL, 2, '!Lepidopilidium purpurissatum', NULL, 6, '(Müll. Hal.) Broth.', NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1680, NULL, 1067, '2013-04-20 15:55:08', NULL, NULL, 2, 'Lepidopilidium purpurissatum', NULL, 6, '(Müll. Hal.) Broth.', NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1681, NULL, 1011, '2013-04-20 15:55:08', NULL, NULL, 2, 'Schizomitrium bernoullii', NULL, 6, '(Hampe) F.D. Bowers', NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1682, NULL, 1015, '2013-04-20 15:55:09', NULL, NULL, 2, 'Schizomitrium mexicanum', NULL, 6, '(H. Rob. & W.H. Welch) F.D. Bowers', NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1683, NULL, 1018, '2013-04-20 15:55:09', NULL, NULL, 2, 'Schizomitrium pallidum', NULL, 6, '(Hornsch.) H. A.Crom & L. E. Anderson', NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -11831,6 +11891,11 @@ CREATE TABLE IF NOT EXISTS `taxon_cambio_climatico` (
   KEY `IDX_B712B847C5380DB7` (`cambioclimatico_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Truncar tablas antes de insertar `taxon_cambio_climatico`
+--
+
+TRUNCATE TABLE `taxon_cambio_climatico`;
 -- --------------------------------------------------------
 
 --
@@ -11846,6 +11911,11 @@ CREATE TABLE IF NOT EXISTS `taxon_ecorregion` (
   KEY `IDX_58054FB9CDBB397` (`ecorregion_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Truncar tablas antes de insertar `taxon_ecorregion`
+--
+
+TRUNCATE TABLE `taxon_ecorregion`;
 --
 -- Volcado de datos para la tabla `taxon_ecorregion`
 --
@@ -12129,6 +12199,11 @@ CREATE TABLE IF NOT EXISTS `taxon_ecosistema` (
   KEY `IDX_91FCAA71740F39B7` (`ecosistema_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Truncar tablas antes de insertar `taxon_ecosistema`
+--
+
+TRUNCATE TABLE `taxon_ecosistema`;
 -- --------------------------------------------------------
 
 --
@@ -12144,6 +12219,11 @@ CREATE TABLE IF NOT EXISTS `taxon_lista_roja` (
   KEY `IDX_99AB1D6A3AF78906` (`lista_roja_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Truncar tablas antes de insertar `taxon_lista_roja`
+--
+
+TRUNCATE TABLE `taxon_lista_roja`;
 --
 -- Volcado de datos para la tabla `taxon_lista_roja`
 --
@@ -12203,6 +12283,11 @@ CREATE TABLE IF NOT EXISTS `taxon_localidad` (
   KEY `IDX_13CC1AA267707C89` (`localidad_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Truncar tablas antes de insertar `taxon_localidad`
+--
+
+TRUNCATE TABLE `taxon_localidad`;
 --
 -- Volcado de datos para la tabla `taxon_localidad`
 --
@@ -17531,6 +17616,11 @@ CREATE TABLE IF NOT EXISTS `taxon_sustrato` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
+-- Truncar tablas antes de insertar `taxon_sustrato`
+--
+
+TRUNCATE TABLE `taxon_sustrato`;
+--
 -- Volcado de datos para la tabla `taxon_sustrato`
 --
 
@@ -17539,371 +17629,349 @@ INSERT INTO `taxon_sustrato` (`taxon_id`, `sustrato_id`) VALUES
 (24, 18),
 (30, 47),
 (49, 20),
-(52, 1),
 (52, 7),
 (52, 20),
-(54, 1),
 (54, 13),
-(59, 1),
 (59, 7),
-(62, 1),
 (62, 13),
-(65, 1),
 (65, 7),
-(75, 1),
 (75, 13),
-(77, 1),
 (77, 18),
 (81, 20),
+(85, 3),
 (93, 20),
 (98, 20),
 (125, 20),
 (128, 47),
 (130, 20),
 (136, 20),
-(153, 1),
+(151, 3),
 (153, 7),
-(173, 1),
+(156, 2),
+(156, 3),
 (173, 7),
 (173, 20),
 (174, 20),
 (178, 34),
-(188, 1),
 (188, 7),
-(191, 1),
 (192, 7),
-(199, 1),
 (199, 18),
-(201, 1),
 (201, 7),
 (207, 20),
-(210, 1),
 (210, 7),
-(211, 1),
 (211, 18),
-(212, 1),
 (212, 18),
-(224, 1),
 (224, 7),
-(236, 1),
 (236, 7),
+(240, 5),
 (249, 7),
 (249, 20),
 (249, 35),
 (257, 33),
 (261, 37),
+(263, 3),
 (274, 34),
-(277, 1),
 (281, 34),
 (286, 34),
 (294, 41),
+(312, 3),
 (325, 37),
 (335, 34),
+(335, 45),
 (336, 43),
+(337, 3),
 (338, 41),
 (339, 37),
+(345, 36),
 (359, 20),
-(371, 1),
+(370, 45),
 (371, 7),
 (375, 20),
-(377, 1),
 (377, 7),
 (377, 34),
-(380, 1),
+(377, 45),
 (380, 7),
-(389, 1),
 (389, 14),
-(390, 1),
 (390, 14),
-(391, 1),
 (391, 7),
-(395, 1),
 (413, 20),
-(417, 1),
 (417, 7),
 (417, 20),
-(418, 1),
 (418, 20),
-(442, 1),
-(444, 1),
 (444, 7),
+(464, 3),
 (472, 44),
 (476, 34),
-(478, 1),
 (478, 21),
-(480, 1),
 (484, 20),
 (485, 20),
-(491, 1),
 (491, 7),
 (491, 20),
 (492, 20),
 (500, 37),
 (519, 20),
 (526, 34),
-(528, 1),
 (528, 18),
+(538, 2),
+(538, 3),
 (543, 34),
-(544, 1),
 (544, 7),
 (544, 33),
-(548, 1),
 (548, 7),
 (548, 33),
 (551, 34),
+(551, 45),
 (553, 20),
 (560, 34),
 (567, 34),
-(571, 1),
 (571, 7),
-(572, 1),
 (572, 7),
-(576, 1),
 (576, 7),
-(578, 1),
 (578, 7),
-(580, 1),
+(579, 3),
 (580, 7),
 (580, 20),
-(581, 1),
 (581, 7),
-(582, 1),
 (582, 7),
-(583, 1),
 (583, 7),
-(584, 1),
+(583, 45),
 (584, 7),
 (584, 20),
 (584, 34),
-(586, 1),
+(584, 45),
 (586, 7),
 (586, 20),
-(588, 1),
 (588, 7),
 (588, 20),
+(588, 45),
 (589, 20),
-(591, 1),
+(589, 36),
+(589, 45),
 (591, 7),
 (591, 20),
 (591, 33),
-(594, 1),
+(592, 45),
+(593, 45),
 (594, 7),
 (594, 20),
-(595, 1),
+(594, 45),
 (595, 7),
 (595, 35),
-(596, 1),
 (596, 7),
 (596, 20),
-(597, 1),
+(596, 36),
 (597, 7),
 (597, 20),
-(598, 1),
+(597, 36),
+(597, 45),
 (598, 7),
 (598, 20),
 (598, 33),
-(600, 1),
 (600, 7),
-(601, 1),
+(600, 45),
 (601, 7),
 (601, 29),
-(603, 1),
 (603, 7),
 (603, 39),
-(604, 1),
+(603, 45),
 (604, 7),
+(604, 45),
 (605, 20),
-(606, 1),
+(605, 45),
 (606, 7),
-(607, 1),
-(609, 1),
+(608, 3),
 (609, 47),
-(610, 1),
-(612, 1),
 (612, 7),
-(613, 1),
+(612, 45),
 (613, 7),
-(614, 1),
 (614, 7),
-(616, 1),
+(615, 28),
 (616, 7),
 (616, 20),
-(620, 1),
+(616, 36),
+(618, 45),
 (620, 7),
 (620, 20),
-(621, 1),
 (621, 7),
 (621, 20),
 (621, 33),
-(623, 1),
 (623, 7),
 (623, 20),
-(624, 1),
 (624, 7),
 (624, 20),
-(625, 1),
 (625, 7),
-(626, 1),
 (626, 7),
-(630, 1),
-(633, 1),
 (633, 7),
-(637, 1),
 (637, 8),
 (637, 35),
 (646, 20),
 (651, 20),
 (666, 20),
-(678, 1),
 (678, 7),
-(706, 1),
-(711, 1),
-(726, 1),
+(708, 3),
+(715, 45),
 (726, 7),
 (726, 20),
-(738, 1),
 (738, 7),
+(738, 45),
 (739, 34),
+(739, 45),
 (746, 20),
-(766, 1),
+(760, 3),
+(762, 36),
 (766, 7),
 (766, 20),
-(771, 1),
 (771, 18),
+(772, 45),
 (775, 20),
 (775, 44),
 (784, 34),
 (790, 20),
-(800, 1),
+(790, 45),
 (803, 34),
+(815, 3),
+(818, 38),
+(818, 45),
+(825, 45),
+(836, 3),
 (842, 34),
 (846, 41),
+(848, 3),
 (851, 34),
 (853, 20),
 (857, 34),
+(858, 3),
 (877, 34),
+(883, 3),
 (898, 37),
+(904, 2),
+(904, 3),
 (911, 34),
+(913, 3),
+(921, 3),
+(922, 3),
 (923, 37),
 (931, 20),
-(932, 1),
 (932, 7),
 (937, 34),
 (943, 34),
+(945, 3),
 (947, 20),
 (947, 34),
-(949, 1),
 (949, 7),
+(949, 45),
 (950, 20),
 (950, 34),
 (951, 20),
 (952, 34),
 (953, 34),
 (954, 34),
-(955, 1),
-(959, 1),
+(956, 45),
 (959, 18),
 (959, 20),
 (966, 20),
 (968, 37),
+(979, 3),
+(980, 3),
+(987, 3),
+(989, 3),
 (994, 20),
+(997, 3),
 (1002, 34),
+(1005, 3),
+(1018, 45),
+(1032, 45),
 (1035, 41),
 (1038, 20),
+(1061, 3),
 (1065, 20),
 (1075, 34),
-(1081, 1),
 (1087, 34),
-(1103, 1),
 (1103, 18),
-(1106, 1),
 (1107, 18),
 (1114, 20),
-(1119, 1),
 (1119, 7),
 (1119, 20),
-(1120, 1),
 (1120, 18),
-(1127, 1),
 (1127, 18),
-(1128, 1),
 (1128, 7),
 (1140, 20),
-(1143, 1),
 (1143, 7),
-(1152, 1),
+(1143, 28),
 (1152, 12),
 (1165, 35),
-(1166, 1),
 (1166, 7),
 (1166, 35),
-(1172, 1),
 (1172, 7),
 (1181, 35),
-(1184, 1),
 (1185, 47),
 (1186, 20),
 (1194, 47),
-(1204, 1),
 (1204, 7),
 (1204, 20),
 (1208, 20),
 (1217, 20),
 (1217, 34),
-(1226, 1),
+(1221, 3),
 (1226, 7),
 (1226, 20),
 (1228, 35),
 (1230, 33),
-(1237, 1),
 (1237, 7),
-(1238, 1),
 (1238, 7),
-(1239, 1),
 (1239, 7),
 (1252, 20),
-(1288, 1),
+(1255, 45),
+(1259, 3),
+(1261, 3),
+(1263, 3),
+(1265, 3),
+(1272, 2),
+(1272, 3),
 (1288, 7),
 (1288, 20),
 (1288, 33),
-(1296, 1),
-(1299, 1),
+(1297, 45),
 (1299, 8),
 (1299, 20),
-(1301, 1),
 (1301, 18),
+(1313, 3),
+(1334, 2),
 (1336, 20),
 (1337, 34),
 (1343, 20),
 (1343, 34),
 (1344, 34),
 (1350, 20),
+(1350, 45),
 (1354, 20),
-(1375, 1),
+(1354, 45),
+(1359, 45),
+(1363, 45),
+(1365, 45),
 (1375, 7),
-(1401, 1),
 (1401, 7),
 (1401, 20),
-(1410, 1),
 (1410, 7),
-(1415, 1),
-(1419, 1),
 (1419, 13),
 (1426, 20),
 (1426, 33),
+(1429, 3),
 (1438, 20),
 (1446, 20),
+(1449, 3),
 (1451, 20),
+(1456, 3),
 (1457, 37),
 (1460, 20),
 (1461, 20),
 (1471, 20),
 (1477, 20),
 (1478, 20),
-(1483, 1),
 (1483, 20),
 (1487, 20),
-(1487, 44);
+(1487, 44),
+(1488, 5);
 
 --
 -- Restricciones para tablas volcadas
@@ -17919,8 +17987,8 @@ ALTER TABLE `ecosistema`
 -- Filtros para la tabla `localidad`
 --
 ALTER TABLE `localidad`
-  ADD CONSTRAINT `FK_4F68E0109F5A440B` FOREIGN KEY (`estado_id`) REFERENCES `estado` (`id`),
-  ADD CONSTRAINT `FK_4F68E01058BC1BE0` FOREIGN KEY (`municipio_id`) REFERENCES `municipio` (`id`);
+  ADD CONSTRAINT `FK_4F68E01058BC1BE0` FOREIGN KEY (`municipio_id`) REFERENCES `municipio` (`id`),
+  ADD CONSTRAINT `FK_4F68E0109F5A440B` FOREIGN KEY (`estado_id`) REFERENCES `estado` (`id`);
 
 --
 -- Filtros para la tabla `municipio`
@@ -17951,8 +18019,8 @@ ALTER TABLE `sustrato`
 -- Filtros para la tabla `taxon`
 --
 ALTER TABLE `taxon`
-  ADD CONSTRAINT `FK_5B6723AB86D11A00` FOREIGN KEY (`parent_synonyms_id`) REFERENCES `taxon` (`id`),
-  ADD CONSTRAINT `FK_5B6723AB844DE06` FOREIGN KEY (`parent_hierarchy_id`) REFERENCES `taxon` (`id`);
+  ADD CONSTRAINT `FK_5B6723AB844DE06` FOREIGN KEY (`parent_hierarchy_id`) REFERENCES `taxon` (`id`),
+  ADD CONSTRAINT `FK_5B6723AB86D11A00` FOREIGN KEY (`parent_synonyms_id`) REFERENCES `taxon` (`id`);
 
 --
 -- Filtros para la tabla `taxon_cambio_climatico`
