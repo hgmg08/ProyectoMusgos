@@ -70,10 +70,15 @@ class Taxon extends CI_Controller {
 		$basionimo = null;
 		$listaRoja = array();
 		$cambioClimatico = array();
+		$loc_pub = array();
 		
 		//Locaciones
 		foreach ($taxon->getLocalidades() as $t) {
 			if ($t->getEstado() != null) {
+				foreach ($t->getPublications() as $p) {
+					$loc_pub[] = $p->getQuote();
+				}
+
 				$locations[] = array(
 					'Estado' => ($t->getEstado() != null)? $t->getEstado()->getName() : '',
 					'Municipio' => ($t->getMunicipio() != null)? $t->getMunicipio()->getName() : '',
@@ -84,9 +89,11 @@ class Taxon extends CI_Controller {
 					'FechaColeccion' => ($t->getCollectionDate() != null)? $t->getCollectionDate()->format('d/m/Y') : null,
 					'Herbario' => ($t->getHebarium() != null)? $t->getHebarium() : null,
 					'Coordenadas' => ($t->getLatitude() != null and $t->getLongitude() != null)? 
-										$t->getLatitude()." ".$t->getLongitude() : null
+										$t->getLatitude()." ".$t->getLongitude() : null,
+					'Referencias' => $loc_pub
 				);
 			}
+			$loc_pub = array();
 		}
 		
 		//Estados
@@ -139,6 +146,9 @@ class Taxon extends CI_Controller {
 				break;
 			}
 		}
+
+		//Endemica
+		$endemica = $taxon->getEndemic();
 			
 		//Ecorregion
 		$ecor = $taxon->getEcorregiones();
@@ -179,6 +189,7 @@ class Taxon extends CI_Controller {
 		//Envio de variables a interfaz
 		$this->twiggy->set('taxon', $taxon);
 		$this->twiggy->set('rank', $this->fill_rank());
+		$this->twiggy->set('endemic', $endemica);
 		$this->twiggy->set('locations', json_encode($locations));
 		$this->twiggy->set('estados', $estados);
 		$this->twiggy->set('publications', $publications);

@@ -137,6 +137,15 @@
 								</ul>
 						</ul>
 					{% endif %}
+
+					<!-- Endemica -->
+					{% if endemic != null %}
+						<br/>
+						<strong>Endémica:</strong>
+						<ul>
+							<li><span>{% if endemic %}Si{% else %}No{% endif %}</span></li>
+						</ul>
+					{% endif %}
 					
 					<!-- Basionimo -->
 					{% if basionimo != null %}
@@ -309,7 +318,8 @@
 					                    { name: 'Coleccion', type: 'string' },
 					                    { name: 'FechaColeccion', type: 'string' },
 					                    { name: 'Herbario', type: 'string' },
-					                    { name: 'Coordenadas', type: 'string' }
+					                    { name: 'Coordenadas', type: 'string' },
+							    { name: 'Referencias', type: 'string' }
 					                ],
 					                localdata: data,
 					                pagesize: 10
@@ -357,7 +367,8 @@
 					                    { text: 'Colección', datafield: 'Coleccion' },
 					                    { text: 'Fecha colección', datafield: 'FechaColeccion' },
 					                    { text: 'Herbario', datafield: 'Herbario' },
-					                    { text: 'Coordenadas', datafield: 'Coordenadas' }
+					                    { text: 'Coordenadas', datafield: 'Coordenadas' },
+							    { text: 'Referencias', datafield: 'Referencias' }
 					                ]
 					           	});
 					       });
