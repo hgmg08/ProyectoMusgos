@@ -114,6 +114,18 @@ class Publicacion extends \entities\Publicacion implements \Doctrine\ORM\Proxy\P
         return parent::getType();
     }
 
+    public function setQuote($quote)
+    {
+        $this->__load();
+        return parent::setQuote($quote);
+    }
+
+    public function getQuote()
+    {
+        $this->__load();
+        return parent::getQuote();
+    }
+
     public function getId()
     {
         if ($this->__isInitialized__ === false) {
@@ -150,7 +162,7 @@ class Publicacion extends \entities\Publicacion implements \Doctrine\ORM\Proxy\P
 
     public function __sleep()
     {
-        return array('__isInitialized__', 'author', 'title', 'year', 'journal', 'collation', 'type', 'id', 'taxons', 'localidades');
+        return array('__isInitialized__', 'author', 'title', 'year', 'journal', 'collation', 'type', 'quote', 'id', 'localidades');
     }
 
     public function __clone()

@@ -57,9 +57,9 @@ class Doctrine {
         // Proxies
         $config->setProxyDir(APPPATH . 'models/proxies');
         $config->setProxyNamespace('DoctrineProxies');
- 
+ 	
         if (ENVIRONMENT == 'development') {
-            $config->setAutoGenerateProxyClasses(TRUE);
+            $config->setAutoGenerateProxyClasses(FALSE);
         } else {
             $config->setAutoGenerateProxyClasses(FALSE);
         }
