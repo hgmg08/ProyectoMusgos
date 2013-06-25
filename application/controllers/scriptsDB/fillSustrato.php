@@ -13,7 +13,7 @@ class FillSustrato extends CI_Controller {
 
 	public function index()
 	{
-		$filePath = './csv/especies3.csv';
+		$filePath = './csv/especies2.csv';
 		$data = $this->csvreader->parse_file($filePath);
 		$current = "";
 		
@@ -25,11 +25,11 @@ class FillSustrato extends CI_Controller {
 				$taxon = $this->em->getRepository("entities\Taxon")->searchTaxonName($row['nombre'], TRUE);
 				
 				foreach($taxon as $especie) {
-						if ($especie != NULL and $especie->getSustratos() == NULL) {
+						if ($especie != NULL) {
 							echo $especie->getName() . "<br/>";
 							//Sustrato
 							$habito = explode(', ', $row['habito']);
-							$sustrato = explode(' # ', $row['sustrato']);
+							$sustrato = explode(', ', $row['sustrato']);
 							if ($row['sustrato'] != "") {
 								foreach ($sustrato as $sus) {
 									$s = $this->em->getRepository('entities\Sustrato')->findOneBy(array('name' => utf8_encode($sus)));
@@ -55,7 +55,7 @@ class FillSustrato extends CI_Controller {
 						}
 						
 						else {
-							echo $row['nombre'] . "<br />";
+							echo "Fallido:" . $row['nombre'] . "<br />";
 						}
 				}
 			}

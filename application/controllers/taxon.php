@@ -113,11 +113,11 @@ class Taxon extends CI_Controller {
 		foreach ($sus as $s) {
 			if ($s->getParent() != null) {
 				$sust[] = $s->getName();
-				$habi[] = $s->getParent()->getName();
+				$this->checkHabitat($habi, $s->getParent()->getName());
 			}
 			
 			else {
-				$habi[] = $s->getName();
+				$this->checkHabitat($habi, $s->getName());
 			}
 		}
 		
@@ -207,6 +207,24 @@ class Taxon extends CI_Controller {
 		$rank[5] = 'Género';
 		
 		return $rank;
+	}
+	
+	private function checkHabitat(&$habitat = array(), $name) {
+		$check = false;
+		
+		if (empty($habitat)) {
+			$habitat[] = $name;	
+		}
+		foreach ($habitat as $h) {
+			if ($h == $name) {
+				$check = true;
+				break;
+			}
+		} 
+		
+		if (!$check) {
+			$habitat[] = $name;	
+		}
 	}
 }
 
