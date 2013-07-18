@@ -1,0 +1,54 @@
+{% extends _layout %}
+
+{% block head %}
+
+	{{ parent() }}
+	
+	<link href="{{ base_url('public/css/jqwidgets/jqx.base.css') }}" rel="stylesheet" type="text/css" />
+	<link href="{{ base_url('public/css/jqwidgets/jqx.mdv.css') }}" rel="stylesheet" type="text/css" />
+	
+	<script src="{{ base_url('public/js/jqwidgets/jqxcore.js') }}"></script>
+	<script src="{{ base_url('public/js/jqwidgets/jqxinput.js') }}"></script>
+
+{% endblock %}
+
+{% block content %}
+
+	<div class="grid_12 main_search">
+	
+		<script type="text/javascript">
+			$(document).ready(function () {
+				var theme = 'classic';
+				$('#input_search').jqxInput({
+					height: 42,
+					width: 490,
+				});
+			});
+		</script>
+		
+		<div class="search">
+			{% include 'main/search_block.html.twig' %}
+		</div>
+		
+		<div class="advanced_search">
+			<img id="advanced_button" />
+		</div>
+		
+	</div>
+
+	<div class="grid_12 taxon_page">
+		<h1>Acerca de Musgos de Venezuela</h1>
+
+		<p class="about">Venezuela es un país megadiverso que reúne en su geografía elementos Caribeños, Amazónicos, Andinos, Llaneros y Guayaneses.
+		Su diversidad geográfica  y orográfica le da gran importancia desde el punto de vista de la briología.
+		Los censos y checklist publicados hasta la fecha dan cuenta de unas 900 especies de musgos.
+		Hace unos años se ha creado el grupo de trabajo en musgos de Venezuela con la participación de briólogos de Caracas y Mérida, 
+		se ha revisado el listado y se ha adelantado hasta la fecha  un checklist con más de 1000 especies en base a la bibliografía existente. 
+		Este número de especies y la necesidad de una herramienta para el análisis biogeográfico y de hábitat así como para determinar las áreas poco 
+		exploradas nos llevó a trabajar en el desarrollo de una plataforma informática que mantuviera al grupo conectado y en el que pudiéramos compartir información rápidamente y es así como surge la base de datos de Musgos de Venezuela (MdV). </p> 
+		<br/><br/>
+		<h3>Musgos de Venezuela y su uso para monitoreo de cambio climático</h3>
+		Nota Yelitza León,  María Silvina Ussher y Cherry A. Rojas
+	</div>
+
+{% endblock %}

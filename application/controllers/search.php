@@ -23,7 +23,7 @@ class Search extends CI_Controller {
 		$this->twiggy->set('search', $name);
 			
 		$this->twiggy->title('Musgos de Venezuela')->append('Busqueda');
-		$this->twiggy->template('main/search')->display();
+		$this->twiggy->template('main/search_results')->display();
 	}
 
 	//Busqueda general

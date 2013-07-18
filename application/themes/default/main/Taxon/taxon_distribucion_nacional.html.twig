@@ -1,0 +1,9 @@
+<!-- Distribucion Nacional -->
+{% if locations != null %}
+	<strong>Estados:</strong>
+		<ul>
+			{% for est in estados %}
+				<li><span>{{ est.name }}</span></li>
+			{% endfor %}
+		</ul>
+{% endif %}

@@ -1,0 +1,11 @@
+<!-- Sinonimos -->
+
+{% if sinonimos != null %}
+	<ul>
+	{% for sinon in sinonimos %}
+		{% if sinon.getSynonimClasification == 1 %}
+			<li><span><span class="taxon_name">{{ sinon.getName }}</span> {{ sinon.getAuthorInitials }}</span></li>
+		{% endif %}
+	{% endfor %}
+	</ul>
+{% endif %}

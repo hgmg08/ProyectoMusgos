@@ -1,0 +1,15 @@
+
+						<ul>
+							{% for pub in publications %}
+								<li><span>
+								{{ pub.getAuthor }}. {{ pub.getYear }}. {{ pub.getTitle|e }}. 
+								{% if pub.getJournal != null %}
+									{{ pub.getJournal }}. 
+								{% endif %}
+								{% if pub.getCollation != null %}
+									{{ pub.getCollation }}.
+								{% endif %}
+								</span></li>
+							{% endfor %}
+						</ul>
+						

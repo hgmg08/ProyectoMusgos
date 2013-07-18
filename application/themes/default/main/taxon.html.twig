@@ -39,6 +39,7 @@
 {% block content %}
 
 	<div class="grid_12 main_search">
+	
 		<script type="text/javascript">
 			$(document).ready(function () {
 				var theme = 'classic';
@@ -48,21 +49,18 @@
 				});
 			});
 		</script>
+		
 		<div class="search">
-			<form class="main_search_field" action="{{ base_url('search') }}" method="GET">
-				<label>Busqueda general:</label>
-				<div id="search_layer">
-					<input id="input_search" type="text" name="name" />
-					<button type="submit"><img src="{{ base_url('public/images/main_search/lupa.png') }}" alt="Buscar" /></button>
-				</div>
-			</form>
+			{% include 'main/search_block.html.twig' %}
 		</div>
+		
 		<div class="advanced_search">
 			<img id="advanced_button" />
 		</div>
+		
 	</div>
 
-	<div class="grid_12 taxon_page">
+	<div class="grid_12 page">
 		{% if (taxon.getRank == 6) or (taxon.getRank == 7) or (taxon.getRank == 8) %}
 			{% set species = true %} 
 		{% endif %}
@@ -101,281 +99,46 @@
 			
 			<!-- Detalles -->
 			<div id="TaxonPage">
-			
-				<!-- Jerarquia -->
-				
-				<strong>Jerarquía Taxonómica</strong>
-				<ul>
-					{% for h in hierarchy %}
-						<li>
-						<span>
-							<strong>{{ rank[h.getRank] }}</strong>: {{ h.getName }}
-						</span>
-						</li>
-					{% endfor %}
-				</ul>
-				
-				{% if species %}
-				
-					<!-- Autor -->
-					<br/>
-					{% if taxon.getAuthorInitials != null %}
-						<strong>Autor:</strong>
-						<ul>
-							<li><span>{{ taxon.getAuthorInitials }}</span></li>
-						</ul>
-					{% endif %}
-					
-					<!-- Revision -->
-					{% if taxon.getReviewComments != null %}
-						<br/>
-						<strong>Aceptado por:</strong>
-						<ul>
-							<li><span>{{ taxon.getReviewComments }}</span></li>
-								<ul id="reviewAuthor">
-									<li>Revisado por: {{ taxon.getReviewEditor }} {{ taxon.getReviewDate|date('d/m/Y') }}</li>
-								</ul>
-						</ul>
-					{% endif %}
-
-					<!-- Endemica -->
-					{% if endemic != null %}
-						<br/>
-						<strong>Endémica:</strong>
-						<ul>
-							<li><span>{% if endemic %}Si{% else %}No{% endif %}</span></li>
-						</ul>
-					{% endif %}
-					
-					<!-- Basionimo -->
-					{% if basionimo != null %}
-						<br/>
-						<strong>Basiónimo:</strong>
-						<ul>
-							<li><span><span class="taxon_name">{{ basionimo.getName }}</span> {{ basionimo.getAuthorInitials }}<span></li>
-						</ul>
-					{% endif %}
-					
-					<!-- Ecorregion -->
-					{% if ecorregion != null %}
-						<br/>
-						<strong>Ecorregión:</strong>
-						<ul>
-							<li><span>{{ ecorregion }}</span></li>
-						</ul>
-					{% endif %}
-					
-					<!-- Ecosistema -->
-					{% if ecosistema != null %}
-						<br/>
-						<strong>Ecosistema:</strong>
-						<ul>
-							<li><span>{{ ecosistema }}</span></li>
-						</ul>
-					{% endif %}
-					
-					<!-- Habitat -->
-					{% if habitat != null %}
-						<br/>
-						<strong>Hábitat:</strong>
-						<ul>
-							<li><span>{{ habitat }}</span></li>
-						</ul>
-					{% endif %}
-					
-					<!-- Sustrato -->
-					{% if sustratos != null %}
-						<br/>
-						<strong>Sustrato:</strong>
-						<ul>
-							<li><span>{{ sustratos }}</span></li>
-						</ul>
-					{% endif %}
-					
-					<!-- Lista Roja -->
-					{% if listaRoja != null %}
-						<br/>
-						<strong>Lista roja:</strong>
-						<ul>
-							{% for lista_r in listaRoja %}
-								<li><span>{{ lista_r.getCriterionIUCN }} {{ lista_r.getCategory }} {{ lista_r.getCountry }} 
-									{{ lista_r.getAuthor }}</span></li>
-							{% endfor %}
-						</ul>
-					{% endif %}
-					
-					<!-- Cambio Climatico -->
-					{% if cambioClimatico != null %}
-						<br/>
-						<strong>Indicador de cambio climático:</strong>
-						<ul>
-							{% for cambio_c in cambioClimatico %}
-								<li><span>{{ cambio_c.getCriterion }} {{ cambio_c.getAuthor }}</span></li>
-							{% endfor %}
-						</ul>
-					{% endif %}
-					
-				{% endif %}
-				
+				{% include 'main/Taxon/taxon_detalles.html.twig' %}
 			</div>
 			
 			{% if species %}
 				{% if sinonimos != null %}
-					<!-- Sinonimos -->
 					<div id="TaxonPage">
-						
-						{% if sinonimos != null %}
-							<ul>
-								{% for sinon in sinonimos %}
-									{% if sinon.getSynonimClasification == 1 %}
-										<li><span><span class="taxon_name">{{ sinon.getName }}</span> {{ sinon.getAuthorInitials }}</span></li>
-									{% endif %}
-								{% endfor %}
-							</ul>
-						{% endif %}
-						
+						{% include 'main/Taxon/taxon_sinonimos.html.twig' %}
 					</div>
 				{% endif %}
 				
-				<!-- Distribucion Nacional -->
 				{% if estados != null %}
 					<div id="TaxonPage">
-						
-						{% if locations != null %}
-							<strong>Estados:</strong>
-							<ul>
-								{% for est in estados %}
-									<li><span>{{ est.name }}</span></li>
-								{% endfor %}
-							</ul>
-						{% endif %}
-						
+						{% include 'main/Taxon/taxon_distribucion_nacional.html.twig' %}
 					</div>
 				{% endif %}
 				
 				<!-- Distribucion mundial -->
 				{% if taxon.getGlobalDistribution != null or taxon.getVDWDistribution != null %}
 					<div id="TaxonPage">
-					
-						<!-- Distribución mundial -->
-						{% if taxon.getGlobalDistribution != null %}
-							<strong>Distribución en el mundo:</strong>
-							<ul>
-								<li><span>{{ taxon.getGlobalDistribution }}</span></li>
-							</ul>
-							<br/>
-						{% endif %}
-						
-						<!-- Distribución VDW -->
-						{% if taxon.getVDWDistribution != null %}
-							<strong>Distribución por zonas de Van der Wijk:</strong>
-							<ul>
-								<li><span>{{ taxon.getVDWDistribution }}</span></li>
-							</ul>
-						{% endif %}
-					
+						{% include 'main/Taxon/taxon_distribucion_mundial.html.twig' %}
 					</div>
 				{% endif %}
 				
 				<!-- Publicaciones -->
 				{% if publications != null %}
 					<div id="TaxonPage">
-					
-						<ul>
-							{% for pub in publications %}
-								<li><span>
-								{{ pub.getAuthor }}. {{ pub.getYear }}. {{ pub.getTitle|e }}. 
-								{% if pub.getJournal != null %}
-									{{ pub.getJournal }}. 
-								{% endif %}
-								{% if pub.getCollation != null %}
-									{{ pub.getCollation }}.
-								{% endif %}
-								</span></li>
-							{% endfor %}
-						</ul>
-						
+						{% include 'main/Taxon/taxon_publicaciones.html.twig' %}
 					</div>
 				{% endif %}
 				
 				<!-- Especimenes -->
 				{% if locations != 'null' %}
 					<div id="LocationPage">
-						<div id="locationsGrid"></div>
-						
-						<script type="text/javascript">
-					        $(document).ready(function () {
-					           	var theme = 'mdv';
-					           	var data = {{ locations }};
-					            var source =
-					            {
-					                datatype: "json",
-					                datafields: [
-					                	{ name: 'Estado', type: 'string' },
-					                	{ name: 'Municipio', type: 'string' },
-					                    { name: 'Nombre', type: 'string' },
-					                    { name: 'Altitud', type: 'string' },
-					                    { name: 'Coleccion', type: 'string' },
-					                    { name: 'FechaColeccion', type: 'string' },
-					                    { name: 'Herbario', type: 'string' },
-					                    { name: 'Coordenadas', type: 'string' },
-							    { name: 'Referencias', type: 'string' }
-					                ],
-					                localdata: data,
-					                pagesize: 10
-					            };
-					            var dataAdapter = new $.jqx.dataAdapter(source);
-					            
-					            //Event Binding Complete
-					           	$("#locationsGrid").on('bindingcomplete', function () {
-					                $("#locationsGrid").jqxGrid('autoresizecolumns', 'all');
-					            });
-					            
-					            //Event Page Changed
-					           	$("#locationsGrid").on('pagechanged', function () {
-					                $("#locationsGrid").jqxGrid('autoresizecolumns', 'all');
-					            });
-					            
-					            var getLocalization = function () {
-					                var localizationobj = {};
-					                localizationobj.pagergotopagestring = "Ir a página:";
-					                localizationobj.pagershowrowsstring = "Mostrar filas:";
-					                localizationobj.pagerrangestring = " de ";
-					                localizationobj.pagernextbuttonstring = "Siguiente";
-					                localizationobj.pagerpreviousbuttonstring = "Anterior";					                
-					                return localizationobj;
-					            }
-					            
-					            $("#locationsGrid").jqxGrid(
-					            {
-					            	width: 938,
-					            	height: 300,
-					                source: dataAdapter,
-					                columnsresize: true,
-					                theme: theme,
-					                enablebrowserselection: true,
-					                altrows: true,
-					                altstart: 1,
-					                altstep: 1,
-					                localization: getLocalization(),
-					                pageable: true,
-					                columns: [
-					                	{ text: 'Estado', datafield: 'Estado' },
-					                    { text: 'Municipio', datafield: 'Municipio' },
-					                    { text: 'Localidad', datafield: 'Nombre' },
-					                    { text: 'Altitud (m)', datafield: 'Altitud' },
-					                    { text: 'Colección', datafield: 'Coleccion' },
-					                    { text: 'Fecha colección', datafield: 'FechaColeccion' },
-					                    { text: 'Herbario', datafield: 'Herbario' },
-					                    { text: 'Coordenadas', datafield: 'Coordenadas' },
-							    { text: 'Referencias', datafield: 'Referencias' }
-					                ]
-					           	});
-					       });
-					    </script>
+						{% include 'main/Taxon/taxon_especimenes.html.twig' %}
 					</div>
 				{% endif %}
-				<div>TODO</div>
+				
+				<!-- Imagenes -->
+				<div id="TaxonPage"></div>
+				
 			{% endif %}
 		</div>
 	</div>

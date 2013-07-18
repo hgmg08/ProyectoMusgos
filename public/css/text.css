@@ -77,3 +77,13 @@ span.search_text {
 span.taxon_name {
 	font-style: italic;
 }
+
+p.about {
+	font-size: 14px;
+	text-align: justify;
+}
+
+li#about {
+	font-size: 14px;
+	text-align: justify;
+}

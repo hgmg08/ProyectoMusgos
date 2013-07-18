@@ -1,0 +1,49 @@
+{% extends _layout %}
+
+{% block head %}
+
+	{{ parent() }}
+	
+	<link href="{{ base_url('public/css/jqwidgets/jqx.base.css') }}" rel="stylesheet" type="text/css" />
+	<link href="{{ base_url('public/css/jqwidgets/jqx.mdv.css') }}" rel="stylesheet" type="text/css" />
+	
+	<script src="{{ base_url('public/js/jqwidgets/jqxcore.js') }}"></script>
+	<script src="{{ base_url('public/js/jqwidgets/jqxinput.js') }}"></script>
+
+{% endblock %}
+
+{% block content %}
+
+	<div class="grid_12 main_search">
+	
+		<script type="text/javascript">
+			$(document).ready(function () {
+				var theme = 'classic';
+				$('#input_search').jqxInput({
+					height: 42,
+					width: 490,
+				});
+			});
+		</script>
+		
+		<div class="search">
+			{% include 'main/search_block.html.twig' %}
+		</div>
+		
+		<div class="advanced_search">
+			<img id="advanced_button" />
+		</div>
+		
+	</div>
+
+	<div class="grid_12 taxon_page">
+		<h1>¿Qué es MdV?</h1>
+
+		<p class="about">La base de datos de los musgos de Venezuela MdV es una herramienta web diseñada para establecer una red 
+		de briólogos de Venezuela y para poner a disposición de los investigadores y público en general la información 
+		completa del inventario de los musgos de país. La base de datos tiene información bibliográfica y de colecciones de 
+		briofitos de Venezuela, en ella se puede encontrar nomenclatura, localidades, ecoregiones, criterios de lista roja, 
+		y de especies de utilidad para monitoreo ambiental.</p>
+	</div>
+
+{% endblock %}

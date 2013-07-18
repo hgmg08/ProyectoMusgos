@@ -56,7 +56,7 @@
 	height: auto;
 }
 
-.taxon_page {
+.page {
 	height: auto;
 }
 
@@ -197,6 +197,15 @@ table#footer_nav td#licence {
 	border: 1px solid #ffffff;
 	text-align: center;
 	vertical-align: middle;
+}
+
+table#footer_nav a {
+	color: #ffffff;
+	text-decoration: none;
+}
+
+table#footer_nav a:hover{
+	color: #870402;
 }
 
 /*

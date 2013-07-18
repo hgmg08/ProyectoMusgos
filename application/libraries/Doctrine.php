@@ -1,8 +1,8 @@
 <?php
 use Doctrine\ORM\EntityManager,
     Doctrine\ORM\Configuration,
-		Doctrine\Common\Cache\ArrayCache,
-		Doctrine\Common\ClassLoader,
+	Doctrine\Common\Cache\ArrayCache,
+	Doctrine\Common\ClassLoader,
     Doctrine\DBAL\Logging\EchoSQLLogger;
  
 define('DEBUGGING', FALSE);

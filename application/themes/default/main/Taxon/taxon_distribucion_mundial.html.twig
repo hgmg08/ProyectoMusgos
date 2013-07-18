@@ -1,0 +1,18 @@
+
+						<!-- Distribución mundial -->
+						{% if taxon.getGlobalDistribution != null %}
+							<strong>Distribución en el mundo:</strong>
+							<ul>
+								<li><span>{{ taxon.getGlobalDistribution }}</span></li>
+							</ul>
+							<br/>
+						{% endif %}
+						
+						<!-- Distribución VDW -->
+						{% if taxon.getVDWDistribution != null %}
+							<strong>Distribución por zonas de Van der Wijk:</strong>
+							<ul>
+								<li><span>{{ taxon.getVDWDistribution }}</span></li>
+							</ul>
+						{% endif %}
+					

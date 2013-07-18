@@ -34,8 +34,8 @@
 		<div class="grid_12 header_menu">
 			<ul id="nav">
 				<li id="nav_home"><a href="{{ base_url('') }}"></a></li>
-				<li id="nav_mdv"><a href="#">¿Qué es MdV</a></li>
-				<li id="nav_acerca"><a href="#">Acerca de MdV</a></li>
+				<li id="nav_mdv"><a href="{{ base_url('mdv') }}">¿Qué es MdV</a></li>
+				<li id="nav_acerca"><a href="{{ base_url('about') }}">Acerca de MdV</a></li>
 				<li id="nav_proyectos"><a href="#">Proyectos Relacionados</a></li>
 				<li id="nav_contactenos"><a href="#">Contáctenos</a></li>
 			</ul>
@@ -62,9 +62,9 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td>¿Qué es MdV?</td>
+						<td><a href="{{ base_url('mdv') }}">¿Qué es MdV?</a></td>
 						<td>¿Cómo usar la base de datos?</td>
-						<td>María Silvina Ussher</td>
+						<td></td>
 						<td>Agradecimientos</td>
 					</tr>
 					<tr>
@@ -74,7 +74,7 @@
 						<td></td>
 					</tr>
 					<tr id="last">
-						<td>Objetivos del proyecto</td>
+						<td><a href="{{ base_url('mdv/objectives') }}">Objetivos del proyecto</a></td>
 						<td>¿Cómo citar?</td>
 						<td></td>
 						<td></td>

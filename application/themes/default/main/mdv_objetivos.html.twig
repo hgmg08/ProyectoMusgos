@@ -1,0 +1,66 @@
+{% extends _layout %}
+
+{% block head %}
+
+	{{ parent() }}
+	
+	<link href="{{ base_url('public/css/jqwidgets/jqx.base.css') }}" rel="stylesheet" type="text/css" />
+	<link href="{{ base_url('public/css/jqwidgets/jqx.mdv.css') }}" rel="stylesheet" type="text/css" />
+	
+	<script src="{{ base_url('public/js/jqwidgets/jqxcore.js') }}"></script>
+	<script src="{{ base_url('public/js/jqwidgets/jqxinput.js') }}"></script>
+
+{% endblock %}
+
+{% block content %}
+
+	<div class="grid_12 main_search">
+	
+		<script type="text/javascript">
+			$(document).ready(function () {
+				var theme = 'classic';
+				$('#input_search').jqxInput({
+					height: 42,
+					width: 490,
+				});
+			});
+		</script>
+		
+		<div class="search">
+			{% include 'main/search_block.html.twig' %}
+		</div>
+		
+		<div class="advanced_search">
+			<img id="advanced_button" />
+		</div>
+		
+	</div>
+
+	<div class="grid_12 taxon_page">
+		<p class="about">Esta iniciativa fue financiada por un proyecto del Fonacit- Venezuela  “Los musgos de Venezuela: diversidad por Estados y sus usos para monitoreo de cambio climático.” Proyecto 2011000416.</p>
+
+		<br/><br/>
+		<h2>OBJETIVO GENERAL</h2>
+		<p class="about">Establecer una red nacional entre los briólogos del país para actualizar la información acerca de la diversidad de musgos de Venezuela para ser utilizada en políticas de conservación y monitoreo de ecosistemas ante el cambio climático.</p>
+		<br/><br/>
+		<h2>OBJETIVOS ESPECIFICOS</h2>
+		
+		<ol>
+			<li id="about">Realizar un listado comentado de musgos de Venezuela.</li>
+			<li id="about">Determinación de las muestras del Herbario MERC.</li>
+			<li id="about">Realizar un aporte al libro Rojo de los briófitos de Venezuela: Realización de fichas de especies de musgos para el libro rojo de las briófitas de Venezuela.</li>
+			<li id="about">Diseño y montaje de una página web  donde los investigadores de la red de briólogos de Venezuela puedan consultar, agregar y modificar el listado de los musgos de Venezuela y en la que se publique información  sobre los musgos de Venezuela y su conservación.</li>
+		</ol>
+		
+		<br/><br/>
+		<h3>Resultados esperados:</h3>
+		
+		<ol>
+			<li id="about">Artículo “Diversidad de Musgos de Venezuela” con un resumen de la diversidad por Estado y por hábitat de Venezuela.</li>
+			<li id="about">Listado de los musgos para ser incluidos en  el libro rojo de las briófitas de Venezuela.</li>
+			<li id="about">Página web MUSGOS DE VENEZUELA con información general y específica sobre la diversidad de musgos en Venezuela. Link base de datos Herbario MERC (12000 especímenes)</li> 
+		</ol>
+		</p>
+	</div>
+
+{% endblock %}

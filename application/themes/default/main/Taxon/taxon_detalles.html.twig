@@ -1,0 +1,115 @@
+
+				<!-- Jerarquia -->
+				
+				<strong>Jerarquía Taxonómica</strong>
+				<ul>
+					{% for h in hierarchy %}
+						<li>
+						<span>
+							<strong>{{ rank[h.getRank] }}</strong>: {{ h.getName }}
+						</span>
+						</li>
+					{% endfor %}
+				</ul>
+				
+				{% if species %}
+				
+					<!-- Autor -->
+					<br/>
+					{% if taxon.getAuthorInitials != null %}
+						<strong>Autor:</strong>
+						<ul>
+							<li><span>{{ taxon.getAuthorInitials }}</span></li>
+						</ul>
+					{% endif %}
+					
+					<!-- Revision -->
+					{% if taxon.getReviewComments != null %}
+						<br/>
+						<strong>Aceptado por:</strong>
+						<ul>
+							<li><span>{{ taxon.getReviewComments }}</span></li>
+								<ul id="reviewAuthor">
+									<li>Revisado por: {{ taxon.getReviewEditor }} {{ taxon.getReviewDate|date('d/m/Y') }}</li>
+								</ul>
+						</ul>
+					{% endif %}
+
+					<!-- Endemica -->
+					{% if endemic != null %}
+						<br/>
+						<strong>Endémica:</strong>
+						<ul>
+							<li><span>{% if endemic %}Si{% else %}No{% endif %}</span></li>
+						</ul>
+					{% endif %}
+					
+					<!-- Basionimo -->
+					{% if basionimo != null %}
+						<br/>
+						<strong>Basiónimo:</strong>
+						<ul>
+							<li><span><span class="taxon_name">{{ basionimo.getName }}</span> {{ basionimo.getAuthorInitials }}<span></li>
+						</ul>
+					{% endif %}
+					
+					<!-- Ecorregion -->
+					{% if ecorregion != null %}
+						<br/>
+						<strong>Ecorregión:</strong>
+						<ul>
+							<li><span>{{ ecorregion }}</span></li>
+						</ul>
+					{% endif %}
+					
+					<!-- Ecosistema -->
+					{% if ecosistema != null %}
+						<br/>
+						<strong>Ecosistema:</strong>
+						<ul>
+							<li><span>{{ ecosistema }}</span></li>
+						</ul>
+					{% endif %}
+					
+					<!-- Habitat -->
+					{% if habitat != null %}
+						<br/>
+						<strong>Hábitat:</strong>
+						<ul>
+							<li><span>{{ habitat }}</span></li>
+						</ul>
+					{% endif %}
+					
+					<!-- Sustrato -->
+					{% if sustratos != null %}
+						<br/>
+						<strong>Sustrato:</strong>
+						<ul>
+							<li><span>{{ sustratos }}</span></li>
+						</ul>
+					{% endif %}
+					
+					<!-- Lista Roja -->
+					{% if listaRoja != null %}
+						<br/>
+						<strong>Lista roja:</strong>
+						<ul>
+							{% for lista_r in listaRoja %}
+								<li><span>{{ lista_r.getCriterionIUCN }} {{ lista_r.getCategory }} {{ lista_r.getCountry }} 
+									{{ lista_r.getAuthor }}</span></li>
+							{% endfor %}
+						</ul>
+					{% endif %}
+					
+					<!-- Cambio Climatico -->
+					{% if cambioClimatico != null %}
+						<br/>
+						<strong>Indicador de cambio climático:</strong>
+						<ul>
+							{% for cambio_c in cambioClimatico %}
+								<li><span>{{ cambio_c.getCriterion }} {{ cambio_c.getAuthor }}</span></li>
+							{% endfor %}
+						</ul>
+					{% endif %}
+					
+				{% endif %}

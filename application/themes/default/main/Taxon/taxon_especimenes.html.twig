@@ -1,0 +1,72 @@
+<div id="locationsGrid"></div>
+						
+						<script type="text/javascript">
+					        $(document).ready(function () {
+					           	var theme = 'mdv';
+					           	var data = {{ locations }};
+					            var source =
+					            {
+					                datatype: "json",
+					                datafields: [
+					                	{ name: 'Estado', type: 'string' },
+					                	{ name: 'Municipio', type: 'string' },
+					                    { name: 'Nombre', type: 'string' },
+					                    { name: 'Altitud', type: 'string' },
+					                    { name: 'Coleccion', type: 'string' },
+					                    { name: 'FechaColeccion', type: 'string' },
+					                    { name: 'Herbario', type: 'string' },
+					                    { name: 'Coordenadas', type: 'string' },
+							    { name: 'Referencias', type: 'string' }
+					                ],
+					                localdata: data,
+					                pagesize: 10
+					            };
+					            var dataAdapter = new $.jqx.dataAdapter(source);
+					            
+					            //Event Binding Complete
+					           	$("#locationsGrid").on('bindingcomplete', function () {
+					                $("#locationsGrid").jqxGrid('autoresizecolumns', 'all');
+					            });
+					            
+					            //Event Page Changed
+					           	$("#locationsGrid").on('pagechanged', function () {
+					                $("#locationsGrid").jqxGrid('autoresizecolumns', 'all');
+					            });
+					            
+					            var getLocalization = function () {
+					                var localizationobj = {};
+					                localizationobj.pagergotopagestring = "Ir a página:";
+					                localizationobj.pagershowrowsstring = "Mostrar filas:";
+					                localizationobj.pagerrangestring = " de ";
+					                localizationobj.pagernextbuttonstring = "Siguiente";
+					                localizationobj.pagerpreviousbuttonstring = "Anterior";					                
+					                return localizationobj;
+					            }
+					            
+					            $("#locationsGrid").jqxGrid(
+					            {
+					            	width: 938,
+					            	height: 300,
+					                source: dataAdapter,
+					                columnsresize: true,
+					                theme: theme,
+					                enablebrowserselection: true,
+					                altrows: true,
+					                altstart: 1,
+					                altstep: 1,
+					                localization: getLocalization(),
+					                pageable: true,
+					                columns: [
+					                	{ text: 'Estado', datafield: 'Estado' },
+					                    { text: 'Municipio', datafield: 'Municipio' },
+					                    { text: 'Localidad', datafield: 'Nombre' },
+					                    { text: 'Altitud (m)', datafield: 'Altitud' },
+					                    { text: 'Colección', datafield: 'Coleccion' },
+					                    { text: 'Fecha colección', datafield: 'FechaColeccion' },
+					                    { text: 'Herbario', datafield: 'Herbario' },
+					                    { text: 'Coordenadas', datafield: 'Coordenadas' },
+							    { text: 'Referencias', datafield: 'Referencias' }
+					                ]
+					           	});
+					       });
+					    </script>
