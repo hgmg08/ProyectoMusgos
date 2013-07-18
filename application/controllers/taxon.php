@@ -186,6 +186,8 @@ class Taxon extends CI_Controller {
 			}
 		}
 
+		$gallery = str_replace(" ", "_", $taxon->getName());
+
 		//Envio de variables a interfaz
 		$this->twiggy->set('taxon', $taxon);
 		$this->twiggy->set('rank', $this->fill_rank());
@@ -202,6 +204,7 @@ class Taxon extends CI_Controller {
 		$this->twiggy->set('ecosistema', $ecosistema);
 		$this->twiggy->set('listaRoja', $listaRoja);
 		$this->twiggy->set('cambioClimatico', $cambioClimatico);
+		$this->twiggy->set('gallery', $gallery);
 		
 		$this->twiggy->title('Musgos de Venezuela')->append($taxon->getName());
 		$this->twiggy->template('main/taxon')->display();
