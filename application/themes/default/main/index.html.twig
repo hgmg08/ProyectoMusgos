@@ -35,14 +35,26 @@
 		</div>
 	</div>
 	
-	<!--
 	<div class="grid_8 destacados">
 	</div>
 	
 	<div class="grid_4 mdv_datos">
+		<img id="mdv_title" src="{{ base_url('public/images/mdv_datos/titulo-datos.png') }}" />
+		<div class="mdv_data_group">
+			<ul id="mdv_data">
+				<li><div id="mdv_data_number">{{ rankCount.clase }}</div> <div id="mdv_data_title">Clases</div></li>
+				<li><div id="mdv_data_number">{{ rankCount.subclase }}</div> <div id="mdv_data_title">SubClases</div></li>
+				<li><div id="mdv_data_number">{{ rankCount.orden }}</div> <div id="mdv_data_title">Ordenes</div></li>
+				<li><div id="mdv_data_number">{{ rankCount.familia }}</div> <div id="mdv_data_title">Familias</div></li>
+				<li><div id="mdv_data_number">{{ rankCount.genero }}</div> <div id="mdv_data_title">Géneros</div></li>
+				<li><div id="mdv_data_number">{{ rankCount.especie }}</div> <div id="mdv_data_title">Especies</div></li>
+			</ul>
+		</div>
 	</div>
 	
 	<div class="clear"></div>
+	
+	<!--
 	
 	<div class="grid_8 ultimas_especies">
 	

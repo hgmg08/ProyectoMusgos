@@ -36,4 +36,13 @@ class TaxonRepository extends EntityRepository
 		return $query->getResult(Query::HYDRATE_ARRAY);
 	}
 	
+	public function rankCount($rank)
+	{
+		$query = $this->_em->createQuery(
+			"SELECT COUNT(t.id) FROM entities\Taxon t WHERE t.rank = :rank"
+		);
+		$query->setParameter('rank', $rank);
+		return $query->getResult(Query::HYDRATE_SINGLE_SCALAR);
+	}
+	
 }
