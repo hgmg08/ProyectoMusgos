@@ -103,11 +103,6 @@ class Taxon extends CI_Controller {
 		$locat = $taxon->getLocalidades();
 		
 		//Publicaciones
-		/*foreach ($locat as $loc) {
-			foreach($loc->getPublications() as $p) {
-				$publications[] = $p;
-			}
-		}*/
 		$publications = $this->em->getRepository("entities\Publicacion")->searchPublicaciones($taxon->getName());
 			
 		//Jerarquia
