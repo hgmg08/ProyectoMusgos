@@ -279,7 +279,8 @@ table#footer_nav a:hover{
 	min-height: 200px;
 }
 
-.thumbnail {
-	margin: 10px;
+#thumbs img {
+	margin-right: 5px;
+	margin-bottom: 10px;
 }
 

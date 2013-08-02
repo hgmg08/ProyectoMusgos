@@ -11,6 +11,7 @@ class Taxon extends CI_Controller {
 		parent::__construct();
 		$this->load->helper('url');
 		$this->load->library('csvreader');
+		$this->load->library('image_lib');
 		$this->em = $this->doctrine->em;
 	}
 	
@@ -182,16 +183,28 @@ class Taxon extends CI_Controller {
 			}
 		}
 
-		$galleryDir = 'public/images/gallery/';
+		$galleryDir = 'public/images/gallery/' . $taxon->getId() . '/';
+		$thumbsDir = $galleryDir . 'thumbs/';
 		$gallery = array();
-		$imgFiles = glob($galleryDir . $taxon->getId() . "/*.jpg");
-		$csvPath = base_url(glob($galleryDir . $taxon->getId() . "/*.csv"));
-		$data = $this->csvreader->parse_file($csvPath);
-		
+		$imgFiles = glob($galleryDir . "*.jpg");
+		$i = 0;
 		foreach ($imgFiles as $img) {
-			$gallery[]['img'] = $img;
+			$imgName = str_replace($galleryDir, "", $img);
+			if (!is_file($thumbsDir . $imgName)) {
+				$config['source_image'] = $img;
+				$config['new_image'] = $thumbsDir . $imgName;
+				$config['width'] = 120;
+				$config['height'] = 100;
+				$config['maintain_ratio'] = TRUE;
+				$this->image_lib->initialize($config);
+				$this->image_lib->resize();
+				echo $this->image_lib->display_errors();
+			}
+			$gallery[$i]['img'] = $img;
+			$gallery[$i]['thumb'] = $thumbsDir . $imgName;
+			$i++;
 		}
-		
+
 		//Envio de variables a interfaz
 		$this->twiggy->set('taxon', $taxon);
 		$this->twiggy->set('rank', $this->fill_rank());

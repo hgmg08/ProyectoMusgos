@@ -1,18 +1,12 @@
 <script type="text/javascript">
 $(document).ready(function() {
-	$("#thumbs img").MyThumbnail({
-	  thumbWidth:120,
-	  thumbHeight:100,
-	  backgroundColor:"#ccc",
-	  imageDivClass:"thumbnail"
-	});
 	$('#gallery a').lightBox();
 });
 </script>
 
 <div id="thumbs">
 	{% for item in gallery %}
-		<a id="gallery" href="{{ base_url(item.img) }}" title="" data-lightbox="taxon"><img src="{{ base_url(item.img) }}" /></a>
+		<a id="gallery" href="{{ base_url(item.img) }}" title="" data-lightbox="taxon"><img src="{{ base_url(item.thumb) }}" /></a>
 	{% endfor %}
 </div>
 
