@@ -1,46 +1,19 @@
-{% if taxon.getId == 1310 %}
-
 <script type="text/javascript">
-$(function() {
+$(document).ready(function() {
+	$("#thumbs img").MyThumbnail({
+	  thumbWidth:120,
+	  thumbHeight:100,
+	  backgroundColor:"#ccc",
+	  imageDivClass:"thumbnail"
+	});
 	$('#gallery a').lightBox();
 });
 </script>
 
-<a id="gallery" href="{{ base_url('public/images/gallery/Acroporium_estrellae/Acrest001.JPG')}}" data-lightbox="taxon"><img src="{{ base_url('public/images/gallery/Acroporium_estrellae/thumbs/Acrest001.jpg')}}" /></a>
-<a id="gallery" href="{{ base_url('public/images/gallery/Acroporium_estrellae/Acrest002.JPG')}}" data-lightbox="taxon"><img src="{{ base_url('public/images/gallery/Acroporium_estrellae/thumbs/Acrest002.jpg')}}" /></a>
-<a id="gallery" href="{{ base_url('public/images/gallery/Acroporium_estrellae/Acrest003.JPG')}}" data-lightbox="taxon"><img src="{{ base_url('public/images/gallery/Acroporium_estrellae/thumbs/Acrest003.jpg')}}" /></a>
-<a id="gallery" href="{{ base_url('public/images/gallery/Acroporium_estrellae/Acrest004.JPG')}}" data-lightbox="taxon"><img src="{{ base_url('public/images/gallery/Acroporium_estrellae/thumbs/Acrest004.jpg')}}" /></a>
-<a id="gallery" href="{{ base_url('public/images/gallery/Acroporium_estrellae/Acrest005.JPG')}}" data-lightbox="taxon"><img src="{{ base_url('public/images/gallery/Acroporium_estrellae/thumbs/Acrest005.jpg')}}" /></a>
-<a id="gallery" href="{{ base_url('public/images/gallery/Acroporium_estrellae/Acrest006.JPG')}}" data-lightbox="taxon"><img src="{{ base_url('public/images/gallery/Acroporium_estrellae/thumbs/Acrest006.jpg')}}" /></a>
-<a id="gallery" href="{{ base_url('public/images/gallery/Acroporium_estrellae/Acrest007.JPG')}}" data-lightbox="taxon"><img src="{{ base_url('public/images/gallery/Acroporium_estrellae/thumbs/Acrest007.jpg')}}" /></a>
-
-{% endif %}
-
-{% if taxon.getId == 1389 %}
-
-<script type="text/javascript">
-$(function() {
-	$('#gallery a').lightBox();
-});
-</script>
-
-<a id="gallery" href="{{ base_url('public/images/gallery/Sphagnum_magellanicum/Sphmag001.jpg')}}" data-lightbox="taxon"><img src="{{ base_url('public/images/gallery/Sphagnum_magellanicum/thumbs/Sphmag001.jpg')}}" /></a>
-<a id="gallery" href="{{ base_url('public/images/gallery/Sphagnum_magellanicum/Sphmag002.jpg')}}" data-lightbox="taxon"><img src="{{ base_url('public/images/gallery/Sphagnum_magellanicum/thumbs/Sphmag002.jpg')}}" /></a>
-<a id="gallery" href="{{ base_url('public/images/gallery/Sphagnum_magellanicum/Sphmag003.jpg')}}" data-lightbox="taxon"><img src="{{ base_url('public/images/gallery/Sphagnum_magellanicum/thumbs/Sphmag003.jpg')}}" /></a>
-<a id="gallery" href="{{ base_url('public/images/gallery/Sphagnum_magellanicum/Sphmag004.jpg')}}" data-lightbox="taxon"><img src="{{ base_url('public/images/gallery/Sphagnum_magellanicum/thumbs/Sphmag004.jpg')}}" /></a>
-<a id="gallery" href="{{ base_url('public/images/gallery/Sphagnum_magellanicum/Sphmag005.jpg')}}" data-lightbox="taxon"><img src="{{ base_url('public/images/gallery/Sphagnum_magellanicum/thumbs/Sphmag005.jpg')}}" /></a>
-<a id="gallery" href="{{ base_url('public/images/gallery/Sphagnum_magellanicum/Sphmag006.jpg')}}" data-lightbox="taxon"><img src="{{ base_url('public/images/gallery/Sphagnum_magellanicum/thumbs/Sphmag006.jpg')}}" /></a>
-<a id="gallery" href="{{ base_url('public/images/gallery/Sphagnum_magellanicum/Sphmag007.jpg')}}" data-lightbox="taxon"><img src="{{ base_url('public/images/gallery/Sphagnum_magellanicum/thumbs/Sphmag007.jpg')}}" /></a>
-<a id="gallery" href="{{ base_url('public/images/gallery/Sphagnum_magellanicum/Sphmag008.jpg')}}" data-lightbox="taxon"><img src="{{ base_url('public/images/gallery/Sphagnum_magellanicum/thumbs/Sphmag008.jpg')}}" /></a>
-<a id="gallery" href="{{ base_url('public/images/gallery/Sphagnum_magellanicum/Sphmag009.jpg')}}" data-lightbox="taxon"><img src="{{ base_url('public/images/gallery/Sphagnum_magellanicum/thumbs/Sphmag009.jpg')}}" /></a>
-<a id="gallery" href="{{ base_url('public/images/gallery/Sphagnum_magellanicum/Sphmag0010.jpg')}}" data-lightbox="taxon"><img src="{{ base_url('public/images/gallery/Sphagnum_magellanicum/thumbs/Sphmag0010.jpg')}}" /></a>
-<a id="gallery" href="{{ base_url('public/images/gallery/Sphagnum_magellanicum/Sphmag0011.jpg')}}" data-lightbox="taxon"><img src="{{ base_url('public/images/gallery/Sphagnum_magellanicum/thumbs/Sphmag0011.jpg')}}" /></a>
-<a id="gallery" href="{{ base_url('public/images/gallery/Sphagnum_magellanicum/Sphmag0012.jpg')}}" data-lightbox="taxon"><img src="{{ base_url('public/images/gallery/Sphagnum_magellanicum/thumbs/Sphmag0012.jpg')}}" /></a>
-<a id="gallery" href="{{ base_url('public/images/gallery/Sphagnum_magellanicum/Sphmag0013.jpg')}}" data-lightbox="taxon"><img src="{{ base_url('public/images/gallery/Sphagnum_magellanicum/thumbs/Sphmag0013.jpg')}}" /></a>
-<a id="gallery" href="{{ base_url('public/images/gallery/Sphagnum_magellanicum/Sphmag0014.jpg')}}" data-lightbox="taxon"><img src="{{ base_url('public/images/gallery/Sphagnum_magellanicum/thumbs/Sphmag0014.jpg')}}" /></a>
-<a id="gallery" href="{{ base_url('public/images/gallery/Sphagnum_magellanicum/Sphmag0015.jpg')}}" data-lightbox="taxon"><img src="{{ base_url('public/images/gallery/Sphagnum_magellanicum/thumbs/Sphmag0015.jpg')}}" /></a>
-<a id="gallery" href="{{ base_url('public/images/gallery/Sphagnum_magellanicum/Sphmag16.jpg')}}" data-lightbox="taxon"><img src="{{ base_url('public/images/gallery/Sphagnum_magellanicum/thumbs/Sphmag16.jpg')}}" /></a>
-<a id="gallery" href="{{ base_url('public/images/gallery/Sphagnum_magellanicum/Sphmag17.jpg')}}" data-lightbox="taxon"><img src="{{ base_url('public/images/gallery/Sphagnum_magellanicum/thumbs/Sphmag17.jpg')}}" /></a>
+<div id="thumbs">
+	{% for item in gallery %}
+		<a id="gallery" href="{{ base_url(item.img) }}" title="" data-lightbox="taxon"><img src="{{ base_url(item.img) }}" /></a>
+	{% endfor %}
+</div>
 
 
-{% endif %}

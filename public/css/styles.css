@@ -278,8 +278,8 @@ table#footer_nav a:hover{
 	margin-top: 10px;
 	min-height: 200px;
 }
-.square-thumb {
-	width: 150px;
-	height: 150px;
+
+.thumbnail {
+	margin: 10px;
 }
 

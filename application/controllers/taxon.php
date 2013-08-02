@@ -10,6 +10,7 @@ class Taxon extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->helper('url');
+		$this->load->library('csvreader');
 		$this->em = $this->doctrine->em;
 	}
 	
@@ -186,8 +187,16 @@ class Taxon extends CI_Controller {
 			}
 		}
 
-		$gallery = str_replace(" ", "_", $taxon->getName());
-
+		$galleryDir = 'public/images/gallery/';
+		$gallery = array();
+		$imgFiles = glob($galleryDir . $taxon->getId() . "/*.jpg");
+		$csvPath = base_url(glob($galleryDir . $taxon->getId() . "/*.csv"));
+		$data = $this->csvreader->parse_file($csvPath);
+		
+		foreach ($imgFiles as $img) {
+			$gallery[]['img'] = $img;
+		}
+		
 		//Envio de variables a interfaz
 		$this->twiggy->set('taxon', $taxon);
 		$this->twiggy->set('rank', $this->fill_rank());

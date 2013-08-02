@@ -21,7 +21,7 @@
 	<script src="{{ base_url('public/js/jqwidgets/jqxgrid.pager.js') }}"></script>
 	<script src="{{ base_url('public/js/jqwidgets/jqxdata.js') }}"></script>
 	<script src="{{ base_url('public/js/lightbox-2.6.min.js') }}"></script>	
-	<script src="{{ base_url('public/js/jquery.nailthumb.js') }}"></script>
+	<script src="{{ base_url('public/js/jquery.thumbs.js') }}"></script>
 
 	<script type="text/javascript">
         $(document).ready(function () {
@@ -96,7 +96,9 @@
 					{% if locations != 'null' %}
 						<li>Especímenes</li>
 					{% endif %}
-					<li>Imágenes</li>
+					{% if images != 'null' %}
+						<li>Imágenes</li>
+					{% endif %}
 				{% endif %}
 			</ul>
 			
@@ -140,9 +142,11 @@
 				{% endif %}
 				
 				<!-- Imagenes -->
-				<div id="TaxonPage">
-					{% include 'main/Taxon/taxon_imagenes.html.twig' %}
-				</div>
+				{% if images != 'null' %}
+					<div id="TaxonPage">
+						{% include 'main/Taxon/taxon_imagenes.html.twig' %}
+					</div>
+				{% endif %}
 				
 			{% endif %}
 		</div>

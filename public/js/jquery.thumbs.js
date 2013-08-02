@@ -1,134 +1,98 @@
-/*
+/**
+ * @author Paul Chan / KF Software House 
+ * http://www.kfsoft.info
  *
- * Copyright (c) 2006-2010 Joan Piedra (http://joanpiedra.com)
- * Licensed under the MIT License:
+ * Version 0.5
+ * Copyright (c) 2010 KF Software House
+ *
+ * Licensed under the MIT license:
  * http://www.opensource.org/licenses/mit-license.php
- * 
+ *
  */
+	
 (function($) {
 
-/*
- * Converts image and link elements to thumbnails
- *
- * @name     $.fn.thumbs
- * @author   Joan Piedra (http://joanpiedra.com)
- * @example  $('.thumb').thumbs();
- *
- */
-$.fn.thumbs = function(options) {
-	var $thumbs = this;
-	
-	if (options == 'destroy') {
-		return Thumbs.destroy($thumbs);
-	}
-	
-	if( $thumbs.data('thumbs') ) {
-		return $thumbs;
-	}
-	
-	var center = {},
-	defaults = {
-		center: true,
-		classNames: {
-			center: 'thumb-center',
-			container: 'thumb-container',
-			icon: 'thumb-icon',
-			img: 'thumb-img',
-			inner: 'thumb-inner',
-			strip: 'thumb-strip'
-		},
-		html: '<span class="%container%"><span class="%inner%"><span class="%img%"></span><span class="%strip%">%strip_content%</span><span class="%icon%"></span></span></span>',
-		strip: true
-	};
-	
-	options = $.extend(true, {}, defaults, options);
-	
-	return $thumbs.each(function(){
-		var $thumb = $(this),
-		c = options.classNames,
-		clone = $thumb.clone(true),
-		html = new String(options.html),
-		centered = false,
-		strip = '';
+    var _options = new Array();
+
+	jQuery.fn.MyThumbnail = function(options) {
+		_options[_options.length] = $.extend({}, $.fn.MyThumbnail.defaults, options);
 		
-		for (className in c) {
-			var newClassName = c[className];
-			
-			if ( options.center && !centered && className == 'container' ) {
-				newClassName = c.container + ' ' + c.center;
-				centered = true;
+
+		return this.each(function()
+		{
+			$(this).removeAttr("width").removeAttr("height");
+			var img = this;
+			var src = $(this).attr("src");
+			var width = $(this).width();
+			var height = $(this).height();
+
+			$(this).hide();
+			if (width==0 || height==0)
+			{
+				var optIndex = _options.length-1;
+				$("<img/>")
+				.attr("src", $(this).attr("src"))
+				.load(function() {
+				
+					width = this.width;  
+					height = this.height;
+					
+					addImage(img, width, height, optIndex);
+				});
 			}
-			
-			html = html.replace('%' + className + '%', newClassName);
-		}
-		
-		if (options.strip) {
-			strip = $thumb.is('img') ? $thumb.attr('alt') : $thumb.find('img').attr('alt');
-			strip = strip != undefined ? strip : $thumb.attr('title');
-			strip = strip != undefined ? strip : '';
-		}
-		
-		html = html.replace('%strip_content%', strip);
-		
-		$thumb.wrap( html );
-		
-		if (options.center) {
-			Thumbs.centerImg( $thumb );
-		}
-		
-		var data = {
-			'container': $thumb.parents('.' + c.container),
-			'raw': clone
-		};
-		
-		$thumb.data('thumbs', data);
-	});
-};
-
-
-var Thumbs = {
-
-	/*
-	 * Private: Absolute positions the image in the center of the thumbnail frame
-	 *
-	 * @name     thumbs.centerImg
-	 * @author   Joan Piedra (http://joanpiedra.com)
-	 * @example  Thumbs.centerImg($thumb);
-	 *
-	 */
-	centerImg: function($thumb) {
-		var $img = $thumb.is('img') ? $thumb : $thumb.find('img'),
-		css = {
-			left: '-' + ( parseInt( $img.css('width') ) / 2 ) + 'px',
-			top: '-' + ( parseInt( $img.css('height') ) / 2 ) + 'px'
-		};
-	
-		$img.css( css );
-	
-		return $thumb;
-	},
-
-	/*
-	 * Private: Removes all the added thumbnail html
-	 *
-	 * @name     thumbs.destroy
-	 * @author   Joan Piedra (http://joanpiedra.com)
-	 * @example  Thumbs.destroy($thumbs);
-	 *
-	 */
-	destroy: function($thumbs) {
-		$thumbs.each(function(index) {
-			var $thumb = $(this),
-			data = $thumb.data('thumbs');
-			
-			if (!data) {
-				return;
+			else
+			{
+				var optIndex = _options.length-1;
+				addImage(img, width, height, optIndex);
 			}
-			
-			data.container.after(data.raw).remove();
 		});
+		
+		function addImage(img, width, height, optIndex)
+		{	
+			var src = $(img).attr("src");
+			
+			var opt = _options[optIndex];
+
+			var imageSizeWidthRatio = opt.thumbWidth/width;
+			var imageSizeWidth = null;
+			var imageSizeHeight = null;
+	
+			imageSizeWidth = opt.thumbWidth;
+			imageSizeHeight = height * imageSizeWidthRatio;
+			
+			
+			if (imageSizeHeight < opt.thumbHeight)
+			{
+				var resizeFactor = opt.thumbHeight/imageSizeHeight;
+				
+				//fix
+				imageSizeHeight = opt.thumbHeight;
+				imageSizeWidth = resizeFactor*imageSizeWidth;
+			}
+
+			var appendHtml = null;
+			if (!opt.bShowPointerCursor)
+			{
+				appendHtml = "<DIV class='myThumbDivAutoAdd "+ opt.imageDivClass +"' style='display:none;float:left;width:"+ opt.thumbWidth +"px;height:" + opt.thumbHeight + "px;overflow:hidden;background:url("+src +") no-repeat "+opt.backgroundColor+";";
+				appendHtml += "background-position:center;background-size:"+ imageSizeWidth + "px " + imageSizeHeight  +"px;'></DIV>";
+			}
+			else
+			{
+				appendHtml = "<DIV class='myThumbDivAutoAdd "+ opt.imageDivClass +"' style='cursor:pointer;display:none;float:left;width:"+ opt.thumbWidth +"px;height:" + opt.thumbHeight + "px;overflow:hidden;background:url("+src +") no-repeat "+opt.backgroundColor+";";
+				appendHtml += "background-position:center;background-size:"+ imageSizeWidth + "px " + imageSizeHeight  +"px;'></DIV>";
+			}
+				
+			$(img).after(appendHtml)
+			$(".myThumbDivAutoAdd").fadeIn();
+		}
 	}
 
-}
-
+	//default values
+	jQuery.fn.MyThumbnail.defaults = {
+		thumbWidth:130,
+		thumbHeight:100,
+		backgroundColor:"#ccc",
+		imageDivClass:"myPic",
+		bShowPointerCursor:false
+	};
 })(jQuery);
