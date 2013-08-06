@@ -345,6 +345,12 @@ class Taxon extends \entities\Taxon implements \Doctrine\ORM\Proxy\Proxy
         return parent::addSynonym($childrenHierarchy);
     }
 
+    public function addTaxon(\entities\Taxon $childrenHierarchy)
+    {
+        $this->__load();
+        return parent::addTaxon($childrenHierarchy);
+    }
+
     public function setCreationDate($creationDate)
     {
         $this->__load();

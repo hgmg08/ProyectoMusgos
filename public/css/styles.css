@@ -9,6 +9,16 @@
 .header_logo {
 	height: 104px;
 	margin-top: 20px;
+	z-index: 0;
+	position: relative;
+}
+
+.login {
+	z-index: 999;
+	position: absolute;
+	top: 10px;
+	left: 850px;
+	color: #fff;
 }
 
 .header_menu {
@@ -160,6 +170,23 @@
 	border: none;
     background: none;
 }
+
+#searchLink {
+	margin-top: 5px;
+	margin-left: 5px;
+}
+
+#searchLink a {
+	color: #870402;
+	text-decoration: none;
+}
+
+#searchLink a:hover {
+	color: #870402;
+	text-decoration: underline;
+}
+
+
 /*
  * Menu footer
  */

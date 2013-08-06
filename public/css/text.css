@@ -68,7 +68,7 @@ li {
 
 
 /* 'Search Text
------------------------------------------------******************************************************/
+----------------------------------------------------------------------------------------------------*/
 span.search_text {
 	font-style: italic;
 	font-weight: normal;
@@ -86,4 +86,18 @@ p.about {
 li#about {
 	font-size: 14px;
 	text-align: justify;
+}
+
+
+/* 'Login
+----------------------------------------------------------------------------------------------------*/
+
+.login a {
+	color: #fff;
+	text-decoration: none;
+}
+
+.login a:hover {
+	color: #fff;
+	text-decoration: underline;
 }

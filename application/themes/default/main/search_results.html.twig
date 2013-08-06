@@ -46,9 +46,15 @@
                 return localizationobj;
             }
             
+            var linkrenderer = function (row, column, value) {
+                var id = $("#resultsGrid").jqxGrid('getrowdata', row).id;
+                var link = '<div id="searchLink"><a href="{{ base_url('taxon') }}' + '/' + id + '">' + value + '</a></div>';
+                return link;
+            }
+            
             $("#resultsGrid").jqxGrid(
             {
-                width: 940,
+                width: '100%',
                 height: 330,
                 source: dataAdapter,
                 theme: theme,
@@ -59,17 +65,11 @@
                 localization: getLocalization(),
                 pageable: true,
                 columns: [
-                	{ text: '!', datafield: 'Accepted', width: 30 },
-                    { text: 'Nombre', datafield: 'Name' },
+                	{ text: '!', datafield: 'Accepted', width: 20 },
+                    { text: 'Nombre', datafield: 'Name', cellsrenderer: linkrenderer },
                     { text: 'Autor', datafield: 'Author' }
                 ]
            	});
-
-            //Event Row Select
-            $("#resultsGrid").on('rowselect', function (event) {
-            	var args = event.args
-            	window.location = '{{ base_url('taxon') }}' + '/' + args.row.id;
-            });
        });
     </script>
 	

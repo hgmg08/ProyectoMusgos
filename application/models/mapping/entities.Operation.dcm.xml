@@ -1,0 +1,19 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                    http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+<entity name="entities\Operation" table="operacion">
+	<id name="id" type="integer" column="id">
+		<generator strategy="AUTO" />
+	</id>
+	
+	<field name="code" column="codigo" type="string" />
+	<field name="name" column="nombre" type="string" />
+	
+	<!-- Relacion con Rol -->
+    <many-to-many field="roles" target-entity="Role" mapped-by="operations" />
+	
+</entity>
+
+</doctrine-mapping>

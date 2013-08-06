@@ -12,10 +12,20 @@
 		<link href="{{ base_url('public/css/styles.css') }}" rel="stylesheet" type="text/css" />
 		
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script src="{{ base_url('public/js/jqwidgets/jqxcore.js') }}"></script>
+		<script src="{{ base_url('public/js/jqwidgets/jqxwindow.js') }}"></script>
+		<script src="{{ base_url('public/js/jqwidgets/jqxbuttons.js') }}"></script>
+		<script src="{{ base_url('public/js/jqwidgets/jqxinput.js') }}"></script>
+		
 		
 		<script type="text/javascript">
 			$(document).ready(function () {
 				$("#mdv_logo").attr("src", "{{ base_url('public/images/header_logo') }}" + "/mdv-" + Math.floor(Math.random()*16+1) + ".jpg");
+				$("#windowLogin").jqxWindow({ width: 260, height: 130, isModal: true, autoOpen: false });
+        		$("#submit").jqxButton({  });
+        		$("#loginText").click(function() {
+        			$("#windowLogin").jqxWindow('open');
+        		});
 			});
 		</script>
 		
@@ -27,6 +37,7 @@
 	<div class="container_12">
 		<div class="grid_12 header_logo">
 			<img id="mdv_logo" />
+			<span class="login"><a href="#" id="loginText">Iniciar sesión</a></span>
 		</div>
 		
 		<div class="clear"></div>
@@ -85,6 +96,28 @@
 				</tbody>
 			</table>
 		</div>
+		
+		<div id="windowLogin" caption="Login">
+        <div>
+            <form method="post" action="">
+                <table>
+                    <tr>
+                        <td style="vertical-align: middle;">Usuario:</td>
+                        <td><input style="margin-left: 10px; width: 150px;" type="text" name="user" /></td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align: middle;">Contraseña:</td>
+                        <td><input style="margin-left: 10px; width: 150px;" type="password" name="password" /></td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align: middle;" colspan="2" valign="bottom">
+                            <input type="submit" id="submit" value="Entrar" />
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
 	</div>
 </body>
 </html>

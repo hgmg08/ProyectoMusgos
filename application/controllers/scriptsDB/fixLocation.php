@@ -1,6 +1,6 @@
 <?php
 
-class FillLocation extends CI_Controller {
+class FixLocation extends CI_Controller {
 		
 	private $em;
 
