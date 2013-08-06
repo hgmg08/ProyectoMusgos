@@ -15,9 +15,30 @@ class Home extends CI_Controller {
 
 	public function index()
 	{
+		$this->twiggy->set('slides', $this->getRandomImages());
 		$this->twiggy->set('rankCount', $this->getRankCount());
 		$this->twiggy->title('Musgos de Venezuela');
 		$this->twiggy->template('main/index')->display();
+	}
+	
+	private function getRandomImages()
+	{
+		$taxons = $this->em->getRepository("entities\Taxon")->getTaxonWithImages();
+		$images = array();
+		$taxonCount = count($taxons);
+		
+		for ($i=0; $i < 8; $i++) {
+			$r = rand(0, $taxonCount); 
+			$galleryDir = 'public/images/gallery/' . $taxons[$r]->getId() . '/';
+			$imgFiles = glob($galleryDir . "*.jpg");
+			foreach ($imgFiles as $img) {
+				$images[$i]['id'] = $taxons[$r]->getId();
+				$images[$i]['img'] = $img;
+				$images[$i]['caption'] = $taxons[$r]->getName();
+				break;
+			}	
+		}
+		return $images;
 	}
 	
 	private function getRankCount()

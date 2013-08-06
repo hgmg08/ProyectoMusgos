@@ -95,7 +95,6 @@ class Taxon extends CI_Controller {
 					'Referencias' => $loc_pub
 				);
 			}
-			$loc_pub = array();
 		}
 		
 		//Estados
@@ -182,7 +181,8 @@ class Taxon extends CI_Controller {
 				$cambioClimatico = null;
 			}
 		}
-
+		
+		//Imagenes
 		$galleryDir = 'public/images/gallery/' . $taxon->getId() . '/';
 		$thumbsDir = $galleryDir . 'thumbs/';
 		$gallery = array();

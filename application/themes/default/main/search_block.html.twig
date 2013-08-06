@@ -1,3 +1,13 @@
+<script type="text/javascript">
+	$(document).ready(function () {
+		var theme = 'mdv';
+		$('#input_search').jqxInput({
+			height: 42,
+			width: 490
+		});
+	});
+</script>
+
 <form class="main_search_field" action="{{ base_url('search') }}" method="GET">
 	<label>Búsqueda general:</label>
 	<div id="search_layer">

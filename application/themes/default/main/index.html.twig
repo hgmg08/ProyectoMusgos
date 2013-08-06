@@ -9,22 +9,34 @@
 	
 	<script src="{{ base_url('public/js/jqwidgets/jqxcore.js') }}"></script>
 	<script src="{{ base_url('public/js/jqwidgets/jqxinput.js') }}"></script>
+	<script src="{{ base_url('public/js/jquery.slides.min.js') }}"></script>
 
 {% endblock %}
 
 {% block content %}
 
+	<script type="text/javascript">
+		$(function(){
+			$("#slides").slidesjs({
+	        	width: 620,
+	        	height: 400,
+	        	pagination: {
+      				active: false
+      			},
+	        	play: {
+      				active: false,
+      				effect: "fade",
+				    interval: 8000,
+				    auto: true
+				},
+				navigation: {
+					active: false
+				}
+	      	});
+    	});
+	</script>
+
 	<div class="grid_12 main_search">
-	
-		<script type="text/javascript">
-			$(document).ready(function () {
-				var theme = 'mdv';
-				$('#input_search').jqxInput({
-					height: 42,
-					width: 490,
-				});
-			});
-		</script>
 		
 		<div class="search">
 			{% include 'main/search_block.html.twig' %}
@@ -36,6 +48,11 @@
 	</div>
 	
 	<div class="grid_8 destacados">
+		<div id="slides">
+			{% for slide in slides %}
+				<a href="{{ base_url('taxon') }}/{{ slide.id }}"><img src="{{ slide.img }}" title="{{ slide.caption }}" /></a>
+			{% endfor %}
+		</div>
 	</div>
 	
 	<div class="grid_4 mdv_datos">

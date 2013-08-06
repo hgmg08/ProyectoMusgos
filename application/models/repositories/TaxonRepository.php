@@ -29,13 +29,29 @@ class TaxonRepository extends EntityRepository
 		}
 		else {
 			$query = $this->_em->createQuery(
-				"SELECT t FROM entities\Taxon t WHERE t.name LIKE :name AND t.rank IN(6,7,8) ORDER BY t.name"
+				"SELECT t FROM entities\Taxon t WHERE t.name LIKE :name AND t.rank IN(6,7,8) ORDER BY t.creationDate"
 			);
 			$query->setParameter('name', "%$taxon_name%");
 		}
 		return $query->getResult(Query::HYDRATE_ARRAY);
 	}
 	
+	/**
+	 * Obtener todos los taxones que sean especies, variedad, o subespecies
+	 */
+	public function getTaxonWithImages()
+	{
+		$query = $this->_em->createQuery(
+			"SELECT t FROM entities\Taxon t WHERE t.imageDir = :option"
+		);
+		$query->setParameter('option', 'Y');
+		return $query->getResult(Query::HYDRATE_OBJECT);
+	}
+	
+	/**
+	 * Contar los taxones de un rank determinado
+	 * @param $rank = Rank del taxón
+	 */
 	public function rankCount($rank)
 	{
 		$query = $this->_em->createQuery(
