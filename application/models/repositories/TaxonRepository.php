@@ -29,7 +29,7 @@ class TaxonRepository extends EntityRepository
 		}
 		else {
 			$query = $this->_em->createQuery(
-				"SELECT t FROM entities\Taxon t WHERE t.name LIKE :name AND t.rank IN(6,7,8) ORDER BY t.creationDate"
+				"SELECT t FROM entities\Taxon t WHERE t.name LIKE :name AND t.rank IN(6,7,8) ORDER BY t.name"
 			);
 			$query->setParameter('name', "%$taxon_name%");
 		}
@@ -37,14 +37,14 @@ class TaxonRepository extends EntityRepository
 	}
 	
 	/**
-	 * Obtener todos los taxones que sean especies, variedad, o subespecies
+	 * Obtener todos los taxones tengan imágenes
 	 */
 	public function getTaxonWithImages()
 	{
 		$query = $this->_em->createQuery(
-			"SELECT t FROM entities\Taxon t WHERE t.imageDir = :option"
+			"SELECT t FROM entities\Taxon t WHERE t.images = :option"
 		);
-		$query->setParameter('option', 'Y');
+		$query->setParameter('option', TRUE);
 		return $query->getResult(Query::HYDRATE_OBJECT);
 	}
 	

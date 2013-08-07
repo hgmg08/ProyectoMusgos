@@ -50,7 +50,9 @@
 	<div class="grid_8 destacados">
 		<div id="slides">
 			{% for slide in slides %}
-				<a href="{{ base_url('taxon') }}/{{ slide.id }}"><img src="{{ slide.img }}" title="{{ slide.caption }}" /></a>
+				<div class="slide">
+					<a href="{{ base_url('taxon') }}/{{ slide.id }}"><img src="{{ slide.img }}" title="{{ slide.caption }}" /></a>
+				</div>
 			{% endfor %}
 		</div>
 	</div>

@@ -36,7 +36,7 @@ class Home extends CI_Controller {
 				$images[$i]['img'] = $img;
 				$images[$i]['caption'] = $taxons[$r]->getName();
 				break;
-			}	
+			}
 		}
 		return $images;
 	}

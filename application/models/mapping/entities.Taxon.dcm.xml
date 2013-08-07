@@ -20,7 +20,7 @@
 	<field name="reviewEditor" column="editor_revision" type="string" length="100" nullable="TRUE" />
 	<field name="reviewDate" column="fecha_revision" type="datetime" nullable="TRUE" />
 	<field name="reviewComments" column="comentarios_revision" type="text" nullable="TRUE" />
-	<field name="imageDir" column="directorio_imagenes" type="string" length="200" nullable="TRUE" />
+	<field name="images" column="imagenes" type="boolean" nullable="TRUE" />
 
 	<!-- Relacion con Taxon (Jerarquia Taxonomica) -->
 	<one-to-many field="children_hierarchy" target-entity="Taxon" mapped-by="parent_hierarchy" />

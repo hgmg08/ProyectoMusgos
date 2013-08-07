@@ -708,4 +708,31 @@ class Taxon extends BaseInfo
         $this->children_hierarchy[] = $childrenHierarchy;
         return $this;
     }
+    /**
+     * @var boolean $images
+     */
+    private $images;
+
+
+    /**
+     * Set images
+     *
+     * @param boolean $images
+     * @return Taxon
+     */
+    public function setImages($images)
+    {
+        $this->images = $images;
+        return $this;
+    }
+
+    /**
+     * Get images
+     *
+     * @return boolean 
+     */
+    public function getImages()
+    {
+        return $this->images;
+    }
 }

@@ -1,4 +1,26 @@
-
+<script type="text/javascript">
+	$(document).ready(function () {
+    	var theme = 'mdv';
+        $("#ecorregion").jqxTooltip({ 
+        	content: '<img src="{{ base_url('public/images/ecorregiones.png') }}" />', 
+        	position: 'mouse', 
+        	name: 'ecorregiones', 
+        	theme: theme 
+        });
+        $("#ecosistema").jqxTooltip({ 
+	        content: '<img src="{{ base_url('public/images/ecosistemas.jpg') }}" />', 
+	        position: 'mouse', 
+	        name: 'ecosistemas', 
+	        theme: theme 
+       	});
+       	$("#sustrato").jqxTooltip({ 
+	        content: '<img src="{{ base_url('public/images/sustratos.jpg') }}" />', 
+	        position: 'mouse', 
+	        name: 'sustratos', 
+	        theme: theme 
+       	});
+    });
+</script>
 				<!-- Jerarquia -->
 				
 				<strong>Jerarquía Taxonómica</strong>
@@ -56,7 +78,7 @@
 					<!-- Ecorregion -->
 					{% if ecorregion != null %}
 						<br/>
-						<strong>Ecorregión:</strong>
+						<strong>Ecorregión:</strong><img id="ecorregion" src="{{ base_url('public/images/img16x16_about.png') }}" style="margin-left:5px;" />
 						<ul>
 							<li><span>{{ ecorregion }}</span></li>
 						</ul>
@@ -65,7 +87,7 @@
 					<!-- Ecosistema -->
 					{% if ecosistema != null %}
 						<br/>
-						<strong>Ecosistema:</strong>
+						<strong>Ecosistema:</strong><img id="ecosistema" src="{{ base_url('public/images/img16x16_about.png') }}" style="margin-left:5px;" />
 						<ul>
 							<li><span>{{ ecosistema }}</span></li>
 						</ul>
@@ -83,7 +105,7 @@
 					<!-- Sustrato -->
 					{% if sustratos != null %}
 						<br/>
-						<strong>Sustrato:</strong>
+						<strong>Sustrato:</strong><img id="sustrato" src="{{ base_url('public/images/img16x16_about.png') }}" style="margin-left:5px;" />
 						<ul>
 							<li><span>{{ sustratos }}</span></li>
 						</ul>

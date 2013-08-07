@@ -133,10 +133,10 @@
 	display: none;
 }
 
-.slides_container div.slide {
+.slide {
 	width: 620px;
-	height: 400px;
-	display: block;
+	overflow: hidden;
+	position: relative;
 }
 
 .caption {

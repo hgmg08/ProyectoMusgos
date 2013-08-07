@@ -1,4 +1,14 @@
-
+<script type="text/javascript">
+	$(document).ready(function () {
+    	var theme = 'mdv';
+        $("#vdw").jqxTooltip({ 
+        	content: '<img src="{{ base_url('public/images/vanderwijk.jpg') }}" />', 
+        	position: 'mouse', 
+        	name: 'vdw', 
+        	theme: theme 
+        });
+    });
+</script>
 						<!-- Distribución mundial -->
 						{% if taxon.getGlobalDistribution != null %}
 							<strong>Distribución en el mundo:</strong>
@@ -10,7 +20,7 @@
 						
 						<!-- Distribución VDW -->
 						{% if taxon.getVDWDistribution != null %}
-							<strong>Distribución por zonas de Van der Wijk:</strong>
+							<strong>Distribución por zonas de Van der Wijk:</strong><img id="vdw" src="{{ base_url('public/images/img16x16_about.png') }}" style="margin-left:5px;" />
 							<ul>
 								<li><span>{{ taxon.getVDWDistribution }}</span></li>
 							</ul>
