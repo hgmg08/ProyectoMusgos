@@ -351,6 +351,18 @@ class Taxon extends \entities\Taxon implements \Doctrine\ORM\Proxy\Proxy
         return parent::addTaxon($childrenHierarchy);
     }
 
+    public function setImages($images)
+    {
+        $this->__load();
+        return parent::setImages($images);
+    }
+
+    public function getImages()
+    {
+        $this->__load();
+        return parent::getImages();
+    }
+
     public function setCreationDate($creationDate)
     {
         $this->__load();
@@ -402,7 +414,7 @@ class Taxon extends \entities\Taxon implements \Doctrine\ORM\Proxy\Proxy
 
     public function __sleep()
     {
-        return array('__isInitialized__', 'creationDate', 'modificationDate', 'comments', 'status', 'name', 'acceptedName', 'rank', 'authorInitials', 'endemic', 'synonimClasification', 'globalDistribution', 'tropicalAndeanDistribution', 'VDWDistribution', 'reviewEditor', 'reviewDate', 'reviewComments', 'imageDir', 'id', 'children_hierarchy', 'children_synonyms', 'notas', 'parent_hierarchy', 'parent_synonyms', 'sustratos', 'ecorregiones', 'ecosistemas', 'cambios_climaticos', 'listas_rojas', 'localidades');
+        return array('__isInitialized__', 'creationDate', 'modificationDate', 'comments', 'status', 'name', 'acceptedName', 'rank', 'authorInitials', 'endemic', 'synonimClasification', 'globalDistribution', 'tropicalAndeanDistribution', 'VDWDistribution', 'reviewEditor', 'reviewDate', 'reviewComments', 'images', 'id', 'children_hierarchy', 'children_synonyms', 'notas', 'parent_hierarchy', 'parent_synonyms', 'sustratos', 'ecorregiones', 'ecosistemas', 'cambios_climaticos', 'listas_rojas', 'localidades');
     }
 
     public function __clone()

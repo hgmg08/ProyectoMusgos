@@ -15,6 +15,10 @@ class Home extends CI_Controller {
 
 	public function index()
 	{
+		$auth = $this->session->userdata('auth');
+		if ($auth) {
+			$this->twiggy->set('username', $this->session->userdata('user'));
+		}
 		$this->twiggy->set('slides', $this->getRandomImages());
 		$this->twiggy->set('rankCount', $this->getRankCount());
 		$this->twiggy->title('Musgos de Venezuela');
@@ -27,8 +31,8 @@ class Home extends CI_Controller {
 		$images = array();
 		$taxonCount = count($taxons);
 		
-		for ($i=0; $i < 8; $i++) {
-			$r = rand(0, $taxonCount); 
+		for ($i=0; $i < 5; $i++) {
+			$r = mt_rand(1, $taxonCount - 1);
 			$galleryDir = 'public/images/gallery/' . $taxons[$r]->getId() . '/';
 			$imgFiles = glob($galleryDir . "*.jpg");
 			foreach ($imgFiles as $img) {

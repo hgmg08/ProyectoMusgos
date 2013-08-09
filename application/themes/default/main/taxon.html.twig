@@ -38,28 +38,6 @@
 
 {% block content %}
 
-	<div class="grid_12 main_search">
-	
-		<script type="text/javascript">
-			$(document).ready(function () {
-				var theme = 'classic';
-				$('#input_search').jqxInput({
-					height: 42,
-					width: 490,
-				});
-			});
-		</script>
-		
-		<div class="search">
-			{% include 'main/search_block.html.twig' %}
-		</div>
-		
-		<div class="advanced_search">
-			<img id="advanced_button" />
-		</div>
-		
-	</div>
-
 	<div class="grid_12 page">
 		{% if (taxon.getRank == 6) or (taxon.getRank == 7) or (taxon.getRank == 8) %}
 			{% set species = true %} 

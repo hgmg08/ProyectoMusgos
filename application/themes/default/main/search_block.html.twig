@@ -5,13 +5,43 @@
 			height: 42,
 			width: 490
 		});
+		$('.advanced_search_toggle').hide();
+		$('#advanced_search_button').click(function() {
+			$('.advanced_search_toggle').slideToggle();
+	   		return false;
+    	});
 	});
 </script>
 
-<form class="main_search_field" action="{{ base_url('search') }}" method="GET">
-	<label>Búsqueda general:</label>
-	<div id="search_layer">
-		<input id="input_search" type="text" name="name" />
-		<button type="submit"><img src="{{ base_url('public/images/main_search/lupa.png') }}" alt="Buscar" /></button>
+<div class="grid_12 main_search">
+	<div class="search">
+		<form class="main_search_field" action="{{ base_url('search') }}" method="GET">
+			<label>Búsqueda general:</label>
+			<div id="search_layer">
+				<input id="input_search" type="text" name="name" />
+				<button type="submit"><img src="{{ base_url('public/images/main_search/lupa.png') }}" alt="Buscar" /></button>
+			</div>
+		</form>
 	</div>
-</form>
+			
+	<div class="advanced_search">
+		<div id="advanced_search_button">
+			<a href="#"></a>
+		</div>
+	</div>	
+</div>
+
+<div class="grid_12">
+	<div class="advanced_search_toggle">
+		<form id="frm_adv_search">
+			<div class="grid_4 alpha adv_search_grid">
+			</div>
+			
+			<div class="grid_4 adv_search_grid">
+			</div>
+			
+			<div class="grid_4 omega adv_search_grid">
+			</div>
+		</form>
+	</div>
+</div>

@@ -79,27 +79,7 @@
 {% block content %}
 
 	<div class="grid_12 main_search">
-		<script type="text/javascript">
-			$(document).ready(function () {
-				var theme = 'classic';
-				$('#input_search').jqxInput({
-					height: 42,
-					width: 490,
-				});
-			});
-		</script>
-		<div class="search">
-			<form class="main_search_field" action="{{ base_url('search') }}" method="GET">
-				<label>Busqueda general:</label>
-				<div id="search_layer">
-					<input id="input_search" type="text" name="name" />
-					<button type="submit"><img src="{{ base_url('public/images/main_search/lupa.png') }}" alt="Buscar" /></button>
-				</div>
-			</form>
-		</div>
-		<div class="advanced_search">
-			<img id="advanced_button" />
-		</div>
+		{% include 'main/search_block.html.twig' %}
 	</div>
 
 	<div class="grid_12 search_results">

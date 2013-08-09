@@ -12,29 +12,8 @@
 
 {% endblock %}
 
-{% block content %}
 
-	<div class="grid_12 main_search">
-	
-		<script type="text/javascript">
-			$(document).ready(function () {
-				var theme = 'classic';
-				$('#input_search').jqxInput({
-					height: 42,
-					width: 490,
-				});
-			});
-		</script>
-		
-		<div class="search">
-			{% include 'main/search_block.html.twig' %}
-		</div>
-		
-		<div class="advanced_search">
-			<img id="advanced_button" />
-		</div>
-		
-	</div>
+{% block content %}
 
 	<div class="grid_12 taxon_page">
 		<h1>¿Qué es MdV?</h1>

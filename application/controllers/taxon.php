@@ -95,6 +95,7 @@ class Taxon extends CI_Controller {
 					'Referencias' => $loc_pub
 				);
 			}
+			$loc_pub = NULL;
 		}
 		
 		//Estados

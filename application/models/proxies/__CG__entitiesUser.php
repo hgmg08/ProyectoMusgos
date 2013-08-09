@@ -111,6 +111,18 @@ class User extends \entities\User implements \Doctrine\ORM\Proxy\Proxy
         return parent::getRoles();
     }
 
+    public function setRole(\entities\Role $role = NULL)
+    {
+        $this->__load();
+        return parent::setRole($role);
+    }
+
+    public function getRole()
+    {
+        $this->__load();
+        return parent::getRole();
+    }
+
 
     public function __sleep()
     {

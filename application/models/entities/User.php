@@ -163,4 +163,31 @@ class User
     {
         return $this->roles;
     }
+    /**
+     * @var entities\Role
+     */
+    private $role;
+
+
+    /**
+     * Set role
+     *
+     * @param entities\Role $role
+     * @return User
+     */
+    public function setRole(\entities\Role $role = null)
+    {
+        $this->role = $role;
+        return $this;
+    }
+
+    /**
+     * Get role
+     *
+     * @return entities\Role 
+     */
+    public function getRole()
+    {
+        return $this->role;
+    }
 }

@@ -4,55 +4,35 @@
 
 	{{ parent() }}
 	
-	<link href="{{ base_url('public/css/jqwidgets/jqx.base.css') }}" rel="stylesheet" type="text/css" />
-	<link href="{{ base_url('public/css/jqwidgets/jqx.mdv.css') }}" rel="stylesheet" type="text/css" />
+	<link href="{{ base_url('public/css/jquery.bxslider.css') }}" rel="stylesheet" type="text/css" />
 	
 	<script src="{{ base_url('public/js/jqwidgets/jqxcore.js') }}"></script>
 	<script src="{{ base_url('public/js/jqwidgets/jqxinput.js') }}"></script>
-	<script src="{{ base_url('public/js/jquery.slides.min.js') }}"></script>
+	<script src="{{ base_url('public/js/jquery.bxslider.min.js') }}"></script>
+	<script src="{{ base_url('public/js/imgliquid.min.js') }}"></script>
+	
+	<script type="text/javascript">
+		$(function(){
+			$('.imgfill').imgLiquid();
+			$('.slider').bxSlider({
+  				mode: 'fade',
+  				captions: true,
+  				speed: 2000,
+  				autoStart: true,
+  				auto: true,
+  				adaptativeHeight: false
+			});
+    	});
+	</script>
 
 {% endblock %}
 
 {% block content %}
-
-	<script type="text/javascript">
-		$(function(){
-			$("#slides").slidesjs({
-	        	width: 620,
-	        	height: 400,
-	        	pagination: {
-      				active: false
-      			},
-	        	play: {
-      				active: false,
-      				effect: "fade",
-				    interval: 8000,
-				    auto: true
-				},
-				navigation: {
-					active: false
-				}
-	      	});
-    	});
-	</script>
-
-	<div class="grid_12 main_search">
-		
-		<div class="search">
-			{% include 'main/search_block.html.twig' %}
-		</div>
-		
-		<div class="advanced_search">
-			<img id="advanced_button" />
-		</div>
-	</div>
 	
 	<div class="grid_8 destacados">
-		<div id="slides">
+		<div class="slider">
 			{% for slide in slides %}
-				<div class="slide">
-					<a href="{{ base_url('taxon') }}/{{ slide.id }}"><img src="{{ slide.img }}" title="{{ slide.caption }}" /></a>
-				</div>
+				<div class="imgfill"><a href="{{ base_url('taxon') }}/{{ slide.id }}"><img src="{{ slide.img }}" title="{{ slide.caption }}" /></a></div>
 			{% endfor %}
 		</div>
 	</div>
