@@ -52,79 +52,98 @@
 			{{ taxon.getAuthorInitials }}
 		</h2>
 		<br/>
-		<div id="taxonTabs">
-			<ul>
-				<li>Detalles</li>
+		
+		{% if taxon.getSynonimClasification == null %}
+			<div id="taxonTabs">
+				<ul>
+					<li>Detalles</li>
+					{% if species %}
+						{% if sinonimos %}
+							<li>Sinónimos</li>
+						{% endif %}
+						{% if estados %}
+							<li>Distribución nacional</li>
+						{% endif %}
+						{% if taxon.getGlobalDistribution != null or taxon.getVDWDistribution != null %}
+							<li>Distribución mundial</li>
+						{% endif %}
+						{% if publications %}
+							<li>Publicaciones</li>
+						{% endif %}
+						{% if locations %}
+							<li>Especímenes</li>
+						{% endif %}
+						{% if gallery %}
+							<li>Imágenes</li>
+						{% endif %}
+					{% endif %}
+				</ul>
+				
+				<!-- Detalles -->
+				<div id="TaxonPage">
+					{% include 'main/Taxon/taxon_detalles.html.twig' %}
+				</div>
+				
 				{% if species %}
 					{% if sinonimos %}
-						<li>Sinónimos</li>
+						<div id="TaxonPage">
+							{% include 'main/Taxon/taxon_sinonimos.html.twig' %}
+						</div>
 					{% endif %}
+					
 					{% if estados %}
-						<li>Distribución nacional</li>
+						<div id="TaxonPage">
+							{% include 'main/Taxon/taxon_distribucion_nacional.html.twig' %}
+						</div>
 					{% endif %}
-					{% if taxon.getGlobalDistribution != null or taxon.getVDWDistribution != null %}
-						<li>Distribución mundial</li>
+					
+					<!-- Distribucion mundial -->
+					{% if taxon.getGlobalDistribution or taxon.getVDWDistribution %}
+						<div id="TaxonPage">
+							{% include 'main/Taxon/taxon_distribucion_mundial.html.twig' %}
+						</div>
 					{% endif %}
+					
+					<!-- Publicaciones -->
 					{% if publications %}
-						<li>Publicaciones</li>
+						<div id="TaxonPage">
+							{% include 'main/Taxon/taxon_publicaciones.html.twig' %}
+						</div>
 					{% endif %}
+					
+					<!-- Especimenes -->
 					{% if locations %}
-						<li>Especímenes</li>
+						<div id="LocationPage">
+							{% include 'main/Taxon/taxon_especimenes.html.twig' %}
+						</div>
 					{% endif %}
+					
+					<!-- Imagenes -->
 					{% if gallery %}
-						<li>Imágenes</li>
+						<div id="TaxonPage">
+							{% include 'main/Taxon/taxon_imagenes.html.twig' %}
+						</div>
 					{% endif %}
+					
 				{% endif %}
-			</ul>
-			
-			<!-- Detalles -->
-			<div id="TaxonPage">
-				{% include 'main/Taxon/taxon_detalles.html.twig' %}
+			</div>
+		{% else %}
+			<div id="taxonTabs">
+				<ul>
+					<li>Detalles</li>
+				</ul>
+				
+				<div id="TaxonPage">
+				Nombre aceptado:
+				<a href="{{ base_url('taxon') }}/{{ parentSyno.getId }}">	
+					{% if parentSyno.getAcceptedName %}!{% endif %}<span class="taxon_name">{{ parentSyno.getName }}</span>
+					{{ parentSyno.getAuthorInitials }}
+				</a>
+			</div>
+				
 			</div>
 			
-			{% if species %}
-				{% if sinonimos %}
-					<div id="TaxonPage">
-						{% include 'main/Taxon/taxon_sinonimos.html.twig' %}
-					</div>
-				{% endif %}
-				
-				{% if estados %}
-					<div id="TaxonPage">
-						{% include 'main/Taxon/taxon_distribucion_nacional.html.twig' %}
-					</div>
-				{% endif %}
-				
-				<!-- Distribucion mundial -->
-				{% if taxon.getGlobalDistribution or taxon.getVDWDistribution %}
-					<div id="TaxonPage">
-						{% include 'main/Taxon/taxon_distribucion_mundial.html.twig' %}
-					</div>
-				{% endif %}
-				
-				<!-- Publicaciones -->
-				{% if publications %}
-					<div id="TaxonPage">
-						{% include 'main/Taxon/taxon_publicaciones.html.twig' %}
-					</div>
-				{% endif %}
-				
-				<!-- Especimenes -->
-				{% if locations %}
-					<div id="LocationPage">
-						{% include 'main/Taxon/taxon_especimenes.html.twig' %}
-					</div>
-				{% endif %}
-				
-				<!-- Imagenes -->
-				{% if gallery %}
-					<div id="TaxonPage">
-						{% include 'main/Taxon/taxon_imagenes.html.twig' %}
-					</div>
-				{% endif %}
-				
-			{% endif %}
-		</div>
+		{% endif %}
 	</div>
 
 {% endblock %}

@@ -41,7 +41,7 @@
 				
 					<!-- Autor -->
 					<br/>
-					{% if taxon.getAuthorInitials != null %}
+					{% if taxon.getAuthorInitials %}
 						<strong>Autor:</strong>
 						<ul>
 							<li><span>{{ taxon.getAuthorInitials }}</span></li>
@@ -49,19 +49,19 @@
 					{% endif %}
 					
 					<!-- Revision -->
-					{% if taxon.getReviewComments != null %}
+					{% if taxon.getReviewComments %}
 						<br/>
 						<strong>Aceptado por:</strong>
 						<ul>
 							<li><span>{{ taxon.getReviewComments }}</span></li>
 								<ul id="reviewAuthor">
-									<li>Revisado por: {{ taxon.getReviewEditor }} {{ taxon.getReviewDate|date('d/m/Y') }}</li>
+									<li><span>Revisado por: {{ taxon.getReviewEditor }} {{ taxon.getReviewDate|date('d/m/Y') }}<span></li>
 								</ul>
 						</ul>
 					{% endif %}
 
 					<!-- Endemica -->
-					{% if endemic != null %}
+					{% if endemic %}
 						<br/>
 						<strong>Endémica:</strong>
 						<ul>
@@ -70,7 +70,7 @@
 					{% endif %}
 					
 					<!-- Basionimo -->
-					{% if basionimo != null %}
+					{% if basionimo %}
 						<br/>
 						<strong>Basiónimo:</strong>
 						<ul>
@@ -79,7 +79,7 @@
 					{% endif %}
 					
 					<!-- Ecorregion -->
-					{% if ecorregion != null %}
+					{% if ecorregion %}
 						<br/>
 						<strong>Ecorregión:</strong><img id="ecorregion" src="{{ base_url('public/images/img12x12_about.png') }}" style="margin-left:5px;" />
 						<ul>
@@ -88,7 +88,7 @@
 					{% endif %}
 					
 					<!-- Ecosistema -->
-					{% if ecosistema != null %}
+					{% if ecosistema %}
 						<br/>
 						<strong>Ecosistema:</strong><img id="ecosistema" src="{{ base_url('public/images/img12x12_about.png') }}" style="margin-left:5px;" />
 						<ul>
@@ -97,7 +97,7 @@
 					{% endif %}
 					
 					<!-- Habitat -->
-					{% if habitat != null %}
+					{% if habitat %}
 						<br/>
 						<strong>Hábitat:</strong>
 						<ul>
@@ -106,7 +106,7 @@
 					{% endif %}
 					
 					<!-- Sustrato -->
-					{% if sustratos != null %}
+					{% if sustratos %}
 						<br/>
 						<strong>Sustrato:</strong><img id="sustrato" src="{{ base_url('public/images/img12x12_about.png') }}" style="margin-left:5px;" />
 						<ul>
@@ -115,25 +115,34 @@
 					{% endif %}
 					
 					<!-- Lista Roja -->
-					{% if listaRoja != null %}
+					{% if listaRoja %}
 						<br/>
 						<strong>Lista roja:</strong>
 						<ul>
 							{% for lista_r in listaRoja %}
-								<li><span>{{ lista_r.getCriterionIUCN }} {{ lista_r.getCategory }} {{ lista_r.getCountry }} 
+								<li><span>{{ lista_r.getCategory }} {{ lista_r.getCriterionIUCN }} {{ lista_r.getCountry }} 
 									{{ lista_r.getAuthor }}</span></li>
 							{% endfor %}
 						</ul>
 					{% endif %}
 					
 					<!-- Cambio Climatico -->
-					{% if cambioClimatico != null %}
+					{% if cambioClimatico %}
 						<br/>
 						<strong>Indicador de cambio climático:</strong>
 						<ul>
 							{% for cambio_c in cambioClimatico %}
 								<li><span>{{ cambio_c.getCriterion }} {{ cambio_c.getAuthor }}</span></li>
 							{% endfor %}
+						</ul>
+					{% endif %}
+					
+					<!-- Comentarios -->
+					{% if taxon.getComments %}
+						<br/>
+						<strong>Comentarios:</strong>
+						<ul>
+							<li><span>{{ taxon.getComments }}</span></li>
 						</ul>
 					{% endif %}
 					

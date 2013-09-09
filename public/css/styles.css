@@ -394,6 +394,10 @@ table#footer_nav a:hover{
 	list-style: none;
 }
 
+#reviewAuthor li span {
+	list-style: #000000;
+}
+
 #LocationPage {
 	margin-top: 10px;
 	min-height: 200px;

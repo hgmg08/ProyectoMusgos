@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 06-08-2013 a las 23:30:42
+-- Tiempo de generación: 09-09-2013 a las 13:49:34
 -- Versión del servidor: 5.1.67-log
 -- Versión de PHP: 5.3.9-pl0-gentoo
 
@@ -202,7 +202,7 @@ INSERT INTO `lista_roja` (`id`, `criterio_iucn`, `categoria`, `pais`, `autor`) V
 (3, 'D2', 'VU', 'Colombia', 'Linares & Uribe 2002'),
 (4, 'D2', 'VU', 'Venezuela', 'León et al. 2013b'),
 (5, 'A1c B2a', 'EN', 'Colombia', 'Linares & Uribe 2002'),
-(6, 'A1c B2a', 'EN', 'Venezuela', 'Linares & Uribe 2002'),
+(6, 'D1', 'EN', 'Venezuela', 'León et al. 2013b'),
 (7, 'A3c', 'EN', 'Venezuela', 'León et al. 2013a'),
 (8, 'D2', 'VU', 'Colombia', 'Linares & Uribe 2002'),
 (9, 'D2', 'VU', 'Colombia', 'Linares & Uribe 2002'),
@@ -10070,15 +10070,15 @@ INSERT INTO `taxon` (`id`, `parent_hierarchy_id`, `parent_synonyms_id`, `fecha_c
 (47, 46, NULL, '2013-04-20 02:39:54', NULL, NULL, 2, 'Anacolia', NULL, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (48, 47, NULL, '2013-04-20 02:39:54', NULL, NULL, 2, 'Anacolia intertexta', 0, 6, '(Besch.) Paris', 0, NULL, NULL, NULL, 'Am 2, Am 4, Am 6.', NULL, NULL, NULL, NULL),
 (49, 47, NULL, '2013-04-20 02:39:54', NULL, NULL, 2, 'Anacolia laevisphaera', 1, 6, '(Taylor) Flowers', 0, NULL, 'Argentina, Bolivia, Chile, Colombia, Costa Rica, Ecuador, Guatemala, México, Perú, Tanzania, Estados Unidos, Venezuela', NULL, NULL, NULL, NULL, NULL, 1),
-(50, 47, NULL, '2013-04-20 02:39:54', NULL, NULL, 2, 'Anacolia laevisphaera var. laevisphaera', 0, 8, '', 0, NULL, NULL, NULL, 'Am 1, Am 2, Am 4, Am 6, Afr 2, As 3.', NULL, NULL, NULL, NULL),
+(50, 49, NULL, '2013-04-20 02:39:54', NULL, NULL, 2, 'Anacolia laevisphaera var. laevisphaera', 0, 8, '', 0, NULL, NULL, NULL, 'Am 1, Am 2, Am 4, Am 6, Afr 2, As 3.', NULL, NULL, NULL, NULL),
 (51, 46, NULL, '2013-04-20 02:39:54', NULL, NULL, 2, 'Bartramia', NULL, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (52, 51, NULL, '2013-04-20 02:39:54', NULL, NULL, 2, 'Bartramia angustifolia', 1, 6, 'Mitt.', 0, NULL, NULL, NULL, 'Am 2, Am 3, Am 4.', NULL, NULL, NULL, 1),
 (53, 51, NULL, '2013-04-20 02:39:55', NULL, 'En Pittier 1936 Bartramia flavicans Mitt.', 2, 'Bartramia brevifolia', 1, 6, 'Brid.', 0, NULL, 'Venezuela,  Colombia,  Perú,  Bolivia,  Ecuador', NULL, 'Am 4, Afr 4.', NULL, NULL, NULL, NULL),
 (54, 51, NULL, '2013-04-20 02:39:55', NULL, NULL, 2, 'Bartramia humilis', 1, 6, 'Mitt.', 0, NULL, 'Venezuela,  Ecuador,  Perú,  Bolivia', NULL, 'Am 4', NULL, NULL, NULL, NULL),
 (55, 51, NULL, '2013-04-20 02:39:55', NULL, NULL, 2, 'Bartramia longifolia', 1, 6, 'Hook', 0, NULL, NULL, NULL, 'Am 2, Am 3, Am 4.', NULL, NULL, NULL, NULL),
 (56, 51, NULL, '2013-04-20 02:39:55', NULL, NULL, 2, 'Bartramia mathewsii', 1, 6, 'Mitt.', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(57, 51, NULL, '2013-04-20 02:39:55', NULL, NULL, 2, 'Bartramia mathewsii subsp. mathewsii', 0, 7, '', 0, NULL, 'Venezuela,  Colombia,  Ecuador,  Perú y Bolivia', 'Venezuela, Colombia, Ecuador, Perú y Bolivia.', 'Am 4.', NULL, NULL, NULL, NULL),
-(58, 51, NULL, '2013-04-20 02:39:55', NULL, NULL, 2, 'Bartramia mathewsii subsp. synoica', 0, 7, 'Fransén', 1, NULL, 'Venezuela', 'Venezuela.', 'Am 4.', NULL, NULL, NULL, NULL),
+(57, 56, NULL, '2013-04-20 02:39:55', NULL, NULL, 2, 'Bartramia mathewsii subsp. mathewsii', 0, 7, '', 0, NULL, 'Venezuela,  Colombia,  Ecuador,  Perú y Bolivia', 'Venezuela, Colombia, Ecuador, Perú y Bolivia.', 'Am 4.', NULL, NULL, NULL, NULL),
+(58, 56, NULL, '2013-04-20 02:39:55', NULL, NULL, 2, 'Bartramia mathewsii subsp. synoica', 0, 7, 'Fransén', 1, NULL, 'Venezuela', 'Venezuela.', 'Am 4.', NULL, NULL, NULL, NULL),
 (59, 51, NULL, '2013-04-20 02:39:55', NULL, NULL, 2, 'Bartramia microstoma', 1, 6, 'Mitt.', 0, NULL, 'Venezuela, Guatemala, Bolivia', NULL, 'Am 1, Am 2.', NULL, NULL, NULL, NULL),
 (60, 51, NULL, '2013-04-20 02:39:56', NULL, NULL, 2, 'Bartramia potosica', 1, 6, 'Mont.', 0, NULL, NULL, NULL, 'Am 1, Am 2, Am 3, Am 4, Am 6.', NULL, NULL, NULL, NULL),
 (61, 51, NULL, '2013-04-20 02:39:56', NULL, NULL, 2, 'Bartramia strumosa', 1, 6, '(Hampe) Mitt', 0, NULL, NULL, NULL, 'Am 2, Am 4.', NULL, NULL, NULL, NULL),
@@ -12282,6 +12282,13 @@ CREATE TABLE IF NOT EXISTS `taxon_ecosistema` (
 --
 
 TRUNCATE TABLE `taxon_ecosistema`;
+--
+-- Volcado de datos para la tabla `taxon_ecosistema`
+--
+
+INSERT INTO `taxon_ecosistema` (`taxon_id`, `ecosistema_id`) VALUES
+(199, 14);
+
 -- --------------------------------------------------------
 
 --
@@ -18202,9 +18209,11 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `password` varchar(255) NOT NULL,
   `nombre` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
+  `role_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_2265B05DF85E0677` (`username`),
-  UNIQUE KEY `UNIQ_2265B05DE7927C74` (`email`)
+  UNIQUE KEY `UNIQ_2265B05DE7927C74` (`email`),
+  KEY `IDX_2265B05DD60322AC` (`role_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
@@ -18216,29 +18225,9 @@ TRUNCATE TABLE `usuario`;
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`id`, `username`, `password`, `nombre`, `email`) VALUES
-(1, 'admin', 'b1b3773a05c0ed0176787a4f1574ff0075f7521e', 'admin', 'admin@admin.com');
+INSERT INTO `usuario` (`id`, `username`, `password`, `nombre`, `email`, `role_id`) VALUES
+(1, 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'admin', 'admin@admin.com', 1);
 
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `usuario_rol`
---
-
-DROP TABLE IF EXISTS `usuario_rol`;
-CREATE TABLE IF NOT EXISTS `usuario_rol` (
-  `usuario_id` int(11) NOT NULL,
-  `rol_id` int(11) NOT NULL,
-  PRIMARY KEY (`usuario_id`,`rol_id`),
-  KEY `IDX_72EDD1A4DB38439E` (`usuario_id`),
-  KEY `IDX_72EDD1A44BAB96C` (`rol_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Truncar tablas antes de insertar `usuario_rol`
---
-
-TRUNCATE TABLE `usuario_rol`;
 --
 -- Restricciones para tablas volcadas
 --
@@ -18279,8 +18268,8 @@ ALTER TABLE `publicacion_localidad`
 -- Filtros para la tabla `rol_operacion`
 --
 ALTER TABLE `rol_operacion`
-  ADD CONSTRAINT `FK_AF8D78EBE6D597C3` FOREIGN KEY (`operacion_id`) REFERENCES `operacion` (`id`),
-  ADD CONSTRAINT `FK_AF8D78EB4BAB96C` FOREIGN KEY (`rol_id`) REFERENCES `rol` (`id`);
+  ADD CONSTRAINT `FK_AF8D78EB4BAB96C` FOREIGN KEY (`rol_id`) REFERENCES `rol` (`id`),
+  ADD CONSTRAINT `FK_AF8D78EBE6D597C3` FOREIGN KEY (`operacion_id`) REFERENCES `operacion` (`id`);
 
 --
 -- Filtros para la tabla `sustrato`
@@ -18338,11 +18327,10 @@ ALTER TABLE `taxon_sustrato`
   ADD CONSTRAINT `FK_71A43076DE13F470` FOREIGN KEY (`taxon_id`) REFERENCES `taxon` (`id`);
 
 --
--- Filtros para la tabla `usuario_rol`
+-- Filtros para la tabla `usuario`
 --
-ALTER TABLE `usuario_rol`
-  ADD CONSTRAINT `FK_72EDD1A44BAB96C` FOREIGN KEY (`rol_id`) REFERENCES `rol` (`id`),
-  ADD CONSTRAINT `FK_72EDD1A4DB38439E` FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`id`);
+ALTER TABLE `usuario`
+  ADD CONSTRAINT `FK_2265B05DD60322AC` FOREIGN KEY (`role_id`) REFERENCES `rol` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

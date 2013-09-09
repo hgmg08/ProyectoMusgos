@@ -157,7 +157,7 @@ class Taxon extends CI_Controller {
 		//Ecosistema
 		$ecos = $taxon->getEcosistemas();
 		foreach ($ecos as $es) {
-			$ecosis[] = $es->getName();
+			$ecosis[] = $es->getParent()->getName() . " " .$es->getName();
 		}
 		$ecosistema = implode(", ", $ecosis);
 		
@@ -208,6 +208,7 @@ class Taxon extends CI_Controller {
 
 		//Envio de variables a interfaz
 		$this->twiggy->set('taxon', $taxon);
+		$this->twiggy->set('parentSyno', $taxon->getParentSynonyms());
 		$this->twiggy->set('rank', $this->fill_rank());
 		$this->twiggy->set('endemic', $endemica);
 		$this->twiggy->set('locations', json_encode($locations));

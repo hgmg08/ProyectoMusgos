@@ -34,9 +34,14 @@ class User
      */
     private $id;
 
+    /**
+     * @var \Doctrine\Common\Collections\ArrayCollection
+     */
+    private $roles;
 
     public function __construct()
     {
+        $this->roles = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
     /**
@@ -137,6 +142,27 @@ class User
         return $this->id;
     }
 
+    /**
+     * Add roles
+     *
+     * @param entities\Role $roles
+     * @return User
+     */
+    public function addRole(\entities\Role $roles)
+    {
+        $this->roles[] = $roles;
+        return $this;
+    }
+
+    /**
+     * Get roles
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getRoles()
+    {
+        return $this->roles;
+    }
     /**
      * @var entities\Role
      */

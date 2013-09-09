@@ -11,7 +11,7 @@
 	<field name="description" column="descripcion" type="string" />
 	
 	<!-- Relacion con Usuario -->
-    <many-to-many field="users" target-entity="User" mapped-by="roles" />
+    <one-to-many field="users" target-entity="User" mapped-by="role" />
 	
 	<!-- Relacion con Operacion -->
 	<many-to-many field="operations" target-entity="Operation" inversed-by="roles">
