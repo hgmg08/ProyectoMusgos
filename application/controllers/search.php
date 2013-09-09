@@ -28,12 +28,9 @@ class Search extends CI_Controller {
 
 	//Busqueda general
 	private function general_search($taxon_name)
-	{
-		$result = new entities\Taxon;
-		
+	{		
 		//Busqueda aproximada
 		$result = $this->em->getRepository("entities\Taxon")->searchTaxonName($taxon_name);
-		
 		$taxons = array();
 		
 		foreach ($result as $r) {

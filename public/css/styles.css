@@ -422,3 +422,19 @@ table#footer_nav a:hover{
 	clear: both;
 }
 
+/*
+ * Admin
+ */
+
+.footer_admin {
+	margin-top: 20px;
+	height: 30px;
+}
+
+#tax_grid_title {
+	width: inherit;
+	height: 20px;
+	font-size: 18px;
+	line-height: 20px;
+	margin: 10px 0 20px;
+}

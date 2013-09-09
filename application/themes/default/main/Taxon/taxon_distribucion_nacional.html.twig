@@ -3,7 +3,13 @@
 	<script type="text/javascript">
         $(document).ready(function () {
             var theme = 'mdv';
-            $("#estados").jqxTooltip({ content: '<img src="{{ base_url('public/images/estados.jpg') }}" />', position: 'mouse', name: 'estados', theme: theme });
+            $("#estados").jqxTooltip({ 
+            	content: '<img src="{{ base_url('public/images/estados.jpg') }}" />', 
+            	position: 'mouse', 
+            	name: 'estados', 
+            	theme: theme,
+            	autoHide: false 
+            });
         });
     </script>
     

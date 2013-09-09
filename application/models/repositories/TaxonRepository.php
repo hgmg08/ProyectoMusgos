@@ -15,9 +15,21 @@ use Doctrine\ORM\EntityRepository,
 class TaxonRepository extends EntityRepository
 {
 	/**
+	 * Obtener todos los taxones
+	 * @return Array de taxones 
+	 */
+	public function getAll()
+	{
+		$query = $this->_em->createQuery(
+			"SELECT t FROM entities\Taxon t"
+		);
+		return $query->getResult(Query::HYDRATE_ARRAY);
+	}
+	
+	/**
 	 * Busqueda por nombre del Taxon
 	 * @param $taxon_name = Nombre del taxon. $exact = Busqueda aproximada o exacta
-	 * @return Array de Taxones 
+	 * @return Array de taxones 
 	 */
 	public function searchTaxonName($taxon_name, $exact = FALSE)
 	{
@@ -38,6 +50,7 @@ class TaxonRepository extends EntityRepository
 	
 	/**
 	 * Obtener todos los taxones tengan imágenes
+	 * @return Array de objetos tipo taxon
 	 */
 	public function getTaxonWithImages()
 	{
@@ -51,6 +64,7 @@ class TaxonRepository extends EntityRepository
 	/**
 	 * Contar los taxones de un rank determinado
 	 * @param $rank = Rank del taxón
+	 * @return Cantidad de taxones del rank determinado
 	 */
 	public function rankCount($rank)
 	{

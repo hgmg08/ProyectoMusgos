@@ -3,13 +3,118 @@
 {% block head %}
 
 	{{ parent() }}
+	
+	<script src="{{ base_url('public/js/jqwidgets/jqxinput.js') }}"></script>
+	<script src="{{ base_url('public/js/jqwidgets/jqxbuttons.js') }}"></script>
+	<script src="{{ base_url('public/js/jqwidgets/jqxscrollbar.js') }}"></script>
+	<script src="{{ base_url('public/js/jqwidgets/jqxlistbox.js') }}"></script>
+	<script src="{{ base_url('public/js/jqwidgets/jqxdropdownlist.js') }}"></script>
+	<script src="{{ base_url('public/js/jqwidgets/jqxgrid.js') }}"></script>
+	<script src="{{ base_url('public/js/jqwidgets/jqxgrid.columnsresize.js') }}"></script>
+	<script src="{{ base_url('public/js/jqwidgets/jqxgrid.selection.js') }}"></script>
+	<script src="{{ base_url('public/js/jqwidgets/jqxgrid.pager.js') }}"></script>
+	<script src="{{ base_url('public/js/jqwidgets/jqxgrid.filter.js') }}"></script>
+	<script src="{{ base_url('public/js/jqwidgets/jqxgrid.sort.js') }}"></script>
+	<script src="{{ base_url('public/js/jqwidgets/jqxwindow.js') }}"></script>
+	<script src="{{ base_url('public/js/jqwidgets/jqxmenu.js') }}"></script>
+	<script src="{{ base_url('public/js/jqwidgets/jqxdata.js') }}"></script>
+	
+	<script type="text/javascript">
+		$(document).ready(function () {
+			var theme = 'mdv';
+			var data = {{ taxons }};
+			var source =
+			{
+			    datatype: "json",
+			    datafields: [
+					{ name: 'id', type: 'number' },
+					{ name: 'Name', type: 'string' },
+					{ name: 'Author', type: 'string' },
+					{ name: 'Rank', type: 'string' }
+				],
+				localdata: data,
+				pagesize: 20,
+				
+				addrow: function (rowid, rowdata, position, commit) {
+					
+				}, 
+				
+				deleterow: function (rowid, commit) { 
+					
+				},
+				
+				updaterow: function (rowid, rowdata, commit) {
+					
+				}
+			};
+			var dataAdapter = new $.jqx.dataAdapter(source);
+			var getLocalization = function () {
+				var localizationobj = {};
+				localizationobj.pagergotopagestring = "Ir a página:";
+			    localizationobj.pagershowrowsstring = "Mostrar filas:";
+			    localizationobj.pagerrangestring = " de ";
+			    localizationobj.pagernextbuttonstring = "Siguiente";
+			    localizationobj.pagerpreviousbuttonstring = "Anterior";
+			    localizationobj.filtershowrowstring = "Escoger:";
+			    localizationobj.sortascendingstring = "Ordenar ascendentemente";
+				localizationobj.sortdescendingstring = "Ordenar descendentemente";
+				localizationobj.sortremovestring = "Quitar ordenación";
+			    return localizationobj;
+			}
+			
+			$("#tax_grid").jqxGrid({
+				width: '100%',
+				height: 400,
+				source: dataAdapter,
+				theme: theme,
+				showstatusbar: true,
+				renderstatusbar: function (statusbar) {
+					var container = $("<div style='overflow: hidden; position: relative; margin: 5px;'></div>");
+                    var addButton = $("<div style='float: left; margin-left: 5px;'><img style='position: relative; margin-top: 1px;' src='{{ base_url('public/images/img16x16_new.png') }}'/><span style='margin-left: 4px; position: relative; top: 2px;'>Nuevo</span></div>");
+                    var editButton = $("<div style='float: left; margin-left: 5px;'><img style='position: relative; margin-top: 1px;' src='{{ base_url('public/images/img16x16_edit.png') }}'/><span style='margin-left: 4px; position: relative; top: 2px;'>Editar</span></div>");
+                    var deleteButton = $("<div style='float: left; margin-left: 5px;'><img style='position: relative; margin-top: 1px;' src='{{ base_url('public/images/img16x16_delete.png') }}'/><span style='margin-left: 4px; position: relative; top: 2px;'>Eliminar</span></div>");
+                    container.append(addButton);
+                    container.append(editButton);
+                    container.append(deleteButton);
+                    statusbar.append(container);
+                    addButton.jqxButton({ theme: theme, width: 70, height: 20 });
+                    editButton.jqxButton({ theme: theme, width: 70, height: 20 });
+                    deleteButton.jqxButton({ theme: theme, width: 80, height: 20 });
+                    addButton.bind('click', function () {
+                    	$("#taxWindow").jqxWindow('open');
+                    });
+				},
+				enablebrowserselection: true,
+				columnsresize: true,
+				showfilterrow: true,
+                filterable: true,
+                sortable: true,
+			    localization: getLocalization(),
+			    pageable: true,
+			    columns: [
+			    	{ text: 'Id', datafield: 'id', width: '5%', filtertype: 'textbox' },
+			        { text: 'Nombre', datafield: 'Name', filtertype: 'textbox' },
+			        { text: 'Autor', datafield: 'Author', filtertype: 'textbox' },
+			        { text: 'Tipo', datafield: 'Rank', filtertype: 'list' }
+			    ]
+			});
+		});
+	</script>
 
 {% endblock %}
 
 {% block content %}
 
+	<div id="taxWindow" caption="Tax">
+	</div>
+
 	<div class="grid_12">
-		grid
+		<div id="tax_grid_title">
+			Administración de taxones
+		</div>
+		
+		<div id="tax_grid">
+		</div>
 	</div>
 
 {% endblock %}	

@@ -6,6 +6,8 @@
 	{% block head %}
 		<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
 		
+		<link href="{{ base_url('public/images/favicon.ico') }}" rel="icon" type="image/x-icon" />
+		
 		<link href="{{ base_url('public/css/960_12_col.css') }}" rel="stylesheet" type="text/css" />
 		<link href="{{ base_url('public/css/jqwidgets/jqx.base.css') }}" rel="stylesheet" type="text/css" />
 		<link href="{{ base_url('public/css/jqwidgets/jqx.mdv.css') }}" rel="stylesheet" type="text/css" />
@@ -15,7 +17,6 @@
 		
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 		<script src="{{ base_url('public/js/jqwidgets/jqxcore.js') }}"></script>
-		<script src="{{ base_url('public/js/jqwidgets/jqxmenu.js') }}"></script>
 		
 		<script type="text/javascript">
 			$(document).ready(function () {
@@ -52,9 +53,7 @@
 		
 		<div class="clear"></div>
 		
-		<br />
-		
-		<div class="grid_12 footer">
+		<div class="grid_12 footer_admin">
 			
 		</div>
 		
