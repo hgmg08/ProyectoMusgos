@@ -27,6 +27,7 @@ class Login extends CI_Controller {
 			if ($password == $user->getPassword()) {
 				//Crear sesion
 				$sessData = array(
+					'uid' => $user->getId(),
 					'user' => $user->getUsername(),
 					'auth' => true
 				);
@@ -35,11 +36,11 @@ class Login extends CI_Controller {
 				redirect('admin/home');
 			}
 			else {
-				redirect('');
+				var_dump($user);
 			}
 		}
 		else {
-			redirect('');
+			var_dump($user);
 		}
 	}
 	
