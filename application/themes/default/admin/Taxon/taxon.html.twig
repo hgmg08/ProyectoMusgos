@@ -35,17 +35,10 @@
 				localdata: data,
 				pagesize: 20,
 				
-				addrow: function (rowid, rowdata, position, commit) {
-					
-				}, 
-				
 				deleterow: function (rowid, commit) { 
 					
 				},
 				
-				updaterow: function (rowid, rowdata, commit) {
-					
-				}
 			};
 			var dataAdapter = new $.jqx.dataAdapter(source);
 			var getLocalization = function () {
@@ -81,7 +74,7 @@
                     editButton.jqxButton({ theme: theme, width: 70, height: 20 });
                     deleteButton.jqxButton({ theme: theme, width: 80, height: 20 });
                     addButton.bind('click', function () {
-                    	$("#taxWindow").jqxWindow('open');
+                    	window.location = {{ base_url('admin/home') }};
                     });
 				},
 				enablebrowserselection: true,
@@ -104,9 +97,6 @@
 {% endblock %}
 
 {% block content %}
-
-	<div id="taxWindow" caption="Tax">
-	</div>
 
 	<div class="grid_12">
 		<div id="tax_grid_title">
