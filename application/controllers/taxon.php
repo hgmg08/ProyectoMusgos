@@ -238,6 +238,7 @@ class Taxon extends CI_Controller {
 		$rank[3] = 'Orden';
 		$rank[4] = 'Familia';
 		$rank[5] = 'Género';
+		$rank[6] = 'Especie';
 		
 		return $rank;
 	}
