@@ -17,8 +17,10 @@ class Home extends CI_Controller {
 	{
 		$auth = $this->session->userdata('auth');
 		if ($auth) {
-			$this->twiggy->set('username', $this->session->userdata('user'));
-			$this->twiggy->set('role', $this->session->userdata('role'));
+			$user= $this->em->find('entities\User', $this->session->userdata('uid'));
+			
+			$this->twiggy->set('role', $user->getRole()->getName());
+			$this->twiggy->set('username', $user->getUsername());
 			$this->twiggy->title('Musgos de Venezuela | Panel administración');
 			$this->twiggy->template('admin/index')->display();	
 		}

@@ -442,3 +442,11 @@ table#footer_nav a:hover{
 	line-height: 20px;
 	margin: 10px 0 20px;
 }
+
+/*
+ * Login
+ */
+
+#windowLogin {
+	visibility: hidden;
+}

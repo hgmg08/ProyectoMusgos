@@ -135,18 +135,6 @@ class Publicacion extends \entities\Publicacion implements \Doctrine\ORM\Proxy\P
         return parent::getId();
     }
 
-    public function addTaxon(\entities\Taxon $taxons)
-    {
-        $this->__load();
-        return parent::addTaxon($taxons);
-    }
-
-    public function getTaxons()
-    {
-        $this->__load();
-        return parent::getTaxons();
-    }
-
     public function addLocalidad(\entities\Localidad $localidades)
     {
         $this->__load();

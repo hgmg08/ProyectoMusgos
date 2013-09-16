@@ -99,18 +99,6 @@ class User extends \entities\User implements \Doctrine\ORM\Proxy\Proxy
         return parent::getId();
     }
 
-    public function addRole(\entities\Role $roles)
-    {
-        $this->__load();
-        return parent::addRole($roles);
-    }
-
-    public function getRoles()
-    {
-        $this->__load();
-        return parent::getRoles();
-    }
-
     public function setRole(\entities\Role $role = NULL)
     {
         $this->__load();
@@ -126,7 +114,7 @@ class User extends \entities\User implements \Doctrine\ORM\Proxy\Proxy
 
     public function __sleep()
     {
-        return array('__isInitialized__', 'username', 'password', 'name', 'email', 'id', 'roles');
+        return array('__isInitialized__', 'username', 'password', 'name', 'email', 'id', 'role');
     }
 
     public function __clone()

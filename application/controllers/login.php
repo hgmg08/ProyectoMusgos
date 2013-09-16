@@ -28,7 +28,6 @@ class Login extends CI_Controller {
 				//Crear sesion
 				$sessData = array(
 					'uid' => $user->getId(),
-					'user' => $user->getUsername(),
 					'auth' => true
 				);
 				

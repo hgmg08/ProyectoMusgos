@@ -6,7 +6,7 @@ $(document).ready(function() {
 
 <div id="thumbs">
 	{% for item in gallery %}
-		<a id="gallery" href="{{ base_url(item.img) }}" title="" data-lightbox="taxon"><img src="{{ base_url(item.thumb) }}" /></a>
+		<a id="gallery" href="{{ base_url(item.img) }}" title="1" data-lightbox="taxon"><img src="{{ base_url(item.thumb) }}" /></a>
 	{% endfor %}
 </div>
 

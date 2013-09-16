@@ -35,15 +35,7 @@
 				localdata: data,
 				pagesize: 20,
 				
-				addrow: function (rowid, rowdata, position, commit) {
-					
-				}, 
-				
 				deleterow: function (rowid, commit) { 
-					
-				},
-				
-				updaterow: function (rowid, rowdata, commit) {
 					
 				}
 			};
@@ -67,23 +59,6 @@
 				height: 400,
 				source: dataAdapter,
 				theme: theme,
-				showstatusbar: true,
-				renderstatusbar: function (statusbar) {
-					var container = $("<div style='overflow: hidden; position: relative; margin: 5px;'></div>");
-                    var addButton = $("<div style='float: left; margin-left: 5px;'><img style='position: relative; margin-top: 1px;' src='{{ base_url('public/images/img16x16_new.png') }}'/><span style='margin-left: 4px; position: relative; top: 2px;'>Nuevo</span></div>");
-                    var editButton = $("<div style='float: left; margin-left: 5px;'><img style='position: relative; margin-top: 1px;' src='{{ base_url('public/images/img16x16_edit.png') }}'/><span style='margin-left: 4px; position: relative; top: 2px;'>Editar</span></div>");
-                    var deleteButton = $("<div style='float: left; margin-left: 5px;'><img style='position: relative; margin-top: 1px;' src='{{ base_url('public/images/img16x16_delete.png') }}'/><span style='margin-left: 4px; position: relative; top: 2px;'>Eliminar</span></div>");
-                    container.append(addButton);
-                    container.append(editButton);
-                    container.append(deleteButton);
-                    statusbar.append(container);
-                    addButton.jqxButton({ theme: theme, width: 70, height: 20 });
-                    editButton.jqxButton({ theme: theme, width: 70, height: 20 });
-                    deleteButton.jqxButton({ theme: theme, width: 80, height: 20 });
-                    addButton.bind('click', function () {
-                    	$("#taxWindow").jqxWindow('open');
-                    });
-				},
 				enablebrowserselection: true,
 				columnsresize: true,
 				showfilterrow: true,

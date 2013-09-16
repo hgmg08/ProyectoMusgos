@@ -34,11 +34,12 @@ class User
      */
     private $id;
 
+    /**
+     * @var entities\Role
+     */
+    private $role;
 
-    public function __construct()
-    {
-    }
-    
+
     /**
      * Set username
      *
@@ -136,12 +137,6 @@ class User
     {
         return $this->id;
     }
-
-    /**
-     * @var entities\Role
-     */
-    private $role;
-
 
     /**
      * Set role

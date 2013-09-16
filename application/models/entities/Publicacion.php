@@ -52,16 +52,10 @@ class Publicacion
     /**
      * @var \Doctrine\Common\Collections\ArrayCollection
      */
-    private $taxons;
-
-    /**
-     * @var \Doctrine\Common\Collections\ArrayCollection
-     */
     private $localidades;
 
     public function __construct()
     {
-        $this->taxons = new \Doctrine\Common\Collections\ArrayCollection();
         $this->localidades = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
@@ -227,28 +221,6 @@ class Publicacion
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Add taxons
-     *
-     * @param entities\Taxon $taxons
-     * @return Publicacion
-     */
-    public function addTaxon(\entities\Taxon $taxons)
-    {
-        $this->taxons[] = $taxons;
-        return $this;
-    }
-
-    /**
-     * Get taxons
-     *
-     * @return Doctrine\Common\Collections\Collection 
-     */
-    public function getTaxons()
-    {
-        return $this->taxons;
     }
 
     /**

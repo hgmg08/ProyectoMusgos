@@ -70,9 +70,9 @@ class Taxon extends BaseInfo
     private $reviewComments;
 
     /**
-     * @var string $imageDir
+     * @var boolean $images
      */
-    private $imageDir;
+    private $images;
 
     /**
      * @var integer $id
@@ -412,25 +412,25 @@ class Taxon extends BaseInfo
     }
 
     /**
-     * Set imageDir
+     * Set images
      *
-     * @param string $imageDir
+     * @param boolean $images
      * @return Taxon
      */
-    public function setImageDir($imageDir)
+    public function setImages($images)
     {
-        $this->imageDir = $imageDir;
+        $this->images = $images;
         return $this;
     }
 
     /**
-     * Get imageDir
+     * Get images
      *
-     * @return string 
+     * @return boolean 
      */
-    public function getImageDir()
+    public function getImages()
     {
-        return $this->imageDir;
+        return $this->images;
     }
 
     /**
@@ -449,21 +449,9 @@ class Taxon extends BaseInfo
      * @param entities\Taxon $childrenHierarchy
      * @return Taxon
      */
-    public function setChildrenHierarchy(\entities\Taxon $childrenHierarchy)
+    public function addTaxon(\entities\Taxon $childrenHierarchy)
     {
         $this->children_hierarchy[] = $childrenHierarchy;
-        return $this;
-    }
-	
-	/**
-     * Add children_synonyms
-     *
-     * @param entities\Taxon $childrenSynonym
-     * @return Taxon
-     */
-    public function setChildrenSynonyms(\entities\Taxon $childrenSynonym)
-    {
-        $this->children_synonyms[] = $childrenSynonym;
         return $this;
     }
 
@@ -683,56 +671,5 @@ class Taxon extends BaseInfo
     public function getLocalidades()
     {
         return $this->localidades;
-    }
-
-    /**
-     * Add children_hierarchy
-     *
-     * @param entities\Taxon $childrenHierarchy
-     * @return Taxon
-     */
-    public function addSynonym(\entities\Taxon $childrenHierarchy)
-    {
-        $this->children_hierarchy[] = $childrenHierarchy;
-        return $this;
-    }
-
-    /**
-     * Add children_hierarchy
-     *
-     * @param entities\Taxon $childrenHierarchy
-     * @return Taxon
-     */
-    public function addTaxon(\entities\Taxon $childrenHierarchy)
-    {
-        $this->children_hierarchy[] = $childrenHierarchy;
-        return $this;
-    }
-    /**
-     * @var boolean $images
-     */
-    private $images;
-
-
-    /**
-     * Set images
-     *
-     * @param boolean $images
-     * @return Taxon
-     */
-    public function setImages($images)
-    {
-        $this->images = $images;
-        return $this;
-    }
-
-    /**
-     * Get images
-     *
-     * @return boolean 
-     */
-    public function getImages()
-    {
-        return $this->images;
     }
 }

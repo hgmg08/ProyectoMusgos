@@ -17,7 +17,10 @@ class Taxon extends CI_Controller {
 	{
 		$auth = $this->session->userdata('auth');
 		if ($auth) {
-			$this->twiggy->set('username', $this->session->userdata('user'));
+			$user= $this->em->find('entities\User', $this->session->userdata('uid'));
+			
+			$this->twiggy->set('role', $user->getRole()->getName());
+			$this->twiggy->set('username', $user->getUsername());
 			$this->twiggy->set('taxons', json_encode($this->populate_grid()));
 			
 			$this->twiggy->title('Musgos de Venezuela | Panel administración');

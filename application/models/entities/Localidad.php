@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * entities\Localidad
  */
-class Localidad
+class Localidad extends BaseInfo
 {
     /**
      * @var string $name
