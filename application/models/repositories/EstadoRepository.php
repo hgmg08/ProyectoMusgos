@@ -14,6 +14,19 @@ use Doctrine\ORM\EntityRepository,
  */
 class EstadoRepository extends EntityRepository
 {
+	
+	/**
+	 * Obtener todos los estados
+	 * @return Array de Estados
+	 */
+	 public function getAll()
+	 {
+	 	$query = $this->_em->createQuery(
+			"SELECT e FROM entities\Estado e"
+		);
+		return $query->getResult(Query::HYDRATE_ARRAY);
+	 }
+	
 	/**
 	 * Busqueda de estados de un taxon
 	 * @param $taxon_name = Nombre del taxon

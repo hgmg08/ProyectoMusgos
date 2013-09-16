@@ -1,5 +1,6 @@
 {% extends '_layouts/admin.html.twig' %}
 
+
 {% block head %}
 
 	{{ parent() }}
@@ -37,7 +38,12 @@
 				
 				deleterow: function (rowid, commit) { 
 					
+<<<<<<< HEAD
 				}
+=======
+				},
+				
+>>>>>>> 217c44c807cbc621e73169ff1119e5aaef21fa3a
 			};
 			var dataAdapter = new $.jqx.dataAdapter(source);
 			var getLocalization = function () {
@@ -59,6 +65,26 @@
 				height: 400,
 				source: dataAdapter,
 				theme: theme,
+<<<<<<< HEAD
+=======
+				showstatusbar: true,
+				renderstatusbar: function (statusbar) {
+					var container = $("<div style='overflow: hidden; position: relative; margin: 5px;'></div>");
+                    var addButton = $("<div style='float: left; margin-left: 5px;'><img style='position: relative; margin-top: 1px;' src='{{ base_url('public/images/img16x16_new.png') }}'/><span style='margin-left: 4px; position: relative; top: 2px;'>Nuevo</span></div>");
+                    var editButton = $("<div style='float: left; margin-left: 5px;'><img style='position: relative; margin-top: 1px;' src='{{ base_url('public/images/img16x16_edit.png') }}'/><span style='margin-left: 4px; position: relative; top: 2px;'>Editar</span></div>");
+                    var deleteButton = $("<div style='float: left; margin-left: 5px;'><img style='position: relative; margin-top: 1px;' src='{{ base_url('public/images/img16x16_delete.png') }}'/><span style='margin-left: 4px; position: relative; top: 2px;'>Eliminar</span></div>");
+                    container.append(addButton);
+                    container.append(editButton);
+                    container.append(deleteButton);
+                    statusbar.append(container);
+                    addButton.jqxButton({ theme: theme, width: 70, height: 20 });
+                    editButton.jqxButton({ theme: theme, width: 70, height: 20 });
+                    deleteButton.jqxButton({ theme: theme, width: 80, height: 20 });
+                    addButton.bind('click', function () {
+                    	window.location = {{ base_url('admin/home') }};
+                    });
+				},
+>>>>>>> 217c44c807cbc621e73169ff1119e5aaef21fa3a
 				enablebrowserselection: true,
 				columnsresize: true,
 				showfilterrow: true,
@@ -79,9 +105,6 @@
 {% endblock %}
 
 {% block content %}
-
-	<div id="taxWindow" caption="Tax">
-	</div>
 
 	<div class="grid_12">
 		<div id="tax_grid_title">
