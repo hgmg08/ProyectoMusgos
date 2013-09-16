@@ -37,13 +37,7 @@
 				pagesize: 20,
 				
 				deleterow: function (rowid, commit) { 
-					
-<<<<<<< HEAD
-				}
-=======
 				},
-				
->>>>>>> 217c44c807cbc621e73169ff1119e5aaef21fa3a
 			};
 			var dataAdapter = new $.jqx.dataAdapter(source);
 			var getLocalization = function () {
@@ -65,8 +59,6 @@
 				height: 400,
 				source: dataAdapter,
 				theme: theme,
-<<<<<<< HEAD
-=======
 				showstatusbar: true,
 				renderstatusbar: function (statusbar) {
 					var container = $("<div style='overflow: hidden; position: relative; margin: 5px;'></div>");
@@ -81,10 +73,9 @@
                     editButton.jqxButton({ theme: theme, width: 70, height: 20 });
                     deleteButton.jqxButton({ theme: theme, width: 80, height: 20 });
                     addButton.bind('click', function () {
-                    	window.location = {{ base_url('admin/home') }};
+                    	window.location = "{{ base_url('admin/home') }}";
                     });
 				},
->>>>>>> 217c44c807cbc621e73169ff1119e5aaef21fa3a
 				enablebrowserselection: true,
 				columnsresize: true,
 				showfilterrow: true,
