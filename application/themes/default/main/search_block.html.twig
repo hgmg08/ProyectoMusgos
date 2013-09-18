@@ -5,6 +5,127 @@
 			height: 42,
 			width: 490
 		});
+		$('#advSearchButton').jqxButton({
+			theme: theme,
+			height: 30,
+			width: 150
+		});
+		$('#adv_name').jqxInput({
+			height: 20,
+			width: 230
+		});
+		$('#adv_family').jqxInput({
+			height: 20,
+			width: 230
+		});
+		$('#adv_genre').jqxInput({
+			height: 20,
+			width: 230
+		});
+		$('#adv_species').jqxInput({
+			height: 20,
+			width: 230
+		});
+		$('#adv_author').jqxInput({
+			height: 20,
+			width: 230
+		});
+		$('#adv_publicacion').jqxInput({
+			height: 20,
+			width: 230
+		});
+		$('#adv_alt_min').jqxMaskedInput({
+			height: 20,
+			width: 60
+		});
+		$('#adv_alt_max').jqxMaskedInput({
+			height: 20,
+			width: 60
+		});
+		var sustratos = {{ sustratos }};
+        var sourceSustratos =
+        {
+        	datatype: "json",
+            datafields: [
+            	{ name: 'id' },
+            	{ name: 'name' }
+            ],
+            localdata: sustratos
+        };
+		var daSustratos = new $.jqx.dataAdapter(sourceSustratos);
+		$("#adv_habito").jqxDropDownList({
+			source: daSustratos, 
+			selectedIndex: -1, 
+			displayMember: 'name',
+			valueMember: 'id', 
+			width: 230, 
+			height: 20, 
+			theme: theme,
+			placeHolder: ''
+		});
+		var ecorregiones = {{ ecorregiones }};
+        var sourceEcorregiones =
+        {
+        	datatype: "json",
+            datafields: [
+            	{ name: 'id' },
+            	{ name: 'name' }
+            ],
+            localdata: ecorregiones
+        };
+		var daEcorregiones = new $.jqx.dataAdapter(sourceEcorregiones);
+		$("#adv_ecorregion").jqxDropDownList({
+			source: daEcorregiones, 
+			selectedIndex: -1, 
+			displayMember: 'name',
+			valueMember: 'id', 
+			width: 230, 
+			height: 20, 
+			theme: theme,
+			placeHolder: ''
+		});
+		var ecosistemas = {{ ecosistemas }};
+        var sourceEcosistemas =
+        {
+        	datatype: "json",
+            datafields: [
+            	{ name: 'id' },
+            	{ name: 'name' }
+            ],
+            localdata: ecosistemas
+        };
+		var daEcosistemas = new $.jqx.dataAdapter(sourceEcosistemas);
+		$("#adv_ecosistema").jqxDropDownList({
+			source: daEcosistemas, 
+			selectedIndex: -1, 
+			displayMember: 'name',
+			valueMember: 'id', 
+			width: 230, 
+			height: 20, 
+			theme: theme,
+			placeHolder: ''
+		});
+		var estados = {{ estados }};
+        var sourceEstados =
+        {
+        	datatype: "json",
+            datafields: [
+            	{ name: 'id' },
+            	{ name: 'name' }
+            ],
+            localdata: estados
+        };
+		var daEstados = new $.jqx.dataAdapter(sourceEstados);
+		$("#adv_estado").jqxDropDownList({
+			source: daEstados, 
+			selectedIndex: -1, 
+			displayMember: 'name',
+			valueMember: 'id', 
+			width: 230, 
+			height: 20, 
+			theme: theme,
+			placeHolder: ''
+		});
 		$('.advanced_search_toggle').hide();
 		$('#advanced_search_button').click(function() {
 			$('.advanced_search_toggle').slideToggle();
@@ -33,14 +154,38 @@
 
 <div class="grid_12">
 	<div class="advanced_search_toggle">
-		<form id="frm_adv_search">
+		<form id="frm_adv_search" action="" method="POST">
 			<div class="grid_4 alpha adv_search_grid">
+				<label>Nombre:</label>
+				<input id="adv_name" name="adv_name" />
+				<label>Familia:</label>
+				<input id="adv_family" name="adv_family" />
+				<label>Género:</label>
+				<input id="adv_genre" name="adv_genre" />
+				<label>Especie:</label>
+				<input id="adv_species" name="adv_species" />
 			</div>
 			
 			<div class="grid_4 adv_search_grid">
+				<label>Estado:</label>
+				<div id="adv_estado"></div>
+				<label>Hábito:</label>
+				<div id="adv_habito"></div>
+				<label>Ecorregión:</label>
+				<div id="adv_ecorregion"></div>
+				<label>Ecosistema:</label>
+				<div id="adv_ecosistema"></div>
 			</div>
 			
 			<div class="grid_4 omega adv_search_grid">
+				<label id="alt_range">Rango altitudinal:</label>
+				Min: <input id="adv_alt_min" name="adv_alt_min" />
+				Max: <input id="adv_alt_max" name="adv_alt_max" />
+				<label>Autor:</label>
+				<input placeholder="Nombre" id="adv_author" name="adv_author" />
+				<label>Publicación:</label>
+				<input placeholder="Título" id="adv_publicacion" name="publicacion" />
+				<input id="advSearchButton" value="Busqueda avanzada" type="submit" />
 			</div>
 		</form>
 	</div>

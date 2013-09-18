@@ -19,6 +19,7 @@ class Search extends CI_Controller {
 		$name = $this->input->get('name');
 		$results = $this->general_search($name);
 		
+		$this->twiggy->set('sustratos', $this->getAllSustratos());
 		$this->twiggy->set('results', json_encode($results));
 		$this->twiggy->set('search', $name);
 			
@@ -43,6 +44,12 @@ class Search extends CI_Controller {
 		}
 		
 		return $taxons;
+	}
+	
+	private function getAllSustratos()
+	{
+		$sust = $this->em->getRepository("entities\Sustrato")->getAll();
+		return json_encode($sust);
 	}
 }
    

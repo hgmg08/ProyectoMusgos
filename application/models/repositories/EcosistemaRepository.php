@@ -22,7 +22,9 @@ class EcosistemaRepository extends EntityRepository
 	 public function getAll()
 	 {
 	 	$query = $this->_em->createQuery(
-			"SELECT e FROM entities\Ecosistema e"
+			"SELECT e 
+			FROM entities\Ecosistema e
+			WHERE e.parent IS NULL"
 		);
 		return $query->getResult(Query::HYDRATE_ARRAY);
 	 }

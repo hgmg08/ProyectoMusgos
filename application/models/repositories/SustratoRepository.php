@@ -22,8 +22,10 @@ class SustratoRepository extends EntityRepository
 	{
 		$dql = "SELECT s
 				FROM entities\Sustrato s
-				WHERE s.parent != NULL";
+				WHERE s.parent IS NULL";
+		
 		$query = $this->_em->createQuery($dql);
+		//$query->setParameter('id', NULL);
 		
 		return $query->getResult(Query::HYDRATE_ARRAY);
 	}

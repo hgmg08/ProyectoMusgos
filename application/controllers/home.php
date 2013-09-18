@@ -19,10 +19,34 @@ class Home extends CI_Controller {
 		if ($auth) {
 			$this->twiggy->set('username', $this->session->userdata('user'));
 		}
+		$this->twiggy->set('sustratos', json_encode($this->em->getRepository("entities\Sustrato")->getAll()));
+		$this->twiggy->set('ecorregiones', json_encode($ecor = $this->em->getRepository("entities\Ecorregion")->getAll()));
+		$this->twiggy->set('ecosistemas', json_encode($this->em->getRepository("entities\Ecosistema")->getAll()));
+		$this->twiggy->set('estados', json_encode($this->em->getRepository("entities\Estado")->getAll()));
 		$this->twiggy->set('slides', $this->getRandomImages());
 		$this->twiggy->set('rankCount', $this->getRankCount());
 		$this->twiggy->title('Musgos de Venezuela');
 		$this->twiggy->template('main/index')->display();
+	}
+	
+	public function mdv() 
+	{
+		$this->twiggy->set('sustratos', $this->getAllSustratos());
+		$this->twiggy->title('Musgos de Venezuela')->append("¿Qué es MdV?");
+		$this->twiggy->template('main/mdv')->display();
+	}
+	
+	public function objectives()
+	{
+		$this->twiggy->set('sustratos', $this->getAllSustratos());
+		$this->twiggy->title('Musgos de Venezuela')->append("Objetivos");
+		$this->twiggy->template('main/mdv_objetivos')->display();
+	}
+	
+	public function about() {
+		$this->twiggy->set('sustratos', $this->getAllSustratos());
+		$this->twiggy->title('Musgos de Venezuela')->append("Acerca de");
+		$this->twiggy->template('main/about')->display();
 	}
 	
 	private function getRandomImages()

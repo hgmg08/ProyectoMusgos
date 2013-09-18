@@ -38,7 +38,10 @@
 |
 */
 
-$route['default_controller'] = "Home";
+$route['default_controller'] = "home";
+$route['mdv'] = "home/mdv";
+$route['mdv/objectives'] = "home/objectives";
+$route['about'] = "home/about";
 $route['404_override'] = '';
 
 
