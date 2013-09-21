@@ -10,19 +10,13 @@ class Home extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->helper('url');
+		$this->load->library('csvreader');
 		$this->em = $this->doctrine->em;
 	}
 
 	public function index()
 	{
-		$auth = $this->session->userdata('auth');
-		if ($auth) {
-			$this->twiggy->set('username', $this->session->userdata('user'));
-		}
-		$this->twiggy->set('sustratos', json_encode($this->em->getRepository("entities\Sustrato")->getAll()));
-		$this->twiggy->set('ecorregiones', json_encode($ecor = $this->em->getRepository("entities\Ecorregion")->getAll()));
-		$this->twiggy->set('ecosistemas', json_encode($this->em->getRepository("entities\Ecosistema")->getAll()));
-		$this->twiggy->set('estados', json_encode($this->em->getRepository("entities\Estado")->getAll()));
+		$this->setParametersToView();
 		$this->twiggy->set('slides', $this->getRandomImages());
 		$this->twiggy->set('rankCount', $this->getRankCount());
 		$this->twiggy->title('Musgos de Venezuela');
@@ -31,28 +25,20 @@ class Home extends CI_Controller {
 	
 	public function mdv() 
 	{
-		$this->twiggy->set('sustratos', json_encode($this->em->getRepository("entities\Sustrato")->getAll()));
-		$this->twiggy->set('ecorregiones', json_encode($ecor = $this->em->getRepository("entities\Ecorregion")->getAll()));
-		$this->twiggy->set('ecosistemas', json_encode($this->em->getRepository("entities\Ecosistema")->getAll()));
-		$this->twiggy->set('estados', json_encode($this->em->getRepository("entities\Estado")->getAll()));
+		$this->setParametersToView();
 		$this->twiggy->title('Musgos de Venezuela')->append("¿Qué es MdV?");
 		$this->twiggy->template('main/mdv')->display();
 	}
 	
 	public function objectives()
 	{
-		$this->twiggy->set('sustratos', json_encode($this->em->getRepository("entities\Sustrato")->getAll()));
-		$this->twiggy->set('ecorregiones', json_encode($ecor = $this->em->getRepository("entities\Ecorregion")->getAll()));
-		$this->twiggy->set('ecosistemas', json_encode($this->em->getRepository("entities\Ecosistema")->getAll()));
-		$this->twiggy->set('estados', json_encode($this->em->getRepository("entities\Estado")->getAll()));
+		$this->setParametersToView();
 		$this->twiggy->title('Musgos de Venezuela')->append("Objetivos");
 		$this->twiggy->template('main/mdv_objetivos')->display();
 	}
 	
 	public function about() {
-		$this->twiggy->set('sustratos', json_encode($this->em->getRepository("entities\Sustrato")->getAll()));
-		$this->twiggy->set('ecorregiones', json_encode($ecor = $this->em->getRepository("entities\Ecorregion")->getAll()));
-		$this->twiggy->set('ecosistemas', json_encode($this->em->getRepository("entities\Ecosistema")->getAll()));
+		$this->setParametersToView();
 		$this->twiggy->title('Musgos de Venezuela')->append("Acerca de");
 		$this->twiggy->template('main/about')->display();
 	}
@@ -67,11 +53,21 @@ class Home extends CI_Controller {
 			$r = mt_rand(1, $taxonCount - 1);
 			$galleryDir = 'public/images/gallery/' . $taxons[$r]->getId() . '/';
 			$imgFiles = glob($galleryDir . "*.jpg");
-			foreach ($imgFiles as $img) {
-				$images[$i]['id'] = $taxons[$r]->getId();
-				$images[$i]['img'] = $img;
-				$images[$i]['caption'] = $taxons[$r]->getName();
-				break;
+			$imgTextFile = glob($galleryDir . "*.csv");
+			$imgTextData = $this->csvreader->parse_file($imgTextFile[0]);
+			$ri = mt_rand(0, count($imgFiles) - 1);
+			
+			$imgName = str_replace($galleryDir, "", $imgFiles[$ri]);
+			$images[$i]['id'] = $taxons[$r]->getId();
+			$images[$i]['img'] = $imgFiles[$ri];
+			$images[$i]['caption'] = $taxons[$r]->getName();
+			
+			foreach($imgTextData as $data) {
+				if ($data['Imagen'] == str_replace(".jpg", "", $imgName)) {
+					$images[$i]['caption'] = $images[$i]['caption'] . ". Descripción: " . utf8_encode($data['Descripcion']) . 
+						". " . "Autor: " . utf8_encode($data["Autor"]);
+					break;
+				}
 			}
 		}
 		return $images;
@@ -87,6 +83,18 @@ class Home extends CI_Controller {
 		$rankCount['genero']= $this->em->getRepository("entities\Taxon")->rankCount(5);
 		$rankCount['especie']= $this->em->getRepository("entities\Taxon")->rankCount(6);
 		return $rankCount;
+	}
+	
+	private function setParametersToView()
+	{
+		$auth = $this->session->userdata('auth');
+		if ($auth) {
+			$this->twiggy->set('username', $this->session->userdata('user'));
+		}
+		$this->twiggy->set('adv_sustratos', json_encode($this->em->getRepository("entities\Sustrato")->getAll()));
+		$this->twiggy->set('adv_ecorregiones', json_encode($ecor = $this->em->getRepository("entities\Ecorregion")->getAll()));
+		$this->twiggy->set('adv_ecosistemas', json_encode($this->em->getRepository("entities\Ecosistema")->getAll()));
+		$this->twiggy->set('adv_estados', json_encode($this->em->getRepository("entities\Estado")->getAll()));
 	}
 }
 

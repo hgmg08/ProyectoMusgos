@@ -2,12 +2,12 @@
 						<ul>
 							{% for pub in publications %}
 								<li><span>
-								{{ pub.getAuthor }}. {{ pub.getYear }}. {{ pub.getTitle|e }}. 
+								{{ trim(pub.getAuthor) }}. {{ trim(pub.getYear) }}. {{ trim(pub.getTitle|e) }}. 
 								{% if pub.getJournal != null %}
-									{{ pub.getJournal }}. 
+									{{ trim(pub.getJournal) }}. 
 								{% endif %}
 								{% if pub.getCollation != null %}
-									{{ pub.getCollation }}.
+									{{ trim(pub.getCollation) }}.
 								{% endif %}
 								</span></li>
 							{% endfor %}

@@ -10,8 +10,8 @@ class Taxon extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->helper('url');
-		$this->load->library('csvreader');
 		$this->load->library('image_lib');
+		$this->load->library('csvreader');
 		$this->em = $this->doctrine->em;
 	}
 	
@@ -84,7 +84,7 @@ class Taxon extends CI_Controller {
 				$locations[] = array(
 					'Estado' => ($t->getEstado() != null)? $t->getEstado()->getName() : '',
 					'Municipio' => ($t->getMunicipio() != null)? $t->getMunicipio()->getName() : '',
-					'Nombre' => $t->getName(),
+					'Nombre' => trim($t->getName()),
 					'Altitud' => ($t->getMaxAltitude() != $t->getMinAltitude()) ? 
 									$t->getMinAltitude()."-".$t->getMaxAltitude() : $t->getMaxAltitude(),
 					'Coleccion' => ($t->getCollection() != null)? $t->getCollection() : null,
@@ -188,6 +188,8 @@ class Taxon extends CI_Controller {
 		$thumbsDir = $galleryDir . 'thumbs/';
 		$gallery = array();
 		$imgFiles = glob($galleryDir . "*.jpg");
+		$imgTextFile = glob($galleryDir . "*.csv");
+		$imgTextData = $this->csvreader->parse_file($imgTextFile[0]);
 		$i = 0;
 		foreach ($imgFiles as $img) {
 			$imgName = str_replace($galleryDir, "", $img);
@@ -203,9 +205,16 @@ class Taxon extends CI_Controller {
 			}
 			$gallery[$i]['img'] = $img;
 			$gallery[$i]['thumb'] = $thumbsDir . $imgName;
+			for ($j = 0; $j < count($imgTextData); $j++){
+				if ($imgTextData[$j]['Imagen'] == str_replace(".jpg", "", $imgName)) {
+					$gallery[$i]['desc'] =  "Descripción: " . utf8_encode(trim($imgTextData[$j]["Descripcion"])) . ". " . 
+						"Autor: " . utf8_encode(trim($imgTextData[$j]["Autor"])) . ". " . "Colección: " . utf8_encode(trim($imgTextData[$j]["Coleccion"]));
+					break;	
+				}
+			}
 			$i++;
 		}
-
+	
 		//Envio de variables a interfaz
 		$this->twiggy->set('taxon', $taxon);
 		$this->twiggy->set('parentSyno', $taxon->getParentSynonyms());
@@ -224,6 +233,15 @@ class Taxon extends CI_Controller {
 		$this->twiggy->set('listaRoja', $listaRoja);
 		$this->twiggy->set('cambioClimatico', $cambioClimatico);
 		$this->twiggy->set('gallery', $gallery);
+		
+		$auth = $this->session->userdata('auth');
+		if ($auth) {
+			$this->twiggy->set('username', $this->session->userdata('user'));
+		}
+		$this->twiggy->set('adv_sustratos', json_encode($this->em->getRepository("entities\Sustrato")->getAll()));
+		$this->twiggy->set('adv_ecorregiones', json_encode($ecor = $this->em->getRepository("entities\Ecorregion")->getAll()));
+		$this->twiggy->set('adv_ecosistemas', json_encode($this->em->getRepository("entities\Ecosistema")->getAll()));
+		$this->twiggy->set('adv_estados', json_encode($this->em->getRepository("entities\Estado")->getAll()));
 		
 		$this->twiggy->title('Musgos de Venezuela')->append($taxon->getName());
 		$this->twiggy->template('main/taxon')->display();

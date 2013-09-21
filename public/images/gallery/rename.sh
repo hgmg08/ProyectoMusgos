@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for files in */*.JPG
+for files in */*.csv
 do
-	mv "$files" "${files%.JPG}.jpg"
+	sed -i 's/Colección/Coleccion/g' "$files"
 done

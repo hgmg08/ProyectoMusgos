@@ -19,7 +19,10 @@ class Search extends CI_Controller {
 		$name = $this->input->get('name');
 		$results = $this->general_search($name);
 		
-		$this->twiggy->set('sustratos', $this->getAllSustratos());
+		$this->twiggy->set('adv_sustratos', json_encode($this->em->getRepository("entities\Sustrato")->getAll()));
+		$this->twiggy->set('adv_ecorregiones', json_encode($ecor = $this->em->getRepository("entities\Ecorregion")->getAll()));
+		$this->twiggy->set('adv_ecosistemas', json_encode($this->em->getRepository("entities\Ecosistema")->getAll()));
+		$this->twiggy->set('adv_estados', json_encode($this->em->getRepository("entities\Estado")->getAll()));
 		$this->twiggy->set('results', json_encode($results));
 		$this->twiggy->set('search', $name);
 			

@@ -431,7 +431,8 @@ table#footer_nav a:hover{
 	font-weight: bold;
 	text-align: right;
 	width: 30px;
-	height: 20px; 
+	height: 20px;
+	color: #870402;
 }
 
 .adv_search_grid label#alt_range {
