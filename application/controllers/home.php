@@ -37,8 +37,13 @@ class Home extends CI_Controller {
 		$this->twiggy->template('main/mdv_objetivos')->display();
 	}
 	
-	public function about() {
+	public function about() 
+	{
 		$this->setParametersToView();
+		$this->twiggy->set('sustratos', json_encode($this->em->getRepository("entities\Sustrato")->getAll()));
+		$this->twiggy->set('ecorregiones', json_encode($ecor = $this->em->getRepository("entities\Ecorregion")->getAll()));
+		$this->twiggy->set('ecosistemas', json_encode($this->em->getRepository("entities\Ecosistema")->getAll()));
+		$this->twiggy->set('estados', json_encode($this->em->getRepository("entities\Estado")->getAll()))
 		$this->twiggy->title('Musgos de Venezuela')->append("Acerca de");
 		$this->twiggy->template('main/about')->display();
 	}
