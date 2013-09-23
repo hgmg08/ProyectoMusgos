@@ -16,14 +16,15 @@
 					{ name: 'id', type: 'number' },
 					{ name: 'Name', type: 'string' },
 					{ name: 'Author', type: 'string' },
-					{ name: 'Rank', type: 'string' }
+					{ name: 'Rank', type: 'string' },
+					{ name: 'RankEnum', type: 'number' }
 				],
 				localdata: data,
 				pagesize: 20,
 				
-				deleterow: function (rowid, commit) { 
-				},
+				deleterow: function (rowid, commit) { }
 			};
+			
 			var dataAdapter = new $.jqx.dataAdapter(source);
 			var getLocalization = function () {
 				var localizationobj = {};
@@ -38,6 +39,8 @@
 				localizationobj.sortremovestring = "Quitar ordenación";
 			    return localizationobj;
 			}
+			
+			$("#taxon_higher").jqxWindow({ resizable: false, theme: theme, autoOpen: false, width: 210, height: 65, isModal: true });
 			
 			$("#tax_grid").jqxGrid({
 				width: '100%',
@@ -58,7 +61,12 @@
                     editButton.jqxButton({ theme: theme, width: 70, height: 20 });
                     deleteButton.jqxButton({ theme: theme, width: 80, height: 20 });
                     addButton.bind('click', function () {
-                    	window.location = "{{ base_url('admin/home') }}";
+                    	$("#taxon_higher").jqxWindow('open');
+                    });
+                    editButton.bind('click', function () {
+                    	var rowindex = $('#tax_grid').jqxGrid('getselectedrowindex');
+            			var data = $('#tax_grid').jqxGrid('getrowdata', rowindex);
+            			window.location = "{{ base_url('admin/taxon/taxon_form') }}" + '/' + data.RankEnum + '/' + data.id ;
                     });
 				},
 				enablebrowserselection: true,
@@ -75,6 +83,40 @@
 			        { text: 'Tipo', datafield: 'Rank', filtertype: 'list' }
 			    ]
 			});
+			
+			var rankL = [ 
+				{"name": "Clase", "enum": "1"}, 
+				{"name": "SubClase", "enum": "2"}, 
+				{"name": "Orden", "enum": "3"}, 
+				{"name": "Familia", "enum": "4"}, 
+				{"name": "Género", "enum": "5"}, 
+				{"name": "Especie", "enum": "6"}, 
+				{"name": "SubEspecie", "enum": "7"}, 
+				{"name": "Variedad", "enum": "8"} 
+			];
+			var sourceRankList =
+            {
+            	datatype: "json",
+                datafields: [
+                	{ name: 'name' },
+                    { name: 'enum' }
+                ],
+                localdata: rankL
+            };
+            var dAdapterRankList = new $.jqx.dataAdapter(sourceRankList);
+            $("#rankType").jqxDropDownList({
+                    source: dAdapterRankList,
+                    selectedIndex: -1, 
+                    displayMember: 'name', 
+                    valueMember: 'enum', 
+                    width: 200, 
+                    height: 25, 
+                    theme: theme,
+                    placeHolder: ""
+            });
+            $("#rankType").on('select', function () {
+            	window.location = "{{ base_url('admin/taxon/taxon_form') }}" + '/' + event.args.item.value;
+            });
 		});
 	</script>
 
@@ -87,8 +129,16 @@
 			Administración de taxones
 		</div>
 		
+		<div id="taxon_higher" caption="Escoja un tipo">
+			<div>
+				<div id="rankType">
+        		</div>
+			</div>
+		</div>
+		
 		<div id="tax_grid">
 		</div>
+		
 	</div>
 
 {% endblock %}	

@@ -94,7 +94,7 @@ class Home extends CI_Controller {
 	{
 		$auth = $this->session->userdata('auth');
 		if ($auth) {
-			$this->twiggy->set('username', $this->session->userdata('user'));
+			$this->twiggy->set('uid', $this->session->userdata('uid'));
 		}
 		$this->twiggy->set('adv_sustratos', json_encode($this->em->getRepository("entities\Sustrato")->getAll()));
 		$this->twiggy->set('adv_ecorregiones', json_encode($ecor = $this->em->getRepository("entities\Ecorregion")->getAll()));

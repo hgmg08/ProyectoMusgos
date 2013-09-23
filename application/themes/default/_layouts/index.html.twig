@@ -20,7 +20,8 @@
 		
 		<script type="text/javascript">
 			$(document).ready(function () {
-				$("#windowLogin").jqxWindow({ width: 260, height: 120, isModal: true, autoOpen: false, resizable: false });
+				var theme = 'mdv';
+				$("#windowLogin").jqxWindow({ width: 260, height: 120, isModal: true, autoOpen: false, resizable: false, theme: theme });
 				$("#submit").jqxButton({  });
 				$("#loginText").click(function() {
 					$("#windowLogin").css('visibility', 'visible');
@@ -45,7 +46,7 @@
 			<img id="mdv_logo" />
 
 				<span class="login">
-					{% if username %}
+					{% if uid %}
 						<a href="{{ base_url('admin/home') }}">Panel admin</a>
 					{% else %}
 						<a href="#" id="loginText">Iniciar sesión</a>

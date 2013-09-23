@@ -1,0 +1,70 @@
+{% extends '_layouts/admin.html.twig' %}
+
+{% block head %}
+
+	{{ parent() }}
+	
+	<script type="text/javascript">
+		$(document).ready(function () {
+			var theme = 'mdv';
+			var parentTaxonList = {{ parentRankList }};
+			var sourceParentRank =
+		    {
+		    	datatype: "json",
+		        datafields: [
+		        	{ name: 'id' },
+		            { name: 'name' }
+		        ],
+		        localdata: parentTaxonList
+		    };
+			var daParentRank = new $.jqx.dataAdapter(sourceParentRank);
+			$("#parent").jqxDropDownList({
+				source: daParentRank,  
+				displayMember: 'name',
+				valueMember: 'id', 
+				width: 230, 
+				height: 20, 
+				theme: theme,
+				placeHolder: ''
+			});
+			var item = $("#parent").jqxDropDownList('getItemByValue', {% if taxon %} {{ taxon.getParentHierarchy.getId }} {% else %} -1 {% endif %});
+			$("#parent").jqxDropDownList('selectItem', item);
+			$('#name').jqxInput({
+				height: 20,
+				width: 230
+			});
+			$("#save").jqxButton({ width: 70, theme: theme });
+		});
+	</script>
+	
+{% endblock %}
+
+{% block content %}
+
+	<div class="grid_12">
+		<div id="tax_hg_admin_name">
+			{% if taxon %}
+				{{ taxon.getName }}
+			{% else %}
+				Nuevo(a) {{ rank }} 
+			{% endif %}
+		</div>
+		<div id="tax_hg_admin_type">
+			{{ rankName }}
+		</div>
+		
+		<form id="taxon_higher" action="{{ base_url('admin/taxon/persist_higher') }}" method="POST">
+			<fieldset id="fs_higher_taxon_form">
+			<legend>Detalles</legend>
+				<label>Nombre:</label>
+				<input id="name" name="name" value="{{ taxon.name }}" />
+				<br />
+				<br />
+				<label>Taxón padre ({{ parentRank }}):</label>
+				<div id="parent"></div>
+				<input type="button" value="Guardar" id="save" />
+			</fieldset>
+		</form>
+	</div>
+
+{% endblock %}	

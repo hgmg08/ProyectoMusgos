@@ -461,6 +461,48 @@ table#footer_nav a:hover{
 	margin: 10px 0 20px;
 }
 
+#tax_hg_admin_name {
+	font-weight: bold;
+	font-size: 20px;
+	color: #000000;
+	margin-top: 20px;
+}
+
+#tax_hg_admin_type {
+	font-weight: bold;
+	font-size: 12px;
+	color: #979090;
+	margin-bottom: 10px;
+}
+
+#fs_higher_taxon_form {
+	padding: 10px;
+	border: 1px solid #C2BEBE;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+}
+
+#fs_higher_taxon_form legend {
+	font-size: 12px;
+	font-weight: bold;
+	padding: 5px;
+}
+
+#fs_higher_taxon_form label {
+	float: left;
+	width: 25%;
+	margin-right: 5px;
+	display: inline-block;
+	text-align: right;
+	font-weight: bold;
+}
+
+#fs_higher_taxon_form #save {
+	clear: both;
+	margin-top: 30px;
+}
+
 /*
  * Login
  */
