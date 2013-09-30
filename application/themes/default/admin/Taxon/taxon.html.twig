@@ -114,7 +114,8 @@
                     theme: theme,
                     placeHolder: ""
             });
-            $("#rankType").on('select', function () {
+            $("#rankType").on('select', function (event) {
+            	console.log(event);
             	window.location = "{{ base_url('admin/taxon/taxon_form') }}" + '/' + event.args.item.value;
             });
 		});

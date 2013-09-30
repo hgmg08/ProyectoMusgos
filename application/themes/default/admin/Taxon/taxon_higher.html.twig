@@ -46,7 +46,7 @@
 			{% if taxon %}
 				{{ taxon.getName }}
 			{% else %}
-				Nuevo(a) {{ rank }} 
+				Nuev{% if rank == 'Género' %}o{% else %}a{% endif %} {{ rank }} 
 			{% endif %}
 		</div>
 		<div id="tax_hg_admin_type">
