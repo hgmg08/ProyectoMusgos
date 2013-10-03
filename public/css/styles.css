@@ -503,6 +503,30 @@ table#footer_nav a:hover{
 	margin-top: 30px;
 }
 
+#successPersist {
+	visibility: hidden;
+}
+
+#successMessage {
+	color: #004708;
+	font-weight: bold;
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+}
+
+#failPersist {
+	visibility: hidden;
+}
+
+#failMessage {
+	color: #FF0000;
+	font-weight: bold;
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+}
+
 /*
  * Login
  */

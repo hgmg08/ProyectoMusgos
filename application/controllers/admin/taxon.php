@@ -53,27 +53,80 @@ class Taxon extends CI_Controller {
 		}
 	}
 	
-	private function higher_taxa_form($rank, $taxon = NULL) {
+	//Persist higher taxa
+	public function persist_higher()
+	{
+		$id = $this->input->post("id");
+		$taxonName = trim($this->input->post("name"));
+		$parentId = $this->input->post("parent");
+		$rank = $this->input->post("type");
+		$operation = $this->input->post("operation");
+		
+		if ($operation == 1) {
+			$taxon = $this->em->find('entities\Taxon', $id);
+			$taxon->setName($taxonName);
+			$taxon->setParentHierarchy($this->em->find('entities\Taxon', $parentId));
+			$this->em->persist($taxon);
+			$this->em->flush();
+			echo true;
+		}
+		
+		elseif ($operation == 2) {
+			$taxon = $this->em->getRepository('entities\Taxon')->findOneBy(array('name' => $taxonName));
+			
+			if ($taxon == NULL) {
+				$taxon = new entities\Taxon;
+				$taxon->setName($taxonName);
+				$taxon->setRank($rank);
+				$taxon->setParentHierarchy($this->em->find('entities\Taxon', $parentId));
+				$taxon->setCreationDate(new \DateTime("now"));
+				$taxon->setStatus(2);
+				$this->em->persist($taxon);
+				$this->em->flush();
+				echo true;
+			}
+			
+			else {
+				echo false;
+			}
+		}
+		
+		else {
+			echo false;
+		}
+	}
+	
+	//Populate higher taxa form
+	private function higher_taxa_form($rank, $taxon = NULL) 
+	{
 		$this->twiggy->set('taxon', $taxon);
 		if ($taxon) {
 			$this->twiggy->set('parentRank', $this->getParentRankName($taxon->getRank()));
 			$this->twiggy->set('parentRankList', 
 				json_encode($this->em->getRepository("entities\Taxon")->getAllParentTaxon($this->getParentRankEnum($taxon->getRank()))));
 			$this->twiggy->set('rankName', $this->getRankName($taxon->getRank()));
+			$this->twiggy->set('rankNumber', $taxon->getRank());
+			$this->twiggy->set('operation', 1);
+			$this->twiggy->set('id', $taxon->getId());
 		}
 		else {
 			$this->twiggy->set('parentRank', $this->getParentRankName($rank));
 			$this->twiggy->set('parentRankList', json_encode($this->em->getRepository("entities\Taxon")->getAllParentTaxon($this->getParentRankEnum($rank))));
-			$this->twiggy->set('rank', $this->getRankName($rank));	
+			$this->twiggy->set('rank', $this->getRankName($rank));
+			$this->twiggy->set('rankNumber', $rank);
+			$this->twiggy->set('operation', 2);
+			$this->twiggy->set('id', -1);
 		}
 		$this->twiggy->title('Musgos de Venezuela | Nuevo taxón');
 		$this->twiggy->template('admin/Taxon/taxon_higher')->display();
 	}
 	
-	private function lower_taxa_form($action, $taxon = NULL) {
+	private function lower_taxa_form($action, $taxon = NULL) 
+	{
 		
 	}
 	
+	//Populate taxa grid
 	private function populate_grid()
 	{
 		$result = $this->em->getRepository("entities\Taxon")->getAll();
@@ -92,6 +145,7 @@ class Taxon extends CI_Controller {
 		return $taxons;
 	}
 	
+	//Get Rank Name
 	private function getRankName($rankNumber)
 	{
 		$rankName = "";
@@ -130,6 +184,7 @@ class Taxon extends CI_Controller {
 		return $rankName;
 	}
 	
+	//Get parent Rank Name
 	private function getParentRankName($rankNumber)
 	{
 		$parentRankName = "";
@@ -178,6 +233,7 @@ class Taxon extends CI_Controller {
 		return $parentRankName;
 	}
 	
+	//Get Parent rank enum
 	private function getParentRankEnum($rankNumber)
 	{
 		$parentRankName = "";

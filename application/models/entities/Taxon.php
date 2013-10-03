@@ -449,7 +449,7 @@ class Taxon extends BaseInfo
      * @param entities\Taxon $childrenHierarchy
      * @return Taxon
      */
-    public function addTaxon(\entities\Taxon $childrenHierarchy)
+    public function addChildrenHierarchy(\entities\Taxon $childrenHierarchy)
     {
         $this->children_hierarchy[] = $childrenHierarchy;
         return $this;
@@ -464,7 +464,19 @@ class Taxon extends BaseInfo
     {
         return $this->children_hierarchy;
     }
-
+	
+	/**
+     * Add children_synonyms
+     *
+     * @param entities\Taxon $childrenSynonym
+     * @return Taxon
+     */
+	public function addChildrenSynonyms(\entities\Taxon $childrenSynonym)
+	{
+		$this->children_synonyms[] = $childrenSynonym;
+		return $this;
+	}
+	
     /**
      * Get children_synonyms
      *

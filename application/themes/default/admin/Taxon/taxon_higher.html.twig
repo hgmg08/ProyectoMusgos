@@ -18,7 +18,7 @@
 		        localdata: parentTaxonList
 		    };
 			var daParentRank = new $.jqx.dataAdapter(sourceParentRank);
-			$("#parent").jqxDropDownList({
+			$('#parent').jqxDropDownList({
 				source: daParentRank,  
 				displayMember: 'name',
 				valueMember: 'id', 
@@ -28,12 +28,64 @@
 				placeHolder: ''
 			});
 			var item = $("#parent").jqxDropDownList('getItemByValue', {% if taxon %} {{ taxon.getParentHierarchy.getId }} {% else %} -1 {% endif %});
-			$("#parent").jqxDropDownList('selectItem', item);
+			if (item.value > 0) {
+				$('#parent').jqxDropDownList('selectItem', item);
+			}
+			else {
+				$('#parent').jqxDropDownList('selectIndex', 0);
+			}
 			$('#name').jqxInput({
 				height: 20,
 				width: 230
 			});
-			$("#save").jqxButton({ width: 70, theme: theme });
+			$('#successPersist').jqxWindow({ width: 300, height: 100, isModal: true, autoOpen: false, resizable: false, theme: theme });
+			$('#failPersist').jqxWindow({ width: 300, height: 100, isModal: true, autoOpen: false, resizable: false, theme: theme });
+			$('#save').jqxButton({ width: 70, theme: theme });
+			$('#taxon_higher').jqxValidator({
+				animationDuration: 1,
+				rules: [
+					{ input: '#name', message: 'El nombre es requerido', action: 'keyup, blur', rule: 'required' }
+				],
+				theme: theme
+			});
+			$('#save').click(function () {
+				var data = {
+					id: {{ id }},
+					name: $('#name').val(),
+					parent: $('#parent').jqxDropDownList('getSelectedItem').value,
+					type: {{ rankNumber }},
+					operation: {{ operation }}
+				};	
+				var validation = function(isValid) {
+					if (isValid) {
+						$.ajax({
+							type: 'POST',
+							url: '{{ base_url('admin/taxon/persist_higher') }}',
+							data: data,
+							dataType: 'text',
+							success: function(response) {
+								console.log(response);
+								if (response == true) {
+									$('#successPersist').css('visibility', 'visible');
+									$('#successPersist').jqxWindow('open');
+									setTimeout(function () {
+										$('#successPersist').jqxWindow('close');
+									}, 2500);
+									window.location = '{{ base_url('admin/taxon') }}';
+								}
+								else {
+									$('#failPersist').css('visibility', 'visible');
+									$('#failPersist').jqxWindow('open');
+									setTimeout(function () {
+										$('#failPersist').jqxWindow('close');
+									}, 4000);
+								}
+							}
+						});
+					}
+				};
+				$('#taxon_higher').jqxValidator('validate', validation);
+			});
 		});
 	</script>
 	
@@ -65,6 +117,18 @@
 				<input type="button" value="Guardar" id="save" />
 			</fieldset>
 		</form>
+	</div>
+	
+	<div id="successPersist" caption="Mensaje">
+		<div id="successMessage">
+			El taxón fue persistido exitosamente
+		</div>
+	</div>
+	
+	<div id="failPersist" caption="Mensaje">
+		<div id="failMessage">
+			Ya existe este taxón
+		</div>
 	</div>
 
 {% endblock %}	
