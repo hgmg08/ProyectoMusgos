@@ -28,7 +28,7 @@
 				placeHolder: ''
 			});
 			var item = $("#parent").jqxDropDownList('getItemByValue', {% if taxon %} {{ taxon.getParentHierarchy.getId }} {% else %} -1 {% endif %});
-			if (item.value > 0) {
+			if (item) {
 				$('#parent').jqxDropDownList('selectItem', item);
 			}
 			else {
