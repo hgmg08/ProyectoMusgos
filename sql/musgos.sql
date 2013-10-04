@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 09-09-2013 a las 13:49:34
+-- Tiempo de generación: 04-10-2013 a las 00:42:23
 -- Versión del servidor: 5.1.67-log
 -- Versión de PHP: 5.3.9-pl0-gentoo
 
@@ -5980,6 +5980,8 @@ CREATE TABLE IF NOT EXISTS `operacion` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `codigo` varchar(255) NOT NULL,
   `nombre` varchar(255) NOT NULL,
+  `alias` varchar(255) NOT NULL,
+  `descripcion` longtext NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
@@ -5992,11 +5994,11 @@ TRUNCATE TABLE `operacion`;
 -- Volcado de datos para la tabla `operacion`
 --
 
-INSERT INTO `operacion` (`id`, `codigo`, `nombre`) VALUES
-(1, '1', 'INSERTAR_TAXON'),
-(2, '2', 'EDITAR_TAXON'),
-(3, '3', 'ELIMINAR_TAXON'),
-(4, '4', 'PUBLICAR_TAXON');
+INSERT INTO `operacion` (`id`, `codigo`, `nombre`, `alias`, `descripcion`) VALUES
+(1, '1', 'INSERTAR_TAXON', 'Insertar', 'Insertar un nuevo taxón'),
+(2, '2', 'EDITAR_TAXON', 'Editar', 'Editar un taxón existente'),
+(3, '3', 'ELIMINAR_TAXON', 'Eliminar', 'Eliminar un taxón existente'),
+(4, '4', 'PUBLICAR_TAXON', 'Publicar', 'Publicar un taxón para que esté disponible en internet');
 
 -- --------------------------------------------------------
 
@@ -10009,7 +10011,7 @@ CREATE TABLE IF NOT EXISTS `taxon` (
   PRIMARY KEY (`id`),
   KEY `IDX_5B6723AB844DE06` (`parent_hierarchy_id`),
   KEY `IDX_5B6723AB86D11A00` (`parent_synonyms_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1927 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1930 ;
 
 --
 -- Truncar tablas antes de insertar `taxon`
@@ -10130,7 +10132,7 @@ INSERT INTO `taxon` (`id`, `parent_hierarchy_id`, `parent_synonyms_id`, `fecha_c
 (107, 87, NULL, '2013-04-20 02:40:04', NULL, NULL, 2, 'Philonotis scabrifolia', 1, 6, '(Hook. F & Wilson) Braithw.', 0, NULL, 'Argentina,  Bolivia,  Chile,  Colombia,  Ecuador,  Islas Kerguelen', NULL, 'Am 2, Am 3, Am 4, Am 6, Afr 4, Austr 1, Austr 2, Oc.', NULL, NULL, NULL, NULL),
 (108, 87, NULL, '2013-04-20 02:40:05', NULL, NULL, 2, 'Philonotis sphaerocarpa', 1, 6, '(Hedw.) Brid.', 0, NULL, NULL, NULL, 'Am 1, Am 2, Am 3, Am 4, Am 5, Am 6', NULL, NULL, NULL, NULL),
 (109, 87, NULL, '2013-04-20 02:40:05', NULL, NULL, 2, 'Philonotis uncinata', 1, 6, '(Schwaegr.) Brid.', 0, NULL, NULL, NULL, 'Am 1, Am 4, As 1, As 2, As 3, As 5, Eur.', NULL, NULL, NULL, NULL),
-(110, 87, NULL, '2013-04-20 02:40:05', NULL, NULL, 2, 'Philonotis uncinata var. glaucescens', 1, 8, '(Hornsch.) Florsch.', 0, NULL, 'Caribe,  México, Colombia, Surinam,  Colombia,  Panamá', NULL, NULL, NULL, NULL, NULL, NULL),
+(110, 109, NULL, '2013-04-20 02:40:05', NULL, NULL, 2, 'Philonotis uncinata var. glaucescens', 1, 8, '(Hornsch.) Florsch.', 0, NULL, 'Caribe,  México, Colombia, Surinam,  Colombia,  Panamá', NULL, NULL, NULL, NULL, NULL, NULL),
 (111, 87, NULL, '2013-04-20 02:40:05', NULL, NULL, 2, 'Philonotis thwaitesii', 1, 6, 'Mitt.', 0, NULL, 'Bolivia,  China,  Colombia,  Sur Corea,  Sri Lanka,  Tailandia,  Taiwán,  Vietnam', NULL, NULL, NULL, NULL, NULL, NULL),
 (112, 4, NULL, '2013-04-20 02:40:06', NULL, NULL, 2, 'Brachytheciaceae', NULL, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (113, 112, NULL, '2013-04-20 02:40:06', NULL, NULL, 2, 'Aerolindigia', NULL, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -10167,7 +10169,7 @@ INSERT INTO `taxon` (`id`, `parent_hierarchy_id`, `parent_synonyms_id`, `fecha_c
 (144, 143, NULL, '2013-04-20 02:40:16', NULL, NULL, 2, 'Rhyncostegium conchophyllum', 1, 6, '(Taylor) Jaeg', 0, NULL, 'Bolivia,  Brasil,  Colombia y Perú', 'Venezuela, Colombia, Ecuador, Perú y Bolivia', 'Am 4.', NULL, NULL, NULL, NULL),
 (145, 140, NULL, '2013-04-20 02:40:16', NULL, NULL, 2, 'Rhynchostegium sellowii', 1, 6, '(Hornsch.) Jaeg.', 0, NULL, 'Venezuela,  Brasil', NULL, NULL, NULL, NULL, NULL, NULL),
 (146, 140, NULL, '2013-04-20 02:40:17', NULL, NULL, 2, 'Rhynchostegium serrulatum', 0, 6, '(Hedw.) Jaeg.', 0, NULL, 'Bolivia, Brasil, Canadá, Caribe, Colombia, Costa Rica, Guatemala, Honduras, México, Nicaragua, Panamá, Estados Unidos, Venezuela', NULL, NULL, NULL, NULL, NULL, NULL),
-(147, 140, NULL, '2013-04-20 02:40:17', NULL, NULL, 2, 'Rhynchostegium serrulatum var. frondicola', 0, 8, '(Müll. Hal.) Thér.', 0, NULL, NULL, NULL, 'Am 1, Am 2, Am 3, Am 4, As 2.', NULL, NULL, NULL, NULL),
+(147, 146, NULL, '2013-04-20 02:40:17', NULL, NULL, 2, 'Rhynchostegium serrulatum var. frondicola', 0, 8, '(Müll. Hal.) Thér.', 0, NULL, NULL, NULL, 'Am 1, Am 2, Am 3, Am 4, As 2.', NULL, NULL, NULL, NULL),
 (148, 140, NULL, '2013-04-20 02:40:17', NULL, NULL, 2, 'Rhynchostegium subperspicuum', 1, 6, '(Müll. Hal.) Broth.', 1, NULL, NULL, 'Venezuela', 'Am 4.', NULL, NULL, NULL, NULL),
 (149, 140, NULL, '2013-04-20 02:40:18', NULL, NULL, 2, 'Rhynchostegium trachynotum', 1, 6, '(Müll. Hal.) Kindb.', 1, NULL, NULL, 'Venezuela', 'Am 4.', NULL, NULL, NULL, NULL),
 (150, 112, NULL, '2013-04-20 02:40:18', NULL, NULL, 2, 'Steerecleus', NULL, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -10291,13 +10293,13 @@ INSERT INTO `taxon` (`id`, `parent_hierarchy_id`, `parent_synonyms_id`, `fecha_c
 (267, 266, NULL, '2013-04-20 02:41:04', NULL, NULL, 2, 'Leucophanes molleri', 1, 6, 'Müll. Hal.', 0, NULL, 'Belice,  Brasil,  Colombia,  Costa Rica,  Ecuador,  Guayana Francesa,  Gabón,  Ghana,  Nigeria,  Panamá,  Nicaragua', NULL, 'Am 2, Am 3, Am 4, Am 5, Afr 2.', NULL, NULL, NULL, NULL),
 (268, 253, NULL, '2013-04-20 02:41:05', NULL, NULL, 2, 'Syrrhopodon', NULL, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (269, 268, NULL, '2013-04-20 02:41:05', NULL, NULL, 2, 'Syrrhopodon africanus', 0, 6, '(Mitt.) Paris.', 0, NULL, 'Gabón,  Guinea,  Madagascar,  Surinam,  Isla de la Reunión', NULL, NULL, NULL, NULL, NULL, NULL),
-(270, 268, NULL, '2013-04-20 02:41:05', NULL, NULL, 2, 'Syrrhopodon africanus subsp. graminicola', 0, 7, '(R. S. Williams) W. D. Reese', 0, NULL, 'Bolivia, Brasil, Caribe, Colombia, Surinam, Venezuela', NULL, NULL, NULL, NULL, NULL, NULL),
+(270, 269, NULL, '2013-04-20 02:41:05', NULL, NULL, 2, 'Syrrhopodon africanus subsp. graminicola', 0, 7, '(R. S. Williams) W. D. Reese', 0, NULL, 'Bolivia, Brasil, Caribe, Colombia, Surinam, Venezuela', NULL, NULL, NULL, NULL, NULL, NULL),
 (271, 268, NULL, '2013-04-20 02:41:06', NULL, NULL, 2, 'Syrrhopodon annotinus', 1, 6, 'W.D. Reese & D.G. Griffin', 0, NULL, NULL, NULL, 'Am 4, Am 5.', NULL, NULL, NULL, NULL),
 (272, 268, NULL, '2013-04-20 02:41:06', NULL, NULL, 2, 'Syrrhopodon circinatus', 1, 6, '(Brid.) Mitt.', 0, NULL, NULL, NULL, 'Am 2, Am 3, Am 4, Am 5', NULL, NULL, NULL, NULL),
 (273, 268, NULL, '2013-04-20 02:41:07', NULL, NULL, 2, 'Syrrhopodon cryptocarpus', 1, 6, 'Dozy & Molk.', 0, NULL, NULL, NULL, 'Am 2, Am 4, Am 5, Afr 2.', NULL, NULL, NULL, NULL),
 (274, 268, NULL, '2013-04-20 02:41:07', NULL, 'Deciduous gallery forest. Moss on tree trunk.', 2, 'Syrrhopodon disciformis', 1, 6, 'Dusén', 0, NULL, 'Brasil, Caribe, Costa Rica, Ecuador, Honduras, Panamá, Surinam, Venezuela', NULL, 'Am 4, Afr 2.', NULL, NULL, NULL, NULL),
 (275, 268, NULL, '2013-04-20 02:41:08', NULL, NULL, 2, 'Syrrhopodon elongatus', 0, 6, 'Sull.', 0, NULL, 'Cuba , Brasil', NULL, NULL, NULL, NULL, NULL, NULL),
-(276, 268, NULL, '2013-04-20 02:41:08', NULL, NULL, 2, 'Syrrhopodon elongatus var. glaziovii', 0, 8, '(Hampe) Reese', 0, NULL, NULL, NULL, 'Am 4, Am 5.', NULL, NULL, NULL, NULL),
+(276, 275, NULL, '2013-04-20 02:41:08', NULL, NULL, 2, 'Syrrhopodon elongatus var. glaziovii', 0, 8, '(Hampe) Reese', 0, NULL, NULL, NULL, 'Am 4, Am 5.', NULL, NULL, NULL, NULL),
 (277, 268, NULL, '2013-04-20 02:41:09', NULL, 'En Pittier 1936 como Syrrhopodon gaudichaudii Mont. ', 2, 'Syrrhopodon gaudichaudii', 1, 6, 'Montagne', 0, NULL, 'Indias Occidentales,  Costa Rica,  América del Sur,  Islas Galápagos. Norte de América del Sur', NULL, 'Am 1, Am 2, Am 3, Am 4, Am 5, Am 6, Afr 2, Afr 3, Afr 4, Oc.', NULL, NULL, NULL, 1),
 (278, 268, NULL, '2013-04-20 02:41:09', NULL, NULL, 2, 'Syrrhopodon fimbriatus', 1, 6, 'Mitten', 0, NULL, NULL, NULL, 'Am 4, Am 5.', NULL, NULL, NULL, NULL),
 (279, 268, NULL, '2013-04-20 02:41:10', NULL, NULL, 2, 'Syrrhopodon helicophyllus', 1, 6, 'Mitt.', 0, NULL, NULL, NULL, 'Am 4, Am 5.', NULL, NULL, NULL, NULL),
@@ -11390,10 +11392,8 @@ INSERT INTO `taxon` (`id`, `parent_hierarchy_id`, `parent_synonyms_id`, `fecha_c
 (1363, 1355, NULL, '2013-04-20 02:55:28', NULL, 'En Pittier 1936, como Sematophyllum schlimii (Müll. Hal.) Mitt.', 2, 'Trichosteleum schlimii', 1, 6, '(Müll. Hal.) R. S. Williams', 0, NULL, 'Colombia', NULL, 'Am 4, Am 5.', NULL, NULL, NULL, NULL),
 (1364, 1355, NULL, '2013-04-20 02:55:28', NULL, 'En bosque enano enmarañado y musgoso', 2, 'Trichosteleum sentosum', 1, 6, '(Sull.) A. Jaeger', 0, NULL, 'Belice,  Brasil,  Puerto Rico, Colombia,  Colombia,  Trinidad y Tobago,  Honduras,  Panamá,  Jamaica,  Nicaragua', NULL, 'Am 3, Am 4, Am 5.', NULL, NULL, NULL, NULL),
 (1365, 1355, NULL, '2013-04-20 02:55:29', NULL, NULL, 2, 'Trichosteleum vincentinum', 1, 6, '(Mitt.) A. Jaeger', 0, NULL, NULL, NULL, 'Am 3, Am 4.', NULL, NULL, NULL, NULL),
-(1366, NULL, NULL, '2013-04-20 02:55:29', NULL, NULL, 2, ' Bryophyta', NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1367, 1305, NULL, '2013-04-20 02:55:29', NULL, NULL, 2, 'Wijkia', NULL, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1368, 1367, NULL, '2013-04-20 02:55:30', NULL, NULL, 2, 'Wijkia alstonii', 1, 6, '(E.B. Bartram) Ireland', 1, NULL, NULL, 'Venezuela', 'Am 4.', NULL, NULL, NULL, NULL),
-(1369, NULL, NULL, '2013-04-20 02:55:30', NULL, NULL, 2, ' Bryophyta', NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1370, 1374, NULL, '2013-04-20 02:55:31', NULL, NULL, 2, 'Sphagnum', NULL, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1371, 1370, NULL, '2013-04-20 02:55:31', NULL, 'En tropicos.org reportada para Austria, Canadá, China, Colombia, Checoslovakia, Finlandia, Alemania, Groenlandia, España, Estados Unidos.', 2, 'Sphagnum alegrense', 1, 6, 'Warnst.', 0, NULL, 'Guadalupe, Dominica, Brasil y Venezuela', NULL, 'Am 4, Am 5.', NULL, NULL, NULL, NULL),
 (1372, 1, NULL, '2013-04-20 02:55:31', NULL, NULL, 2, 'Sphagnopsida', NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -11402,10 +11402,10 @@ INSERT INTO `taxon` (`id`, `parent_hierarchy_id`, `parent_synonyms_id`, `fecha_c
 (1375, 1370, NULL, '2013-04-20 02:55:33', NULL, 'En Griffin III 1977c como Sphagnum capillaceum (F.W. Weiss) Schrank ', 2, 'Sphagnum capillifolium', 1, 6, '(Ehrh.) Hedw.', 0, NULL, 'Austria, Brasil, Canadá, Chile, Costa Rica, China, Colombia, Ecuador, Alemania, Suecia, Estados Unidos, Venezuela.', NULL, NULL, NULL, NULL, NULL, NULL),
 (1376, 1370, NULL, '2013-04-20 02:55:33', NULL, NULL, 2, 'Sphagnum capillifolium var. tenellum', 1, 8, '(Schimp) H. A. Crum', 0, NULL, 'Canadá,  China,  Checoslovaquia,  Alemania,  Irlanda,  Estados Unidos,  Groenlandia,  Mongolia', NULL, NULL, 'Ussher M. S. (MERC) ', '2012-12-06 00:00:00', '!Sphagnum capillifolium var. tenellum (Schimp) H. A. Crum Nombre aceptado por Crum 1995 Contri. Univ. Mich. Herb. 11(2): 90.', NULL),
 (1377, 1370, NULL, '2013-04-20 02:55:34', NULL, 'En Pittier 1936 como Sphagnum capillaceum var. tenellum Andrews (Schimp.) AL', 2, 'Sphagnum capillifolium var. tenerum', 1, 8, '(Sull. & Lesq. ex Sull.) H. A. Crum', 0, NULL, NULL, NULL, NULL, 'Ussher M. S. (MERC) ', '2012-12-06 00:00:00', '!Sphagnum capillifolium var. tenerum (Sull. & Lesq. ex Sull.) H. A. Crum Nombre aceptado por Crum 1995 Contri. Univ. Mich. Herb. 11(2): 90.', NULL),
-(1378, 1370, NULL, '2013-04-20 02:55:34', NULL, NULL, 2, 'Sphagnum cuspidatum', 1, 6, 'Ehrh ex Hoff', 0, NULL, NULL, NULL, 'Am 1, Am 4, Am 5, Am 6, Afr 1, As 2, As 3, As 4, Austr 1, Austr 2, Eur, Oc.', NULL, NULL, NULL, NULL);
-INSERT INTO `taxon` (`id`, `parent_hierarchy_id`, `parent_synonyms_id`, `fecha_creacion`, `fecha_modificacion`, `comentarios`, `estado`, `nombre`, `nombre_aceptado`, `rank`, `siglas_autor`, `endemico`, `clasificacion_sinonimo`, `distribucion_mundial`, `distribucion_andinotropical`, `distribucion_van_der_wijk`, `editor_revision`, `fecha_revision`, `comentarios_revision`, `imagenes`) VALUES
+(1378, 1370, NULL, '2013-04-20 02:55:34', NULL, NULL, 2, 'Sphagnum cuspidatum', 1, 6, 'Ehrh ex Hoff', 0, NULL, NULL, NULL, 'Am 1, Am 4, Am 5, Am 6, Afr 1, As 2, As 3, As 4, Austr 1, Austr 2, Eur, Oc.', NULL, NULL, NULL, NULL),
 (1379, 1370, NULL, '2013-04-20 02:55:35', NULL, NULL, 2, 'Sphagnum compactum', 1, 6, 'Lam. & DC.', 0, NULL, NULL, NULL, 'Am 1, Am 4, Afr 1, As 1, Austr 1, Eur.', NULL, NULL, NULL, NULL),
-(1380, 1370, NULL, '2013-04-20 02:55:35', NULL, NULL, 2, 'Sphagnum falcatulum', 1, 6, 'Besch.', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1380, 1370, NULL, '2013-04-20 02:55:35', NULL, NULL, 2, 'Sphagnum falcatulum', 1, 6, 'Besch.', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `taxon` (`id`, `parent_hierarchy_id`, `parent_synonyms_id`, `fecha_creacion`, `fecha_modificacion`, `comentarios`, `estado`, `nombre`, `nombre_aceptado`, `rank`, `siglas_autor`, `endemico`, `clasificacion_sinonimo`, `distribucion_mundial`, `distribucion_andinotropical`, `distribucion_van_der_wijk`, `editor_revision`, `fecha_revision`, `comentarios_revision`, `imagenes`) VALUES
 (1381, 1370, NULL, '2013-04-20 02:55:36', NULL, NULL, 2, 'Sphagnum fraudulentum', 1, 6, 'H.A. Crum', 1, NULL, NULL, 'Venezuela', 'Am 4.', NULL, NULL, NULL, NULL),
 (1382, 1370, NULL, '2013-04-20 02:55:36', NULL, NULL, 2, 'Sphagnum funkiae', 1, 6, 'H. A. Crum', 1, NULL, 'Venezuela', 'Venezuela', 'Am 4.', NULL, NULL, NULL, NULL),
 (1383, 1370, NULL, '2013-04-20 02:55:37', NULL, NULL, 2, 'Sphagnum gracilescens', 1, 6, 'Hampe ex Müll. Hal.', 0, NULL, 'Brasil', NULL, NULL, NULL, NULL, NULL, NULL),
@@ -11684,10 +11684,10 @@ INSERT INTO `taxon` (`id`, `parent_hierarchy_id`, `parent_synonyms_id`, `fecha_c
 (1656, NULL, 600, '2013-04-20 15:54:55', NULL, NULL, 2, 'Fissidens minutus', NULL, 6, 'Thwaites & Mitt.', NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1657, NULL, 626, '2013-04-20 15:54:55', NULL, NULL, 2, 'Fissidens kegelianus', NULL, 6, 'Müll. Hal.', NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1658, NULL, 580, '2013-04-20 15:54:55', NULL, NULL, 2, 'Fissidens fendleri', NULL, 6, 'C. Müll', NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1659, NULL, 616, '2013-04-20 15:54:56', NULL, NULL, 2, 'Fissidens intermedius', NULL, 6, 'Müll. Hal.', NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `taxon` (`id`, `parent_hierarchy_id`, `parent_synonyms_id`, `fecha_creacion`, `fecha_modificacion`, `comentarios`, `estado`, `nombre`, `nombre_aceptado`, `rank`, `siglas_autor`, `endemico`, `clasificacion_sinonimo`, `distribucion_mundial`, `distribucion_andinotropical`, `distribucion_van_der_wijk`, `editor_revision`, `fecha_revision`, `comentarios_revision`, `imagenes`) VALUES
+(1659, NULL, 616, '2013-04-20 15:54:56', NULL, NULL, 2, 'Fissidens intermedius', NULL, 6, 'Müll. Hal.', NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1660, NULL, 574, '2013-04-20 15:54:56', NULL, NULL, 2, 'Fissidens goebelii', NULL, 6, 'C. Müll', NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(1661, NULL, 602, '2013-04-20 15:54:57', NULL, NULL, 2, 'Fissidens pellucidus var. pellucidus', NULL, 6, '', NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1661, NULL, 602, '2013-04-20 15:54:57', NULL, NULL, 2, 'Fissidens pellucidus var. pellucidus', NULL, 6, '', NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `taxon` (`id`, `parent_hierarchy_id`, `parent_synonyms_id`, `fecha_creacion`, `fecha_modificacion`, `comentarios`, `estado`, `nombre`, `nombre_aceptado`, `rank`, `siglas_autor`, `endemico`, `clasificacion_sinonimo`, `distribucion_mundial`, `distribucion_andinotropical`, `distribucion_van_der_wijk`, `editor_revision`, `fecha_revision`, `comentarios_revision`, `imagenes`) VALUES
 (1662, NULL, 574, '2013-04-20 15:54:58', NULL, NULL, 2, 'Fissidens pennula', NULL, 6, 'Broth.', NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1663, NULL, 611, '2013-04-20 15:54:59', NULL, NULL, 2, 'Fissidens vardei', NULL, 6, 'Thér', NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1664, NULL, 586, '2013-04-20 15:55:00', NULL, NULL, 2, 'Fissidens ceracruzensis', NULL, 6, 'Pursell', NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
