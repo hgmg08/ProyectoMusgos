@@ -511,7 +511,8 @@ table#footer_nav a:hover{
 	line-height: 20px;
 }
 
-#user_form div {
+#user_window {
+	visibility: hidden;
 }
 
 #successPersist {

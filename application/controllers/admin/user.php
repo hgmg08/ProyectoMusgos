@@ -41,7 +41,9 @@ class User extends CI_Controller {
 				'id' => $r['id'],
 				'User' => $r['username'],
 				'Name' => $r['name'],
-				'Email' => $r['email']
+				'Email' => $r['email'],
+				'Role' => $this->em->find('entities\User', $r['id'])->getRole()->getName(),
+				'rid' => $this->em->find('entities\User', $r['id'])->getRole()->getId()
 			);
 		}
 		

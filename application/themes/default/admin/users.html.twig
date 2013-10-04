@@ -16,7 +16,9 @@
 					{ name: 'id', type: 'number' },
 					{ name: 'User', type: 'string' },
 					{ name: 'Name', type: 'string' },
-					{ name: 'Email', type: 'string' }
+					{ name: 'Email', type: 'string' },
+					{ name: 'Role', type: 'string' },
+					{ name: 'rid', type: 'number' }
 				],
 				localdata: data,
 				pagesize: 20,
@@ -39,11 +41,11 @@
 			    return localizationobj;
 			}
 			
-			$("#user_window").jqxWindow({ resizable: false, theme: theme, autoOpen: false, width: 400, height: 230, isModal: true });
+			$("#user_window").jqxWindow({ resizable: false, theme: theme, autoOpen: false, width: 400, height: 260, isModal: true });
 			
 			$("#user_grid").jqxGrid({
 				width: '100%',
-				height: 400,
+				autoheight: true,
 				source: dataAdapter,
 				theme: theme,
 				showstatusbar: true,
@@ -60,11 +62,30 @@
                     editButton.jqxButton({ theme: theme, width: 70, height: 20 });
                     deleteButton.jqxButton({ theme: theme, width: 80, height: 20 });
                     addButton.bind('click', function () {
+                    	$('#id').val('');
+            			$('#op').val(0);
+                    	$('#name').val('');
+            			$('#username').val('');
+            			$('#password').attr('placeholder', '');
+            			$('#password').val('');
+            			$('#email').val('');
+            			$('#role').jqxDropDownList('selectIndex', -1);
+            			$('#user_window').css('visibility', 'visible');
                     	$("#user_window").jqxWindow('open');
                     });
                     editButton.bind('click', function () {
                     	var rowindex = $('#user_grid').jqxGrid('getselectedrowindex');
             			var data = $('#user_grid').jqxGrid('getrowdata', rowindex);
+            			$('#name').val(data.Name);
+            			$('#username').val(data.User);
+            			$('#email').val(data.Email);
+            			$('#id').val(data.id);
+            			$('#op').val(1);
+            			$('#password').attr('placeholder', 'En blanco para dejar igual');
+            			var item = $('#role').jqxDropDownList('getItemByValue', data.rid);
+            			$('#role').jqxDropDownList('selectItem', item);
+            			$('#user_window').css('visibility', 'visible');
+            			$('#user_window').jqxWindow('open');
                     });
 				},
 				enablebrowserselection: true,
@@ -76,16 +97,18 @@
 			    pageable: true,
 			    columns: [
 			    	{ text: 'Id', datafield: 'id', width: '5%', filtertype: 'textbox' },
-			        { text: 'Usuario', datafield: 'User', filtertype: 'textbox' },
+			        { text: 'Usuario', datafield: 'User', width: '20%', filtertype: 'textbox' },
 			        { text: 'Nombre', datafield: 'Name', filtertype: 'textbox' },
-			        { text: 'Email', datafield: 'Email', filtertype: 'textbox' }
+			        { text: 'Email', datafield: 'Email', filtertype: 'textbox' },
+			        { text: 'Rol', datafield: 'Role', filtertype: 'textbox' }
 			    ]
 			});
 			$('#name').jqxInput({ height: 20, width: 230});
 			$('#username').jqxInput({ height: 20, width: 230});
 			$('#password').jqxInput({ height: 20, width: 230});
 			$('#email').jqxInput({ height: 20, width: 230});
-			$('#accept').jqxButton({ theme: theme, height: 30, width: 70 });
+			$('#save').jqxButton({ theme: theme, height: 30, width: 70 });
+			
 			var sourceRoleData = {{ roles }};
 			var sourceRole =
 		    {
@@ -106,6 +129,27 @@
 				theme: theme,
 				placeHolder: 'Seleccione un rol'
 			});
+			
+			$('#user_form').jqxValidator({
+				animationDuration: 1,
+				rules: [
+					{ input: '#name', message: 'El nombre es requerido', action: 'keyup, blur', rule: 'required' },
+					{ input: '#username', message: 'El usuario es requerido', action: 'keyup, blur', rule: 'required' },
+					{ input: '#password', message: 'El password es requerido', action: 'keyup, blur', rule: function() {
+						if ($('#op').val() == 0) {
+							return $.trim($('#password').val()).length > 0;
+						}
+						else {
+							return true;
+						}
+					 }}
+				],
+				theme: theme
+			});
+			
+			$('#save').click(function () {
+				$('#taxon_higher').jqxValidator('validate', validation);
+			});
 		});
 	</script>
 
@@ -118,38 +162,44 @@
 			Administración de usuarios
 		</div>
 		
+		<div id="user_grid">
+		</div>
+		
 		<div id="user_window" caption="Gestión de usuario">
 			<div>
 				<form id="user_form">
+					<input type="hidden" id="id" name="id" />
+					<input type="hidden" id="op" name="op" />
 					<label>Nombre completo:</label>
 					<div>
 						<input type="text" id="name" name="name" />
 					</div>
+					<br/>
 					<label>Nombre de usuario:</label>
 					<div>
 						<input type="text" id="username" name="username" />
 					</div>
+					<br/>
 					<label>Contraseña:</label>
 					<div>
 						<input type="text" id="password" name="password" />
 					</div>
+					<br/>
 					<label>Correo electrónico:</label>
 					<div>
 						<input type="text" id="email" name="email" />
 					</div>
+					<br/>
 					<label>Rol:</label>
 					<div>
 						<div id="role"></div>
 					</div>
 					<br/>
 					<div>
-                		<input id="accept" type="submit" value="Aceptar" />
+                		<input id="save" type="submit" value="Guardar" />
            			</div>
 				</form>
 			</div>
-		</div>
-		
-		<div id="user_grid">
 		</div>
 		
 	</div>
