@@ -41,7 +41,7 @@
 			<ul id="admin_nav">
 				<li><a href=" {{ base_url('admin/home') }}">Inicio</a></li>
 				<li><a href=" {{ base_url('admin/taxon') }}">Taxones</a></li>
-				<li><a href="#">Usuarios</a></li>
+				<li><a href=" {{ base_url('admin/user') }}">Usuarios</a></li>
 				</ul>
 			<div class="login_info">
 				<strong>Usuario:</strong> {{ username }} | <strong>Rol:</strong> {{ role }} | <a href="{{ base_url('login/logout') }}">Salir</a>

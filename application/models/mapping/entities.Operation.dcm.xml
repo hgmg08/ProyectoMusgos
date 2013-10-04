@@ -10,6 +10,8 @@
 	
 	<field name="code" column="codigo" type="string" />
 	<field name="name" column="nombre" type="string" />
+	<field name="alias" column="alias" type="string" />
+	<field name="description" column="descripcion" type="text" />
 	
 	<!-- Relacion con Rol -->
     <many-to-many field="roles" target-entity="Role" mapped-by="operations" />

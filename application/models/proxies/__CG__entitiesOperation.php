@@ -87,10 +87,34 @@ class Operation extends \entities\Operation implements \Doctrine\ORM\Proxy\Proxy
         return parent::getRoles();
     }
 
+    public function setAlias($alias)
+    {
+        $this->__load();
+        return parent::setAlias($alias);
+    }
+
+    public function getAlias()
+    {
+        $this->__load();
+        return parent::getAlias();
+    }
+
+    public function setDescription($description)
+    {
+        $this->__load();
+        return parent::setDescription($description);
+    }
+
+    public function getDescription()
+    {
+        $this->__load();
+        return parent::getDescription();
+    }
+
 
     public function __sleep()
     {
-        return array('__isInitialized__', 'code', 'name', 'id', 'roles');
+        return array('__isInitialized__', 'code', 'name', 'alias', 'description', 'id', 'roles');
     }
 
     public function __clone()

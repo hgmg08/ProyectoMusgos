@@ -195,58 +195,10 @@ class Localidad extends \entities\Localidad implements \Doctrine\ORM\Proxy\Proxy
         return parent::getTaxons();
     }
 
-    public function setCreationDate($creationDate)
-    {
-        $this->__load();
-        return parent::setCreationDate($creationDate);
-    }
-
-    public function getCreationDate()
-    {
-        $this->__load();
-        return parent::getCreationDate();
-    }
-
-    public function setModificationDate($modificationDate)
-    {
-        $this->__load();
-        return parent::setModificationDate($modificationDate);
-    }
-
-    public function getModificationDate()
-    {
-        $this->__load();
-        return parent::getModificationDate();
-    }
-
-    public function setComments($comments)
-    {
-        $this->__load();
-        return parent::setComments($comments);
-    }
-
-    public function getComments()
-    {
-        $this->__load();
-        return parent::getComments();
-    }
-
-    public function setStatus($status)
-    {
-        $this->__load();
-        return parent::setStatus($status);
-    }
-
-    public function getStatus()
-    {
-        $this->__load();
-        return parent::getStatus();
-    }
-
 
     public function __sleep()
     {
-        return array('__isInitialized__', 'creationDate', 'modificationDate', 'comments', 'status', 'name', 'minAltitude', 'maxAltitude', 'latitude', 'longitude', 'collection', 'collectionDate', 'hebarium', 'id', 'municipio', 'estado', 'publications', 'taxons');
+        return array('__isInitialized__', 'name', 'minAltitude', 'maxAltitude', 'latitude', 'longitude', 'collection', 'collectionDate', 'hebarium', 'id', 'municipio', 'estado', 'publications', 'taxons');
     }
 
     public function __clone()

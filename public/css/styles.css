@@ -503,6 +503,17 @@ table#footer_nav a:hover{
 	margin-top: 30px;
 }
 
+#user_form label {
+	display: block;
+	float: left;
+	height: 20px;
+	width: 150px;
+	line-height: 20px;
+}
+
+#user_form div {
+}
+
 #successPersist {
 	visibility: hidden;
 }

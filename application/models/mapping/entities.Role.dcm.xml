@@ -3,7 +3,7 @@
       xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                     http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-<entity name="entities\Role" table="rol">
+<entity name="entities\Role" table="rol" repository-class="repositories\RoleRepository">
 	<id name="id" type="integer" column="id">
 		<generator strategy="AUTO" />
 	</id>

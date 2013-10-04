@@ -684,16 +684,4 @@ class Taxon extends BaseInfo
     {
         return $this->localidades;
     }
-
-    /**
-     * Add children_hierarchy
-     *
-     * @param entities\Taxon $childrenHierarchy
-     * @return Taxon
-     */
-    public function addTaxon(\entities\Taxon $childrenHierarchy)
-    {
-        $this->children_hierarchy[] = $childrenHierarchy;
-        return $this;
-    }
 }

@@ -3,7 +3,7 @@
       xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                     http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-<entity name="entities\User" table="usuario">
+<entity name="entities\User" table="usuario" repository-class="repositories\UserRepository">
 	<id name="id" type="integer" column="id">
 		<generator strategy="AUTO" />
 	</id>
