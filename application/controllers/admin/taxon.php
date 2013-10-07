@@ -121,9 +121,53 @@ class Taxon extends CI_Controller {
 		$this->twiggy->template('admin/Taxon/taxon_higher')->display();
 	}
 	
-	private function lower_taxa_form($action, $taxon = NULL) 
+	private function lower_taxa_form($rank, $taxon = NULL) 
 	{
+		$this->twiggy->set('sustratos', $this->getSustratos());
+		$this->twiggy->set('ecosistemas', $this->getEcosistemas());
+		$this->twiggy->set('sinonimos', json_encode(NULL));
+		$this->twiggy->title('Musgos de Venezuela | Nuevo taxón');
+		$this->twiggy->template('admin/Taxon/taxon_lower')->display();
+	}
+	
+	private function getSustratos()
+	{
+		$sust = $this->em->getRepository('entities\Sustrato')->getAll();
+		$sustratos = array();
+		$i = 0;
+		foreach ($sust as $s) {
+			$sustratos[$i]['id'] = $s->getId();
+			if ($s->getParent()) {
+				$sustratos[$i]['parentid'] = $s->getParent()->getId();
+			}
+			else {
+				$sustratos[$i]['parentid'] = -1;
+			}
+			$sustratos[$i]['text'] = $s->getName();
+			$i++;
+		}
 		
+		return json_encode($sustratos);
+	}
+	
+	private function getEcosistemas()
+	{
+		$eco = $this->em->getRepository('entities\Ecosistema')->getAll();
+		$ecosistemas = array();
+		$i = 0;
+		foreach ($eco as $e) {
+			$ecosistemas[$i]['id'] = $e->getId();
+			if ($e->getParent()) {
+				$ecosistemas[$i]['parentid'] = $e->getParent()->getId();
+			}
+			else {
+				$ecosistemas[$i]['parentid'] = -1;
+			}
+			$ecosistemas[$i]['text'] = $e->getName();
+			$i++;
+		}
+		
+		return json_encode($ecosistemas);
 	}
 	
 	//Populate taxa grid

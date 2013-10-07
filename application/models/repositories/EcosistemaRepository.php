@@ -17,15 +17,14 @@ class EcosistemaRepository extends EntityRepository
 	
 	/**
 	 * Obtener todos los Ecosistemas
-	 * @return Array de Ecosistema
+	 * @return Array de objetos Ecosistema
 	 */
 	 public function getAll()
 	 {
 	 	$query = $this->_em->createQuery(
 			"SELECT e 
-			FROM entities\Ecosistema e
-			WHERE e.parent IS NULL"
+			FROM entities\Ecosistema e"
 		);
-		return $query->getResult(Query::HYDRATE_ARRAY);
+		return $query->getResult(Query::HYDRATE_OBJECT);
 	 }
 }

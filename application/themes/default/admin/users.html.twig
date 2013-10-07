@@ -21,7 +21,7 @@
 					{ name: 'rid', type: 'number' }
 				],
 				localdata: data,
-				pagesize: 20,
+				pagesize: 10,
 				
 				deleterow: function (rowid, commit) { }
 			};
@@ -38,6 +38,7 @@
 			    localizationobj.sortascendingstring = "Ordenar ascendentemente";
 				localizationobj.sortdescendingstring = "Ordenar descendentemente";
 				localizationobj.sortremovestring = "Quitar ordenación";
+				localizationobj.emptydatastring = "No hay información para mostrar";
 			    return localizationobj;
 			}
 			
@@ -75,17 +76,19 @@
                     });
                     editButton.bind('click', function () {
                     	var rowindex = $('#user_grid').jqxGrid('getselectedrowindex');
-            			var data = $('#user_grid').jqxGrid('getrowdata', rowindex);
-            			$('#name').val(data.Name);
-            			$('#username').val(data.User);
-            			$('#email').val(data.Email);
-            			$('#id').val(data.id);
-            			$('#op').val(1);
-            			$('#password').attr('placeholder', 'En blanco para dejar igual');
-            			var item = $('#role').jqxDropDownList('getItemByValue', data.rid);
-            			$('#role').jqxDropDownList('selectItem', item);
-            			$('#user_window').css('visibility', 'visible');
-            			$('#user_window').jqxWindow('open');
+                    	if (rowindex >= 0) {
+                    		var data = $('#user_grid').jqxGrid('getrowdata', rowindex);
+	            			$('#name').val(data.Name);
+	            			$('#username').val(data.User);
+	            			$('#email').val(data.Email);
+	            			$('#id').val(data.id);
+	            			$('#op').val(1);
+	            			$('#password').attr('placeholder', 'En blanco para dejar igual');
+	            			var item = $('#role').jqxDropDownList('getItemByValue', data.rid);
+	            			$('#role').jqxDropDownList('selectItem', item);
+	            			$('#user_window').css('visibility', 'visible');
+	            			$('#user_window').jqxWindow('open');
+                    	}
                     });
 				},
 				enablebrowserselection: true,

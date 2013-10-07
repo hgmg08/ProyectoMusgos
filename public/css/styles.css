@@ -489,15 +489,6 @@ table#footer_nav a:hover{
 	padding: 5px;
 }
 
-#fs_higher_taxon_form label {
-	float: left;
-	width: 25%;
-	margin-right: 5px;
-	display: inline-block;
-	text-align: right;
-	font-weight: bold;
-}
-
 #fs_higher_taxon_form #save {
 	clear: both;
 	margin-top: 30px;
@@ -537,6 +528,38 @@ table#footer_nav a:hover{
 	display: table-cell;
 	text-align: center;
 	vertical-align: middle;
+}
+
+#taxon_lower fieldset {
+	padding: 10px;
+	border: 1px solid #C2BEBE;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+}
+
+#taxon_lower legend {
+	font-size: 12px;
+	font-weight: bold;
+	padding: 5px;
+}
+
+#taxon_lower p {
+	margin-bottom: 10px;
+}
+
+#taxon_lower label.field {
+	float:left;
+	width: 25%;
+	margin-right: 5px;
+	text-align: right;
+	font-weight: bold;
+}
+
+#taxon_lower textarea.tax_textarea {
+	resize: none;
+	width: 400px;
+	height: 100px;
 }
 
 /*

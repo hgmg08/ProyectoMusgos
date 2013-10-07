@@ -15,19 +15,17 @@ use Doctrine\ORM\EntityRepository,
 class SustratoRepository extends EntityRepository
 {
 	/**
-	 * Obtener todos los sustratos hijos
-	 * @return Array de Sustratos
+	 * Obtener todos los sustratos
+	 * @return Array de objetos Sustratos
 	 */
 	public function getAll()
 	{
 		$dql = "SELECT s
-				FROM entities\Sustrato s
-				WHERE s.parent IS NULL";
+				FROM entities\Sustrato s";
 		
 		$query = $this->_em->createQuery($dql);
-		//$query->setParameter('id', NULL);
 		
-		return $query->getResult(Query::HYDRATE_ARRAY);
+		return $query->getResult(Query::HYDRATE_OBJECT);
 	}
 	
 }

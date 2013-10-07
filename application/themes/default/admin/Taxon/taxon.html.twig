@@ -20,7 +20,7 @@
 					{ name: 'RankEnum', type: 'number' }
 				],
 				localdata: data,
-				pagesize: 20,
+				pagesize: 10,
 				
 				deleterow: function (rowid, commit) { }
 			};
@@ -37,6 +37,7 @@
 			    localizationobj.sortascendingstring = "Ordenar ascendentemente";
 				localizationobj.sortdescendingstring = "Ordenar descendentemente";
 				localizationobj.sortremovestring = "Quitar ordenación";
+				localizationobj.emptydatastring = "No hay información para mostrar";
 			    return localizationobj;
 			}
 			
@@ -65,8 +66,10 @@
                     });
                     editButton.bind('click', function () {
                     	var rowindex = $('#tax_grid').jqxGrid('getselectedrowindex');
-            			var data = $('#tax_grid').jqxGrid('getrowdata', rowindex);
-            			window.location = "{{ base_url('admin/taxon/taxon_form') }}" + '/' + data.RankEnum + '/' + data.id ;
+                    	if (rowindex >= 0) {
+	            			var data = $('#tax_grid').jqxGrid('getrowdata', rowindex);
+	            			window.location = "{{ base_url('admin/taxon/taxon_form') }}" + '/' + data.RankEnum + '/' + data.id ;
+                    	}
                     });
 				},
 				enablebrowserselection: true,

@@ -7,7 +7,23 @@
 	<script type="text/javascript">
 		$(document).ready(function () {
 			var theme = 'mdv';
-			var parentTaxonList = {{ parentRankList }};
+			
+			var getLocalization = function () {
+				var localizationobj = {};
+				localizationobj.pagergotopagestring = "Ir a página:";
+			    localizationobj.pagershowrowsstring = "Mostrar filas:";
+			    localizationobj.pagerrangestring = " de ";
+			    localizationobj.pagernextbuttonstring = "Siguiente";
+			    localizationobj.pagerpreviousbuttonstring = "Anterior";
+			    localizationobj.filtershowrowstring = "Escoger:";
+			    localizationobj.sortascendingstring = "Ordenar ascendentemente";
+				localizationobj.sortdescendingstring = "Ordenar descendentemente";
+				localizationobj.sortremovestring = "Quitar ordenación";
+				localizationobj.emptydatastring = "No hay información para mostrar";
+			    return localizationobj;
+			}
+			
+			var parentTaxonList = '';
 			var sourceParentRank =
 		    {
 		    	datatype: "json",
@@ -18,74 +34,110 @@
 		        localdata: parentTaxonList
 		    };
 			var daParentRank = new $.jqx.dataAdapter(sourceParentRank);
+			
 			$('#parent').jqxDropDownList({
 				source: daParentRank,  
 				displayMember: 'name',
 				valueMember: 'id', 
-				width: 230, 
+				width: 400, 
 				height: 20, 
 				theme: theme,
 				placeHolder: ''
 			});
-			var item = $("#parent").jqxDropDownList('getItemByValue', {% if taxon %} {{ taxon.getParentHierarchy.getId }} {% else %} -1 {% endif %});
-			if (item) {
-				$('#parent').jqxDropDownList('selectItem', item);
-			}
-			else {
-				$('#parent').jqxDropDownList('selectIndex', 0);
-			}
-			$('#name').jqxInput({
-				height: 20,
-				width: 230
+			
+			var sustratos = {{ sustratos }};
+			var sourceSustratos =
+			{
+				datatype: "json",
+				datafields: [
+					{ name: 'id' },
+					{ name: 'parentid' },
+					{ name: 'text' }
+				],
+				async: false,
+				id: 'id',
+				localdata: sustratos
+			};
+			var daSustratos = new $.jqx.dataAdapter(sourceSustratos);
+			daSustratos.dataBind();
+			var recSustratos = daSustratos.getRecordsHierarchy('id', 'parentid', 'items', [{ name: 'text', map: 'label' }]);
+			
+			$('#sustratos').jqxTree({ source: recSustratos, width: 400, theme: theme, hasThreeStates: true, checkboxes: true });
+			
+			var ecosistemas = {{ ecosistemas }};
+			var sourceEcosistemas =
+			{
+				datatype: "json",
+				datafields: [
+					{ name: 'id' },
+					{ name: 'parentid' },
+					{ name: 'text' }
+				],
+				async: false,
+				id: 'id',
+				localdata: ecosistemas
+			};
+			var daEcosistemas = new $.jqx.dataAdapter(sourceEcosistemas);
+			daEcosistemas.dataBind();
+			var recEcosistemas = daEcosistemas.getRecordsHierarchy('id', 'parentid', 'items', [{ name: 'text', map: 'label' }]);
+			
+			$('#ecosistemas').jqxTree({ source: recEcosistemas, width: 400, theme: theme, hasThreeStates: true, checkboxes: true });
+			
+			$('#name').jqxInput({ height: 20, width: 400, theme: theme });
+			$('#author').jqxInput({ height: 20, width: 400, theme: theme });
+			$('#accepted').jqxCheckBox({ theme: theme });
+			$('#endemic').jqxCheckBox({ theme: theme });
+			
+			var sinonimos = {{ sinonimos }};
+			var sourceSinonimos = {
+				datatype: "json",
+			    datafields: [
+			    	{ name: 'id', type: 'number' },
+			    	{ name: 'name', type: 'string' },
+			    	{ name: 'author', type: 'string' },
+			    	{ name: 'rank', type: 'string' },
+			    	{ name: 'type', type: 'string' }
+			    ],
+				localdata: sinonimos,
+				pagesize: 10
+			};
+			
+			var daSinonimos = new $.jqx.dataAdapter(sourceSinonimos);
+			
+			$('#grid_sinonimos').jqxGrid({
+				width: '100%',
+				theme: theme,
+				source: daSinonimos,
+				editable: true,
+				columnsresize: true,
+				showstatusbar: true,
+				localization: getLocalization(),
+			    pageable: true,
+				renderstatusbar: function (statusbar) {
+					var container = $("<div style='overflow: hidden; position: relative; margin: 5px;'></div>");
+                    var addButton = $("<div style='float: left; margin-left: 5px;'><img style='position: relative; margin-top: 1px;' src='{{ base_url('public/images/img16x16_new.png') }}'/><span style='margin-left: 4px; position: relative; top: 2px;'>Nuevo</span></div>");
+                    var editButton = $("<div style='float: left; margin-left: 5px;'><img style='position: relative; margin-top: 1px;' src='{{ base_url('public/images/img16x16_edit.png') }}'/><span style='margin-left: 4px; position: relative; top: 2px;'>Editar</span></div>");
+                    var deleteButton = $("<div style='float: left; margin-left: 5px;'><img style='position: relative; margin-top: 1px;' src='{{ base_url('public/images/img16x16_delete.png') }}'/><span style='margin-left: 4px; position: relative; top: 2px;'>Eliminar</span></div>");
+                    container.append(addButton);
+                    container.append(editButton);
+                    container.append(deleteButton);
+                    statusbar.append(container);
+                    addButton.jqxButton({ theme: theme, width: 70, height: 20 });
+                    editButton.jqxButton({ theme: theme, width: 70, height: 20 });
+                    deleteButton.jqxButton({ theme: theme, width: 80, height: 20 });
+                },
+				selectionmode: 'multiplecellsadvanced',
+				columns: [
+					{ text: 'Nombre', columntype: 'textbox', datafield: 'name' },
+					{ text: 'Autor', columntype: 'textbox', datafield: 'author' },
+					{ text: 'Clasificación', columntype: 'dropdownlist', datafield: 'rank' },
+					{ text: 'Tipo', columntype: 'dropdownlist', datafield: 'type' }
+				]
 			});
+			
 			$('#successPersist').jqxWindow({ width: 300, height: 100, isModal: true, autoOpen: false, resizable: false, theme: theme });
 			$('#failPersist').jqxWindow({ width: 300, height: 100, isModal: true, autoOpen: false, resizable: false, theme: theme });
 			$('#save').jqxButton({ width: 70, theme: theme });
-			$('#taxon_higher').jqxValidator({
-				animationDuration: 1,
-				rules: [
-					{ input: '#name', message: 'El nombre es requerido', action: 'keyup, blur', rule: 'required' }
-				],
-				theme: theme
-			});
-			$('#save').click(function () {
-				var data = {
-					id: {{ id }},
-					name: $('#name').val(),
-					parent: $('#parent').jqxDropDownList('getSelectedItem').value,
-					type: {{ rankNumber }},
-					operation: {{ operation }}
-				};	
-				var validation = function(isValid) {
-					if (isValid) {
-						$.ajax({
-							type: 'POST',
-							url: '{{ base_url('admin/taxon/persist_higher') }}',
-							data: data,
-							dataType: 'text',
-							success: function(response) {
-								console.log(response);
-								if (response == true) {
-									$('#successPersist').css('visibility', 'visible');
-									$('#successPersist').jqxWindow('open');
-									setTimeout(function () {
-										$('#successPersist').jqxWindow('close');
-									}, 2500);
-									window.location = '{{ base_url('admin/taxon') }}';
-								}
-								else {
-									$('#failPersist').css('visibility', 'visible');
-									$('#failPersist').jqxWindow('open');
-									setTimeout(function () {
-										$('#failPersist').jqxWindow('close');
-									}, 4000);
-								}
-							}
-						});
-					}
-				};
-				$('#taxon_higher').jqxValidator('validate', validation);
-			});
 		});
 	</script>
 	
@@ -95,27 +147,97 @@
 
 	<div class="grid_12">
 		<div id="tax_hg_admin_name">
-			{% if taxon %}
-				{{ taxon.getName }}
-			{% else %}
-				Nuev{% if rank == 'Género' %}o{% else %}a{% endif %} {{ rank }} 
-			{% endif %}
+			Nueva Especie
 		</div>
 		<div id="tax_hg_admin_type">
 			{{ rankName }}
 		</div>
 		
-		<form id="taxon_higher" action="{{ base_url('admin/taxon/persist_higher') }}" method="POST">
-			<fieldset id="fs_higher_taxon_form">
+		<form id="taxon_lower" action="{{ base_url('admin/taxon/persist_higher') }}" method="POST">
+			<fieldset>
 			<legend>Detalles</legend>
-				<label>Nombre:</label>
-				<input id="name" name="name" value="{{ taxon.name }}" />
-				<br />
-				<br />
-				<label>Taxón padre ({{ parentRank }}):</label>
-				<div id="parent"></div>
-				<input type="button" value="Guardar" id="save" />
+				<p>
+					<label class="field">Nombre</label>
+					<input id="name" name="name" placeholder="Ingrese nombre científico" value="" />
+				</p>
+				<p>
+					<label class="field">Autor</label>
+					<input id="author" name="author" placeholder="Ingrese iniciales del autor" value="" />
+				</p>
+				<p>
+					<label class="field">Taxón padre</label>
+					<div id="parent"></div>
+				</p>
+				<p>
+					<label class="field">¿Es aceptada?</label>
+					<div class="tax_checkbox" id="accepted"></div>
+				</p>
+				<p>
+					<label class="field">¿Es endémica?</label>
+					<div class="tax_checkbox" id="endemic"></div>
+				</p>
+				<p>
+					<label class="field">Sustratos</label>
+					<div id="sustratos"></div>
+				</p>
+				<p>
+					<label class="field">Ecosistemas</label>
+					<div id="ecosistemas"></div>
+				</p>
 			</fieldset>
+			
+			<fieldset>
+			<legend>Distribución mundial</legend>
+				<p>
+					<label class="field">Distribución en el mundo</label>
+					<textarea class="tax_textarea" placeholder="Ingrese paises separados por comas"></textarea>
+				</p>
+				<p>
+					<label class="field">Zonas de Van der Wijk</label>
+					<textarea class="tax_textarea" placeholder="Ingrese zonas separadas por comas"></textarea>
+				</p>
+				<p>
+					<label class="field">Paises andinotropicales</label>
+					<textarea class="tax_textarea" placeholder="Ingrese paises separados por comas"></textarea>
+				</p>
+			</fieldset>
+			
+			<fieldset>
+			<legend>Sinonimos</legend>
+				<div id="grid_sinonimos"></div>
+			</fieldset>
+			
+			<fieldset>
+			<legend>Publicaciones</legend>
+				
+			</fieldset>
+			
+			<fieldset>
+			<legend>Distribución en Venezuela</legend>
+				
+			</fieldset>
+			
+			<fieldset>
+			<legend>Lista roja</legend>
+				
+			</fieldset>
+			
+			<fieldset>
+			<legend>Indicadores cambio climático</legend>
+				
+			</fieldset>
+			
+			<fieldset>
+			<legend>Comentarios de revisión</legend>
+				
+			</fieldset>
+			
+			<fieldset>
+			<legend>Imágenes</legend>
+				
+			</fieldset>
+			
+			<input type="button" value="Guardar" id="save" />
 		</form>
 	</div>
 	
