@@ -19,7 +19,7 @@
 			    localizationobj.sortascendingstring = "Ordenar ascendentemente";
 				localizationobj.sortdescendingstring = "Ordenar descendentemente";
 				localizationobj.sortremovestring = "Quitar ordenación";
-				localizationobj.emptydatastring = "No hay información para mostrar";
+				localizationobj.emptydatastring = " ";
 			    return localizationobj;
 			}
 			
@@ -83,6 +83,19 @@
 			
 			$('#ecosistemas').jqxTree({ source: recEcosistemas, width: 400, theme: theme, hasThreeStates: true, checkboxes: true });
 			
+			var ecorregiones = {{ ecorregiones }};
+			var sourceEcorregiones =
+			{
+				datatype: "json",
+				datafields: [
+					{ name: 'id' },
+					{ name: 'name' }
+				],
+				localdata: ecorregiones
+			};
+			var daEcorregiones = new $.jqx.dataAdapter(sourceEcorregiones);
+			$('#ecorregiones').jqxListBox({ width: 400, source: daEcorregiones, displayMember: 'name', valueMember: 'id', checkboxes: true, theme: theme });
+			
 			$('#name').jqxInput({ height: 20, width: 400, theme: theme });
 			$('#author').jqxInput({ height: 20, width: 400, theme: theme });
 			$('#accepted').jqxCheckBox({ theme: theme });
@@ -116,14 +129,11 @@
 				renderstatusbar: function (statusbar) {
 					var container = $("<div style='overflow: hidden; position: relative; margin: 5px;'></div>");
                     var addButton = $("<div style='float: left; margin-left: 5px;'><img style='position: relative; margin-top: 1px;' src='{{ base_url('public/images/img16x16_new.png') }}'/><span style='margin-left: 4px; position: relative; top: 2px;'>Nuevo</span></div>");
-                    var editButton = $("<div style='float: left; margin-left: 5px;'><img style='position: relative; margin-top: 1px;' src='{{ base_url('public/images/img16x16_edit.png') }}'/><span style='margin-left: 4px; position: relative; top: 2px;'>Editar</span></div>");
                     var deleteButton = $("<div style='float: left; margin-left: 5px;'><img style='position: relative; margin-top: 1px;' src='{{ base_url('public/images/img16x16_delete.png') }}'/><span style='margin-left: 4px; position: relative; top: 2px;'>Eliminar</span></div>");
                     container.append(addButton);
-                    container.append(editButton);
                     container.append(deleteButton);
                     statusbar.append(container);
                     addButton.jqxButton({ theme: theme, width: 70, height: 20 });
-                    editButton.jqxButton({ theme: theme, width: 70, height: 20 });
                     deleteButton.jqxButton({ theme: theme, width: 80, height: 20 });
                 },
 				selectionmode: 'multiplecellsadvanced',
@@ -132,6 +142,114 @@
 					{ text: 'Autor', columntype: 'textbox', datafield: 'author' },
 					{ text: 'Clasificación', columntype: 'dropdownlist', datafield: 'rank' },
 					{ text: 'Tipo', columntype: 'dropdownlist', datafield: 'type' }
+				]
+			});
+			
+			var publications = {{ publicaciones }};
+			var sourcePublications = {
+				datatype: 'json',
+			    datafields: [
+			    	{ name: 'id', type: 'number' },
+			    	{ name: 'author', type: 'string' },
+			    	{ name: 'title', type: 'string' },
+			    	{ name: 'year', type: 'number' },
+			    	{ name: 'journal', type: 'string' },
+			    	{ name: 'collation', type: 'string' },
+			    	{ name: 'type', type: 'string' },
+			    	{ name: 'quote', type: 'string' }
+			    ],
+				localdata: publications,
+				pagesize: 10
+			};
+			
+			var daPublications = new $.jqx.dataAdapter(sourcePublications);
+			
+			$('#grid_publicaciones').jqxGrid({
+				width: '100%',
+				theme: theme,
+				source: daPublications,
+				editable: true,
+				columnsresize: true,
+				showstatusbar: true,
+				localization: getLocalization(),
+			    pageable: true,
+				renderstatusbar: function (statusbar) {
+					var container = $("<div style='overflow: hidden; position: relative; margin: 5px;'></div>");
+                    var addButton = $("<div style='float: left; margin-left: 5px;'><img style='position: relative; margin-top: 1px;' src='{{ base_url('public/images/img16x16_new.png') }}'/><span style='margin-left: 4px; position: relative; top: 2px;'>Nuevo</span></div>");
+                    var deleteButton = $("<div style='float: left; margin-left: 5px;'><img style='position: relative; margin-top: 1px;' src='{{ base_url('public/images/img16x16_delete.png') }}'/><span style='margin-left: 4px; position: relative; top: 2px;'>Eliminar</span></div>");
+                    container.append(addButton);
+                    container.append(deleteButton);
+                    statusbar.append(container);
+                    addButton.jqxButton({ theme: theme, width: 70, height: 20 });
+                    deleteButton.jqxButton({ theme: theme, width: 80, height: 20 });
+                },
+				selectionmode: 'multiplecellsadvanced',
+				columns: [
+					{ text: 'Autor', columntype: 'textbox', datafield: 'author' },
+					{ text: 'Título', columntype: 'textbox', datafield: 'title' },
+					{ text: 'Año', columntype: 'number', datafield: 'year' },
+					{ text: 'Revista', columntype: 'textbox', datafield: 'journal' },
+					{ text: 'Colación', columntype: 'textbox', datafield: 'collation' },
+					{ text: 'Tipo', columntype: 'dropdownlist', datafield: 'type' },
+					{ text: 'Cita corta', columntype: 'textbox', datafield: 'quote' }
+				]
+			});
+			
+			var specimens = {{ especimenes }};
+			var sourceSpecimens = {
+				datatype: 'json',
+			    datafields: [
+			    	{ name: 'id', type: 'number' },
+			    	{ name: 'state', type: 'string' },
+			    	{ name: 'town', type: 'string' },
+			    	{ name: 'location', type: 'string' },
+			    	{ name: 'altitude_min', type: 'number' },
+			    	{ name: 'altitude_max', type: 'number' },
+			    	{ name: 'latitude', type: 'number' },
+			    	{ name: 'longitude', type: 'number' },
+			    	{ name: 'collection', type: 'string' },
+			    	{ name: 'collection_date', type: 'date' },
+			    	{ name: 'herbarium', type: 'string' },
+			    	{ name: 'reference', type: 'string' }
+			    ],
+				localdata: specimens,
+				pagesize: 10
+			};
+			
+			var daSpecimens = new $.jqx.dataAdapter(sourceSpecimens);
+			
+			$('#grid_especimenes').jqxGrid({
+				width: '100%',
+				theme: theme,
+				source: daSpecimens,
+				editable: true,
+				columnsresize: true,
+				showstatusbar: true,
+				localization: getLocalization(),
+			    pageable: true,
+				renderstatusbar: function (statusbar) {
+					var container = $("<div style='overflow: hidden; position: relative; margin: 5px;'></div>");
+                    var addButton = $("<div style='float: left; margin-left: 5px;'><img style='position: relative; margin-top: 1px;' src='{{ base_url('public/images/img16x16_new.png') }}'/><span style='margin-left: 4px; position: relative; top: 2px;'>Nuevo</span></div>");
+                    var deleteButton = $("<div style='float: left; margin-left: 5px;'><img style='position: relative; margin-top: 1px;' src='{{ base_url('public/images/img16x16_delete.png') }}'/><span style='margin-left: 4px; position: relative; top: 2px;'>Eliminar</span></div>");
+                    container.append(addButton);
+                    container.append(deleteButton);
+                    statusbar.append(container);
+                    addButton.jqxButton({ theme: theme, width: 70, height: 20 });
+                    deleteButton.jqxButton({ theme: theme, width: 80, height: 20 });
+                },
+				selectionmode: 'multiplecellsadvanced',
+				columns: [
+					{ text: 'Estado', columntype: 'dropdownlist', datafield: 'state' },
+					{ text: 'Municipio', columntype: 'dropdownlist', datafield: 'town' },
+					{ text: 'Localidad', columntype: 'textbox', datafield: 'location' },
+					{ text: 'Altitud (min)', columntype: 'number', datafield: 'altitude_min' },
+					{ text: 'Altitud (max)', columntype: 'number', datafield: 'altitude_max' },
+					{ text: 'Latitud', columntype: 'textbox', datafield: 'latitude' },
+					{ text: 'Longitud', columntype: 'textbox', datafield: 'longitud' },
+					{ text: 'Colección', columntype: 'textbox', datafield: 'collection' },
+					{ text: 'Fecha colección', columntype: 'datetimeinput', datafield: 'collection_date' },
+					{ text: 'Herbario', columntype: 'textbox', datafield: 'herbarium' },
+					{ text: 'Referencia', columntype: 'custom', datafield: 'reference' }
 				]
 			});
 			
@@ -181,6 +299,10 @@
 					<div id="sustratos"></div>
 				</p>
 				<p>
+					<label class="field">Ecorregiones</label>
+					<div id="ecorregiones"></div>
+				</p>
+				<p>
 					<label class="field">Ecosistemas</label>
 					<div id="ecosistemas"></div>
 				</p>
@@ -209,12 +331,12 @@
 			
 			<fieldset>
 			<legend>Publicaciones</legend>
-				
+				<div id="grid_publicaciones"></div>
 			</fieldset>
 			
 			<fieldset>
-			<legend>Distribución en Venezuela</legend>
-				
+			<legend>Especímenes</legend>
+				<div id="grid_especimenes"></div>
 			</fieldset>
 			
 			<fieldset>
@@ -228,15 +350,16 @@
 			</fieldset>
 			
 			<fieldset>
-			<legend>Comentarios de revisión</legend>
-				
-			</fieldset>
-			
-			<fieldset>
 			<legend>Imágenes</legend>
 				
 			</fieldset>
 			
+			<fieldset>
+			<legend>Comentarios de revisión</legend>
+				
+			</fieldset>
+			
+			<br/>
 			<input type="button" value="Guardar" id="save" />
 		</form>
 	</div>

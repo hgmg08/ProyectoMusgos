@@ -124,8 +124,11 @@ class Taxon extends CI_Controller {
 	private function lower_taxa_form($rank, $taxon = NULL) 
 	{
 		$this->twiggy->set('sustratos', $this->getSustratos());
+		$this->twiggy->set('ecorregiones', json_encode($this->em->getRepository('entities\Ecorregion')->getAll()));
 		$this->twiggy->set('ecosistemas', $this->getEcosistemas());
 		$this->twiggy->set('sinonimos', json_encode(NULL));
+		$this->twiggy->set('publicaciones', json_encode(NULL));
+		$this->twiggy->set('especimenes', json_encode(NULL));
 		$this->twiggy->title('Musgos de Venezuela | Nuevo taxón');
 		$this->twiggy->template('admin/Taxon/taxon_lower')->display();
 	}
