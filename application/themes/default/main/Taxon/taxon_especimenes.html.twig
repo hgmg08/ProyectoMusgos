@@ -34,14 +34,10 @@
 					                return localizationobj;
 					            }
 					            
-					            $("#locationsGrid").on('bindingcomplete', function () {
-                					$("#locationsGrid").jqxGrid('autoresizecolumns');
-            					});
-					            
 					            $("#locationsGrid").jqxGrid(
 					            {
 					            	width: 938,
-					            	height: 300,
+					            	autoheight: true,
 					                source: dataAdapter,
 					                theme: theme,
 					                columnsresize: true,
@@ -52,16 +48,16 @@
 					                localization: getLocalization(),
 					                pageable: true,
 					                columns: [
-					                	{ text: 'Estado', datafield: 'Estado'},
-					                    { text: 'Municipio', datafield: 'Municipio' },
-					                    { text: 'Localidad', datafield: 'Nombre' },
-					                    { text: 'Altitud (m)', datafield: 'Altitud' },
-					                    { text: 'Colección', datafield: 'Coleccion' },
-					                    { text: 'Fecha colección', datafield: 'FechaColeccion' },
-					                    { text: 'Herbario', datafield: 'Herbario' },
-					                    { text: 'Coordenadas', datafield: 'Coordenadas' },
-							    		{ text: 'Referencias', datafield: 'Referencias' }
+					                	{ text: 'Estado', datafield: 'Estado', width: '10%' },
+					                    { text: 'Municipio', datafield: 'Municipio', width: '10%' },
+					                    { text: 'Localidad', datafield: 'Nombre', width: '40%' },
+					                    { text: 'Altitud (m)', datafield: 'Altitud', width: '10%' },
+					                    { text: 'Colección', datafield: 'Coleccion', width: '20%' },
+					                    { text: 'Fecha colección', datafield: 'FechaColeccion', width: '12%' },
+					                    { text: 'Herbario', datafield: 'Herbario', width: '10%' },
+					                    { text: 'Coordenadas', datafield: 'Coordenadas', width: '15%' },
+							    		{ text: 'Referencias', datafield: 'Referencias', width: '18%' }
 					                ]
-					           	});
+					           	});  	
 					       });
 					    </script>

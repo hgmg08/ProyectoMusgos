@@ -41,7 +41,7 @@
 			$('#successPersist').jqxWindow({ width: 300, height: 100, isModal: true, autoOpen: false, resizable: false, theme: theme });
 			$('#failPersist').jqxWindow({ width: 300, height: 100, isModal: true, autoOpen: false, resizable: false, theme: theme });
 			$('#save').jqxButton({ width: 70, theme: theme });
-			$('#taxon_higher').jqxValidator({
+			$('#taxon_form').jqxValidator({
 				animationDuration: 1,
 				rules: [
 					{ input: '#name', message: 'El nombre es requerido', action: 'keyup, blur', rule: 'required' }
@@ -65,7 +65,7 @@
 							dataType: 'text',
 							success: function(response) {
 								console.log(response);
-								if (response == true) {
+								if (response) {
 									$('#successPersist').css('visibility', 'visible');
 									$('#successPersist').jqxWindow('open');
 									setTimeout(function () {
@@ -84,7 +84,7 @@
 						});
 					}
 				};
-				$('#taxon_higher').jqxValidator('validate', validation);
+				$('#taxon_form').jqxValidator('validate', validation);
 			});
 		});
 	</script>
@@ -105,15 +105,17 @@
 			{{ rankName }}
 		</div>
 		
-		<form id="taxon_higher" action="{{ base_url('admin/taxon/persist_higher') }}" method="POST">
-			<fieldset id="fs_higher_taxon_form">
+		<form id="taxon_form" action="{{ base_url('admin/taxon/persist_higher') }}" method="POST">
+			<fieldset>
 			<legend>Detalles</legend>
-				<label>Nombre:</label>
-				<input id="name" name="name" value="{{ taxon.name }}" />
-				<br />
-				<br />
-				<label>Taxón padre ({{ parentRank }}):</label>
-				<div id="parent"></div>
+				<p>
+					<label class="field">Nombre:</label>
+					<input id="name" name="name" value="{{ taxon.name }}" />
+				</p>
+				<p>
+					<label class="field">Taxón padre ({{ parentRank }}):</label>
+					<div id="parent"></div>
+				</p>
 				<input type="button" value="Guardar" id="save" />
 			</fieldset>
 		</form>

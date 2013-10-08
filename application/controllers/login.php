@@ -35,11 +35,11 @@ class Login extends CI_Controller {
 				redirect('admin/home');
 			}
 			else {
-				var_dump($user);
+				redirect('');
 			}
 		}
 		else {
-			var_dump($user);
+			redirect('');
 		}
 	}
 	

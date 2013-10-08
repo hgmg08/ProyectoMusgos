@@ -117,8 +117,18 @@ class Taxon extends CI_Controller {
 			$this->twiggy->set('operation', 2);
 			$this->twiggy->set('id', -1);
 		}
-		$this->twiggy->title('Musgos de Venezuela | Nuevo taxón');
-		$this->twiggy->template('admin/Taxon/taxon_higher')->display();
+		$auth = $this->session->userdata('auth');
+		if ($auth) {
+			$user= $this->em->find('entities\User', $this->session->userdata('uid'));
+			
+			$this->twiggy->set('role', $user->getRole()->getName());
+			$this->twiggy->set('username', $user->getUsername());
+			$this->twiggy->title('Musgos de Venezuela | Nuevo taxón');
+			$this->twiggy->template('admin/Taxon/taxon_higher')->display();
+		}
+		else {
+			redirect('');
+		}
 	}
 	
 	private function lower_taxa_form($rank, $taxon = NULL) 
@@ -129,8 +139,19 @@ class Taxon extends CI_Controller {
 		$this->twiggy->set('sinonimos', json_encode(NULL));
 		$this->twiggy->set('publicaciones', json_encode(NULL));
 		$this->twiggy->set('especimenes', json_encode(NULL));
-		$this->twiggy->title('Musgos de Venezuela | Nuevo taxón');
-		$this->twiggy->template('admin/Taxon/taxon_lower')->display();
+		
+		$auth = $this->session->userdata('auth');
+		if ($auth) {
+			$user= $this->em->find('entities\User', $this->session->userdata('uid'));
+			
+			$this->twiggy->set('role', $user->getRole()->getName());
+			$this->twiggy->set('username', $user->getUsername());
+			$this->twiggy->title('Musgos de Venezuela | Nuevo taxón');
+			$this->twiggy->template('admin/Taxon/taxon_lower')->display();
+		}
+		else {
+			redirect('');
+		}
 	}
 	
 	private function getSustratos()
