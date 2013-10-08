@@ -15,8 +15,6 @@ class EditUser extends CI_Controller {
 	{
 		$user = $this->em->find('entities\User', 1);
 		$user->setPassword($this->encrypt->sha1('admin'));
-		$this->em->persist($user);
-		$this->em->flush();
 	}
 }
 ?>

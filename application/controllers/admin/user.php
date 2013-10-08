@@ -50,6 +50,17 @@ class User extends CI_Controller {
 		return $users;
 	}
 
+	public function delete_user()
+	{
+		$id = $this->input->post("id");
+		$user = $this->em->find('entities\User', $id);
+		if ($user) {
+			$this->em->remove($user);
+			$this->em->flush();
+			echo true;
+		}
+	}
+
 	public function persist_user()
 	{
 		$id = $this->input->post("id");

@@ -23,7 +23,22 @@
 				localdata: data,
 				pagesize: 10,
 				
-				deleterow: function (rowid, commit) { }
+				deleterow: function (rowid, commit) {
+					var user = $('#user_grid').jqxGrid('getrowdata', rowid);
+					var data = {
+						id: user.id
+					};
+					console.log(data);
+					$.ajax({
+							type: 'POST',
+							url: '{{ base_url('admin/user/delete_user') }}',
+							data: data,
+							dataType: 'text',
+							success: function (data, status, xhr) {	
+								commit(true);
+							}
+					});
+				}
 			};
 			
 			var dataAdapter = new $.jqx.dataAdapter(source);
@@ -39,6 +54,7 @@
 				localizationobj.sortdescendingstring = "Ordenar descendentemente";
 				localizationobj.sortremovestring = "Quitar ordenación";
 				localizationobj.emptydatastring = "No hay información para mostrar";
+				localizationobj.filterchoosestring = "Escoja:";
 			    return localizationobj;
 			}
 			
@@ -90,6 +106,13 @@
 	            			$('#user_window').jqxWindow('open');
                     	}
                     });
+                    deleteButton.bind('click', function() {
+                    	var rowindex = $('#user_grid').jqxGrid('getselectedrowindex');
+                    	if (rowindex >= 0) {
+                    		var id = $("#user_grid").jqxGrid('getrowid', rowindex);
+        					$("#user_grid").jqxGrid('deleterow', id);
+                    	}
+                    });
 				},
 				enablebrowserselection: true,
 				columnsresize: true,
@@ -103,7 +126,7 @@
 			        { text: 'Usuario', datafield: 'User', width: '20%', filtertype: 'textbox' },
 			        { text: 'Nombre', datafield: 'Name', filtertype: 'textbox' },
 			        { text: 'Email', datafield: 'Email', filtertype: 'textbox' },
-			        { text: 'Rol', datafield: 'Role', filtertype: 'textbox' }
+			        { text: 'Rol', datafield: 'Role', filtertype: 'list' }
 			    ]
 			});
 			$('#name').jqxInput({ height: 20, width: 230});
