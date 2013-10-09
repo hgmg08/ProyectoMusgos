@@ -1,0 +1,113 @@
+{% extends '_layouts/admin.html.twig' %}
+
+
+{% block head %}
+
+	{{ parent() }}
+	
+	<script type="text/javascript">
+		$(document).ready(function () {
+			var theme = 'mdv';
+			var data = {{ publications }};
+			var source =
+			{
+			    datatype: "json",
+			    datafields: [
+					{ name: 'id', type: 'number' },
+					{ name: 'Author', type: 'string' },
+					{ name: 'Title', type: 'string' },
+					{ name: 'Year', type: 'string' },
+					{ name: 'Journal', type: 'string' },
+					{ name: 'Collation', type: 'string' },
+					{ name: 'Type', type: 'string' },
+					{ name: 'Quote', type: 'string' }
+				],
+				localdata: data,
+				pagesize: 10,
+				
+				deleterow: function (rowid, commit) {
+					
+				}
+			};
+			
+			var dataAdapter = new $.jqx.dataAdapter(source);
+			var getLocalization = function () {
+				var localizationobj = {};
+				localizationobj.pagergotopagestring = "Ir a página:";
+			    localizationobj.pagershowrowsstring = "Mostrar filas:";
+			    localizationobj.pagerrangestring = " de ";
+			    localizationobj.pagernextbuttonstring = "Siguiente";
+			    localizationobj.pagerpreviousbuttonstring = "Anterior";
+			    localizationobj.filtershowrowstring = "Escoger:";
+			    localizationobj.sortascendingstring = "Ordenar ascendentemente";
+				localizationobj.sortdescendingstring = "Ordenar descendentemente";
+				localizationobj.sortremovestring = "Quitar ordenación";
+				localizationobj.emptydatastring = "No hay información para mostrar";
+				localizationobj.filterchoosestring = "Escoja:";
+			    return localizationobj;
+			}
+			
+			$("#pub_grid").jqxGrid({
+				width: '100%',
+				autoheight: true,
+				source: dataAdapter,
+				theme: theme,
+				showstatusbar: true,
+				renderstatusbar: function (statusbar) {
+					var container = $("<div style='overflow: hidden; position: relative; margin: 5px;'></div>");
+                    var addButton = $("<div style='float: left; margin-left: 5px;'><img style='position: relative; margin-top: 1px;' src='{{ base_url('public/images/img16x16_new.png') }}'/><span style='margin-left: 4px; position: relative; top: 2px;'>Nuevo</span></div>");
+                    var editButton = $("<div style='float: left; margin-left: 5px;'><img style='position: relative; margin-top: 1px;' src='{{ base_url('public/images/img16x16_edit.png') }}'/><span style='margin-left: 4px; position: relative; top: 2px;'>Editar</span></div>");
+                    var deleteButton = $("<div style='float: left; margin-left: 5px;'><img style='position: relative; margin-top: 1px;' src='{{ base_url('public/images/img16x16_delete.png') }}'/><span style='margin-left: 4px; position: relative; top: 2px;'>Eliminar</span></div>");
+                    container.append(addButton);
+                    container.append(editButton);
+                    container.append(deleteButton);
+                    statusbar.append(container);
+                    addButton.jqxButton({ theme: theme, width: 70, height: 20 });
+                    editButton.jqxButton({ theme: theme, width: 70, height: 20 });
+                    deleteButton.jqxButton({ theme: theme, width: 80, height: 20 });
+                    addButton.bind('click', function () {
+
+                    });
+                    editButton.bind('click', function () {
+
+                    });
+                    deleteButton.bind('click', function() {
+                    
+                    });
+				},
+				enablebrowserselection: true,
+				columnsresize: true,
+				showfilterrow: true,
+                filterable: true,
+                sortable: true,
+			    localization: getLocalization(),
+			    pageable: true,
+			    columns: [
+			    	{ text: 'Id', datafield: 'id', width: '3%', filtertype: 'textbox' },
+			        { text: 'Autor', datafield: 'Author', width: '15%', filtertype: 'textbox' },
+			        { text: 'Título', datafield: 'Title', width: '15%', filtertype: 'textbox' },
+			        { text: 'Año', datafield: 'Year', filtertype: 'textbox' },
+			        { text: 'Revista', datafield: 'Journal', filtertype: 'textbox' },
+			        { text: 'Colación', datafield: 'Collation', filtertype: 'textbox' },
+			        { text: 'Tipo', datafield: 'Type', width: '15%', filtertype: 'list' },
+			        { text: 'Cita corta', datafield: 'Quote', filtertype: 'textbox' }
+			    ]
+			});
+		});
+	</script>
+
+{% endblock %}
+
+{% block content %}
+
+	<div class="grid_12">
+		<div id="tax_grid_title">
+			Administración de publicaciones
+		</div>
+		
+		<div id="pub_grid">
+		</div>
+		
+	</div>
+
+{% endblock %}	

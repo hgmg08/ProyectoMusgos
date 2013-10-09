@@ -33,4 +33,12 @@ class PublicacionRepository extends EntityRepository
 		return $query->getResult(Query::HYDRATE_OBJECT);
 	}
 	
+	public function getAll()
+	{
+		$query = $this->_em->createQuery(
+			"SELECT p FROM entities\Publicacion p"
+		);
+		return $query->getResult(Query::HYDRATE_ARRAY);
+	}
+	
 }
