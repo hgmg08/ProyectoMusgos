@@ -58,7 +58,7 @@
 			    return localizationobj;
 			}
 			
-			$("#user_window").jqxWindow({ resizable: false, theme: theme, autoOpen: false, width: 400, height: 260, isModal: true });
+			$("#window").jqxWindow({ resizable: false, theme: theme, autoOpen: false, width: 425, height: 270, isModal: true });
 			
 			$("#user_grid").jqxGrid({
 				width: '100%',
@@ -87,8 +87,8 @@
             			$('#password').val('');
             			$('#email').val('');
             			$('#role').jqxDropDownList('selectIndex', -1);
-            			$('#user_window').css('visibility', 'visible');
-                    	$("#user_window").jqxWindow('open');
+            			$('#window').css('visibility', 'visible');
+                    	$("#window").jqxWindow('open');
                     });
                     editButton.bind('click', function () {
                     	var rowindex = $('#user_grid').jqxGrid('getselectedrowindex');
@@ -102,8 +102,8 @@
 	            			$('#password').attr('placeholder', 'En blanco para dejar igual');
 	            			var item = $('#role').jqxDropDownList('getItemByValue', data.rid);
 	            			$('#role').jqxDropDownList('selectItem', item);
-	            			$('#user_window').css('visibility', 'visible');
-	            			$('#user_window').jqxWindow('open');
+	            			$('#window').css('visibility', 'visible');
+	            			$('#window').jqxWindow('open');
                     	}
                     });
                     deleteButton.bind('click', function() {
@@ -159,7 +159,7 @@
 				placeHolder: 'Seleccione un rol'
 			});
 			
-			$('#user_form').jqxValidator({
+			$('#windowed_form').jqxValidator({
 				animationDuration: 1,
 				rules: [
 					{ input: '#name', message: 'El nombre es requerido', action: 'keyup, blur', rule: 'required' },
@@ -215,7 +215,7 @@
 						});
 					}
 				};
-				$('#user_form').jqxValidator('validate', validation);
+				$('#windowed_form').jqxValidator('validate', validation);
 			});
 		});
 	</script>
@@ -232,9 +232,9 @@
 		<div id="user_grid">
 		</div>
 		
-		<div id="user_window" caption="Gestión de usuario">
+		<div id="window" caption="Gestión de usuario">
 			<div>
-				<form id="user_form">
+				<form id="windowed_form">
 					<input type="hidden" id="id" name="id" />
 					<input type="hidden" id="op" name="op" />
 					<label>Nombre completo:</label>

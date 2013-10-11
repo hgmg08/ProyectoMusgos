@@ -475,7 +475,7 @@ table#footer_nav a:hover{
 	margin-bottom: 10px;
 }
 
-#user_form label {
+#windowed_form label {
 	display: block;
 	float: left;
 	height: 20px;
@@ -483,7 +483,7 @@ table#footer_nav a:hover{
 	line-height: 20px;
 }
 
-#user_window {
+#window {
 	visibility: hidden;
 }
 

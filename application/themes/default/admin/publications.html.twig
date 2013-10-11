@@ -47,6 +47,17 @@
 			    return localizationobj;
 			}
 			
+			$("#window").jqxWindow({ resizable: false, theme: theme, autoOpen: false, width: 425, height: 360, isModal: true });
+			
+			$('#author').jqxInput({ height: 20, width: 230});
+			$('#title').jqxInput({ height: 20, width: 230});
+			$('#year').jqxMaskedInput({ height: 20, width: 50, mask: '####', promptChar: '' });
+			$('#journal').jqxInput({ height: 20, width: 230});
+			$('#collation').jqxInput({ height: 20, width: 230});
+			$('#type').jqxInput({ height: 20, width: 230});
+			$('#quote').jqxInput({ height: 20, width: 230});
+			$('#save').jqxButton({ theme: theme, height: 30, width: 70 });
+			
 			$("#pub_grid").jqxGrid({
 				width: '100%',
 				autoheight: true,
@@ -66,10 +77,36 @@
                     editButton.jqxButton({ theme: theme, width: 70, height: 20 });
                     deleteButton.jqxButton({ theme: theme, width: 80, height: 20 });
                     addButton.bind('click', function () {
-
+                    	$('#id').val(-1);
+                    	$('#op').val(0);
+                    	$('#author').val(null);
+                    	$('#title').val(null);
+                    	$('#year').jqxMaskedInput('clear');
+                    	$('#journal').val(null);
+                    	$('#collation').val(null);
+                    	$('#type').val(null);
+                    	$('#quote').val(null);
+						$('#window').css('visibility', 'visible');
+                    	$("#window").jqxWindow('open');
                     });
                     editButton.bind('click', function () {
-
+                    	var rowindex = $('#pub_grid').jqxGrid('getselectedrowindex');
+                    	if (rowindex >= 0) {
+                    		var data = $('#pub_grid').jqxGrid('getrowdata', rowindex);
+                    		$('#id').val(data.id);
+                    		$('#op').val(1);
+                    		$('#author').val(data.Author);
+	                    	$('#title').val(data.Title);
+	                    	$('#year').val(data.Year);
+	                    	$('#journal').val(data.Journal);
+	                    	$('#collation').val(data.Collation);
+	                    	$('#type').val(data.Type);
+	                    	$('#quote').val(data.Quote);
+							$('#window').css('visibility', 'visible');
+	                    	$("#window").jqxWindow('open');
+	                    	$('#window').css('visibility', 'visible');
+                    		$("#window").jqxWindow('open');
+                    	}
                     });
                     deleteButton.bind('click', function() {
                     
@@ -106,6 +143,53 @@
 		</div>
 		
 		<div id="pub_grid">
+		</div>
+		
+		<div id="window" caption="Gestión de publicación">
+			<div>
+				<form id="windowed_form">
+					<input type="hidden" id="id" name="id" />
+					<input type="hidden" id="op" name="op" />
+					<label>Autor:</label>
+					<div>
+						<input type="text" id="author" name="author" />
+					</div>
+					<br/>
+					<label>Título:</label>
+					<div>
+						<input type="text" id="title" name="title" />
+					</div>
+					<br/>
+					<label>Año:</label>
+					<div>
+						<div id="year"></div>
+					</div>
+					<br/>
+					<label>Revista:</label>
+					<div>
+						<input type="text" id="journal" name="journal" />
+					</div>
+					<br/>
+					<label>Colación:</label>
+					<div>
+						<input type="text" id="collation" name="collation" />
+					</div>
+					<br/>
+					<label>Cita corta:</label>
+					<div>
+						<input type="text" id="quote" name="quote" />
+					</div>
+					<br/>
+					<label>Tipo de publicación:</label>
+					<div>
+						<input type="text" id="type" name="type" />
+					</div>
+					<br/>
+					<div>
+                		<input id="save" type="button" value="Guardar" />
+           			</div>
+				</form>
+			</div>
 		</div>
 		
 	</div>
