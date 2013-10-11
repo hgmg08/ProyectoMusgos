@@ -50,6 +50,54 @@ class Publication extends CI_Controller {
 		
 		return $publications;
 	}
+	
+	public function persist()
+	{
+		$id = $this->input->post("id");
+		$op = $this->input->post("op");
+		$author = $this->input->post("author");
+		$title = $this->input->post("title");
+		$year = $this->input->post("year");
+		$journal = $this->input->post("journal");
+		$collation = $this->input->post("collation");
+		$type = $this->input->post("type");
+		$quote = $this->input->post("quote");
+		
+		if ($op == 0) {
+			$publication = new entities\Publicacion;
+			$publication->setAuthor($author);
+			$publication->setTitle($title);
+			$publication->setYear($year);
+			$publication->setJournal($journal);
+			$publication->setCollation($collation);
+			$publication->setType($type);
+			$publication->setQuote($quote);
+			$this->em->persist($publication);
+			$this->em->flush();
+			echo true;
+		}
+		
+		else {
+			$publication = $this->em->find('entities\Publicacion', $id);
+			
+			if ($publication) {
+				$publication->setAuthor($author);
+				$publication->setTitle($title);
+				$publication->setYear($year);
+				$publication->setJournal($journal);
+				$publication->setCollation($collation);
+				$publication->setType($type);
+				$publication->setQuote($quote);
+				$this->em->persist($publication);
+				$this->em->flush();
+				echo true;
+			}
+			
+			else {
+				echo false;
+			}
+		}
+	}
 }
 
 ?>

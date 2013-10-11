@@ -58,6 +58,9 @@
 			$('#quote').jqxInput({ height: 20, width: 230});
 			$('#save').jqxButton({ theme: theme, height: 30, width: 70 });
 			
+			$('#successPersist').jqxWindow({ width: 300, height: 100, isModal: true, autoOpen: false, resizable: false, theme: theme });
+			$('#failPersist').jqxWindow({ width: 300, height: 100, isModal: true, autoOpen: false, resizable: false, theme: theme });
+			
 			$("#pub_grid").jqxGrid({
 				width: '100%',
 				autoheight: true,
@@ -79,13 +82,13 @@
                     addButton.bind('click', function () {
                     	$('#id').val(-1);
                     	$('#op').val(0);
-                    	$('#author').val(null);
-                    	$('#title').val(null);
+                    	$('#author').val('');
+                    	$('#title').val('');
                     	$('#year').jqxMaskedInput('clear');
-                    	$('#journal').val(null);
-                    	$('#collation').val(null);
-                    	$('#type').val(null);
-                    	$('#quote').val(null);
+                    	$('#journal').val('');
+                    	$('#collation').val('');
+                    	$('#type').val('');
+                    	$('#quote').val('');
 						$('#window').css('visibility', 'visible');
                     	$("#window").jqxWindow('open');
                     });
@@ -129,6 +132,66 @@
 			        { text: 'Tipo', datafield: 'Type', width: '15%', filtertype: 'list' },
 			        { text: 'Cita corta', datafield: 'Quote', filtertype: 'textbox' }
 			    ]
+			});
+			
+			$('#windowed_form').jqxValidator({
+				animationDuration: 1,
+				rules: [
+					{ input: '#author', message: 'El autor es requerido', action: 'keyup, blur', rule: 'required' },
+					{ input: '#title', message: 'El titulo es requerido', action: 'keyup, blur', rule: 'required' },
+					{ input: '#year', message: 'El año es requerido', action: 'keyup, blur', rule: function() {
+						return $('#year').val() > 0;
+					}},
+					{ input: '#type', message: 'El tipo es requerido', action: 'keyup, blur', rule: 'required' },
+					{ input: '#quote', message: 'La cita corta es requerida', action: 'keyup, blur', rule: 'required' }
+				],
+				theme: theme
+			});
+			
+			$('#save').click(function () {
+				var data = {
+					id: $('#id').val(),
+					op: $('#op').val(),
+					author: $('#author').val(),
+					title: $('#title').val(),
+					year: $('#year').val(),
+					journal: $('#journal').val(),
+					collation: $('#collation').val(),
+					type: $('#type').val(),
+					quote: $('#quote').val()
+				};
+				
+				var validation = function(isValid) {
+					if (isValid) {
+						$.ajax({
+							type: 'POST',
+							url: '{{ base_url('admin/publication/persist') }}',
+							data: data,
+							dataType: 'text',
+							success: function(response) {
+								if (response == true) {
+									$('#successPersist').css('visibility', 'visible');
+									$('#successPersist').jqxWindow('open');
+									setTimeout(function () {
+											$('#successPersist').jqxWindow('close');
+									}, 2500);
+									window.location = '{{ base_url('admin/publication') }}';
+								}
+								else {
+									$('#failPersist').css('visibility', 'visible');
+									$('#failPersist').jqxWindow('open');
+									setTimeout(function () {
+										$('#failPersist').jqxWindow('close');
+									}, 4000);
+								}
+							},
+							error: function(response) {
+								console.log(response);
+							}
+						});
+					}
+				};
+				$('#windowed_form').jqxValidator('validate', validation);
 			});
 		});
 	</script>
@@ -192,6 +255,18 @@
 			</div>
 		</div>
 		
+	</div>
+	
+	<div id="successPersist" caption="Mensaje">
+		<div id="successMessage">
+			La publicación fue persistida exitosamente
+		</div>
+	</div>
+	
+	<div id="failPersist" caption="Mensaje">
+		<div id="failMessage">
+			Hubo un problema al persistir la publicación
+		</div>
 	</div>
 
 {% endblock %}	

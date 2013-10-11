@@ -195,7 +195,6 @@
 							data: data,
 							dataType: 'text',
 							success: function(response) {
-								console.log(response);
 								if (response == true) {
 									$('#successPersist').css('visibility', 'visible');
 									$('#successPersist').jqxWindow('open');
@@ -211,6 +210,9 @@
 										$('#failPersist').jqxWindow('close');
 									}, 4000);
 								}
+							},
+							error: function(response) {
+								console.log(response);
 							}
 						});
 					}
