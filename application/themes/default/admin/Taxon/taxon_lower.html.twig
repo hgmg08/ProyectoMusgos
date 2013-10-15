@@ -290,7 +290,6 @@
 					{ text: 'Altitud max. (m)', width: '15%', columntype: 'textbox', datafield: 'altitude_max',
 						createeditor: function (row, column, editor) {
 							editor.jqxMaskedInput({ mask: '#####', promptChar: '' });
-							editor.
 						},
 						cellvaluechanging: function (row, column, columntype, oldvalue, newvalue) {
                         	if (newvalue == "") return oldvalue;
