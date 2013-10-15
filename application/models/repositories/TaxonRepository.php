@@ -21,7 +21,7 @@ class TaxonRepository extends EntityRepository
 	public function getAll()
 	{
 		$query = $this->_em->createQuery(
-			"SELECT t FROM entities\Taxon t"
+			"SELECT t FROM entities\Taxon t ORDER BY t.name"
 		);
 		return $query->getResult(Query::HYDRATE_ARRAY);
 	}
@@ -78,7 +78,7 @@ class TaxonRepository extends EntityRepository
 	public function getAllParentTaxon($parentRank)
 	{
 		$query = $this->_em->createQuery(
-			"SELECT t.id, t.name FROM entities\Taxon t WHERE t.rank = :rank"
+			"SELECT t.id, t.name FROM entities\Taxon t WHERE t.rank = :rank ORDER BY t.name"
 		);
 		$query->setParameter('rank', $parentRank);
 		return $query->getResult(Query::HYDRATE_ARRAY);

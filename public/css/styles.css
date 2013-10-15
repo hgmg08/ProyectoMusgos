@@ -511,30 +511,31 @@ table#footer_nav a:hover{
 	vertical-align: middle;
 }
 
-#taxon_form fieldset {
+.taxon_form fieldset {
 	padding: 10px;
 	border: 1px solid #C2BEBE;
 	-webkit-border-radius: 8px;
 	-moz-border-radius: 8px;
 	border-radius: 8px;
+	margin-top: 10px;
 }
 
-#taxon_form legend {
+.taxon_form legend {
 	font-size: 12px;
 	font-weight: bold;
 	padding: 5px;
 }
 
-#taxon_form #save {
+.taxon_form #save {
 	clear: both;
 	margin-top: 30px;
 }
 
-#taxon_form p {
+.taxon_form p {
 	margin-bottom: 10px;
 }
 
-#taxon_form label.field {
+.taxon_form label.field {
 	float:left;
 	width: 25%;
 	margin-right: 5px;
@@ -542,7 +543,7 @@ table#footer_nav a:hover{
 	font-weight: bold;
 }
 
-#taxon_form textarea.tax_textarea {
+.taxon_form textarea.tax_textarea {
 	resize: none;
 	width: 400px;
 	height: 100px;
@@ -550,6 +551,10 @@ table#footer_nav a:hover{
 
 #ecorregiones {
 	margin-left: 234px;
+}
+
+#tax_tabs {
+	border: 0;
 }
 
 /*

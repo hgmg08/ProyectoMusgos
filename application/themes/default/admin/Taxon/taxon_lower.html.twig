@@ -6,8 +6,9 @@
 	
 	<script type="text/javascript">
 		$(document).ready(function () {
+			$('#tax_tabs').jqxTabs({ width: '100%', autoHeight: true, position: 'top', theme: theme });
+		
 			var theme = 'mdv';
-			
 			var getLocalization = function () {
 				var localizationobj = {};
 				localizationobj.pagergotopagestring = "Ir a página:";
@@ -23,7 +24,7 @@
 			    return localizationobj;
 			}
 			
-			var parentTaxonList = '';
+			var parentTaxonList = {{ parentRankList }};
 			var sourceParentRank =
 		    {
 		    	datatype: "json",
@@ -112,7 +113,15 @@
 			    	{ name: 'type', type: 'string' }
 			    ],
 				localdata: sinonimos,
-				pagesize: 10
+				pagesize: 10,
+				
+				addrow: function (rowid, rowdata, position, commit) {
+					commit(true);
+				},
+				
+				deleterow: function (rowid, commit) {
+					commit(true);
+				}
 			};
 			
 			var daSinonimos = new $.jqx.dataAdapter(sourceSinonimos);
@@ -135,63 +144,40 @@
                     statusbar.append(container);
                     addButton.jqxButton({ theme: theme, width: 70, height: 20 });
                     deleteButton.jqxButton({ theme: theme, width: 80, height: 20 });
+                    
+                    addButton.bind('click', function () {
+                    	var commit = $('#grid_sinonimos').jqxGrid('addrow', null, {});
+                    });
+                    
+                    deleteButton.bind('click', function () {
+                    	var rowindex = $('#grid_sinonimos').jqxGrid('getselectedrowindex');
+                    	if (rowindex >= 0) {
+                    		var id = $("#grid_sinonimos").jqxGrid('getrowid', rowindex);
+        					$("#grid_sinonimos").jqxGrid('deleterow', id);
+                    	}
+                    });
                 },
-				selectionmode: 'multiplecellsadvanced',
 				columns: [
-					{ text: 'Nombre', columntype: 'textbox', datafield: 'name' },
-					{ text: 'Autor', columntype: 'textbox', datafield: 'author' },
-					{ text: 'Clasificación', columntype: 'dropdownlist', datafield: 'rank' },
-					{ text: 'Tipo', columntype: 'dropdownlist', datafield: 'type' }
-				]
-			});
-			
-			var publications = {{ publicaciones }};
-			var sourcePublications = {
-				datatype: 'json',
-			    datafields: [
-			    	{ name: 'id', type: 'number' },
-			    	{ name: 'author', type: 'string' },
-			    	{ name: 'title', type: 'string' },
-			    	{ name: 'year', type: 'number' },
-			    	{ name: 'journal', type: 'string' },
-			    	{ name: 'collation', type: 'string' },
-			    	{ name: 'type', type: 'string' },
-			    	{ name: 'quote', type: 'string' }
-			    ],
-				localdata: publications,
-				pagesize: 10
-			};
-			
-			var daPublications = new $.jqx.dataAdapter(sourcePublications);
-			
-			$('#grid_publicaciones').jqxGrid({
-				width: '100%',
-				theme: theme,
-				source: daPublications,
-				editable: true,
-				columnsresize: true,
-				showstatusbar: true,
-				localization: getLocalization(),
-			    pageable: true,
-				renderstatusbar: function (statusbar) {
-					var container = $("<div style='overflow: hidden; position: relative; margin: 5px;'></div>");
-                    var addButton = $("<div style='float: left; margin-left: 5px;'><img style='position: relative; margin-top: 1px;' src='{{ base_url('public/images/img16x16_new.png') }}'/><span style='margin-left: 4px; position: relative; top: 2px;'>Nuevo</span></div>");
-                    var deleteButton = $("<div style='float: left; margin-left: 5px;'><img style='position: relative; margin-top: 1px;' src='{{ base_url('public/images/img16x16_delete.png') }}'/><span style='margin-left: 4px; position: relative; top: 2px;'>Eliminar</span></div>");
-                    container.append(addButton);
-                    container.append(deleteButton);
-                    statusbar.append(container);
-                    addButton.jqxButton({ theme: theme, width: 70, height: 20 });
-                    deleteButton.jqxButton({ theme: theme, width: 80, height: 20 });
-                },
-				selectionmode: 'multiplecellsadvanced',
-				columns: [
-					{ text: 'Autor', columntype: 'textbox', datafield: 'author' },
-					{ text: 'Título', columntype: 'textbox', datafield: 'title' },
-					{ text: 'Año', columntype: 'number', datafield: 'year' },
-					{ text: 'Revista', columntype: 'textbox', datafield: 'journal' },
-					{ text: 'Colación', columntype: 'textbox', datafield: 'collation' },
-					{ text: 'Tipo', columntype: 'dropdownlist', datafield: 'type' },
-					{ text: 'Cita corta', columntype: 'textbox', datafield: 'quote' }
+					{ text: 'Nombre', width: '30%', columntype: 'textbox', datafield: 'name' },
+					{ text: 'Autor', width: '30%', columntype: 'textbox', datafield: 'author' },
+					{ text: 'Clasificación', width: '20%', columntype: 'dropdownlist', datafield: 'rank',
+						createeditor: function (row, column, editor) {
+							var list = ['Especie', 'SubEspecie', 'Variedad'];
+							editor.jqxDropDownList({ autoDropDownHeight: true, source: list, placeHolder: "Escoja:" });
+						},
+						cellvaluechanging: function (row, column, columntype, oldvalue, newvalue) {
+                        	if (newvalue == "") return oldvalue;
+                        }
+					},
+					{ text: 'Tipo', width: '20%', columntype: 'dropdownlist', datafield: 'type',
+						createeditor: function (row, column, editor) {
+							var list = ['Sinónimo', 'Basiónimo'];
+							editor.jqxDropDownList({ autoDropDownHeight: true, source: list, placeHolder: "Escoja:" });
+						},
+						cellvaluechanging: function (row, column, columntype, oldvalue, newvalue) {
+                        	if (newvalue == "") return oldvalue;
+                        }
+                    }
 				]
 			});
 			
@@ -213,10 +199,43 @@
 			    	{ name: 'reference', type: 'string' }
 			    ],
 				localdata: specimens,
-				pagesize: 10
+				pagesize: 10,
+				
+				addrow: function (rowid, rowdata, position, commit) {
+					commit(true);
+				},
+				
+				deleterow: function (rowid, commit) {
+					commit(true);
+				}
 			};
 			
 			var daSpecimens = new $.jqx.dataAdapter(sourceSpecimens);
+			
+			var states = {{ estados }};
+			var sourceStates = {
+				datatype: 'json',
+				datafields: [
+					{ name: 'id', type: 'number' },
+					{ name: 'name', type: 'string' }
+				],
+				localdata: states
+			};
+			
+			var daStates = new $.jqx.dataAdapter(sourceStates);
+			
+			var townsSource = {
+				datatype: 'json',
+				datafields: [
+					{ name: 'id', type: 'number' },
+					{ name: 'name', type: 'string' }
+				],
+				url: '{{ base_url('admin/taxon/getTowns') }}',
+				cache: false,
+				async: false
+			};
+			
+			var daTowns = new $.jqx.dataAdapter(townsSource);
 			
 			$('#grid_especimenes').jqxGrid({
 				width: '100%',
@@ -236,20 +255,53 @@
                     statusbar.append(container);
                     addButton.jqxButton({ theme: theme, width: 70, height: 20 });
                     deleteButton.jqxButton({ theme: theme, width: 80, height: 20 });
+                    
+                    addButton.bind('click', function () {
+                    	var commit = $('#grid_especimenes').jqxGrid('addrow', null, {});
+                    });
                 },
-				selectionmode: 'multiplecellsadvanced',
 				columns: [
-					{ text: 'Estado', columntype: 'dropdownlist', datafield: 'state' },
-					{ text: 'Municipio', columntype: 'dropdownlist', datafield: 'town' },
-					{ text: 'Localidad', columntype: 'textbox', datafield: 'location' },
-					{ text: 'Altitud (min)', columntype: 'number', datafield: 'altitude_min' },
-					{ text: 'Altitud (max)', columntype: 'number', datafield: 'altitude_max' },
-					{ text: 'Latitud', columntype: 'textbox', datafield: 'latitude' },
-					{ text: 'Longitud', columntype: 'textbox', datafield: 'longitud' },
-					{ text: 'Colección', columntype: 'textbox', datafield: 'collection' },
-					{ text: 'Fecha colección', columntype: 'datetimeinput', datafield: 'collection_date' },
-					{ text: 'Herbario', columntype: 'textbox', datafield: 'herbarium' },
-					{ text: 'Referencia', columntype: 'custom', datafield: 'reference' }
+					{ text: 'Estado', width: '22%', columntype: 'dropdownlist', datafield: 'state', 
+						createeditor: function (row, column, editor) {
+							editor.jqxDropDownList({ autoDropDownHeight: true, source: daStates, displayMember: 'name', valueMember: 'id', placeHolder: "Escoja:" });
+							
+						},
+						cellvaluechanging: function (row, column, columntype, oldvalue, newvalue) {
+                        	if (newvalue == "") return oldvalue;
+                        }
+					},
+					{ text: 'Municipio', width: '15%', columntype: 'dropdownlist', datafield: 'town',
+						createeditor: function (row, column, editor) {
+							editor.jqxDropDownList({ autoDropDownHeight: true, source: daTowns, displayMember: 'name', valueMember: 'id', placeHolder: "Escoja:" });
+						},
+						cellvaluechanging: function (row, column, columntype, oldvalue, newvalue) {
+                        	if (newvalue == "") return oldvalue;
+                        }
+					},
+					{ text: 'Localidad', width: '30%', columntype: 'textbox', datafield: 'location' },
+					{ text: 'Altitud min. (m)', width: '15%', columntype: 'textbox', datafield: 'altitude_min',
+						createeditor: function (row, column, editor) {
+							editor.jqxMaskedInput({ mask: '#####', promptChar: '' });
+						},
+						cellvaluechanging: function (row, column, columntype, oldvalue, newvalue) {
+                        	if (newvalue == "") return oldvalue;
+                        }	
+					},
+					{ text: 'Altitud max. (m)', width: '15%', columntype: 'textbox', datafield: 'altitude_max',
+						createeditor: function (row, column, editor) {
+							editor.jqxMaskedInput({ mask: '#####', promptChar: '' });
+							editor.
+						},
+						cellvaluechanging: function (row, column, columntype, oldvalue, newvalue) {
+                        	if (newvalue == "") return oldvalue;
+                        }	
+					},
+					{ text: 'Latitud', width: '15%', columntype: 'textbox', datafield: 'latitude' },
+					{ text: 'Longitud', width: '15%', columntype: 'textbox', datafield: 'longitud' },
+					{ text: 'Colección', width: '15%', columntype: 'textbox', datafield: 'collection' },
+					{ text: 'Fecha colección', width: '15%', columntype: 'datetimeinput', cellsformat: 'd', datafield: 'collection_date' },
+					{ text: 'Herbario', width: '15%', columntype: 'textbox', datafield: 'herbarium' },
+					{ text: 'Referencia', width: '15%', columntype: 'custom', datafield: 'reference' }
 				]
 			});
 			
@@ -265,103 +317,130 @@
 
 	<div class="grid_12">
 		<div id="tax_hg_admin_name">
-			Nueva Especie
+			Nueva {{ rank }}
 		</div>
 		<div id="tax_hg_admin_type">
 			{{ rankName }}
 		</div>
 		
-		<form id="taxon_form" action="{{ base_url('admin/taxon/persist_higher') }}" method="POST">
-			<fieldset>
-			<legend>Detalles</legend>
-				<p>
-					<label class="field">Nombre</label>
-					<input id="name" name="name" placeholder="Ingrese nombre científico" value="" />
-				</p>
-				<p>
-					<label class="field">Autor</label>
-					<input id="author" name="author" placeholder="Ingrese iniciales del autor" value="" />
-				</p>
-				<p>
-					<label class="field">Taxón padre</label>
-					<div id="parent"></div>
-				</p>
-				<p>
-					<label class="field">¿Es aceptada?</label>
-					<div class="tax_checkbox" id="accepted"></div>
-				</p>
-				<p>
-					<label class="field">¿Es endémica?</label>
-					<div class="tax_checkbox" id="endemic"></div>
-				</p>
-				<p>
-					<label class="field">Sustratos</label>
-					<div id="sustratos"></div>
-				</p>
-				<p>
-					<label class="field">Ecorregiones</label>
-					<div id="ecorregiones"></div>
-				</p>
-				<p>
-					<label class="field">Ecosistemas</label>
-					<div id="ecosistemas"></div>
-				</p>
-			</fieldset>
+		<div id="tax_tabs">
+			<ul>
+				<li>Detalles</li>
+				<li>Sinónimos</li>
+				<li>Distribución mundial</li>
+				<li>Especímenes</li>
+				<li>Imágenes</li>
+				<li>Revisión</li>
+			</ul>
 			
-			<fieldset>
-			<legend>Distribución mundial</legend>
-				<p>
-					<label class="field">Distribución en el mundo</label>
-					<textarea class="tax_textarea" placeholder="Ingrese paises separados por comas"></textarea>
-				</p>
-				<p>
-					<label class="field">Zonas de Van der Wijk</label>
-					<textarea class="tax_textarea" placeholder="Ingrese zonas separadas por comas"></textarea>
-				</p>
-				<p>
-					<label class="field">Paises andinotropicales</label>
-					<textarea class="tax_textarea" placeholder="Ingrese paises separados por comas"></textarea>
-				</p>
-			</fieldset>
-			
-			<fieldset>
-			<legend>Sinonimos</legend>
-				<div id="grid_sinonimos"></div>
-			</fieldset>
-			
-			<fieldset>
-			<legend>Publicaciones</legend>
-				<div id="grid_publicaciones"></div>
-			</fieldset>
-			
-			<fieldset>
-			<legend>Especímenes</legend>
-				<div id="grid_especimenes"></div>
-			</fieldset>
-			
-			<fieldset>
-			<legend>Lista roja</legend>
+			<div>
+				<form class="taxon_form" id="taxon_form_details">
+					<fieldset>
+					<legend>Datos básicos</legend>
+						<p>
+							<label class="field">Nombre</label>
+							<input id="name" name="name" placeholder="Ingrese nombre científico" value="" />
+						</p>
+						<p>
+							<label class="field">Autor</label>
+							<input id="author" name="author" placeholder="Ingrese iniciales del autor" value="" />
+						</p>
+						<p>
+							<label class="field">Taxón padre ({{ parentRank }})</label>
+							<div id="parent"></div>
+						</p>
+						<p>
+							<label class="field">¿Es aceptada?</label>
+							<div class="tax_checkbox" id="accepted"></div>
+						</p>
+						<p>
+							<label class="field">¿Es endémica?</label>
+							<div class="tax_checkbox" id="endemic"></div>
+						</p>
+						<p>
+							<label class="field">Sustratos</label>
+							<div id="sustratos"></div>
+						</p>
+						<p>
+							<label class="field">Ecorregiones</label>
+							<div id="ecorregiones"></div>
+						</p>
+						<p>
+							<label class="field">Ecosistemas</label>
+							<div id="ecosistemas"></div>
+						</p>
+					</fieldset>	
+					
+					<fieldset>
+					<legend>Lista roja</legend>
 				
-			</fieldset>
+					</fieldset>
 			
-			<fieldset>
-			<legend>Indicadores cambio climático</legend>
-				
-			</fieldset>
+					<fieldset>
+					<legend>Indicadores cambio climático</legend>
+							
+					</fieldset>
+					
+					<input type="button" value="Guardar" id="save" />
+				</form>
+			</div>
 			
-			<fieldset>
-			<legend>Imágenes</legend>
-				
-			</fieldset>
+			<div>
+				<form class="taxon_form" id="tax_form_synonims">
+					<fieldset>
+					<legend>Sinonimos</legend>
+						<div id="grid_sinonimos"></div>
+					</fieldset>
+				</form>
+			</div>
 			
-			<fieldset>
-			<legend>Comentarios de revisión</legend>
-				
-			</fieldset>
+			<div>
+				<form class="taxon_form" id="taxon_form_distribution">
+					<fieldset>
+					<legend>Distribución mundial</legend>
+						<p>
+							<label class="field">Distribución en el mundo</label>
+							<textarea class="tax_textarea" placeholder="Ingrese paises separados por comas"></textarea>
+						</p>
+						<p>
+							<label class="field">Zonas de Van der Wijk</label>
+							<textarea class="tax_textarea" placeholder="Ingrese zonas separadas por comas"></textarea>
+						</p>
+						<p>
+							<label class="field">Paises andinotropicales</label>
+							<textarea class="tax_textarea" placeholder="Ingrese paises separados por comas"></textarea>
+						</p>
+					</fieldset>
+				</form>
+			</div>
 			
-			<br/>
-			<input type="button" value="Guardar" id="save" />
-		</form>
+			<div>
+				<form class="taxon_form" id="tax_form_specimens">
+					<fieldset>
+					<legend>Especímenes</legend>
+						<div id="grid_especimenes"></div>
+					</fieldset>
+				</form>
+			</div>
+			
+			<div>
+				<form class="taxon_form" id="tax_form tax_images">
+					<fieldset>
+					<legend>Imágenes</legend>
+						
+					</fieldset>
+				</form>
+			</div>
+			
+			<div>
+				<form class="taxon_form" id="tax_form_revision">
+					<fieldset>
+					<legend>Comentarios de revisión</legend>
+						
+					</fieldset>
+				</form>
+			</div>
+		</div>
 	</div>
 	
 	<div id="successPersist" caption="Mensaje">
