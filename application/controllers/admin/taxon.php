@@ -138,27 +138,43 @@ class Taxon extends CI_Controller {
 	
 	private function lower_taxa_form($rank, $taxon = NULL) 
 	{
+		$this->twiggy->set('taxon', $taxon);
+		
 		if ($taxon) {
+			$this->twiggy->set('id', $taxon->getId());
+			$this->twiggy->set('operation', 1);
 			
+			$this->twiggy->set('rank', $this->getRankName($taxon->getRank()));
+			$this->twiggy->set('rankName', $this->getRankName($taxon->getRank()));
+			$this->twiggy->set('parentRank', $this->getParentRankName($taxon->getRank()));
+			$this->twiggy->set('parentRankList', json_encode($this->em->getRepository("entities\Taxon")->getAllParentTaxon($this->getParentRankEnum($taxon->getRank()))));
+			
+			$this->twiggy->set('tax_ecorreg', json_encode($this->fillEcorregiones($taxon)));	
+			$this->twiggy->set('tax_sustratos', json_encode($this->fillSustratos($taxon)));
+			$this->twiggy->set('tax_ecosistemas', json_encode($this->fillEcosistemas($taxon)));
 		}
 		
 		else {
+			$this->twiggy->set('id', 0);
+			$this->twiggy->set('operation', 2);
+			
+			$this->twiggy->set('rank', $this->getRankName($rank));
+			$this->twiggy->set('rankName', $this->getRankName($rank));
+			$this->twiggy->set('parentRank', $this->getParentRankName($rank));
+			$this->twiggy->set('parentRankList', json_encode($this->em->getRepository("entities\Taxon")->getAllParentTaxon($this->getParentRankEnum($rank))));
 			
 		}
-		$this->twiggy->set('rank', $this->getRankName($rank));
-		$this->twiggy->set('parentRank', $this->getParentRankName($rank));
-		$this->twiggy->set('parentRankList', json_encode($this->em->getRepository("entities\Taxon")->getAllParentTaxon($this->getParentRankEnum($rank))));
-		
-		$this->twiggy->set('sustratos', $this->getSustratos());
-		$this->twiggy->set('ecorregiones', json_encode($this->em->getRepository('entities\Ecorregion')->getAll()));
-		$this->twiggy->set('ecosistemas', $this->getEcosistemas());
-		$this->twiggy->set('estados', json_encode($this->em->getRepository('entities\Estado')->getAll()));
-		
+
 		$this->twiggy->set('lista_roja', json_encode(NULL));
 		$this->twiggy->set('indicadoresCC', json_encode(NULL));
 		$this->twiggy->set('sinonimos', json_encode(NULL));
 		$this->twiggy->set('publicaciones', json_encode(NULL));
 		$this->twiggy->set('especimenes', json_encode(NULL));
+		
+		$this->twiggy->set('sustratos', $this->getSustratos());
+		$this->twiggy->set('ecorregiones', json_encode($this->em->getRepository('entities\Ecorregion')->getAll()));
+		$this->twiggy->set('ecosistemas', $this->getEcosistemas());
+		$this->twiggy->set('estados', json_encode($this->em->getRepository('entities\Estado')->getAll()));	
 		
 		$auth = $this->session->userdata('auth');
 		if ($auth) {
@@ -172,6 +188,36 @@ class Taxon extends CI_Controller {
 		else {
 			redirect('');
 		}
+	}
+	
+	private function fillSustratos($taxon)
+	{
+		$sustratos = array();
+		$sus = $taxon->getSustratos();
+		foreach ($sus as $s) {
+			$sustratos[] = $s->getId();
+		}
+		return $sustratos;
+	}
+	
+	private function fillEcosistemas($taxon)
+	{
+		$ecosistemas = array();
+		$eco = $taxon->getEcosistemas();
+		foreach ($eco as $e) {
+			$ecosistemas[] = $e->getId();
+		}
+		return $ecosistemas;
+	}
+		
+	private function fillEcorregiones($taxon) 
+	{
+		$ecorreg = array();
+		$ecor = $taxon->getEcorregiones();
+		foreach ($ecor as $er) {
+			$ecorreg[] = $er->getId();
+		}
+		return $ecorreg;
 	}
 
 	public function getTowns()

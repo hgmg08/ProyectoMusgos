@@ -6,7 +6,8 @@
 	
 	<script type="text/javascript">
 		$(document).ready(function () {
-			
+			var taxonId = {{ id }};
+			var op = {{ operation }};
 			
 			$('#tax_tabs').jqxTabs({ width: '100%', autoHeight: true, position: 'top', theme: theme });
 		
@@ -39,7 +40,7 @@
 			var daParentRank = new $.jqx.dataAdapter(sourceParentRank);
 			
 			$('#parent').jqxDropDownList({
-				source: daParentRank,  
+				source: daParentRank,
 				displayMember: 'name',
 				valueMember: 'id', 
 				width: 400, 
@@ -124,6 +125,7 @@
 				},
 				
 				deleterow: function (rowid, commit) {
+					commit(true);
 				}
 			};
 			
@@ -455,6 +457,60 @@
 			$('#save_details').jqxButton({ width: 70, theme: theme });
 			$('#save_distribution').jqxButton({ width: 70, theme: theme });
 			$('#save_revision').jqxButton({ width: 70, theme: theme });
+			
+			if (op == 2) {
+				for (var i = 0; i < $('#tax_tabs').jqxTabs('length') - 1; i++) {
+					$('#tax_tabs').jqxTabs('disableAt', i + 1);
+				}
+			}
+			
+			else {
+				$('#name').val('{{ taxon.getName }}');
+				$('#author').val('{{ taxon.getAuthorInitials }}');
+				
+				var item = $("#parent").jqxDropDownList('getItemByValue', {{ taxon.getParentHierarchy.getId }});
+				$('#parent').jqxDropDownList('selectItem', item);
+				
+				$('#accepted').val({{ taxon.getAcceptedName }});
+				$('#endemic').val({{ taxon.getEndemic }});
+				$('#comments').val('{{ taxon.getComments }}');
+				
+				var taxSustratos = {{ tax_sustratos }};
+				var itemsSustratosTree = $('#sustratos').jqxTree('getItems');
+				
+				for (var i = 0; i < taxSustratos.length; i++) {
+					for (var j = 0; j < itemsSustratosTree.length; j++) {
+						if (itemsSustratosTree[j].id == taxSustratos[i]) {
+							$('#sustratos').jqxTree('checkItem', itemsSustratosTree[j], true);
+							//$('#sustratos').jqxTree('expandAll');
+							break;
+						}
+					}
+				}
+				
+				var taxEcosistemas = {{ tax_ecosistemas }};
+				var itemsEcosistemasTree = $('#ecosistemas').jqxTree('getItems');
+				
+				for (var i = 0; i < taxEcosistemas.length; i++) {
+					for (var j = 0; j < itemsEcosistemasTree.length; j++) {
+						if (itemsEcosistemasTree[j].id == taxEcosistemas[i]) {
+							$('#ecosistemas').jqxTree('checkItem', itemsEcosistemasTree[j], true);
+							//$('#ecosistemas').jqxTree('expandAll');
+							break;
+						}
+					}
+				}
+				
+				var taxEcorreg = {{ tax_ecorreg }};
+				for (var i = 0; i < taxEcorreg.length; i++) {
+					var item = $('#ecorregiones').jqxListBox('getItemByValue', taxEcorreg[i]);
+					$('#ecorregiones').jqxListBox('checkItem', item); 
+				}
+				
+				var itemsa = $('#ecosistemas').jqxTree('getCheckedItems');
+				console.log(itemsa);
+			}
+			
 		});
 	</script>
 	
@@ -464,7 +520,11 @@
 
 	<div class="grid_12">
 		<div id="tax_hg_admin_name">
-			Nueva {{ rank }}
+			{% if taxon %}
+				{{ taxon.getName }}
+			{% else %}
+				Nueva {{ rank }}
+			{% endif %}
 		</div>
 		<div id="tax_hg_admin_type">
 			{{ rankName }}
@@ -519,7 +579,7 @@
 						</div>
 						<div class="div_field">
 							<label class="field">Comentarios</label>
-							<textarea class="tax_textarea"></textarea>
+							<textarea id="comments" name="comments" class="tax_textarea"></textarea>
 						</div>
 						
 						<input type="button" value="Guardar" id="save_details" />
@@ -542,15 +602,15 @@
 					<legend>Distribución mundial</legend>
 						<div class="div_field">
 							<label class="field">Distribución en el mundo</label>
-							<textarea class="tax_textarea" name="global_distribution" placeholder="Ingrese paises separados por comas"></textarea>
+							<textarea class="tax_textarea" id="global_distribution" name="global_distribution" placeholder="Ingrese paises separados por comas"></textarea>
 						</div>
 						<div class="div_field">
 							<label class="field">Zonas de Van der Wijk</label>
-							<textarea class="tax_textarea" name="vdw_zones" placeholder="Ingrese zonas separadas por comas"></textarea>
+							<textarea class="tax_textarea" id="vdw_zones" name="vdw_zones" placeholder="Ingrese zonas separadas por comas"></textarea>
 						</div>
 						<div class="div_field">
 							<label class="field">Paises andinotropicales</label>
-							<textarea class="tax_textarea" name="tropicalAndean_distribution" placeholder="Ingrese paises separados por comas"></textarea>
+							<textarea class="tax_textarea" id="tropicalAndean_distribution" name="tropicalAndean_distribution" placeholder="Ingrese paises separados por comas"></textarea>
 						</div>
 						
 						<input type="button" value="Guardar" id="save_distribution" />
