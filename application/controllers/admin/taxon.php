@@ -145,6 +145,7 @@ class Taxon extends CI_Controller {
 		$this->twiggy->set('sustratos', $this->getSustratos());
 		$this->twiggy->set('ecorregiones', json_encode($this->em->getRepository('entities\Ecorregion')->getAll()));
 		$this->twiggy->set('ecosistemas', $this->getEcosistemas());
+		
 		$this->twiggy->set('estados', json_encode($this->em->getRepository('entities\Estado')->getAll()));
 		
 		

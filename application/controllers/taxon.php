@@ -61,178 +61,184 @@ class Taxon extends CI_Controller {
 	//Populate taxon page variables
 	private function populate($taxon)
 	{
-		$locations = null;
-		$publications = array();
-		$hierarchy = array();
-		$sust = array();
-		$habi = array();
-		$sinonimos = array();
-		$ecorreg = array();
-		$ecosis = array();
-		$basionimo = null;
-		$listaRoja = array();
-		$cambioClimatico = array();
-		$loc_pub = array();
-		
-		//Locaciones
-		foreach ($taxon->getLocalidades() as $t) {
-			if ($t->getEstado() != null) {
-				foreach ($t->getPublications() as $p) {
-					$loc_pub[] = $p->getQuote();
-				}
-
-				$locations[] = array(
-					'Estado' => ($t->getEstado() != null)? $t->getEstado()->getName() : '',
-					'Municipio' => ($t->getMunicipio() != null)? $t->getMunicipio()->getName() : '',
-					'Nombre' => trim($t->getName()),
-					'Altitud' => ($t->getMaxAltitude() != $t->getMinAltitude()) ? 
-									$t->getMinAltitude()."-".$t->getMaxAltitude() : $t->getMaxAltitude(),
-					'Coleccion' => ($t->getCollection() != null)? $t->getCollection() : null,
-					'FechaColeccion' => ($t->getCollectionDate() != null)? $t->getCollectionDate()->format('d/m/Y') : null,
-					'Herbario' => ($t->getHebarium() != null)? $t->getHebarium() : null,
-					'Coordenadas' => ($t->getLatitude() != null and $t->getLongitude() != null)? 
-										$t->getLatitude()." ".$t->getLongitude() : null,
-					'Referencias' => $loc_pub
-				);
-			}
-			$loc_pub = NULL;
-		}
-		
-		//Estados
-		$estados = $this->em->getRepository("entities\Estado")->searchEstados($taxon->getName());
-		
-		$locat = $taxon->getLocalidades();
-		
-		//Publicaciones
-		$publications = $this->em->getRepository("entities\Publicacion")->searchPublicaciones($taxon->getName());
-			
-		//Jerarquia
-		$taxon_aux = $taxon;
-		while ($taxon_aux = $taxon_aux->getParentHierarchy()) {
-			$hierarchy[] = $taxon_aux;
-		}
-			
-		//Sustrato
-		$sus = $taxon->getSustratos();
-		foreach ($sus as $s) {
-			if ($s->getParent() != null) {
-				$sust[] = $s->getName();
-				$this->checkHabitat($habi, $s->getParent()->getName());
-			}
-			
-			else {
-				$this->checkHabitat($habi, $s->getName());
-			}
-		}
-		
-		$sustrato = implode(", ", $sust);
-		$habitat = implode(", ", $habi);
-		
-		//Sinonimos
-		$sin = $taxon->getChildrenSynonyms();
-		foreach ($sin as $s) {
-			if ($s->getSynonimClasification() == 1) {
-				$sinonimos[] = $s;
-			}
-		}
-			
-		//Basionimo
-		foreach ($sin as $s) {
-			if ($s->getSynonimClasification() == 2) {
-				$basionimo = $s;
-				break;
-			}
-		}
-
-		//Endemica
-		$endemica = $taxon->getEndemic();
-			
-		//Ecorregion
-		$ecor = $taxon->getEcorregiones();
-		foreach ($ecor as $er) {
-			$ecorreg[] = $er->getName();
-		}
-		$ecorregion = implode(", ", $ecorreg);
-			
-		//Ecosistema
-		$ecos = $taxon->getEcosistemas();
-		foreach ($ecos as $es) {
-			$ecosis[] = $es->getParent()->getName() . " " .$es->getName();
-		}
-		$ecosistema = implode(", ", $ecosis);
-		
-		//Lista Roja
-		$listaR = $taxon->getListasRojas();
-		foreach ($listaR as $lr) {
-			if ($lr != null) {
-				$listaRoja[] = $lr;	
-			}
-			else {
-				$listaRoja = null;
-			}
-		}
-		
-		//Cambio Climatico
-		$cambioC = $taxon->getCambiosClimaticos();
-		foreach ($cambioC as $cc) {
-			if ($cc != null) {
-				$cambioClimatico[] = $cc;	
-			}
-			else {
-				$cambioClimatico = null;
-			}
-		}
-		
-		//Imagenes
-		$galleryDir = 'public/images/gallery/' . $taxon->getId() . '/';
-		$thumbsDir = $galleryDir . 'thumbs/';
-		$gallery = array();
-		$imgFiles = glob($galleryDir . "*.jpg");
-		$imgTextFile = glob($galleryDir . "*.csv");
-		$imgTextData = $this->csvreader->parse_file($imgTextFile[0]);
-		$i = 0;
-		foreach ($imgFiles as $img) {
-			$imgName = str_replace($galleryDir, "", $img);
-			if (!is_file($thumbsDir . $imgName)) {
-				$config['source_image'] = $img;
-				$config['new_image'] = $thumbsDir . $imgName;
-				$config['width'] = 120;
-				$config['height'] = 100;
-				$config['maintain_ratio'] = TRUE;
-				$this->image_lib->initialize($config);
-				$this->image_lib->resize();
-				echo $this->image_lib->display_errors();
-			}
-			$gallery[$i]['img'] = $img;
-			$gallery[$i]['thumb'] = $thumbsDir . $imgName;
-			for ($j = 0; $j < count($imgTextData); $j++){
-				if ($imgTextData[$j]['Imagen'] == str_replace(".jpg", "", $imgName)) {
-					$gallery[$i]['desc'] =  "Descripción: " . utf8_encode(trim($imgTextData[$j]["Descripcion"])) . ". " . 
-						"Autor: " . utf8_encode(trim($imgTextData[$j]["Autor"])) . ". " . "Colección: " . utf8_encode(trim($imgTextData[$j]["Coleccion"]));
-					break;	
-				}
-			}
-			$i++;
-		}
-	
-		//Envio de variables a interfaz
 		$this->twiggy->set('taxon', $taxon);
-		$this->twiggy->set('parentSyno', $taxon->getParentSynonyms());
-		$this->twiggy->set('rank', $this->fill_rank());
-		$this->twiggy->set('endemic', $endemica);
-		$this->twiggy->set('locations', json_encode($locations));
-		$this->twiggy->set('estados', $estados);
-		$this->twiggy->set('publications', $publications);
-		$this->twiggy->set('hierarchy', $hierarchy);
-		$this->twiggy->set('sustratos', $sustrato);
-		$this->twiggy->set('habitat', $habitat);
-		$this->twiggy->set('sinonimos', $sinonimos);
-		$this->twiggy->set('basionimo', $basionimo);
-		$this->twiggy->set('ecorregion', $ecorregion);
-		$this->twiggy->set('ecosistema', $ecosistema);
-		$this->twiggy->set('listaRoja', $listaRoja);
-		$this->twiggy->set('cambioClimatico', $cambioClimatico);
-		$this->twiggy->set('gallery', $gallery);
+		
+		if ($taxon->getSynonimClasification() == NULL) {
+			$locations = null;
+			$publications = array();
+			$hierarchy = array();
+			$sust = array();
+			$habi = array();
+			$sinonimos = array();
+			$ecorreg = array();
+			$ecosis = array();
+			$basionimo = null;
+			$listaRoja = array();
+			$cambioClimatico = array();
+			$loc_pub = array();
+			
+			//Locaciones
+			foreach ($taxon->getLocalidades() as $t) {
+				if ($t->getEstado() != null) {
+					foreach ($t->getPublications() as $p) {
+						$loc_pub[] = $p->getQuote();
+					}
+	
+					$locations[] = array(
+						'Estado' => ($t->getEstado() != null)? $t->getEstado()->getName() : '',
+						'Municipio' => ($t->getMunicipio() != null)? $t->getMunicipio()->getName() : '',
+						'Nombre' => trim($t->getName()),
+						'Altitud' => ($t->getMaxAltitude() != $t->getMinAltitude()) ? 
+										$t->getMinAltitude()."-".$t->getMaxAltitude() : $t->getMaxAltitude(),
+						'Coleccion' => ($t->getCollection() != null)? $t->getCollection() : null,
+						'FechaColeccion' => ($t->getCollectionDate() != null)? $t->getCollectionDate()->format('d/m/Y') : null,
+						'Herbario' => ($t->getHebarium() != null)? $t->getHebarium() : null,
+						'Coordenadas' => ($t->getLatitude() != null and $t->getLongitude() != null)? 
+											$t->getLatitude()." ".$t->getLongitude() : null,
+						'Referencias' => $loc_pub
+					);
+				}
+				$loc_pub = NULL;
+			}
+			
+			//Estados
+			$estados = $this->em->getRepository("entities\Estado")->searchEstados($taxon->getName());
+			
+			$locat = $taxon->getLocalidades();
+			
+			//Publicaciones
+			$publications = $this->em->getRepository("entities\Publicacion")->searchPublicaciones($taxon->getName());
+				
+			//Jerarquia
+			$taxon_aux = $taxon;
+			while ($taxon_aux = $taxon_aux->getParentHierarchy()) {
+				$hierarchy[] = $taxon_aux;
+			}
+				
+			//Sustrato
+			$sus = $taxon->getSustratos();
+			foreach ($sus as $s) {
+				if ($s->getParent() != null) {
+					$sust[] = $s->getName();
+					$this->checkHabitat($habi, $s->getParent()->getName());
+				}
+				
+				else {
+					$this->checkHabitat($habi, $s->getName());
+				}
+			}
+			
+			$sustrato = implode(", ", $sust);
+			$habitat = implode(", ", $habi);
+			
+			//Sinonimos
+			$sin = $taxon->getChildrenSynonyms();
+			foreach ($sin as $s) {
+				if ($s->getSynonimClasification() == 1) {
+					$sinonimos[] = $s;
+				}
+			}
+				
+			//Basionimo
+			foreach ($sin as $s) {
+				if ($s->getSynonimClasification() == 2) {
+					$basionimo = $s;
+					break;
+				}
+			}
+	
+			//Endemica
+			$endemica = $taxon->getEndemic();
+				
+			//Ecorregion
+			$ecor = $taxon->getEcorregiones();
+			foreach ($ecor as $er) {
+				$ecorreg[] = $er->getName();
+			}
+			$ecorregion = implode(", ", $ecorreg);
+				
+			//Ecosistema
+			$ecos = $taxon->getEcosistemas();
+			foreach ($ecos as $es) {
+				$ecosis[] = $es->getParent()->getName() . " " .$es->getName();
+			}
+			$ecosistema = implode(", ", $ecosis);
+			
+			//Lista Roja
+			$listaR = $taxon->getListasRojas();
+			foreach ($listaR as $lr) {
+				if ($lr != null) {
+					$listaRoja[] = $lr;	
+				}
+				else {
+					$listaRoja = null;
+				}
+			}
+			
+			//Cambio Climatico
+			$cambioC = $taxon->getCambiosClimaticos();
+			foreach ($cambioC as $cc) {
+				if ($cc != null) {
+					$cambioClimatico[] = $cc;	
+				}
+				else {
+					$cambioClimatico = null;
+				}
+			}
+			
+			//Imagenes
+			$galleryDir = 'public/images/gallery/' . $taxon->getId() . '/';
+			$thumbsDir = $galleryDir . 'thumbs/';
+			$gallery = array();
+			$imgFiles = glob($galleryDir . "*.jpg");
+			$imgTextFile = glob($galleryDir . "*.csv");
+			$imgTextData = $this->csvreader->parse_file($imgTextFile[0]);
+			$i = 0;
+			foreach ($imgFiles as $img) {
+				$imgName = str_replace($galleryDir, "", $img);
+				if (!is_file($thumbsDir . $imgName)) {
+					$config['source_image'] = $img;
+					$config['new_image'] = $thumbsDir . $imgName;
+					$config['width'] = 120;
+					$config['height'] = 100;
+					$config['maintain_ratio'] = TRUE;
+					$this->image_lib->initialize($config);
+					$this->image_lib->resize();
+					echo $this->image_lib->display_errors();
+				}
+				$gallery[$i]['img'] = $img;
+				$gallery[$i]['thumb'] = $thumbsDir . $imgName;
+				for ($j = 0; $j < count($imgTextData); $j++){
+					if ($imgTextData[$j]['Imagen'] == str_replace(".jpg", "", $imgName)) {
+						$gallery[$i]['desc'] =  "Descripción: " . utf8_encode(trim($imgTextData[$j]["Descripcion"])) . ". " . 
+							"Autor: " . utf8_encode(trim($imgTextData[$j]["Autor"])) . ". " . "Colección: " . utf8_encode(trim($imgTextData[$j]["Coleccion"]));
+						break;	
+					}
+				}
+				$i++;
+			}
+		
+			//Envio de variables a interfaz
+			$this->twiggy->set('rank', $this->fill_rank());
+			$this->twiggy->set('endemic', $endemica);
+			$this->twiggy->set('locations', json_encode($locations));
+			$this->twiggy->set('estados', $estados);
+			$this->twiggy->set('publications', $publications);
+			$this->twiggy->set('hierarchy', $hierarchy);
+			$this->twiggy->set('sustratos', $sustrato);
+			$this->twiggy->set('habitat', $habitat);
+			$this->twiggy->set('sinonimos', $sinonimos);
+			$this->twiggy->set('basionimo', $basionimo);
+			$this->twiggy->set('ecorregion', $ecorregion);
+			$this->twiggy->set('ecosistema', $ecosistema);
+			$this->twiggy->set('listaRoja', $listaRoja);
+			$this->twiggy->set('cambioClimatico', $cambioClimatico);
+			$this->twiggy->set('gallery', $gallery);	
+		} 
+
+		else {
+			$this->twiggy->set('parentSyno', $taxon->getParentSynonyms());
+		}
 		
 		$auth = $this->session->userdata('auth');
 		if ($auth) {

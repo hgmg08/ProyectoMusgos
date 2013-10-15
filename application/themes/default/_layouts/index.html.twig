@@ -52,28 +52,6 @@
 						<a href="#" id="loginText">Iniciar sesión</a>
 					{% endif %}
 				</span>
-
-				<div id="windowLogin" caption="Login">
-				        <div>
-				            <form method="post" action="{{ base_url('login') }}">
-				                <table>
-				                    <tr>
-				                        <td style="vertical-align: middle;">Usuario:</td>
-				                        <td><input style="margin-left: 10px; width: 150px;" type="text" name="user" /></td>
-				                    </tr>
-				                    <tr>
-				                        <td style="vertical-align: middle;">Contraseña:</td>
-				                        <td><input style="margin-left: 10px; width: 150px;" type="password" name="password" /></td>
-				                    </tr>
-				                    <tr>
-				                        <td style="vertical-align: middle;" colspan="2" valign="bottom">
-				                            <input type="submit" id="submit" value="Entrar" />
-				                        </td>
-				                    </tr>
-				                </table>
-				            </form>
-				    	</div>
-				</div>
 		</div>
 		
 		<div class="clear"></div>
@@ -135,6 +113,28 @@
 			</table>
 		</div>
 		
+	</div>
+	
+	<div id="windowLogin" caption="Login">
+		<div>
+			<form method="post" action="{{ base_url('login') }}">
+				<table>
+					<tr>
+				    	<td style="vertical-align: middle;">Usuario:</td>
+				        <td><input style="margin-left: 10px; width: 150px;" type="text" name="user" /></td>
+				    </tr>
+				    <tr>
+				        <td style="vertical-align: middle;">Contraseña:</td>
+				        <td><input style="margin-left: 10px; width: 150px;" type="password" name="password" /></td>
+				    </tr>
+				    <tr>
+				        <td style="vertical-align: middle;" colspan="2" valign="bottom">
+				    	    <input type="submit" id="submit" value="Entrar" />
+				        </td>
+				    </tr>
+				 </table>
+			</form>
+		</div>
 	</div>
 </body>
 </html>

@@ -120,7 +120,6 @@
 				},
 				
 				deleterow: function (rowid, commit) {
-					commit(true);
 				}
 			};
 			
@@ -162,8 +161,10 @@
 					{ text: 'Autor', width: '30%', columntype: 'textbox', datafield: 'author' },
 					{ text: 'Clasificación', width: '20%', columntype: 'dropdownlist', datafield: 'rank',
 						createeditor: function (row, column, editor) {
-							var list = ['Especie', 'SubEspecie', 'Variedad'];
-							editor.jqxDropDownList({ autoDropDownHeight: true, source: list, placeHolder: "Escoja:" });
+							var list = [{'id': 6, 'name': 'Especie'}, {'id': 7, 'name': 'SubEspecie'}, {'id': 8, 'name': 'Variedad'}];
+							var source = { datatype: 'json', datafields: [{ name: 'id', type: 'number' }, { name: 'name', type: 'string' }], localdata: list };
+							var da = new $.jqx.dataAdapter(source);
+							editor.jqxDropDownList({ autoDropDownHeight: true, source: da, displayMember: 'name', valueMember: 'id', placeHolder: "Escoja:" });
 						},
 						cellvaluechanging: function (row, column, columntype, oldvalue, newvalue) {
                         	if (newvalue == "") return oldvalue;
@@ -171,7 +172,7 @@
 					},
 					{ text: 'Tipo', width: '20%', columntype: 'dropdownlist', datafield: 'type',
 						createeditor: function (row, column, editor) {
-							var list = ['Sinónimo', 'Basiónimo'];
+							var list = [{'id':'Sinónimo', 'Basiónimo'];
 							editor.jqxDropDownList({ autoDropDownHeight: true, source: list, placeHolder: "Escoja:" });
 						},
 						cellvaluechanging: function (row, column, columntype, oldvalue, newvalue) {
