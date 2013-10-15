@@ -21,7 +21,7 @@ class TaxonRepository extends EntityRepository
 	public function getAll()
 	{
 		$query = $this->_em->createQuery(
-			"SELECT t FROM entities\Taxon t ORDER BY t.name"
+			"SELECT t FROM entities\Taxon t WHERE t.rank > 0"
 		);
 		return $query->getResult(Query::HYDRATE_ARRAY);
 	}

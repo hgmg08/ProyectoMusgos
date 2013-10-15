@@ -138,6 +138,13 @@ class Taxon extends CI_Controller {
 	
 	private function lower_taxa_form($rank, $taxon = NULL) 
 	{
+		if ($taxon) {
+			
+		}
+		
+		else {
+			
+		}
 		$this->twiggy->set('rank', $this->getRankName($rank));
 		$this->twiggy->set('parentRank', $this->getParentRankName($rank));
 		$this->twiggy->set('parentRankList', json_encode($this->em->getRepository("entities\Taxon")->getAllParentTaxon($this->getParentRankEnum($rank))));
@@ -145,15 +152,13 @@ class Taxon extends CI_Controller {
 		$this->twiggy->set('sustratos', $this->getSustratos());
 		$this->twiggy->set('ecorregiones', json_encode($this->em->getRepository('entities\Ecorregion')->getAll()));
 		$this->twiggy->set('ecosistemas', $this->getEcosistemas());
-		
 		$this->twiggy->set('estados', json_encode($this->em->getRepository('entities\Estado')->getAll()));
 		
-		
+		$this->twiggy->set('lista_roja', json_encode(NULL));
+		$this->twiggy->set('indicadoresCC', json_encode(NULL));
 		$this->twiggy->set('sinonimos', json_encode(NULL));
 		$this->twiggy->set('publicaciones', json_encode(NULL));
 		$this->twiggy->set('especimenes', json_encode(NULL));
-		
-		
 		
 		$auth = $this->session->userdata('auth');
 		if ($auth) {
@@ -171,7 +176,9 @@ class Taxon extends CI_Controller {
 
 	public function getTowns()
 	{
-		
+		$stateId = $this->input->get("stateId");
+		$towns = $this->em->getRepository('entities\Municipio')->getAllByState($stateId);
+		echo json_encode($towns);
 	}
 	
 	private function getSustratos()

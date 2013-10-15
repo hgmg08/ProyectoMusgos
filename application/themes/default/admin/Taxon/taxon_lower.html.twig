@@ -6,6 +6,8 @@
 	
 	<script type="text/javascript">
 		$(document).ready(function () {
+			
+			
 			$('#tax_tabs').jqxTabs({ width: '100%', autoHeight: true, position: 'top', theme: theme });
 		
 			var theme = 'mdv';
@@ -101,6 +103,8 @@
 			$('#author').jqxInput({ height: 20, width: 400, theme: theme });
 			$('#accepted').jqxCheckBox({ theme: theme });
 			$('#endemic').jqxCheckBox({ theme: theme });
+			$('#review_editor').jqxInput({ height: 20, width: 400, theme: theme });
+			$('#review_date').jqxDateTimeInput({ height: 20, width: 200, formatString: 'dd/MM/yyyy', theme: theme });
 			
 			var sinonimos = {{ sinonimos }};
 			var sourceSinonimos = {
@@ -128,6 +132,7 @@
 			$('#grid_sinonimos').jqxGrid({
 				width: '100%',
 				theme: theme,
+				autoheight: true,
 				source: daSinonimos,
 				editable: true,
 				columnsresize: true,
@@ -172,8 +177,8 @@
 					},
 					{ text: 'Tipo', width: '20%', columntype: 'dropdownlist', datafield: 'type',
 						createeditor: function (row, column, editor) {
-							var list = [{'id':'Sinónimo', 'Basiónimo'];
-							editor.jqxDropDownList({ autoDropDownHeight: true, source: list, placeHolder: "Escoja:" });
+							var list = [{'id':1, 'name':'Sinónimo'}, {'id':2, 'name':'Basiónimo'}];
+							editor.jqxDropDownList({ autoDropDownHeight: true, source: list, displayMember: 'name', valueMember: 'id', placeHolder: "Escoja:" });
 						},
 						cellvaluechanging: function (row, column, columntype, oldvalue, newvalue) {
                         	if (newvalue == "") return oldvalue;
@@ -241,6 +246,7 @@
 			$('#grid_especimenes').jqxGrid({
 				width: '100%',
 				theme: theme,
+				autoheight: true,
 				source: daSpecimens,
 				editable: true,
 				columnsresize: true,
@@ -260,18 +266,35 @@
                     addButton.bind('click', function () {
                     	var commit = $('#grid_especimenes').jqxGrid('addrow', null, {});
                     });
+                    
+                    deleteButton.bind('click', function () {
+                    	var rowindex = $('#grid_especimenes').jqxGrid('getselectedrowindex');
+                    	if (rowindex >= 0) {
+                    		var id = $("#grid_especimenes").jqxGrid('getrowid', rowindex);
+        					$("#grid_especimenes").jqxGrid('deleterow', id);
+                    	}
+                    });
                 },
 				columns: [
 					{ text: 'Estado', width: '22%', columntype: 'dropdownlist', datafield: 'state', 
 						createeditor: function (row, column, editor) {
 							editor.jqxDropDownList({ autoDropDownHeight: true, source: daStates, displayMember: 'name', valueMember: 'id', placeHolder: "Escoja:" });
-							
+							editor.bind('select', function (event) {
+								if(event.args) {
+									var value = event.args.item.value;
+									townsSource.data = {stateId: value};
+									daTowns = new $.jqx.dataAdapter(townsSource);
+								}
+							})
 						},
 						cellvaluechanging: function (row, column, columntype, oldvalue, newvalue) {
                         	if (newvalue == "") return oldvalue;
                         }
 					},
-					{ text: 'Municipio', width: '15%', columntype: 'dropdownlist', datafield: 'town',
+					{ text: 'Municipio', width: '25%', columntype: 'dropdownlist', datafield: 'town',
+						initeditor: function (row, cellvalue, editor, celltext, cellwidth, cellheight) {
+							editor.jqxDropDownList({ source: daTowns });
+						},
 						createeditor: function (row, column, editor) {
 							editor.jqxDropDownList({ autoDropDownHeight: true, source: daTowns, displayMember: 'name', valueMember: 'id', placeHolder: "Escoja:" });
 						},
@@ -305,9 +328,133 @@
 				]
 			});
 			
+			var listaRoja = {{ lista_roja }};
+			var sourceListaRoja = {
+				datatype: 'json',
+				datafields: [
+					{ name: 'id', type: 'number' },
+					{ name: 'category', type: 'string' },
+					{ name: 'criterion', type: 'string' },
+					{ name: 'country', type: 'string' },
+					{ name: 'author', type: 'string' }
+				],
+				localdata: listaRoja,
+				
+				addrow: function (rowid, rowdata, position, commit) {
+					commit(true);
+				},
+				
+				deleterow: function (rowid, commit) {
+					commit(true);
+				}
+			};
+			
+			var daListaRoja = new $.jqx.dataAdapter(sourceListaRoja);
+			
+			$('#grid_lista_roja').jqxGrid({
+				width: '100%',
+				theme: theme,
+				autoheight: true,
+				source: daListaRoja,
+				editable: true,
+				columnsresize: true,
+				showstatusbar: true,
+				localization: getLocalization(),
+			    pageable: true,
+				renderstatusbar: function (statusbar) {
+					var container = $("<div style='overflow: hidden; position: relative; margin: 5px;'></div>");
+                    var addButton = $("<div style='float: left; margin-left: 5px;'><img style='position: relative; margin-top: 1px;' src='{{ base_url('public/images/img16x16_new.png') }}'/><span style='margin-left: 4px; position: relative; top: 2px;'>Nuevo</span></div>");
+                    var deleteButton = $("<div style='float: left; margin-left: 5px;'><img style='position: relative; margin-top: 1px;' src='{{ base_url('public/images/img16x16_delete.png') }}'/><span style='margin-left: 4px; position: relative; top: 2px;'>Eliminar</span></div>");
+                    container.append(addButton);
+                    container.append(deleteButton);
+                    statusbar.append(container);
+                    addButton.jqxButton({ theme: theme, width: 70, height: 20 });
+                    deleteButton.jqxButton({ theme: theme, width: 80, height: 20 });
+                    
+                    addButton.bind('click', function () {
+                    	var commit = $('#grid_lista_roja').jqxGrid('addrow', null, {});
+                    });
+                    
+                    deleteButton.bind('click', function () {
+                    	var rowindex = $('#grid_lista_roja').jqxGrid('getselectedrowindex');
+                    	if (rowindex >= 0) {
+                    		var id = $("#grid_lista_roja").jqxGrid('getrowid', rowindex);
+        					$("#grid_lista_roja").jqxGrid('deleterow', id);
+                    	}
+                    });
+                },
+                columns: [
+					{ text: 'Categoria', width: '25%', columntype: 'textbox', datafield: 'category' },
+					{ text: 'Criterio IUCN', width: '25%', columntype: 'textbox', datafield: 'criterion' },
+					{ text: 'País', width: '25%', columntype: 'textbox', datafield: 'country' },
+					{ text: 'Autor', width: '25%', columntype: 'textbox', datafield: 'author' }
+				]
+			});
+			
+			var indicadoresCC = {{ indicadoresCC }};
+			var sourceIndicadoresCC = {
+				datatype: 'json',
+				datafields: [
+					{ name: 'id', type: 'number' },
+					{ name: 'criterion', type: 'string' },
+					{ name: 'author', type: 'string' }
+				],
+				localdata: indicadoresCC,
+				
+				addrow: function (rowid, rowdata, position, commit) {
+					commit(true);
+				},
+				
+				deleterow: function (rowid, commit) {
+					commit(true);
+				}
+			};
+			
+			var daIndicadoresCC = new $.jqx.dataAdapter(sourceIndicadoresCC);
+			
+			$('#grid_indicadores_cc').jqxGrid({
+				width: '100%',
+				theme: theme,
+				source: daIndicadoresCC,
+				autoheight: true,
+				editable: true,
+				columnsresize: true,
+				showstatusbar: true,
+				localization: getLocalization(),
+			    pageable: true,
+				renderstatusbar: function (statusbar) {
+					var container = $("<div style='overflow: hidden; position: relative; margin: 5px;'></div>");
+                    var addButton = $("<div style='float: left; margin-left: 5px;'><img style='position: relative; margin-top: 1px;' src='{{ base_url('public/images/img16x16_new.png') }}'/><span style='margin-left: 4px; position: relative; top: 2px;'>Nuevo</span></div>");
+                    var deleteButton = $("<div style='float: left; margin-left: 5px;'><img style='position: relative; margin-top: 1px;' src='{{ base_url('public/images/img16x16_delete.png') }}'/><span style='margin-left: 4px; position: relative; top: 2px;'>Eliminar</span></div>");
+                    container.append(addButton);
+                    container.append(deleteButton);
+                    statusbar.append(container);
+                    addButton.jqxButton({ theme: theme, width: 70, height: 20 });
+                    deleteButton.jqxButton({ theme: theme, width: 80, height: 20 });
+                    
+                    addButton.bind('click', function () {
+                    	var commit = $('#grid_indicadores_cc').jqxGrid('addrow', null, {});
+                    });
+                    
+                    deleteButton.bind('click', function () {
+                    	var rowindex = $('#grid_indicadores_cc').jqxGrid('getselectedrowindex');
+                    	if (rowindex >= 0) {
+                    		var id = $("#grid_indicadores_cc").jqxGrid('getrowid', rowindex);
+        					$("#grid_indicadores_cc").jqxGrid('deleterow', id);
+                    	}
+                    });
+                },
+                columns: [
+					{ text: 'Criterio', width: '50%', columntype: 'textbox', datafield: 'criterion' },
+					{ text: 'Autor', width: '50%', columntype: 'textbox', datafield: 'author' }
+				]
+			});
+			
 			$('#successPersist').jqxWindow({ width: 300, height: 100, isModal: true, autoOpen: false, resizable: false, theme: theme });
 			$('#failPersist').jqxWindow({ width: 300, height: 100, isModal: true, autoOpen: false, resizable: false, theme: theme });
-			$('#save').jqxButton({ width: 70, theme: theme });
+			$('#save_details').jqxButton({ width: 70, theme: theme });
+			$('#save_distribution').jqxButton({ width: 70, theme: theme });
+			$('#save_revision').jqxButton({ width: 70, theme: theme });
 		});
 	</script>
 	
@@ -329,6 +476,7 @@
 				<li>Sinónimos</li>
 				<li>Distribución mundial</li>
 				<li>Especímenes</li>
+				<li>Lista roja</li>
 				<li>Imágenes</li>
 				<li>Revisión</li>
 			</ul>
@@ -337,51 +485,45 @@
 				<form class="taxon_form" id="taxon_form_details">
 					<fieldset>
 					<legend>Datos básicos</legend>
-						<p>
+						<div class="div_field">
 							<label class="field">Nombre</label>
-							<input id="name" name="name" placeholder="Ingrese nombre científico" value="" />
-						</p>
-						<p>
+							<input id="name" name="name" placeholder="Ingrese nombre científico" />
+						</div>
+						<div class="div_field">
 							<label class="field">Autor</label>
-							<input id="author" name="author" placeholder="Ingrese iniciales del autor" value="" />
-						</p>
-						<p>
+							<input id="author" name="author" placeholder="Ingrese iniciales del autor" />
+						</div>
+						<div class="div_field">
 							<label class="field">Taxón padre ({{ parentRank }})</label>
 							<div id="parent"></div>
-						</p>
-						<p>
+						</div>
+						<div class="div_field">
 							<label class="field">¿Es aceptada?</label>
 							<div class="tax_checkbox" id="accepted"></div>
-						</p>
-						<p>
+						</div>
+						<div class="div_field">
 							<label class="field">¿Es endémica?</label>
 							<div class="tax_checkbox" id="endemic"></div>
-						</p>
-						<p>
+						</div>
+						<div class="div_field">
 							<label class="field">Sustratos</label>
 							<div id="sustratos"></div>
-						</p>
-						<p>
+						</div>
+						<div class="div_field">
 							<label class="field">Ecorregiones</label>
 							<div id="ecorregiones"></div>
-						</p>
-						<p>
+						</div>
+						<div class="div_field">
 							<label class="field">Ecosistemas</label>
 							<div id="ecosistemas"></div>
-						</p>
+						</div>
+						<div class="div_field">
+							<label class="field">Comentarios</label>
+							<textarea class="tax_textarea"></textarea>
+						</div>
+						
+						<input type="button" value="Guardar" id="save_details" />
 					</fieldset>	
-					
-					<fieldset>
-					<legend>Lista roja</legend>
-				
-					</fieldset>
-			
-					<fieldset>
-					<legend>Indicadores cambio climático</legend>
-							
-					</fieldset>
-					
-					<input type="button" value="Guardar" id="save" />
 				</form>
 			</div>
 			
@@ -398,18 +540,20 @@
 				<form class="taxon_form" id="taxon_form_distribution">
 					<fieldset>
 					<legend>Distribución mundial</legend>
-						<p>
+						<div class="div_field">
 							<label class="field">Distribución en el mundo</label>
-							<textarea class="tax_textarea" placeholder="Ingrese paises separados por comas"></textarea>
-						</p>
-						<p>
+							<textarea class="tax_textarea" name="global_distribution" placeholder="Ingrese paises separados por comas"></textarea>
+						</div>
+						<div class="div_field">
 							<label class="field">Zonas de Van der Wijk</label>
-							<textarea class="tax_textarea" placeholder="Ingrese zonas separadas por comas"></textarea>
-						</p>
-						<p>
+							<textarea class="tax_textarea" name="vdw_zones" placeholder="Ingrese zonas separadas por comas"></textarea>
+						</div>
+						<div class="div_field">
 							<label class="field">Paises andinotropicales</label>
-							<textarea class="tax_textarea" placeholder="Ingrese paises separados por comas"></textarea>
-						</p>
+							<textarea class="tax_textarea" name="tropicalAndean_distribution" placeholder="Ingrese paises separados por comas"></textarea>
+						</div>
+						
+						<input type="button" value="Guardar" id="save_distribution" />
 					</fieldset>
 				</form>
 			</div>
@@ -419,6 +563,20 @@
 					<fieldset>
 					<legend>Especímenes</legend>
 						<div id="grid_especimenes"></div>
+					</fieldset>
+				</form>
+			</div>
+			
+			<div>
+				<form class="taxon_form" id="tax_form tax_lista_roja">
+					<fieldset>
+					<legend>Lista roja</legend>
+						<div id="grid_lista_roja"></div>
+					</fieldset>
+			
+					<fieldset>
+					<legend>Indicadores cambio climático</legend>
+						<div id="grid_indicadores_cc"></div>	
 					</fieldset>
 				</form>
 			</div>
@@ -436,7 +594,20 @@
 				<form class="taxon_form" id="tax_form_revision">
 					<fieldset>
 					<legend>Comentarios de revisión</legend>
-						
+						<div class="div_field">
+							<label class="field">Editor de revisión</label>
+							<input id="review_editor" name="review_editor" />
+						</div>
+						<div class="div_field">
+							<label class="field">Comentarios</label>
+							<textarea class="tax_textarea" name="review_comments"></textarea>
+						</div>
+						<hr/>
+						<div class="div_field_date">
+							<label>Fecha revisión</label>
+							<div id="review_date"></div>
+						</div>
+						<input type="button" value="Guardar" id="save_revision" />
 					</fieldset>
 				</form>
 			</div>

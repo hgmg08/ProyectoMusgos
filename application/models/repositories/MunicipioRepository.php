@@ -22,7 +22,7 @@ class MunicipioRepository extends EntityRepository
 	 public function getAllByState($state)
 	 {
 	 	$query = $this->_em->createQuery(
-			"SELECT m FROM entities\Municipio m WHERE :stateid MEMBER OF m.estado ORDER BY m.name"
+			"SELECT m FROM entities\Municipio m JOIN m.estado e WHERE e.id = :stateid"
 		);
 		$query->setParameter('stateid', $state);
 		return $query->getResult(Query::HYDRATE_ARRAY);

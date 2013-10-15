@@ -263,6 +263,7 @@
 
 .main_search_field button:focus {
 	border: none;
+	outline-width: 0;
 }
 
 #searchLink {
@@ -534,17 +535,31 @@ table#footer_nav a:hover{
 	padding: 5px;
 }
 
-.taxon_form #save {
+.taxon_form input[type="button"] {
 	clear: both;
-	margin-top: 30px;
+	margin-top: 10px;
+	float: left;
 }
 
-.taxon_form p {
+.div_field {
 	margin-bottom: 10px;
 }
 
-.taxon_form label.field {
-	float:left;
+.div_field_date {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	float: left;
+}
+
+.div_field_date label {
+	width: 25%;
+	margin-right: 5px;
+	text-align: right;
+	font-weight: bold;
+}
+
+label.field {
+	float: left;
 	width: 25%;
 	margin-right: 5px;
 	text-align: right;
@@ -553,7 +568,7 @@ table#footer_nav a:hover{
 
 .taxon_form textarea.tax_textarea {
 	resize: none;
-	width: 400px;
+	width: 395px;
 	height: 100px;
 }
 
