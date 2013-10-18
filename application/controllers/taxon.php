@@ -244,10 +244,6 @@ class Taxon extends CI_Controller {
 		if ($auth) {
 			$this->twiggy->set('username', $this->session->userdata('user'));
 		}
-		$this->twiggy->set('adv_sustratos', json_encode($this->em->getRepository("entities\Sustrato")->getAll()));
-		$this->twiggy->set('adv_ecorregiones', json_encode($ecor = $this->em->getRepository("entities\Ecorregion")->getAll()));
-		$this->twiggy->set('adv_ecosistemas', json_encode($this->em->getRepository("entities\Ecosistema")->getAll()));
-		$this->twiggy->set('adv_estados', json_encode($this->em->getRepository("entities\Estado")->getAll()));
 		
 		$this->twiggy->title('Musgos de Venezuela')->append($taxon->getName());
 		$this->twiggy->template('main/taxon')->display();

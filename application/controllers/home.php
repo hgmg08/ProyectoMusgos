@@ -40,10 +40,6 @@ class Home extends CI_Controller {
 	public function about() 
 	{
 		$this->setParametersToView();
-		$this->twiggy->set('sustratos', json_encode($this->em->getRepository("entities\Sustrato")->getAll()));
-		$this->twiggy->set('ecorregiones', json_encode($ecor = $this->em->getRepository("entities\Ecorregion")->getAll()));
-		$this->twiggy->set('ecosistemas', json_encode($this->em->getRepository("entities\Ecosistema")->getAll()));
-		$this->twiggy->set('estados', json_encode($this->em->getRepository("entities\Estado")->getAll()));
 		$this->twiggy->title('Musgos de Venezuela')->append("Acerca de");
 		$this->twiggy->template('main/about')->display();
 	}
@@ -96,10 +92,6 @@ class Home extends CI_Controller {
 		if ($auth) {
 			$this->twiggy->set('uid', $this->session->userdata('uid'));
 		}
-		$this->twiggy->set('adv_sustratos', json_encode($this->em->getRepository("entities\Sustrato")->getAll()));
-		$this->twiggy->set('adv_ecorregiones', json_encode($ecor = $this->em->getRepository("entities\Ecorregion")->getAll()));
-		$this->twiggy->set('adv_ecosistemas', json_encode($this->em->getRepository("entities\Ecosistema")->getAll()));
-		$this->twiggy->set('adv_estados', json_encode($this->em->getRepository("entities\Estado")->getAll()));
 	}
 }
 

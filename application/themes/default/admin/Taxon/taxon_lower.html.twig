@@ -180,7 +180,9 @@
 					{ text: 'Tipo', width: '20%', columntype: 'dropdownlist', datafield: 'type',
 						createeditor: function (row, column, editor) {
 							var list = [{'id':1, 'name':'Sinónimo'}, {'id':2, 'name':'Basiónimo'}];
-							editor.jqxDropDownList({ autoDropDownHeight: true, source: list, displayMember: 'name', valueMember: 'id', placeHolder: "Escoja:" });
+							var source = { datatype: 'json', datafields: [{ name: 'id', type: 'number' }, { name: 'name', type: 'string' }], localdata: list };
+							var da = new $.jqx.dataAdapter(source);
+							editor.jqxDropDownList({ autoDropDownHeight: true, source: da, displayMember: 'name', valueMember: 'id', placeHolder: "Escoja:" });
 						},
 						cellvaluechanging: function (row, column, columntype, oldvalue, newvalue) {
                         	if (newvalue == "") return oldvalue;
@@ -197,12 +199,12 @@
 			    	{ name: 'state', type: 'string' },
 			    	{ name: 'town', type: 'string' },
 			    	{ name: 'location', type: 'string' },
-			    	{ name: 'altitude_min', type: 'number' },
-			    	{ name: 'altitude_max', type: 'number' },
-			    	{ name: 'latitude', type: 'number' },
-			    	{ name: 'longitude', type: 'number' },
+			    	{ name: 'altitude_min', type: 'int' },
+			    	{ name: 'altitude_max', type: 'int' },
+			    	{ name: 'latitude', type: 'string' },
+			    	{ name: 'longitude', type: 'string' },
 			    	{ name: 'collection', type: 'string' },
-			    	{ name: 'collection_date', type: 'date' },
+			    	{ name: 'collection_date', type: 'date', format: "dd/MM/yyyy" },
 			    	{ name: 'herbarium', type: 'string' },
 			    	{ name: 'reference', type: 'string' }
 			    ],
@@ -281,50 +283,40 @@
 					{ text: 'Estado', width: '22%', columntype: 'dropdownlist', datafield: 'state', 
 						createeditor: function (row, column, editor) {
 							editor.jqxDropDownList({ autoDropDownHeight: true, source: daStates, displayMember: 'name', valueMember: 'id', placeHolder: "Escoja:" });
+							
 							editor.bind('select', function (event) {
 								if(event.args) {
 									var value = event.args.item.value;
-									townsSource.data = {stateId: value};
+									townsSource.data = {state: value};
 									daTowns = new $.jqx.dataAdapter(townsSource);
 								}
-							})
+							});
 						},
 						cellvaluechanging: function (row, column, columntype, oldvalue, newvalue) {
                         	if (newvalue == "") return oldvalue;
-                        }
+                        },
 					},
-					{ text: 'Municipio', width: '25%', columntype: 'dropdownlist', datafield: 'town',
+					{ text: 'Municipio', width: '23%', columntype: 'dropdownlist', datafield: 'town',
 						initeditor: function (row, cellvalue, editor, celltext, cellwidth, cellheight) {
+							var stateValue = $('#grid_especimenes').jqxGrid('getcellvalue', row, 'state');
+							townsSource.data = {state: stateValue};
+							daTowns = new $.jqx.dataAdapter(townsSource);
 							editor.jqxDropDownList({ source: daTowns });
 						},
 						createeditor: function (row, column, editor) {
-							editor.jqxDropDownList({ autoDropDownHeight: true, source: daTowns, displayMember: 'name', valueMember: 'id', placeHolder: "Escoja:" });
+							editor.jqxDropDownList({ autoDropDownHeight: true, displayMember: 'name', valueMember: 'id', placeHolder: "Escoja:" });
 						},
 						cellvaluechanging: function (row, column, columntype, oldvalue, newvalue) {
                         	if (newvalue == "") return oldvalue;
                         }
 					},
-					{ text: 'Localidad', width: '30%', columntype: 'textbox', datafield: 'location' },
-					{ text: 'Altitud min. (m)', width: '15%', columntype: 'textbox', datafield: 'altitude_min',
-						createeditor: function (row, column, editor) {
-							editor.jqxMaskedInput({ mask: '#####', promptChar: '' });
-						},
-						cellvaluechanging: function (row, column, columntype, oldvalue, newvalue) {
-                        	if (newvalue == "") return oldvalue;
-                        }	
-					},
-					{ text: 'Altitud max. (m)', width: '15%', columntype: 'textbox', datafield: 'altitude_max',
-						createeditor: function (row, column, editor) {
-							editor.jqxMaskedInput({ mask: '#####', promptChar: '' });
-						},
-						cellvaluechanging: function (row, column, columntype, oldvalue, newvalue) {
-                        	if (newvalue == "") return oldvalue;
-                        }	
-					},
+					{ text: 'Localidad', width: '35%', columntype: 'textbox', datafield: 'location' },
+					{ text: 'Altitud min. (m)', width: '15%', columntype: 'textbox', datafield: 'altitude_min', cellsformat: 'n' },
+					{ text: 'Altitud max. (m)', width: '15%', columntype: 'textbox', datafield: 'altitude_max', cellsformat: 'n' },
 					{ text: 'Latitud', width: '15%', columntype: 'textbox', datafield: 'latitude' },
 					{ text: 'Longitud', width: '15%', columntype: 'textbox', datafield: 'longitud' },
-					{ text: 'Colección', width: '15%', columntype: 'textbox', datafield: 'collection' },
-					{ text: 'Fecha colección', width: '15%', columntype: 'datetimeinput', cellsformat: 'd', datafield: 'collection_date' },
+					{ text: 'Colección', width: '20%', columntype: 'textbox', datafield: 'collection' },
+					{ text: 'Fecha colección', width: '15%', columntype: 'datetimeinput', cellsformat: 'dd/MM/yyyy', datafield: 'collection_date' },
 					{ text: 'Herbario', width: '15%', columntype: 'textbox', datafield: 'herbarium' },
 					{ text: 'Referencia', width: '15%', columntype: 'custom', datafield: 'reference' }
 				]
@@ -468,14 +460,22 @@
 				$('#name').val('{{ taxon.getName }}');
 				$('#author').val('{{ taxon.getAuthorInitials }}');
 				
-				var item = $("#parent").jqxDropDownList('getItemByValue', {{ taxon.getParentHierarchy.getId }});
+				var item = $("#parent").jqxDropDownList('getItemByValue', {% if taxon %} {{ taxon.getParentHierarchy.getId }} {% else %} -1 {% endif %});
 				$('#parent').jqxDropDownList('selectItem', item);
 				
 				$('#accepted').val({{ taxon.getAcceptedName }});
 				$('#endemic').val({{ taxon.getEndemic }});
 				$('#comments').val('{{ taxon.getComments }}');
 				
-				var taxSustratos = {{ tax_sustratos }};
+				$('#global_distribution').val('{{ taxon.getGlobalDistribution }}');
+				$('#vdw_zones').val('{{ taxon.getVDWDistribution }}');
+				$('#tropicalAndean_distribution').val('{{ taxon.getTropicalAndeanDistribution }}');
+				
+				$('#review_editor').val('{{ taxon.getReviewEditor }}');
+				$('#review_comments').val('{{ taxon.getReviewComments }}');
+				$('#review_date').val('{{ taxon.getReviewDate | date('m/d/Y') }}');
+				
+				var taxSustratos = {% if tax_sustratos %} {{ tax_sustratos }} {% else %} null {% endif %};
 				var itemsSustratosTree = $('#sustratos').jqxTree('getItems');
 				
 				for (var i = 0; i < taxSustratos.length; i++) {
@@ -488,7 +488,7 @@
 					}
 				}
 				
-				var taxEcosistemas = {{ tax_ecosistemas }};
+				var taxEcosistemas = {% if tax_ecosistemas %} {{ tax_ecosistemas }} {% else %} null {% endif %};
 				var itemsEcosistemasTree = $('#ecosistemas').jqxTree('getItems');
 				
 				for (var i = 0; i < taxEcosistemas.length; i++) {
@@ -501,14 +501,11 @@
 					}
 				}
 				
-				var taxEcorreg = {{ tax_ecorreg }};
+				var taxEcorreg = {% if tax_ecorreg %} {{ tax_ecorreg }} {% else %} null {% endif %};
 				for (var i = 0; i < taxEcorreg.length; i++) {
 					var item = $('#ecorregiones').jqxListBox('getItemByValue', taxEcorreg[i]);
 					$('#ecorregiones').jqxListBox('checkItem', item); 
 				}
-				
-				var itemsa = $('#ecosistemas').jqxTree('getCheckedItems');
-				console.log(itemsa);
 			}
 			
 		});
@@ -533,8 +530,8 @@
 		<div id="tax_tabs">
 			<ul>
 				<li>Detalles</li>
-				<li>Sinónimos</li>
 				<li>Distribución mundial</li>
+				<li>Sinónimos</li>
 				<li>Especímenes</li>
 				<li>Lista roja</li>
 				<li>Imágenes</li>
@@ -588,15 +585,6 @@
 			</div>
 			
 			<div>
-				<form class="taxon_form" id="tax_form_synonims">
-					<fieldset>
-					<legend>Sinonimos</legend>
-						<div id="grid_sinonimos"></div>
-					</fieldset>
-				</form>
-			</div>
-			
-			<div>
 				<form class="taxon_form" id="taxon_form_distribution">
 					<fieldset>
 					<legend>Distribución mundial</legend>
@@ -614,6 +602,15 @@
 						</div>
 						
 						<input type="button" value="Guardar" id="save_distribution" />
+					</fieldset>
+				</form>
+			</div>
+			
+			<div>
+				<form class="taxon_form" id="tax_form_synonims">
+					<fieldset>
+					<legend>Sinonimos</legend>
+						<div id="grid_sinonimos"></div>
 					</fieldset>
 				</form>
 			</div>
@@ -660,7 +657,7 @@
 						</div>
 						<div class="div_field">
 							<label class="field">Comentarios</label>
-							<textarea class="tax_textarea" name="review_comments"></textarea>
+							<textarea class="tax_textarea" id="review_comments" name="review_comments"></textarea>
 						</div>
 						<hr/>
 						<div class="div_field_date">
