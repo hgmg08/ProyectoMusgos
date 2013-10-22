@@ -508,6 +508,97 @@
 				}
 			}
 			
+			$('#taxon_form_details').jqxValidator({
+				animationDuration: 1,
+				rules: [
+					{ input: '#name', message: 'El nombre es requerido', action: 'keyup, blur', rule: 'required' },
+					{ input: '#author', message: 'El autor es requerido', action: 'keyup, blur', rule: 'required' }
+				],
+				theme: theme
+			});
+			
+			$('#save_details').click(function () {
+				var sustratosItems = $('#sustratos').jqxTree('getCheckedItems');
+				var sustratos = null;
+				if (sustratosItems.length > 0) {
+					sustratos = new Array();
+				}
+				for (var i = 0; i < sustratosItems.length; i++) {
+					sustratos[i] = sustratosItems[i].id;
+				}
+				
+				var ecosistemasItems = $('#ecosistemas').jqxTree('getCheckedItems');
+				var ecosistemas = null;
+				if (ecosistemasItems.length > 0) {
+					ecosistemas = new Array();
+				}
+				for (var i = 0; i < ecosistemasItems.length; i++) {
+					ecosistemas[i] = ecosistemasItems[i].id;
+				}
+				
+				var ecorregionesItems = $('#ecorregiones').jqxListBox('getCheckedItems');
+				var ecorregiones = null;
+				if (ecorregionesItems.length > 0) {
+					ecorregiones = new Array();
+				}
+				for (var i = 0; i < ecorregionesItems.length; i++) {
+					ecorregiones[i] = ecorregionesItems[i].value;
+				}
+				
+				var data = {
+					id: taxonId,
+					operation: op,
+					name: $('#name').val(),
+					author: $('#author').val(),
+					parent: $('#parent').jqxDropDownList('getSelectedItem').value,
+					rank: {{ rank }},
+					accepted: $('#accepted').jqxCheckBox('checked') ? 1 : 0,
+					endemic: $('#endemic').jqxCheckBox('checked') ? 1 : 0,
+					sustrato: sustratos,
+					ecosistema: ecosistemas,
+					ecorregion: ecorregiones,
+					comments: $('#comments').val()
+				};
+				
+				var validation = function(isValid) {
+					if (isValid) {
+						console.log(data);
+						$.ajax({
+							type: 'POST',
+							url: '{{ base_url('admin/taxon/persist_lower_details') }}',
+							data: data,
+							dataType: 'text',
+							success: function(response) {
+								console.log(response);
+								if (response == 1) {
+									$('#successPersist').css('visibility', 'visible');
+									var x = ($(window).width() - $('#successPersist').jqxWindow('width')) / 2 + $(window).scrollLeft();
+                					var y = ($(window).height() - $('#successPersist').jqxWindow('height')) / 2 + $(window).scrollTop();
+                					$('#successPersist').jqxWindow({ position: { x: x, y: y} });
+                					$('#successMessage').text('Los detalles de taxón fueron guardados exitosamente');
+									$('#successPersist').jqxWindow('open');
+									setTimeout(function () {
+										$('#successPersist').jqxWindow('close');
+									}, 2500);
+									
+								}
+								else if (response == -1) {
+									$('#failPersist').css('visibility', 'visible');
+									var x = ($(window).width() - $('#failPersist').jqxWindow('width')) / 2 + $(window).scrollLeft();
+                					var y = ($(window).height() - $('#failPersist').jqxWindow('height')) / 2 + $(window).scrollTop();
+                					$('#failPersist').jqxWindow({ position: { x: x, y: y} });
+                					$('#failMessage').text('Este taxón ya se encuentra registrado');
+									$('#failPersist').jqxWindow('open');
+									setTimeout(function () {
+										$('#failPersist').jqxWindow('close');
+									}, 4000);
+								}
+							}
+						});
+					}
+				};
+				$('#taxon_form_details').jqxValidator('validate', validation);
+			});
 		});
 	</script>
 	
@@ -520,7 +611,7 @@
 			{% if taxon %}
 				{{ taxon.getName }}
 			{% else %}
-				Nueva {{ rank }}
+				Nueva {{ rankName }}
 			{% endif %}
 		</div>
 		<div id="tax_hg_admin_type">
@@ -673,13 +764,11 @@
 	
 	<div id="successPersist" caption="Mensaje">
 		<div id="successMessage">
-			El taxón fue persistido exitosamente
 		</div>
 	</div>
 	
 	<div id="failPersist" caption="Mensaje">
 		<div id="failMessage">
-			Ya existe este taxón
 		</div>
 	</div>
 

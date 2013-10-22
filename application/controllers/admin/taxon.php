@@ -1,5 +1,7 @@
 <?php
 
+define('GALLERY_DIR', 'public/images/gallery/');
+
 class Taxon extends CI_Controller {
 
 	//EntityManager
@@ -53,6 +55,21 @@ class Taxon extends CI_Controller {
 		}
 	}
 	
+	public function delete()
+	{
+		$id = $this->input->post("id");
+		$taxon = $this->em->find('entities\Taxon', $id);
+		if ($taxon) {
+			$this->delTree(GALLERY_DIR . $taxon->getId());
+			$this->em->remove($taxon);
+			$this->em->flush();
+			echo true;
+		}
+		else {
+			echo false;
+		}
+	}
+	
 	//Persist higher taxa
 	public function persist_higher()
 	{
@@ -98,9 +115,115 @@ class Taxon extends CI_Controller {
 
 	public function persist_lower_details()
 	{
+		$id = $this->input->post("id");
+		$operation = $this->input->post("operation");
+		$name = trim($this->input->post("name"));
+		$author = trim($this->input->post("author"));
+		$parentId = $this->input->post("parent");
+		$rank = $this->input->post("rank");
+		$accepted = $this->input->post("accepted");
+		$endemic = $this->input->post("endemic");
+		$sustratos = $this->input->post("sustrato");
+		$ecosistemas = $this->input->post("ecosistema");
+		$ecorregiones = $this->input->post("ecorregion");
+		$comments = trim($this->input->post("comments"));
 		
+		if ($operation == 1) {
+			$taxonCheck = $this->em->getRepository('entities\Taxon')->findOneBy(array('name' => $name));
+			$taxon = $this->em->find('entities\Taxon', $id);
+			if (!$taxonCheck or $taxonCheck->getName() == $taxon->getName()) {
+				$parentTaxon = $this->em->find('entities\Taxon', $parentId);
+				$taxon->setName($name);
+				$taxon->setParentHierarchy($parentTaxon);
+				$taxon->setAuthorInitials($author);
+				$taxon->setRank($rank);
+				$taxon->setAcceptedName($accepted);
+				$taxon->setEndemic($endemic);	
+				
+				$taxon->getSustratos()->clear();
+				if ($sustratos) {
+					foreach ($sustratos as $s) {
+						$sust = $this->em->find('entities\Sustrato', $s);
+						$taxon->addSustrato($sust);
+					}
+				}
+				
+				$taxon->getEcorregiones()->clear();
+				if ($ecorregiones) {
+					foreach ($ecorregiones as $ec) {
+						$ecorr = $this->em->find('entities\Ecorregion', $ec);
+						$taxon->addEcorregion($ecorr);
+					}	
+				}
+				
+				$taxon->getEcosistemas()->clear();
+				if ($ecosistemas) {
+					foreach ($ecosistemas as $ecs) {
+						$ecosis = $this->em->find('entities\Ecosistema', $ecs);
+						$taxon->addEcosistema($ecosis);
+					}	
+				}
+				
+				$taxon->setModificationDate(new \DateTime("now"));
+				$taxon->setComments($comments);
+				
+				$this->em->persist($taxon);
+				$this->em->flush();
+				echo 1;
+			}
+
+			else {
+				echo -1;
+			}	
+		}
+		
+		else {
+			$taxon = new entities\Taxon;
+			$parentTaxon = $this->em->find('entities\Taxon', $parentId);
+			$taxon->setName($name);
+			$taxon->setParentHierarchy($parentTaxon);
+			$taxon->setAuthorInitials($author);
+			$taxon->setRank($rank);
+			$taxon->setAcceptedName($accepted);
+			$taxon->setEndemic($endemic);	
+			
+			$taxon->getSustratos()->clear();
+			if ($sustratos) {
+				foreach ($sustratos as $s) {
+					$sust = $this->em->find('entities\Sustrato', $s);
+					$taxon->addSustrato($sust);
+				}
+			}
+				
+			$taxon->getEcorregiones()->clear();
+			if ($ecorregiones) {
+				foreach ($ecorregiones as $ec) {
+					$ecorr = $this->em->find('entities\Ecorregion', $ec);
+					$taxon->addEcorregion($ecorr);
+				}	
+			}
+				
+			$taxon->getEcosistemas()->clear();
+			if ($ecosistemas) {
+				foreach ($ecosistemas as $ecs) {
+					$ecosis = $this->em->find('entities\Ecosistema', $ecs);
+					$taxon->addEcosistema($ecosis);
+				}	
+			}
+				
+			$taxon->setCreationDate(new \DateTime("now"));
+			$taxon->setComments($comments);
+			$taxon->setStatus(1);
+				
+			$this->em->persist($taxon);
+			$this->em->flush();
+			
+			$this->makeImageDir($taxon->getId());
+			
+			echo 1;
+		}
 	}
-	
+		
 	//Populate higher taxa form
 	private function higher_taxa_form($rank, $taxon = NULL) 
 	{
@@ -144,7 +267,7 @@ class Taxon extends CI_Controller {
 			$this->twiggy->set('id', $taxon->getId());
 			$this->twiggy->set('operation', 1);
 			
-			$this->twiggy->set('rank', $this->getRankName($taxon->getRank()));
+			$this->twiggy->set('rank', $taxon->getRank());
 			$this->twiggy->set('rankName', $this->getRankName($taxon->getRank()));
 			$this->twiggy->set('parentRank', $this->getParentRankName($taxon->getRank()));
 			$this->twiggy->set('parentRankList', json_encode($this->em->getRepository("entities\Taxon")->getAllParentTaxon($this->getParentRankEnum($taxon->getRank()))));
@@ -158,7 +281,7 @@ class Taxon extends CI_Controller {
 			$this->twiggy->set('id', 0);
 			$this->twiggy->set('operation', 2);
 			
-			$this->twiggy->set('rank', $this->getRankName($rank));
+			$this->twiggy->set('rank', $rank);
 			$this->twiggy->set('rankName', $this->getRankName($rank));
 			$this->twiggy->set('parentRank', $this->getParentRankName($rank));
 			$this->twiggy->set('parentRankList', json_encode($this->em->getRepository("entities\Taxon")->getAllParentTaxon($this->getParentRankEnum($rank))));
@@ -506,6 +629,23 @@ class Taxon extends CI_Controller {
 		}
 		return $typeName;
 	}
+	
+	private function makeImageDir($id)
+	{
+		$galleryDir = GALLERY_DIR . $id . '/thumbs/';
+		mkdir($galleryDir, 0775, true);
+	}
+	
+	private function delTree($dir)
+    { 
+        $files = array_diff(scandir($dir), array('.','..')); 
+
+        foreach ($files as $file) { 
+            (is_dir("$dir/$file")) ? $this->delTree("$dir/$file") : unlink("$dir/$file"); 
+        }
+
+        return rmdir($dir); 
+    } 
 }
 
 ?>

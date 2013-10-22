@@ -59,6 +59,9 @@ class User extends CI_Controller {
 			$this->em->flush();
 			echo true;
 		}
+		else {
+			echo false;
+		}
 	}
 
 	public function persist_user()

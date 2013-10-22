@@ -30,13 +30,17 @@
 					};
 					console.log(data);
 					$.ajax({
-							type: 'POST',
-							url: '{{ base_url('admin/user/delete_user') }}',
-							data: data,
-							dataType: 'text',
-							success: function (data, status, xhr) {	
-								commit(true);
-							}
+						type: 'POST',
+						url: '{{ base_url('admin/user/delete_user') }}',
+						data: data,
+						cache: false,
+						dataType: 'text',
+						success: function (data, status, xhr) {
+							commit(true);
+						},
+						error: function(jqXHR, textStatus, errorThrown) {
+							commit(false);
+						}
 					});
 				}
 			};

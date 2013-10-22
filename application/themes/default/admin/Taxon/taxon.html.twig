@@ -22,7 +22,30 @@
 				localdata: data,
 				pagesize: 10,
 				
-				deleterow: function (rowid, commit) { }
+				deleterow: function (rowid, commit) {
+					var taxon = $('#tax_grid').jqxGrid('getrowdata', rowid);
+					console.log(taxon);
+					var data = {
+						id: taxon.id
+					};
+					console.log(data);
+					$.ajax({
+						type: 'POST',
+						url: '{{ base_url('admin/taxon/delete') }}',
+						data: data,
+						dataType: 'text',
+						cache: false,
+						success: function (data, status, xhr) {
+							console.log(data);
+							console.log(status);
+							console.log(xhr);	
+							commit(true);
+						},
+						error: function(jqXHR, textStatus, errorThrown) {
+							commit(false);
+						}
+					});
+				}
 			};
 			
 			var dataAdapter = new $.jqx.dataAdapter(source);
@@ -70,6 +93,15 @@
                     	if (rowindex >= 0) {
 	            			var data = $('#tax_grid').jqxGrid('getrowdata', rowindex);
 	            			window.location = "{{ base_url('admin/taxon/taxon_form') }}" + '/' + data.RankEnum + '/' + data.id ;
+                    	}
+                    });
+                    deleteButton.bind('click', function() {
+                    	var rowindex = $('#tax_grid').jqxGrid('getselectedrowindex');
+                    	console.log(rowindex)
+                    	if (rowindex >= 0) {
+                    		var id = $("#tax_grid").jqxGrid('getrowid', rowindex);
+                    		console.log(id);
+        					$("#tax_grid").jqxGrid('deleterow', id);
                     	}
                     });
 				},

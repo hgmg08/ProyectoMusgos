@@ -26,7 +26,23 @@
 				pagesize: 10,
 				
 				deleterow: function (rowid, commit) {
-					
+					var pub = $('#pub_grid').jqxGrid('getrowdata', rowid);
+					var data = {
+						id: pub.id
+					};
+					$.ajax({
+						type: 'POST',
+						url: '{{ base_url('admin/publication/delete') }}',
+						data: data,
+						dataType: 'text',
+						cache: false,
+						success: function (data, status, xhr) {
+							commit(true);
+						},
+						error: function(jqXHR, textStatus, errorThrown) {
+							commit(false);
+						}
+					});
 				}
 			};
 			
@@ -112,7 +128,11 @@
                     	}
                     });
                     deleteButton.bind('click', function() {
-                    
+                    	var rowindex = $('#pub_grid').jqxGrid('getselectedrowindex');
+                    	if (rowindex >= 0) {
+                    		var id = $("#pub_grid").jqxGrid('getrowid', rowindex);
+        					$("#pub_grid").jqxGrid('deleterow', id);
+                    	}
                     });
 				},
 				enablebrowserselection: true,

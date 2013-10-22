@@ -51,6 +51,20 @@ class Publication extends CI_Controller {
 		return $publications;
 	}
 	
+	public function delete()
+	{
+		$id = $this->input->post("id");
+		$pub = $this->em->find('entities\Publicacion', $id);
+		if ($pub) {
+			$this->em->remove($pub);
+			$this->em->flush();
+			echo true;
+		}
+		else {
+			echo false;
+		}
+	}
+	
 	public function persist()
 	{
 		$id = $this->input->post("id");
