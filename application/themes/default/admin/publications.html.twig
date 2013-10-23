@@ -41,6 +41,7 @@
 						},
 						error: function(jqXHR, textStatus, errorThrown) {
 							commit(false);
+							alert(errorThrown);
 						}
 					});
 				}
@@ -205,8 +206,8 @@
 									}, 4000);
 								}
 							},
-							error: function(response) {
-								console.log(response);
+							error: function(jqXHR, textStatus, errorThrown) {
+								alert(errorThrown);
 							}
 						});
 					}

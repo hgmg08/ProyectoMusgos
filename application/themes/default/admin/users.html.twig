@@ -40,6 +40,7 @@
 						},
 						error: function(jqXHR, textStatus, errorThrown) {
 							commit(false);
+							alert(errorThrown);
 						}
 					});
 				}
@@ -204,7 +205,7 @@
 									$('#successPersist').css('visibility', 'visible');
 									$('#successPersist').jqxWindow('open');
 									setTimeout(function () {
-											$('#successPersist').jqxWindow('close');
+										$('#successPersist').jqxWindow('close');
 									}, 2500);
 									window.location = '{{ base_url('admin/user') }}';
 								}
@@ -216,8 +217,8 @@
 									}, 4000);
 								}
 							},
-							error: function(response) {
-								console.log(response);
+							error: function(jqXHR, textStatus, errorThrown) {
+								alert(errorThrown);
 							}
 						});
 					}

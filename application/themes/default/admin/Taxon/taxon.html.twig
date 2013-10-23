@@ -24,11 +24,9 @@
 				
 				deleterow: function (rowid, commit) {
 					var taxon = $('#tax_grid').jqxGrid('getrowdata', rowid);
-					console.log(taxon);
 					var data = {
 						id: taxon.id
 					};
-					console.log(data);
 					$.ajax({
 						type: 'POST',
 						url: '{{ base_url('admin/taxon/delete') }}',
@@ -36,13 +34,11 @@
 						dataType: 'text',
 						cache: false,
 						success: function (data, status, xhr) {
-							console.log(data);
-							console.log(status);
-							console.log(xhr);	
 							commit(true);
 						},
 						error: function(jqXHR, textStatus, errorThrown) {
 							commit(false);
+							alert(errorThrown);
 						}
 					});
 				}
@@ -96,13 +92,17 @@
                     	}
                     });
                     deleteButton.bind('click', function() {
-                    	var rowindex = $('#tax_grid').jqxGrid('getselectedrowindex');
-                    	console.log(rowindex)
-                    	if (rowindex >= 0) {
-                    		var id = $("#tax_grid").jqxGrid('getrowid', rowindex);
-                    		console.log(id);
-        					$("#tax_grid").jqxGrid('deleterow', id);
-                    	}
+                    	$('#confirm').css('visibility', 'visible');
+                    	$('#confirm').jqxWindow('open');
+                    	$('#confirm').on('close', function (event) {
+                			if (event.args.dialogResult.OK) {
+                				var rowindex = $('#tax_grid').jqxGrid('getselectedrowindex');
+		                    	if (rowindex >= 0) {
+		                    		var id = $("#tax_grid").jqxGrid('getrowid', rowindex);
+		        					$("#tax_grid").jqxGrid('deleterow', id);
+		                    	}	
+                			}
+            			});
                     });
 				},
 				enablebrowserselection: true,
@@ -151,9 +151,18 @@
                     placeHolder: ""
             });
             $("#rankType").on('select', function (event) {
-            	console.log(event);
             	window.location = "{{ base_url('admin/taxon/taxon_form') }}" + '/' + event.args.item.value;
             });
+            
+            $('#confirm').jqxWindow({ maxHeight: 150, maxWidth: 280, minHeight: 30, minWidth: 250, height: 145, width: 270, 
+            	theme: theme, resizable: false, isModal: true, modalOpacity: 0.3, autoOpen: false,
+                okButton: $('#ok'), cancelButton: $('#cancel'),
+                initContent: function () {
+                    $('#ok').jqxButton({ theme: theme, width: '65px' });
+                    $('#cancel').jqxButton({ theme: theme, width: '65px' });
+                    $('#ok').focus();
+                }
+           	});
 		});
 	</script>
 
@@ -176,6 +185,15 @@
 		<div id="tax_grid">
 		</div>
 		
+	</div>
+	
+	<div id="confirm" caption="Confirmación">
+		<div id="confirm_message">
+			¿Está seguro de eliminar el elemento seleccionado?
+			<br/><br/>
+			<input type="button" id="ok" value="Sí" style="margin-right: 10px" />
+            <input type="button" id="cancel" value="No" />
+		</div>
 	</div>
 
 {% endblock %}	

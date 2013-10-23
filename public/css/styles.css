@@ -420,35 +420,6 @@ table#footer_nav a:hover{
  *  Busqueda avanzada
  */
 
-.alpha.adv_search_grid {
-	padding-left:10px;
-	margin-right:3px;
-}
-
-.adv_search_grid {
-	margin-top: 10px;
-	height: 200px;
-}
-
-.advanced_search_toggle {
-	height: 210px;
-	background-color: #d2d2d2;
-}
-
-.adv_search_grid label {
-	display: block;
-	font-weight: bold;
-	text-align: right;
-	width: 30px;
-	height: 20px;
-	color: #870402;
-}
-
-.adv_search_grid label#alt_range {
-	width: 200px;
-	text-align: left;
-}
-
 #advSearchButton {
 	margin-top:15px;
 }
@@ -514,6 +485,17 @@ table#footer_nav a:hover{
 
 #failMessage {
 	color: #FF0000;
+	font-weight: bold;
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+}
+
+#confirm {
+	visibility: hidden;
+}
+
+#confirm_message {
 	font-weight: bold;
 	display: table-cell;
 	text-align: center;

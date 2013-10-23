@@ -132,7 +132,7 @@
 			var daSinonimos = new $.jqx.dataAdapter(sourceSinonimos);
 			
 			$('#grid_sinonimos').jqxGrid({
-				width: '100%',
+				width: 915,
 				theme: theme,
 				autoheight: true,
 				source: daSinonimos,
@@ -248,7 +248,7 @@
 			var daTowns = new $.jqx.dataAdapter(townsSource);
 			
 			$('#grid_especimenes').jqxGrid({
-				width: '100%',
+				width: 915,
 				theme: theme,
 				autoheight: true,
 				source: daSpecimens,
@@ -346,7 +346,7 @@
 			var daListaRoja = new $.jqx.dataAdapter(sourceListaRoja);
 			
 			$('#grid_lista_roja').jqxGrid({
-				width: '100%',
+				width: 915,
 				theme: theme,
 				autoheight: true,
 				source: daListaRoja,
@@ -407,7 +407,7 @@
 			var daIndicadoresCC = new $.jqx.dataAdapter(sourceIndicadoresCC);
 			
 			$('#grid_indicadores_cc').jqxGrid({
-				width: '100%',
+				width: 915,
 				theme: theme,
 				source: daIndicadoresCC,
 				autoheight: true,
@@ -562,15 +562,13 @@
 				
 				var validation = function(isValid) {
 					if (isValid) {
-						console.log(data);
 						$.ajax({
 							type: 'POST',
 							url: '{{ base_url('admin/taxon/persist_lower_details') }}',
 							data: data,
 							dataType: 'text',
 							success: function(response) {
-								console.log(response);
-								if (response == 1) {
+								if (response > 0) {
 									$('#successPersist').css('visibility', 'visible');
 									var x = ($(window).width() - $('#successPersist').jqxWindow('width')) / 2 + $(window).scrollLeft();
                 					var y = ($(window).height() - $('#successPersist').jqxWindow('height')) / 2 + $(window).scrollTop();
@@ -580,9 +578,11 @@
 									setTimeout(function () {
 										$('#successPersist').jqxWindow('close');
 									}, 2500);
-									
+									if (op == 2) {
+										window.location = '{{ base_url('admin/taxon/taxon_form') }}' + '/' + '{{ rank }}' + '/' + response;
+									}
 								}
-								else if (response == -1) {
+								else {
 									$('#failPersist').css('visibility', 'visible');
 									var x = ($(window).width() - $('#failPersist').jqxWindow('width')) / 2 + $(window).scrollLeft();
                 					var y = ($(window).height() - $('#failPersist').jqxWindow('height')) / 2 + $(window).scrollTop();
@@ -593,11 +593,57 @@
 										$('#failPersist').jqxWindow('close');
 									}, 4000);
 								}
+							},
+							error: function(jqXHR, textStatus, errorThrown) {
+								alert(errorThrown);
 							}
 						});
 					}
 				};
 				$('#taxon_form_details').jqxValidator('validate', validation);
+			});
+			
+			$('#save_distribution').click(function () {
+				var data = {
+					id: taxonId,
+					global_distribution: $('#global_distribution').val(),
+					vdw_zones: $('#vdw_zones').val(),
+					tropicalAndean_distribution: $('#tropicalAndean_distribution').val()
+				};
+				
+				$.ajax({
+					type: 'POST',
+					url: '{{ base_url('admin/taxon/persist_lower_distribution') }}',
+					data: data,
+					dataType: 'text',
+					success: function(response) {
+						if (response > 0) {
+							$('#successPersist').css('visibility', 'visible');
+							var x = ($(window).width() - $('#successPersist').jqxWindow('width')) / 2 + $(window).scrollLeft();
+                			var y = ($(window).height() - $('#successPersist').jqxWindow('height')) / 2 + $(window).scrollTop();
+                			$('#successPersist').jqxWindow({ position: { x: x, y: y} });
+                			$('#successMessage').text('La distribución mundial fue guardada exitosamente');
+							$('#successPersist').jqxWindow('open');
+							setTimeout(function () {
+								$('#successPersist').jqxWindow('close');
+							}, 2500);
+						}
+						else {
+							$('#failPersist').css('visibility', 'visible');
+							var x = ($(window).width() - $('#failPersist').jqxWindow('width')) / 2 + $(window).scrollLeft();
+                			var y = ($(window).height() - $('#failPersist').jqxWindow('height')) / 2 + $(window).scrollTop();
+                			$('#failPersist').jqxWindow({ position: { x: x, y: y} });
+                			$('#failMessage').text('Hubo un error al intentar guardar');
+							$('#failPersist').jqxWindow('open');
+							setTimeout(function () {
+								$('#failPersist').jqxWindow('close');
+							}, 4000);
+						}
+					},
+					error: function(jqXHR, textStatus, errorThrown) {
+						alert(errorThrown);
+					}
+				});
 			});
 		});
 	</script>

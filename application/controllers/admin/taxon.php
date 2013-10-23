@@ -60,7 +60,9 @@ class Taxon extends CI_Controller {
 		$id = $this->input->post("id");
 		$taxon = $this->em->find('entities\Taxon', $id);
 		if ($taxon) {
-			$this->delTree(GALLERY_DIR . $taxon->getId());
+			if ($taxon->getRank() > 5) {
+				$this->delTree(GALLERY_DIR . $taxon->getId());	
+			}
 			$this->em->remove($taxon);
 			$this->em->flush();
 			echo true;
@@ -169,7 +171,8 @@ class Taxon extends CI_Controller {
 				
 				$this->em->persist($taxon);
 				$this->em->flush();
-				echo 1;
+				
+				echo $taxon->getId();
 			}
 
 			else {
@@ -220,7 +223,30 @@ class Taxon extends CI_Controller {
 			
 			$this->makeImageDir($taxon->getId());
 			
+			echo $taxon->getId();
+		}
+	}
+
+	public function persist_lower_distribution()
+	{
+		$id = $this->input->post("id");
+		$countries = trim($this->input->post("global_distribution"));
+		$vdw = trim($this->input->post("vdw_zones"));
+		$andean = trim($this->input->post("tropicalAndean_distribution"));
+		
+		$taxon = $this->em->find('entities\Taxon', $id);
+		if ($taxon) {
+			$taxon->setGlobalDistribution($countries);
+			$taxon->setVDWDistribution($vdw);
+			$taxon->setTropicalAndeanDistribution($andean);
+			
+			$this->em->persist($taxon);
+			$this->em->flush();
 			echo 1;
+		}
+		
+		else {
+			echo -1;
 		}
 	}
 		

@@ -64,7 +64,6 @@
 							data: data,
 							dataType: 'text',
 							success: function(response) {
-								console.log(response);
 								if (response) {
 									$('#successPersist').css('visibility', 'visible');
 									$('#successPersist').jqxWindow('open');
@@ -80,6 +79,9 @@
 										$('#failPersist').jqxWindow('close');
 									}, 4000);
 								}
+							},
+							error: function(jqXHR, textStatus, errorThrown) {
+								alert(errorThrown);
 							}
 						});
 					}
