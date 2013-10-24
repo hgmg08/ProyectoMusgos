@@ -112,11 +112,17 @@
                     	}
                     });
                     deleteButton.bind('click', function() {
-                    	var rowindex = $('#user_grid').jqxGrid('getselectedrowindex');
-                    	if (rowindex >= 0) {
-                    		var id = $("#user_grid").jqxGrid('getrowid', rowindex);
-        					$("#user_grid").jqxGrid('deleterow', id);
-                    	}
+                    	$('#confirm').css('visibility', 'visible');
+                    	$('#confirm').jqxWindow('open');
+                    	$('#confirm').on('close', function (event) {
+                			if (event.args.dialogResult.OK) {
+                				var rowindex = $('#user_grid').jqxGrid('getselectedrowindex');
+		                    	if (rowindex >= 0) {
+		                    		var id = $("#user_grid").jqxGrid('getrowid', rowindex);
+		        					$("#user_grid").jqxGrid('deleterow', id);
+		                    	}	
+                			}
+            			});
                     });
 				},
 				enablebrowserselection: true,
@@ -142,6 +148,15 @@
 			
 			$('#successPersist').jqxWindow({ width: 300, height: 100, isModal: true, autoOpen: false, resizable: false, theme: theme });
 			$('#failPersist').jqxWindow({ width: 300, height: 100, isModal: true, autoOpen: false, resizable: false, theme: theme });
+			$('#confirm').jqxWindow({ maxHeight: 150, maxWidth: 280, minHeight: 30, minWidth: 250, height: 145, width: 270, 
+            	theme: theme, resizable: false, isModal: true, modalOpacity: 0.3, autoOpen: false,
+                okButton: $('#ok'), cancelButton: $('#cancel'),
+                initContent: function () {
+                    $('#ok').jqxButton({ theme: theme, width: '65px' });
+                    $('#cancel').jqxButton({ theme: theme, width: '65px' });
+                    $('#ok').focus();
+                }
+           	});
 			
 			var sourceRoleData = {{ roles }};
 			var sourceRole =
@@ -235,48 +250,49 @@
 	<div class="grid_12">
 		<div id="tax_grid_title">
 			Administración de usuarios
+			<hr/>
 		</div>
 		
 		<div id="user_grid">
 		</div>
 		
-		<div id="window" caption="Gestión de usuario">
-			<div>
-				<form id="windowed_form">
-					<input type="hidden" id="id" name="id" />
-					<input type="hidden" id="op" name="op" />
-					<label>Nombre completo:</label>
-					<div>
-						<input type="text" id="name" name="name" />
-					</div>
-					<br/>
-					<label>Nombre de usuario:</label>
-					<div>
-						<input type="text" id="username" name="username" />
-					</div>
-					<br/>
-					<label>Contraseña:</label>
-					<div>
-						<input type="text" id="password" name="password" />
-					</div>
-					<br/>
-					<label>Correo electrónico:</label>
-					<div>
-						<input type="text" id="email" name="email" />
-					</div>
-					<br/>
-					<label>Rol:</label>
-					<div>
-						<div id="role"></div>
-					</div>
-					<br/>
-					<div>
-                		<input id="save" type="button" value="Guardar" />
-           			</div>
-				</form>
-			</div>
+	</div>
+	
+	<div id="window" caption="Gestión de usuario">
+		<div>
+			<form id="windowed_form">
+				<input type="hidden" id="id" name="id" />
+				<input type="hidden" id="op" name="op" />
+				<label>Nombre completo:</label>
+				<div>
+					<input type="text" id="name" name="name" />
+				</div>
+				<br/>
+				<label>Nombre de usuario:</label>
+				<div>
+					<input type="text" id="username" name="username" />
+				</div>
+				<br/>
+				<label>Contraseña:</label>
+				<div>
+					<input type="text" id="password" name="password" />
+				</div>
+				<br/>
+				<label>Correo electrónico:</label>
+				<div>
+					<input type="text" id="email" name="email" />
+				</div>
+				<br/>
+				<label>Rol:</label>
+				<div>
+					<div id="role"></div>
+				</div>
+				<br/>
+				<div>
+                	<input id="save" type="button" value="Guardar" />
+           		</div>
+			</form>
 		</div>
-		
 	</div>
 	
 	<div id="successPersist" caption="Mensaje">
@@ -288,6 +304,15 @@
 	<div id="failPersist" caption="Mensaje">
 		<div id="failMessage">
 			Hubo un problema al persistir el usuario
+		</div>
+	</div>
+	
+	<div id="confirm" caption="Confirmación">
+		<div id="confirm_message">
+			¿Está seguro de eliminar el elemento seleccionado?
+			<br/><br/>
+			<input type="button" id="ok" value="Sí" style="margin-right: 10px" />
+            <input type="button" id="cancel" value="No" />
 		</div>
 	</div>
 

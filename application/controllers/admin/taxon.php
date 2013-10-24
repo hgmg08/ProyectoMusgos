@@ -249,6 +249,72 @@ class Taxon extends CI_Controller {
 			echo -1;
 		}
 	}
+	
+	public function persist_lower_synonim()
+	{
+		$tid = $this->input->get("tid");
+		$sid = $this->input->get("id");
+		$name = trim($this->input->get("name"));
+		$author = trim($this->input->get("author"));
+		$rank = $this->input->get("rank");
+		$type = $this->input->get("type");
+		
+		if ($name && $author && $rank && $type) {
+			if ($sid) {
+				$staxon = $this->em->find('entities\Taxon', $sid);
+				if ($staxon) {
+					$staxon->setName($name);
+					$staxon->setAuthorInitials($author);
+					$staxon->setRank($this->getRankNumber($rank));
+					$staxon->setSynonimClasification($this->getSynonimNumber($type));
+					$this->em->persist($staxon);
+					$this->em->flush();
+					echo 1;
+				}
+				else {
+					echo -1;
+				}
+			}
+			else {
+				$taxon = $this->em->find('entities\Taxon', $tid);
+				if ($taxon) {
+					$staxon = new entities\Taxon;
+					$staxon->setName($name);
+					$staxon->setAuthorInitials($author);
+					$staxon->setRank($this->getRankNumber($rank));
+					$staxon->setSynonimClasification($this->getSynonimNumber($type));
+					$staxon->setParentSynonyms($taxon);
+					$staxon->setCreationDate(new \DateTime("now"));
+					$staxon->setStatus(2);
+					
+					$this->em->persist($staxon);
+					$this->em->flush();
+					echo 1;
+				}
+				
+				else {
+					echo -1;
+				}
+			}
+		}
+		else {
+			echo -1;
+		}
+	}
+
+	public function delete_synonim()
+	{
+		$id = $this->input->post("id");
+		$taxon = $this->em->find('entities\Taxon', $id);
+		if ($taxon) {
+			$this->em->remove($taxon);
+			$this->em->flush();
+			echo true;
+		}
+		else {
+			echo false;
+		}
+	}
 		
 	//Populate higher taxa form
 	private function higher_taxa_form($rank, $taxon = NULL) 
@@ -671,7 +737,31 @@ class Taxon extends CI_Controller {
         }
 
         return rmdir($dir); 
-    } 
+    }
+	
+	private function getRankNumber($rankName)
+	{
+		$rankNumber = 0;
+		if ($rankName == "Especie")
+			$rankNumber = 6;
+		elseif ($rankName == "SubEspecie")
+			$rankNumber = 7;
+		elseif ($rankName = "Variedad")
+			$rankNumber = 8;
+		else
+			$rankNumber = -1;
+		return $rankNumber;
+	}
+	
+	private function getSynonimNumber($synonim)
+	{
+		$synonimNumber = 0;
+		if ($synonim == "Sinónimo")
+			$synonimNumber = 1;
+		else
+			$synonimNumber = 2;
+		return $synonimNumber;
+	}
 }
 
 ?>

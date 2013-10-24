@@ -124,8 +124,46 @@
 					commit(true);
 				},
 				
+				updaterow: function (rowid, rowdata, commit) {
+					var data = 'tid=' + taxonId + '&' + $.param(rowdata);
+					console.log(data);
+					$.ajax({
+						url: '{{ base_url('admin/taxon/persist_lower_synonim') }}',
+						data: data,
+						dataType: 'text',
+						cache: false,
+						success: function(response) {
+							console.log(response);
+							if (response > 0) {
+								commit(true);
+							}
+						},
+						error: function(jqXHR, textStatus, errorThrown) {
+							alert(errorThrown);
+							commit(false);
+						}
+					});
+				},
+				
 				deleterow: function (rowid, commit) {
-					commit(true);
+					var synonim = $('#grid_sinonimos').jqxGrid('getrowdata', rowid);
+					var data = {
+						id: synonim.id
+					};
+					$.ajax({
+						type: 'POST',
+						url: '{{ base_url('admin/taxon/delete_synonim') }}',
+						data: data,
+						dataType: 'text',
+						cache: false,
+						success: function (data, status, xhr) {
+							commit(true);
+						},
+						error: function(jqXHR, textStatus, errorThrown) {
+							commit(false);
+							alert(errorThrown);
+						}
+					});
 				}
 			};
 			
@@ -156,11 +194,17 @@
                     });
                     
                     deleteButton.bind('click', function () {
-                    	var rowindex = $('#grid_sinonimos').jqxGrid('getselectedrowindex');
-                    	if (rowindex >= 0) {
-                    		var id = $("#grid_sinonimos").jqxGrid('getrowid', rowindex);
-        					$("#grid_sinonimos").jqxGrid('deleterow', id);
-                    	}
+                    	$('#confirm').css('visibility', 'visible');
+                    	$('#confirm').jqxWindow('open');
+                    	$('#confirm').on('close', function (event) {
+                			if (event.args.dialogResult.OK) {
+                				var rowindex = $('#grid_sinonimos').jqxGrid('getselectedrowindex');
+		                    	if (rowindex >= 0) {
+		                    		var id = $("#grid_sinonimos").jqxGrid('getrowid', rowindex);
+		        					$("#grid_sinonimos").jqxGrid('deleterow', id);
+		                    	}	
+                			}
+            			});
                     });
                 },
 				columns: [
@@ -446,6 +490,16 @@
 			
 			$('#successPersist').jqxWindow({ width: 300, height: 100, isModal: true, autoOpen: false, resizable: false, theme: theme });
 			$('#failPersist').jqxWindow({ width: 300, height: 100, isModal: true, autoOpen: false, resizable: false, theme: theme });
+			$('#confirm').jqxWindow({ maxHeight: 150, maxWidth: 280, minHeight: 30, minWidth: 250, height: 145, width: 270, 
+            	theme: theme, resizable: false, isModal: true, modalOpacity: 0.3, autoOpen: false,
+                okButton: $('#ok'), cancelButton: $('#cancel'),
+                initContent: function () {
+                    $('#ok').jqxButton({ theme: theme, width: '65px' });
+                    $('#cancel').jqxButton({ theme: theme, width: '65px' });
+                    $('#ok').focus();
+                }
+           	});
+			
 			$('#save_details').jqxButton({ width: 70, theme: theme });
 			$('#save_distribution').jqxButton({ width: 70, theme: theme });
 			$('#save_revision').jqxButton({ width: 70, theme: theme });
@@ -815,6 +869,15 @@
 	
 	<div id="failPersist" caption="Mensaje">
 		<div id="failMessage">
+		</div>
+	</div>
+	
+	<div id="confirm" caption="Confirmación">
+		<div id="confirm_message">
+			¿Está seguro de eliminar el elemento seleccionado?
+			<br/><br/>
+			<input type="button" id="ok" value="Sí" style="margin-right: 10px" />
+            <input type="button" id="cancel" value="No" />
 		</div>
 	</div>
 
