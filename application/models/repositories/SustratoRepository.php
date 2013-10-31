@@ -28,4 +28,11 @@ class SustratoRepository extends EntityRepository
 		return $query->getResult(Query::HYDRATE_OBJECT);
 	}
 	
+	public function getAllChildren()
+	{
+		$dql = "SELECT s FROM entities\Sustrato s JOIN s.parent p WHERE p.id IS NOT NULL";
+		$query = $this->_em->createQuery($dql);
+		return $query->getResult(Query::HYDRATE_ARRAY);
+	}
+	
 }

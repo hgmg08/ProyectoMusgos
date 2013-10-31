@@ -75,6 +75,15 @@ class TaxonRepository extends EntityRepository
 		return $query->getResult(Query::HYDRATE_SINGLE_SCALAR);
 	}
 	
+	public function getAllByRank($rank)
+	{
+		$query = $this->_em->createQuery(
+			"SELECT t FROM entities\Taxon t WHERE t.rank = :rank"
+		);
+		$query->setParameter('rank', $rank);
+		return $query->getResult(Query::HYDRATE_ARRAY);
+	}
+	
 	public function getAllParentTaxon($parentRank)
 	{
 		$query = $this->_em->createQuery(

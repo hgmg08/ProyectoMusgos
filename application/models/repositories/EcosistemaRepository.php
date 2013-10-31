@@ -27,4 +27,11 @@ class EcosistemaRepository extends EntityRepository
 		);
 		return $query->getResult(Query::HYDRATE_OBJECT);
 	 }
+	 
+	 public function getAllChildren()
+	{
+		$dql = "SELECT e FROM entities\Ecosistema e JOIN e.parent p WHERE p.id IS NOT NULL";
+		$query = $this->_em->createQuery($dql);
+		return $query->getResult(Query::HYDRATE_ARRAY);
+	}
 }

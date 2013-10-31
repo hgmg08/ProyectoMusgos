@@ -1,6 +1,6 @@
-/* 
+/*
  * Contenedores
-*/ 
+ */
 
 .main {
 	height: 500px;
@@ -63,7 +63,7 @@
 }
 
 .footer {
-	height: 150px;
+	min-height: 150px;
 }
 
 .search_results {
@@ -281,6 +281,52 @@
 	text-decoration: underline;
 }
 
+/*
+ * Advanced search
+ */
+
+#advSearchButton {
+	margin-top:15px;
+}
+
+.table_advanced_search {
+	border: none;
+}
+
+.adv_cell {
+	padding: 5px 5px 1px;
+}
+
+.td_adv_main {
+	padding: 5px 10px 1px;
+}
+
+.frm_advanced_search {
+	padding: 5px 10px 5px;
+}
+
+.frm_advanced_search fieldset {
+	padding: 15px;
+	border: 1px solid #C2BEBE;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+	margin-top: 10px;
+}
+
+.frm_advanced_search fieldset legend {
+	font-size: 14px;
+	font-weight: bold;
+	color: #870402;
+	padding: 5px;
+}
+
+.frm_advanced_search label {
+	font-size: 12px;
+	font-weight: bold;
+	margin-left: 1px;
+	color: #870402;
+}
 
 /*
  * Menu footer
@@ -417,14 +463,6 @@ table#footer_nav a:hover{
 }
 
 /*
- *  Busqueda avanzada
- */
-
-#advSearchButton {
-	margin-top:15px;
-}
-
-/*
  * Admin
  */
 
@@ -540,7 +578,7 @@ table#footer_nav a:hover{
 	font-weight: bold;
 }
 
-label.field {
+.taxon_form label.field {
 	float: left;
 	width: 25%;
 	margin-right: 5px;

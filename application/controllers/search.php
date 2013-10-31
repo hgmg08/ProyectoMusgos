@@ -19,10 +19,6 @@ class Search extends CI_Controller {
 		$name = $this->input->get('name');
 		$results = $this->general_search($name);
 		
-		$this->twiggy->set('adv_sustratos', json_encode($this->em->getRepository("entities\Sustrato")->getAll()));
-		$this->twiggy->set('adv_ecorregiones', json_encode($ecor = $this->em->getRepository("entities\Ecorregion")->getAll()));
-		$this->twiggy->set('adv_ecosistemas', json_encode($this->em->getRepository("entities\Ecosistema")->getAll()));
-		$this->twiggy->set('adv_estados', json_encode($this->em->getRepository("entities\Estado")->getAll()));
 		$this->twiggy->set('results', json_encode($results));
 		$this->twiggy->set('search', $name);
 			
@@ -49,10 +45,20 @@ class Search extends CI_Controller {
 		return $taxons;
 	}
 	
-	private function getAllSustratos()
+	public function advanced_search()
 	{
-		$sust = $this->em->getRepository("entities\Sustrato")->getAll();
-		return json_encode($sust);
+		$auth = $this->session->userdata('auth');
+		if ($auth) {
+			$this->twiggy->set('uid', $this->session->userdata('uid'));
+		}
+		
+		$this->twiggy->set('familia', json_encode($this->em->getRepository("entities\Taxon")->getAllByRank(4)));
+		$this->twiggy->set('ecosistema', json_encode($this->em->getRepository("entities\Ecosistema")->getAllChildren()));
+		$this->twiggy->set('ecorregion', json_encode($this->em->getRepository("entities\Ecorregion")->getAll()));
+		$this->twiggy->set('sustrato', json_encode($this->em->getRepository("entities\Sustrato")->getAllChildren()));
+		$this->twiggy->set('estado', json_encode($this->em->getRepository("entities\Estado")->getAll()));
+		$this->twiggy->title('Musgos de Venezuela')->append("Búsqueda avanzada");
+		$this->twiggy->template('main/search_advanced')->display();
 	}
 }
    

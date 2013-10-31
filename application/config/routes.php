@@ -42,6 +42,7 @@ $route['default_controller'] = "home";
 $route['mdv'] = "home/mdv";
 $route['mdv/objectives'] = "home/objectives";
 $route['about'] = "home/about";
+$route['advanced-search'] = "search/advanced_search";
 $route['404_override'] = '';
 
 

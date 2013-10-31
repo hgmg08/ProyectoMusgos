@@ -94,7 +94,7 @@
 				theme: theme,
 				showstatusbar: true,
 				renderstatusbar: function (statusbar) {
-					var container = $("<div style='overflow: hidden; position: relative; margin: 5px;'></div>");
+					var container = $("<div style='overflow: hidden; position: relative; margin: 3px;'></div>");
                     var addButton = $("<div style='float: left; margin-left: 5px;'><img style='position: relative; margin-top: 1px;' src='{{ base_url('public/images/img16x16_new.png') }}'/><span style='margin-left: 4px; position: relative; top: 2px;'>Nuevo</span></div>");
                     var editButton = $("<div style='float: left; margin-left: 5px;'><img style='position: relative; margin-top: 1px;' src='{{ base_url('public/images/img16x16_edit.png') }}'/><span style='margin-left: 4px; position: relative; top: 2px;'>Editar</span></div>");
                     var deleteButton = $("<div style='float: left; margin-left: 5px;'><img style='position: relative; margin-top: 1px;' src='{{ base_url('public/images/img16x16_delete.png') }}'/><span style='margin-left: 4px; position: relative; top: 2px;'>Eliminar</span></div>");
@@ -245,7 +245,10 @@
 		<div id="pub_grid">
 		</div>
 		
-		<div id="window" caption="Gestión de publicación">
+		<div id="window">
+			<div>
+				Gestión de publicación
+			</div>
 			<div>
 				<form id="windowed_form">
 					<input type="hidden" id="id" name="id" />
