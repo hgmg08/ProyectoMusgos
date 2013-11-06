@@ -203,6 +203,29 @@
 			$('#submit').jqxButton({ width: 70, theme: theme });
 			$('#clear').jqxButton({ width: 70, theme: theme });
 			
+			$('#clear').on('click', function () {
+				$('#name_tax').val('');
+				$('#author_tax').val('');
+				$('#genus').val('');
+				$('#location').val('');
+				$('#min_alt').jqxMaskedInput('clear');
+				$('#max_alt').jqxMaskedInput('clear');
+				$('#author_pub').val('');
+				$('#title_pub').val('');
+				$('#year_pub').jqxMaskedInput('clear');
+				$('#collection').val('');
+				$('#coll_date').jqxMaskedInput('clear');
+				$('#herbarium').val('');
+				$('#endemism').jqxDropDownList('clear');
+				$('#municipio').jqxDropDownList('clear');
+				$('#municipio').jqxDropDownList({ disabled: true }); 
+				$('#estado').jqxDropDownList('clear');
+				$('#sustrato').jqxDropDownList('clear');
+				$('#ecosistema').jqxDropDownList('clear');
+				$('#ecorregion').jqxDropDownList('clear');
+				$('#family').jqxDropDownList('clear');
+			});
+			
 		});
 	</script>
 
