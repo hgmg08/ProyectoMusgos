@@ -415,8 +415,7 @@ class Taxon extends CI_Controller {
 						'id' => $lr->getId(),
 						'category' => $lr->getCategory(),
 						'criterion' => $lr->getCriterionIUCN(),
-						'country' => $lr->getCountry(),
-						'author' => $lr->getAuthor()
+						'country' => $lr->getCountry()
 					);
 				}
 			}

@@ -78,18 +78,6 @@ class ListaRoja extends \entities\ListaRoja implements \Doctrine\ORM\Proxy\Proxy
         return parent::getCountry();
     }
 
-    public function setAuthor($author)
-    {
-        $this->__load();
-        return parent::setAuthor($author);
-    }
-
-    public function getAuthor()
-    {
-        $this->__load();
-        return parent::getAuthor();
-    }
-
     public function getId()
     {
         if ($this->__isInitialized__ === false) {
@@ -111,10 +99,22 @@ class ListaRoja extends \entities\ListaRoja implements \Doctrine\ORM\Proxy\Proxy
         return parent::getTaxons();
     }
 
+    public function addPublicacion(\entities\Publicacion $publications)
+    {
+        $this->__load();
+        return parent::addPublicacion($publications);
+    }
+
+    public function getPublications()
+    {
+        $this->__load();
+        return parent::getPublications();
+    }
+
 
     public function __sleep()
     {
-        return array('__isInitialized__', 'criterionIUCN', 'category', 'country', 'author', 'id', 'taxons');
+        return array('__isInitialized__', 'criterionIUCN', 'category', 'country', 'id', 'taxons', 'publications');
     }
 
     public function __clone()

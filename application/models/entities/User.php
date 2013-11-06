@@ -38,8 +38,18 @@ class User
      * @var entities\Role
      */
     private $role;
-
-
+	
+	/**
+     * @var \Doctrine\Common\Collections\ArrayCollection
+     */
+    private $created_taxons;
+	
+	public function __construct()
+    {
+        $this->created_taxons = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->modified_taxons = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+	
     /**
      * Set username
      *
@@ -158,5 +168,27 @@ class User
     public function getRole()
     {
         return $this->role;
+    }
+
+    /**
+     * Get created_taxons
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getCreatedTaxons()
+    {
+        return $this->created_taxons;
+    }
+
+    /**
+     * Add created_taxons
+     *
+     * @param entities\Taxon $createdTaxons
+     * @return User
+     */
+    public function addTaxon(\entities\Taxon $createdTaxons)
+    {
+        $this->created_taxons[] = $createdTaxons;
+        return $this;
     }
 }

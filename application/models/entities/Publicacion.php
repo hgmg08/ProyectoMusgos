@@ -53,10 +53,16 @@ class Publicacion
      * @var \Doctrine\Common\Collections\ArrayCollection
      */
     private $localidades;
+	
+	/**
+     * @var \Doctrine\Common\Collections\ArrayCollection
+     */
+    private $listas_rojas;
 
     public function __construct()
     {
         $this->localidades = new \Doctrine\Common\Collections\ArrayCollection();
+		$this->listas_rojas = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
     /**
@@ -243,5 +249,27 @@ class Publicacion
     public function getLocalidades()
     {
         return $this->localidades;
+    }
+	
+    /**
+     * Add listas_rojas
+     *
+     * @param entities\ListaRoja $listasRojas
+     * @return Publicacion
+     */
+    public function addListaRoja(\entities\ListaRoja $listasRojas)
+    {
+        $this->listas_rojas[] = $listasRojas;
+        return $this;
+    }
+
+    /**
+     * Get listas_rojas
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getListasRojas()
+    {
+        return $this->listas_rojas;
     }
 }

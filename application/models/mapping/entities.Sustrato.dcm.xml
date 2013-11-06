@@ -15,7 +15,7 @@
 
 	<!-- Relacion con Sustrato (Jerarquia) -->
 	<one-to-many field="children" target-entity="Sustrato" mapped-by="parent" />
-	<many-to-one field="parent" target-entity="Sustrato" mapped-by="children" />
+	<many-to-one field="parent" target-entity="Sustrato" inversed-by="children" />
 	
 </entity>
 

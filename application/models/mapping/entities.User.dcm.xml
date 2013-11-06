@@ -18,6 +18,8 @@
 		<join-column name="role_id" referenced-column-name="id" />
 	</many-to-one>
 	
+	<!-- Relaciones con Taxon -->
+	<one-to-many field="created_taxons" target-entity="Taxon" mapped-by="created_user" />
 </entity>
 
 </doctrine-mapping>

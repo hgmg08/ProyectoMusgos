@@ -37,7 +37,7 @@ class EstadoRepository extends EntityRepository
 		$dql = "SELECT e.name
 				FROM entities\Estado e
 				INNER JOIN e.localidad l
-				INNER JOIN l.taxons t
+				INNER JOIN l.taxon t
 				WHERE t.name = :name 
 				GROUP BY e.name";
 		$query = $this->_em->createQuery($dql);

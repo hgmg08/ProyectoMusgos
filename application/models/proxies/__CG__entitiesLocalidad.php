@@ -183,22 +183,22 @@ class Localidad extends \entities\Localidad implements \Doctrine\ORM\Proxy\Proxy
         return parent::getPublications();
     }
 
-    public function addTaxon(\entities\Taxon $taxons)
+    public function setTaxon(\entities\Taxon $taxon = NULL)
     {
         $this->__load();
-        return parent::addTaxon($taxons);
+        return parent::setTaxon($taxon);
     }
 
-    public function getTaxons()
+    public function getTaxon()
     {
         $this->__load();
-        return parent::getTaxons();
+        return parent::getTaxon();
     }
 
 
     public function __sleep()
     {
-        return array('__isInitialized__', 'name', 'minAltitude', 'maxAltitude', 'latitude', 'longitude', 'collection', 'collectionDate', 'hebarium', 'id', 'municipio', 'estado', 'publications', 'taxons');
+        return array('__isInitialized__', 'name', 'minAltitude', 'maxAltitude', 'latitude', 'longitude', 'collection', 'collectionDate', 'hebarium', 'id', 'taxon', 'municipio', 'estado', 'publications');
     }
 
     public function __clone()

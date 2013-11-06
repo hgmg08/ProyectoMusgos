@@ -150,6 +150,7 @@
 			$('#municipio').jqxDropDownList({
 				displayMember: 'name',
 				dropDownWidth: 200,
+				dropDownHeight: 150,
 				valueMember: 'id',
 				disabled: true,
 				width: 150, 
@@ -158,9 +159,25 @@
 				placeHolder: ''
 			});
 			
+			var endemismo = [{'label': 'No endémica de Venezuela', 'value': 0}, {'label': 'Endémica de Venezuela', 'value': 1}];
+			
+			var sourceEndemismo =
+		    {
+		    	datatype: "json",
+		        datafields: [
+		        	{ name: 'label' },
+		            { name: 'value' }
+		        ],
+		        localdata: endemismo
+		    };
+			var daEndemismo = new $.jqx.dataAdapter(sourceEndemismo);
+			
 			$('#endemism').jqxDropDownList({
-				displayMember: 'name',
-				valueMember: 'id', 
+				source: daEndemismo,
+				displayMember: 'label',
+				valueMember: 'value',
+				autoDropDownHeight: true,
+				dropDownWidth: 200,
 				width: 150, 
 				height: 20, 
 				theme: theme,
@@ -172,15 +189,19 @@
 			$('#genus').jqxInput({ height: 20, width: 150, theme: theme });
 			
 			$('#location').jqxInput({ height: 20, width: 312, theme: theme });
-			$('#alt_range').jqxMaskedInput({ height: 20, width: 100, mask: '####-####', theme: theme });
+			$('#min_alt').jqxMaskedInput({ height: 20, width: 40, mask: '####', theme: theme, promptChar: '' });
+			$('#max_alt').jqxMaskedInput({ height: 20, width: 40, mask: '####', theme: theme, promptChar: '' });
 			
 			$('#author_pub').jqxInput({ height: 20, width: 150, theme: theme });
 			$('#title_pub').jqxInput({ height: 20, width: 255, theme: theme });
 			$('#year_pub').jqxMaskedInput({ height: 20, width: 50, theme: theme, mask: '####', promptChar: '' });
 			
 			$('#collection').jqxInput({ height: 20, width: 150, theme: theme });
-			$('#coll_date').jqxDateTimeInput({ height: 20, width: 150, theme: theme });
+			$('#coll_date').jqxMaskedInput({ height: 20, width: 150, mask: '##/##/####', theme: theme, promptChar: ' ' });
 			$('#herbarium').jqxInput({ height: 20, width: 150, theme: theme });
+			
+			$('#submit').jqxButton({ width: 70, theme: theme });
+			$('#clear').jqxButton({ width: 70, theme: theme });
 			
 		});
 	</script>
@@ -194,7 +215,7 @@
 		<h2>Búsqueda avanzada</h2>
 		<hr/>
 
-		<form id="frm_advanced_search" class="frm_advanced_search">
+		<form id="frm_advanced_search" class="frm_advanced_search" action="{{ base_url('search/advanced') }}" method="POST" >
 			<table width="100%" class="table_advanced_search">
 				<tr>
 					<td width="20%" class="td_adv_main">
@@ -303,6 +324,15 @@
 								</tr>
 							</table>
 						</fieldset>
+						<br>
+						<table width="100%" border="0" cellspacing="0" cellpadding="0">
+							<tr>
+								<td class="buttons">
+									<input type="button" id="clear" value="Limpiar" />
+									<input type="submit" id="submit" value="Buscar" />
+								</td>
+							</tr>
+						</table>
 					</td>
 				</tr>
 				<tr>
@@ -334,8 +364,9 @@
 									<td class="adv_cell">
 										<label>Rango altitudinal</label>
 										<br/>
-										<input id="alt_range" name="alt_range" />
-										metros
+										<input id="min_alt" name="min_alt" />
+										<input id="max_alt" name="max_alt" />
+										(metros)
 									</td>
 									<td class="adv_cell">
 										<label>Endemismo</label>

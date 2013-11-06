@@ -27,6 +27,18 @@
 			</inverse-join-columns>
 		</join-table>
 	</many-to-many>
+	
+	<!-- Relacion con Lista Roja -->
+	<many-to-many field="listas_rojas" target-entity="ListaRoja" inversed-by="publications">
+		<join-table name="publicacion_lista_roja">
+			<join-columns>
+				<join-column name="publicacion_id" referenced-column-name="id" />
+			</join-columns>
+			<inverse-join-columns>
+				<join-column name="lista_roja_id" referenced-column-name="id" />
+			</inverse-join-columns>
+		</join-table>
+	</many-to-many>
 
 </entity>
 

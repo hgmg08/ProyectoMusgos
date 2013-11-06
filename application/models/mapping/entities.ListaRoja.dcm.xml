@@ -11,10 +11,12 @@
 	<field name="criterionIUCN" column="criterio_iucn" type="string" length="50" />
 	<field name="category" column="categoria" type="string" length="100" />
 	<field name="country" column="pais" type="string" length="100" />
-	<field name="author" column="autor" type="string" length="100" />
-
+	
 	<!-- Relacion con Taxon -->
 	<many-to-many field="taxons" target-entity="Taxon" mapped-by="listas_rojas" />
+	
+	<!-- Relacion con Publicacion -->
+	<many-to-many field="publications" target-entity="Publicacion" mapped-by="listas_rojas" />
 
 </entity>
 

@@ -121,7 +121,12 @@
 						<ul>
 							{% for lista_r in listaRoja %}
 								<li><span>{{ lista_r.getCategory }} {{ lista_r.getCriterionIUCN }} {{ lista_r.getCountry }} 
-									{{ lista_r.getAuthor }}</span></li>
+									{% set quotes = "" %}
+									{% for pub in lista_r.getPublications %}
+										{% set quotes = pub.getQuote %}
+									{% endfor %}
+									{{ quotes|join(', ') }}
+								</span></li>
 							{% endfor %}
 						</ul>
 					{% endif %}

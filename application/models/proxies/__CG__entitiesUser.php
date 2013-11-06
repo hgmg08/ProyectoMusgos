@@ -111,10 +111,22 @@ class User extends \entities\User implements \Doctrine\ORM\Proxy\Proxy
         return parent::getRole();
     }
 
+    public function getCreatedTaxons()
+    {
+        $this->__load();
+        return parent::getCreatedTaxons();
+    }
+
+    public function addTaxon(\entities\Taxon $createdTaxons)
+    {
+        $this->__load();
+        return parent::addTaxon($createdTaxons);
+    }
+
 
     public function __sleep()
     {
-        return array('__isInitialized__', 'username', 'password', 'name', 'email', 'id', 'role');
+        return array('__isInitialized__', 'username', 'password', 'name', 'email', 'id', 'created_taxons', 'role');
     }
 
     public function __clone()

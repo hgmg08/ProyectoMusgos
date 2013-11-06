@@ -133,6 +133,11 @@ class Taxon extends BaseInfo
      * @var \Doctrine\Common\Collections\ArrayCollection
      */
     private $localidades;
+	
+	/**
+     * @var entities\User
+     */
+    private $created_user;
 
     public function __construct()
     {
@@ -683,6 +688,28 @@ class Taxon extends BaseInfo
     public function getLocalidades()
     {
         return $this->localidades;
+	}
+
+    /**
+     * Set created_user
+     *
+     * @param entities\User $createdUser
+     * @return Taxon
+     */
+    public function setCreatedUser(\entities\User $createdUser = null)
+    {
+        $this->created_user = $createdUser;
+        return $this;
+    }
+
+    /**
+     * Get created_user
+     *
+     * @return entities\User 
+     */
+    public function getCreatedUser()
+    {
+        return $this->created_user;
     }
 
     /**

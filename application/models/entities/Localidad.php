@@ -68,16 +68,16 @@ class Localidad
      * @var \Doctrine\Common\Collections\ArrayCollection
      */
     private $publications;
-
-    /**
-     * @var \Doctrine\Common\Collections\ArrayCollection
+	
+	/**
+     * @var entities\Taxon
      */
-    private $taxons;
+    private $taxon;
+
 
     public function __construct()
     {
         $this->publications = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->taxons = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
     /**
@@ -332,25 +332,26 @@ class Localidad
         return $this->publications;
     }
 
+
     /**
-     * Add taxons
+     * Set taxon
      *
-     * @param entities\Taxon $taxons
+     * @param entities\Taxon $taxon
      * @return Localidad
      */
-    public function addTaxon(\entities\Taxon $taxons)
+    public function setTaxon(\entities\Taxon $taxon = null)
     {
-        $this->taxons[] = $taxons;
+        $this->taxon = $taxon;
         return $this;
     }
 
     /**
-     * Get taxons
+     * Get taxon
      *
-     * @return Doctrine\Common\Collections\Collection 
+     * @return entities\Taxon 
      */
-    public function getTaxons()
+    public function getTaxon()
     {
-        return $this->taxons;
+        return $this->taxon;
     }
 }

@@ -24,7 +24,7 @@ class PublicacionRepository extends EntityRepository
 		$dql = "SELECT p
 				FROM entities\Publicacion p
 				INNER JOIN p.localidades l
-				INNER JOIN l.taxons t 
+				INNER JOIN l.taxon t 
 				WHERE t.name = :name
 				GROUP BY p.title";
 		$query = $this->_em->createQuery($dql);

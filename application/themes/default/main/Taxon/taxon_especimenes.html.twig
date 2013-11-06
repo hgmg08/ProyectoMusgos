@@ -1,6 +1,4 @@
-<div id="locationsGrid"></div>
-						
-						<script type="text/javascript">
+<script type="text/javascript">
 					        $(document).ready(function () {
 					           	var theme = 'mdv';
 					           	var data = {{ locations }};
@@ -38,7 +36,7 @@
 					            {
 					            	width: 938,
 					                source: dataAdapter,
-					                height: 400,
+					                height: 300,
 					                theme: theme,
 					                columnsresize: true,
 					                enablebrowserselection: true,
@@ -48,12 +46,12 @@
 					                localization: getLocalization(),
 					                pageable: true,
 					                columns: [
-					                	{ text: 'Estado', datafield: 'Estado', width: '10%' },
-					                    { text: 'Municipio', datafield: 'Municipio', width: '10%' },
+					                	{ text: 'Estado', datafield: 'Estado', width: '15%' },
+					                    { text: 'Municipio', datafield: 'Municipio', width: '15%' },
 					                    { text: 'Localidad', datafield: 'Nombre', width: '40%' },
 					                    { text: 'Altitud (m)', datafield: 'Altitud', width: '10%' },
 					                    { text: 'Colección', datafield: 'Coleccion', width: '20%' },
-					                    { text: 'Fecha colección', datafield: 'FechaColeccion', width: '12%' },
+					                    { text: 'Fecha colección', datafield: 'FechaColeccion', width: '13%' },
 					                    { text: 'Herbario', datafield: 'Herbario', width: '10%' },
 					                    { text: 'Coordenadas', datafield: 'Coordenadas', width: '15%' },
 							    		{ text: 'Referencias', datafield: 'Referencias', width: '18%' }
@@ -61,3 +59,5 @@
 					           	});  	
 					       });
 					    </script>
+
+<div id="locationsGrid"></div>

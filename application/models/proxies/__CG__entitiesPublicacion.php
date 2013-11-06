@@ -147,10 +147,22 @@ class Publicacion extends \entities\Publicacion implements \Doctrine\ORM\Proxy\P
         return parent::getLocalidades();
     }
 
+    public function addListaRoja(\entities\ListaRoja $listasRojas)
+    {
+        $this->__load();
+        return parent::addListaRoja($listasRojas);
+    }
+
+    public function getListasRojas()
+    {
+        $this->__load();
+        return parent::getListasRojas();
+    }
+
 
     public function __sleep()
     {
-        return array('__isInitialized__', 'author', 'title', 'year', 'journal', 'collation', 'type', 'quote', 'id', 'localidades');
+        return array('__isInitialized__', 'author', 'title', 'year', 'journal', 'collation', 'type', 'quote', 'id', 'localidades', 'listas_rojas');
     }
 
     public function __clone()

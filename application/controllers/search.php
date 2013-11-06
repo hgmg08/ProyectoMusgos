@@ -60,6 +60,32 @@ class Search extends CI_Controller {
 		$this->twiggy->title('Musgos de Venezuela')->append("Búsqueda avanzada");
 		$this->twiggy->template('main/search_advanced')->display();
 	}
+
+	public function advanced()
+	{
+		$filters = array();
+		foreach ($this->input->post() as $key => $value) {
+			$filters[$key] = trim($value);
+		}
+		
+		$result = $this->em->getRepository("entities\Taxon")->advancedSearch($filters);
+		$taxons = array();
+		
+		foreach ($result as $r) {
+			$taxons[] = array(
+				'id' => $r['id'],
+				'Name' => $r['name'],
+				'Author' => $r['authorInitials'],
+				'Accepted' => ($r['acceptedName'] == TRUE)? "!" : ""
+			);
+		}
+		
+		$this->twiggy->set('results', json_encode($taxons));
+		$this->twiggy->set('search', '-1');
+			
+		$this->twiggy->title('Musgos de Venezuela')->append('Busqueda');
+		$this->twiggy->template('main/search_results')->display();
+	}
 }
    
 ?>

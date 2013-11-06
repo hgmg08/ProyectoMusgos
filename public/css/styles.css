@@ -328,6 +328,10 @@
 	color: #870402;
 }
 
+td.buttons {
+	text-align: right;
+}
+
 /*
  * Menu footer
  */

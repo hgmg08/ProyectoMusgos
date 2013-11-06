@@ -65,7 +65,9 @@
 {% block content %}
 
 	<div class="grid_12 search_results">
-		<h2>Busqueda para "<span class="search_text">{{ search }}</span>"</h2>
+		{% if search != -1 %}
+			<h2>Busqueda para "<span class="search_text">{{ search }}</span>"</h2>
+		{% endif %}
 		<br />
 		<div id="resultsGrid"></div>
 	</div>

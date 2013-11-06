@@ -25,11 +25,6 @@ class ListaRoja
     private $country;
 
     /**
-     * @var string $author
-     */
-    private $author;
-
-    /**
      * @var integer $id
      */
     private $id;
@@ -38,10 +33,16 @@ class ListaRoja
      * @var \Doctrine\Common\Collections\ArrayCollection
      */
     private $taxons;
+	
+	/**
+     * @var \Doctrine\Common\Collections\ArrayCollection
+     */
+    private $publications;
 
     public function __construct()
     {
         $this->taxons = new \Doctrine\Common\Collections\ArrayCollection();
+		$this->publications = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
     /**
@@ -111,28 +112,6 @@ class ListaRoja
     }
 
     /**
-     * Set author
-     *
-     * @param string $author
-     * @return ListaRoja
-     */
-    public function setAuthor($author)
-    {
-        $this->author = $author;
-        return $this;
-    }
-
-    /**
-     * Get author
-     *
-     * @return string 
-     */
-    public function getAuthor()
-    {
-        return $this->author;
-    }
-
-    /**
      * Get id
      *
      * @return integer 
@@ -162,5 +141,27 @@ class ListaRoja
     public function getTaxons()
     {
         return $this->taxons;
+    }
+
+    /**
+     * Add publications
+     *
+     * @param entities\Publicacion $publications
+     * @return ListaRoja
+     */
+    public function addPublicacion(\entities\Publicacion $publications)
+    {
+        $this->publications[] = $publications;
+        return $this;
+    }
+
+    /**
+     * Get publications
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getPublications()
+    {
+        return $this->publications;
     }
 }

@@ -114,19 +114,18 @@
 	</many-to-many>
 
 	<!-- Relacion con Localidad -->
-	<many-to-many field="localidades" target-entity="Localidad" inversed-by="taxons">
-		<join-table name="taxon_localidad">
-			<join-columns>
-				<join-column name="taxon_id" referenced-column-name="id" />
-			</join-columns>
-			<inverse-join-columns>
-				<join-column name="localidad_id" referenced-column-name="id" />
-			</inverse-join-columns>
-		</join-table>
+	<one-to-many field="localidades" target-entity="Localidad" mapped-by="taxon">
 		<cascade>
 			<cascade-persist />
+			<cascade-remove />
 		</cascade>
-	</many-to-many>
+	</one-to-many>
+	
+	<!-- Relaciones con User -->
+	<many-to-one field="created_user" target-entity="User" inversed-by="created_taxons">
+		<join-column name="created_user_id" referenced-column-name="id" />
+	</many-to-one>
+
 
 </entity>
 

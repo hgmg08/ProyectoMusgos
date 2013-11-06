@@ -15,7 +15,7 @@
 
 	<!-- Relacion con Ecosistema (Jerarquia) -->
 	<one-to-many field="children" target-entity="Ecosistema" mapped-by="parent" />
-	<many-to-one field="parent" target-entity="Ecosistema" mapped-by="children" />
+	<many-to-one field="parent" target-entity="Ecosistema" inversed-by="children" />
 
 </entity>
 
