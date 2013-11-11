@@ -14,6 +14,17 @@ use Doctrine\ORM\EntityRepository,
  */
 class TaxonRepository extends EntityRepository
 {
+	
+	public function getAllByStatus($status)
+	{
+		$query = $this->_em->createQuery(
+			"SELECT t FROM entities\Taxon t WHERE t.rank IN(6,7,8) AND t.status = :status"
+		);
+		$query->setParameter('status', $status);
+		return $query->getResult(Query::HYDRATE_ARRAY);
+	}
+	
+	
 	/**
 	 * Obtener todos los taxones
 	 * @return Array de taxones 
@@ -123,7 +134,8 @@ class TaxonRepository extends EntityRepository
 		
 		if(!empty($filters['author_pub']) || !empty($filters['title_pub']) || !empty($filters['year_pub']) ||
 			!empty($filters['location']) || !empty($filters['estado']) || !empty($filters['min_alt']) || 
-			!empty($filters['max_alt']) || !empty($filters['collection']) || $filters['coll_date'] != "/  /") {
+			!empty($filters['max_alt']) || !empty($filters['collection']) || $filters['coll_date'] != "/  /"
+			|| !empty($filters['herbarium'])) {
 			$strDql = $strDql . " JOIN t.localidades loc";
 		}
 		
@@ -198,7 +210,7 @@ class TaxonRepository extends EntityRepository
 		}
 		
 		if(!empty($filters['herbarium'])) {
-			$strDql = $strDql . " AND loc.hebarium LIKE :hebarium";
+			$strDql = $strDql . " AND loc.hebarium LIKE :herbarium";
 		}
 		
 		if(!empty($filters['location'])) {

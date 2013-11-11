@@ -3,9 +3,149 @@
 {% block head %}
 
 	{{ parent() }}
+	
+	<script type="text/javascript">
+		$(document).ready(function () {
+			var theme = 'mdv';
+			var data = {{ pending_taxons }};
+			var source =
+			{
+			    datatype: "json",
+			    datafields: [
+					{ name: 'id', type: 'number' },
+					{ name: 'Name', type: 'string' },
+					{ name: 'Author', type: 'string' },
+					{ name: 'Rank', type: 'string' },
+					{ name: 'RankEnum', type: 'number' },
+					{ name: 'User', type: 'string' }
+				],
+				localdata: data,
+				pagesize: 10,
+				
+				deleterow: function (rowid, commit) {
+					var taxon = $('#pending_tax_grid').jqxGrid('getrowdata', rowid);
+					var data = {
+						id: taxon.id
+					};
+					$.ajax({
+						type: 'POST',
+						url: '{{ base_url('admin/taxon/delete') }}',
+						data: data,
+						dataType: 'text',
+						cache: false,
+						success: function (data, status, xhr) {
+							commit(true);
+						},
+						error: function(jqXHR, textStatus, errorThrown) {
+							commit(false);
+							alert(errorThrown);
+						}
+					});
+				}
+			};
+			
+			var dataAdapter = new $.jqx.dataAdapter(source);
+			var getLocalization = function () {
+				var localizationobj = {};
+				localizationobj.pagergotopagestring = "Ir a página:";
+			    localizationobj.pagershowrowsstring = "Mostrar filas:";
+			    localizationobj.pagerrangestring = " de ";
+			    localizationobj.pagernextbuttonstring = "Siguiente";
+			    localizationobj.pagerpreviousbuttonstring = "Anterior";
+			    localizationobj.filtershowrowstring = "Escoger:";
+			    localizationobj.sortascendingstring = "Ordenar ascendentemente";
+				localizationobj.sortdescendingstring = "Ordenar descendentemente";
+				localizationobj.sortremovestring = "Quitar ordenación";
+				localizationobj.emptydatastring = "No hay taxones en revisión";
+				localizationobj.filterchoosestring = "Escoja:";
+			    return localizationobj;
+			}
+			
+			$("#pending_tax_grid").jqxGrid({
+				width: '100%',
+				height: 200,
+				source: dataAdapter,
+				theme: theme,
+				showstatusbar: true,
+				renderstatusbar: function (statusbar) {
+					var container = $("<div style='overflow: hidden; position: relative; margin: 3px;'></div>");
+                    var editButton = $("<div style='float: left; margin-left: 5px;'><img style='position: relative; margin-top: 1px;' src='{{ base_url('public/images/img16x16_edit.png') }}'/><span style='margin-left: 4px; position: relative; top: 2px;'>Revisar</span></div>");
+                    var deleteButton = $("<div style='float: left; margin-left: 5px;'><img style='position: relative; margin-top: 1px;' src='{{ base_url('public/images/img16x16_delete.png') }}'/><span style='margin-left: 4px; position: relative; top: 2px;'>Eliminar</span></div>");
+                    container.append(editButton);
+                    container.append(deleteButton);
+                    statusbar.append(container);
+                    editButton.jqxButton({ theme: theme, width: 70, height: 20 });
+                    deleteButton.jqxButton({ theme: theme, width: 80, height: 20 });
+                    editButton.bind('click', function () {
+                    	var rowindex = $('#pending_tax_grid').jqxGrid('getselectedrowindex');
+                    	if (rowindex >= 0) {
+	            			var data = $('#pending_tax_grid').jqxGrid('getrowdata', rowindex);
+	            			window.location = "{{ base_url('admin/taxon/taxon_form') }}" + '/' + data.RankEnum + '/' + data.id ;
+                    	}
+                    });
+                    deleteButton.bind('click', function() {
+                    	$('#confirm').css('visibility', 'visible');
+                    	$('#confirm').jqxWindow('open');
+                    	$('#confirm').on('close', function (event) {
+                			if (event.args.dialogResult.OK) {
+                				var rowindex = $('#pending_tax_grid').jqxGrid('getselectedrowindex');
+		                    	if (rowindex >= 0) {
+		                    		var id = $("#tax_grid").jqxGrid('getrowid', rowindex);
+		        					$("#pending_tax_grid").jqxGrid('deleterow', id);
+		                    	}	
+                			}
+            			});
+                    });
+				},
+				enablebrowserselection: true,
+				columnsresize: true,
+				showfilterrow: true,
+                filterable: true,
+                sortable: true,
+			    localization: getLocalization(),
+			    pageable: true,
+			    columns: [
+			    	{ text: 'Id', datafield: 'id', width: '5%', filtertype: 'textbox' },
+			        { text: 'Nombre', datafield: 'Name', width: '30%', filtertype: 'textbox' },
+			        { text: 'Autor', datafield: 'Author', width: '30%', filtertype: 'textbox' },
+			        { text: 'Tipo', datafield: 'Rank', width: '15%', filtertype: 'list' },
+			        { text: 'Creado por', datafield: 'User', width: '20%', filtertype: 'textbox' }
+			    ]
+			});
+            
+            $('#confirm').jqxWindow({ maxHeight: 150, maxWidth: 280, minHeight: 30, minWidth: 250, height: 145, width: 270, 
+            	theme: theme, resizable: false, isModal: true, modalOpacity: 0.3, autoOpen: false,
+                okButton: $('#ok'), cancelButton: $('#cancel'),
+                initContent: function () {
+                    $('#ok').jqxButton({ theme: theme, width: '65px' });
+                    $('#cancel').jqxButton({ theme: theme, width: '65px' });
+                    $('#ok').focus();
+                }
+           	});
+		});
+	</script>
 
 {% endblock %}
 
 {% block content %}
+
+	<div class="grid_12">
+		<div id="tax_grid_title">
+			Taxones en revisión
+			<hr/>
+		</div>
+		
+		<div id="pending_tax_grid">
+		</div>
+	</div>
+	
+	<div id="confirm" caption="Confirmación">
+		<div id="confirm_message">
+			¿Está seguro de eliminar el elemento seleccionado?
+			<br/><br/>
+			<input type="button" id="ok" value="Sí" style="margin-right: 10px" />
+            <input type="button" id="cancel" value="No" />
+		</div>
+	</div>
 
 {% endblock %}

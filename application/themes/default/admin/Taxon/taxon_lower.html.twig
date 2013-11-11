@@ -503,10 +503,15 @@
 			$('#save_distribution').jqxButton({ width: 70, theme: theme });
 			$('#save_revision').jqxButton({ width: 70, theme: theme });
 			
+			$('#submit_revision').jqxButton({ width:160, height: 30, theme: theme });
+			$('#submit_publish').jqxButton({ width:100, height: 30, theme: theme });
+			
 			if (op == 2) {
 				for (var i = 0; i < $('#tax_tabs').jqxTabs('length') - 1; i++) {
 					$('#tax_tabs').jqxTabs('disableAt', i + 1);
 				}
+				$('#submit_revision').jqxButton({ disabled: true });
+				$('#submit_publish').jqxButton({ disabled: true });
 			}
 			
 			else {
@@ -519,6 +524,15 @@
 				$('#accepted').val({{ taxon.getAcceptedName }});
 				$('#endemic').val({{ taxon.getEndemic }});
 				$('#comments').val('{{ taxon.getComments }}');
+				
+				{% if taxon.getStatus == 2 %}
+					$('#submit_publish').jqxButton({ disabled: true });
+					$('#submit_revision').jqxButton({ disabled: false });
+				{% else %}
+					$('#submit_publish').jqxButton({ disabled: false });
+					$('#submit_revision').jqxButton({ disabled: true });
+				{% endif %}
+				
 				
 				$('#global_distribution').val('{{ taxon.getGlobalDistribution }}');
 				$('#vdw_zones').val('{{ taxon.getVDWDistribution }}');
@@ -698,6 +712,90 @@
 					}
 				});
 			});
+			
+			$('#submit_revision').click(function () {
+				var data = {
+					id: taxonId,
+					status: 1
+				};
+				
+				$.ajax({
+					type: 'POST',
+					url: '{{ base_url('admin/taxon/changeStatus') }}',
+					data: data,
+					dataType: 'text',
+					success: function(response) {
+						if (response > 0) {
+							$('#successPersist').css('visibility', 'visible');
+							var x = ($(window).width() - $('#successPersist').jqxWindow('width')) / 2 + $(window).scrollLeft();
+                			var y = ($(window).height() - $('#successPersist').jqxWindow('height')) / 2 + $(window).scrollTop();
+                			$('#successPersist').jqxWindow({ position: { x: x, y: y} });
+                			$('#successMessage').text('Se ha puesto el taxón en revisión');
+							$('#successPersist').jqxWindow('open');
+							setTimeout(function () {
+								$('#successPersist').jqxWindow('close');
+							}, 2500);
+							location.reload();
+						}
+						else {
+							$('#failPersist').css('visibility', 'visible');
+							var x = ($(window).width() - $('#failPersist').jqxWindow('width')) / 2 + $(window).scrollLeft();
+                			var y = ($(window).height() - $('#failPersist').jqxWindow('height')) / 2 + $(window).scrollTop();
+                			$('#failPersist').jqxWindow({ position: { x: x, y: y} });
+                			$('#failMessage').text('Error al poner el taxón en revisión');
+							$('#failPersist').jqxWindow('open');
+							setTimeout(function () {
+								$('#failPersist').jqxWindow('close');
+							}, 4000);
+						}
+					},
+					error: function(jqXHR, textStatus, errorThrown) {
+						alert(errorThrown);
+					}
+				});
+			});
+			
+			$('#submit_publish').click(function () {
+				var data = {
+					id: taxonId,
+					status: 2
+				};
+				
+				$.ajax({
+					type: 'POST',
+					url: '{{ base_url('admin/taxon/changeStatus') }}',
+					data: data,
+					dataType: 'text',
+					success: function(response) {
+						if (response > 0) {
+							$('#successPersist').css('visibility', 'visible');
+							var x = ($(window).width() - $('#successPersist').jqxWindow('width')) / 2 + $(window).scrollLeft();
+                			var y = ($(window).height() - $('#successPersist').jqxWindow('height')) / 2 + $(window).scrollTop();
+                			$('#successPersist').jqxWindow({ position: { x: x, y: y} });
+                			$('#successMessage').text('Se ha publicado el taxón');
+							$('#successPersist').jqxWindow('open');
+							setTimeout(function () {
+								$('#successPersist').jqxWindow('close');
+							}, 2500);
+							location.reload();
+						}
+						else {
+							$('#failPersist').css('visibility', 'visible');
+							var x = ($(window).width() - $('#failPersist').jqxWindow('width')) / 2 + $(window).scrollLeft();
+                			var y = ($(window).height() - $('#failPersist').jqxWindow('height')) / 2 + $(window).scrollTop();
+                			$('#failPersist').jqxWindow({ position: { x: x, y: y} });
+                			$('#failMessage').text('Error al publicar el taxón');
+							$('#failPersist').jqxWindow('open');
+							setTimeout(function () {
+								$('#failPersist').jqxWindow('close');
+							}, 4000);
+						}
+					},
+					error: function(jqXHR, textStatus, errorThrown) {
+						alert(errorThrown);
+					}
+				});
+			});
 		});
 	</script>
 	
@@ -706,15 +804,37 @@
 {% block content %}
 
 	<div class="grid_12">
-		<div id="tax_hg_admin_name">
-			{% if taxon %}
-				{{ taxon.getName }}
-			{% else %}
-				Nueva {{ rankName }}
-			{% endif %}
+		<div class="wrap_button_name">
+			<div id="tax_hg_admin_name">
+				{% if taxon %}
+					{{ taxon.getName }}
+				{% else %}
+					Nueva {{ rankName }}
+				{% endif %}
+			</div>
+			<div id="tax_hg_admin_type">
+				<strong>Tipo:</strong> {{ rankName }}
+				<br/>
+				{% if taxon %}
+					<strong>Estado:</strong>
+					{% if taxon.getStatus == 2 %}
+						Publicado
+					{% else %}
+						En revisión
+					{% endif %}
+					<br/>
+					<strong>Insertado por:</strong>
+					{{ taxon.getCreatedUser.getName }}
+					<br/>
+					<strong>Fecha inserción:</strong>
+					{{ taxon.getCreationDate | date("d/m/Y - H:m:s") }}
+				{% endif %}
+			</div>
 		</div>
-		<div id="tax_hg_admin_type">
-			{{ rankName }}
+		
+		<div class="button_status_wrap">
+			<input type="button" value="Guardar para revisión" id="submit_revision" />
+			<input type="button" value="Publicar" id="submit_publish" style="margin-left:10px;" />
 		</div>
 		
 		<div id="tax_tabs">

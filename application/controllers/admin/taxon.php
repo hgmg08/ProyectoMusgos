@@ -17,8 +17,7 @@ class Taxon extends CI_Controller {
 
 	public function index()
 	{
-		$auth = $this->session->userdata('auth');
-		if ($auth) {
+		if ($this->session->userdata('auth')) {
 			$user= $this->em->find('entities\User', $this->session->userdata('uid'));
 			
 			$this->twiggy->set('role', $user->getRole()->getName());
@@ -100,6 +99,10 @@ class Taxon extends CI_Controller {
 				$taxon->setParentHierarchy($this->em->find('entities\Taxon', $parentId));
 				$taxon->setCreationDate(new \DateTime("now"));
 				$taxon->setStatus(2);
+				
+				$user= $this->em->find('entities\User', $this->session->userdata('uid'));
+				$taxon->setCreatedUser($user);
+				
 				$this->em->persist($taxon);
 				$this->em->flush();
 				echo true;
@@ -217,6 +220,9 @@ class Taxon extends CI_Controller {
 			$taxon->setCreationDate(new \DateTime("now"));
 			$taxon->setComments($comments);
 			$taxon->setStatus(1);
+			
+			$user= $this->em->find('entities\User', $this->session->userdata('uid'));
+			$taxon->setCreatedUser($user);
 				
 			$this->em->persist($taxon);
 			$this->em->flush();
@@ -549,6 +555,24 @@ class Taxon extends CI_Controller {
 		}
 		
 		return json_encode($ecosistemas);
+	}
+	
+	public function changeStatus()
+	{
+		$id = $this->input->post("id");
+		$status = $this->input->post("status");
+		
+		$taxon = $this->em->find('entities\Taxon', $id);
+		if ($taxon) {
+			$taxon->setStatus($status);
+			$this->em->persist($taxon);
+			$this->em->flush();
+			echo 1;
+		}
+		
+		else {
+			echo -1;
+		}
 	}
 	
 	//Populate taxa grid

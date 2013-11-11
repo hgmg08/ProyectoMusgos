@@ -491,7 +491,6 @@ table#footer_nav a:hover{
 }
 
 #tax_hg_admin_type {
-	font-weight: bold;
 	font-size: 12px;
 	color: #979090;
 	margin-bottom: 10px;
@@ -602,6 +601,15 @@ table#footer_nav a:hover{
 
 #tax_tabs {
 	border: 0;
+}
+
+.button_status_wrap {
+	margin-top: 25px;
+	margin-left: 650px;
+}
+
+.wrap_button_name{
+	float: left;
 }
 
 /*

@@ -26,6 +26,7 @@
 				$("#loginText").click(function() {
 					$("#windowLogin").css('visibility', 'visible');
 					$("#windowLogin").jqxWindow('open');
+					$("#user").focus();
 				});
 			});
 		</script>
@@ -121,7 +122,7 @@
 				<table>
 					<tr>
 				    	<td style="vertical-align: middle;">Usuario:</td>
-				        <td><input style="margin-left: 10px; width: 150px;" type="text" name="user" /></td>
+				        <td><input id="user" style="margin-left: 10px; width: 150px;" type="text" name="user" /></td>
 				    </tr>
 				    <tr>
 				        <td style="vertical-align: middle;">Contraseña:</td>
