@@ -60,7 +60,12 @@ class Taxon extends CI_Controller {
 		$taxon = $this->em->find('entities\Taxon', $id);
 		if ($taxon) {
 			if ($taxon->getRank() > 5) {
-				$this->delTree(GALLERY_DIR . $taxon->getId());	
+				try {
+					$this->delTree(GALLERY_DIR . $taxon->getId());	
+				}
+				catch (Exception $e) {
+					echo false;
+				}
 			}
 			$this->em->remove($taxon);
 			$this->em->flush();
@@ -748,7 +753,14 @@ class Taxon extends CI_Controller {
 	private function makeImageDir($id)
 	{
 		$galleryDir = GALLERY_DIR . $id . '/thumbs/';
-		mkdir($galleryDir, 0775, true);
+		try {
+			mkdir($galleryDir, 0775, true);	
+		}
+		catch (Exception $e) {
+			return false;
+		}
+		
+		return true;
 	}
 	
 	private function delTree($dir)

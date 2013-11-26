@@ -649,6 +649,17 @@
 										window.location = '{{ base_url('admin/taxon/taxon_form') }}' + '/' + '{{ rank }}' + '/' + response;
 									}
 								}
+								else if (response == -2) {
+									$('#failPersist').css('visibility', 'visible');
+									var x = ($(window).width() - $('#failPersist').jqxWindow('width')) / 2 + $(window).scrollLeft();
+                					var y = ($(window).height() - $('#failPersist').jqxWindow('height')) / 2 + $(window).scrollTop();
+                					$('#failPersist').jqxWindow({ position: { x: x, y: y} });
+                					$('#failMessage').text('Error al crear el directorio de imágenes. No se pudo registrar el taxón');
+									$('#failPersist').jqxWindow('open');
+									setTimeout(function () {
+										$('#failPersist').jqxWindow('close');
+									}, 4000);
+								}
 								else {
 									$('#failPersist').css('visibility', 'visible');
 									var x = ($(window).width() - $('#failPersist').jqxWindow('width')) / 2 + $(window).scrollLeft();

@@ -27,6 +27,7 @@
 					var data = {
 						id: taxon.id
 					};
+					console.log(data);
 					$.ajax({
 						type: 'POST',
 						url: '{{ base_url('admin/taxon/delete') }}',
@@ -34,6 +35,7 @@
 						dataType: 'text',
 						cache: false,
 						success: function (data, status, xhr) {
+							console.log(data);
 							commit(true);
 						},
 						error: function(jqXHR, textStatus, errorThrown) {
@@ -63,7 +65,7 @@
 			
 			$("#pending_tax_grid").jqxGrid({
 				width: '100%',
-				height: 200,
+				height: 400,
 				source: dataAdapter,
 				theme: theme,
 				showstatusbar: true,
@@ -90,7 +92,7 @@
                 			if (event.args.dialogResult.OK) {
                 				var rowindex = $('#pending_tax_grid').jqxGrid('getselectedrowindex');
 		                    	if (rowindex >= 0) {
-		                    		var id = $("#tax_grid").jqxGrid('getrowid', rowindex);
+		                    		var id = $("#pending_tax_grid").jqxGrid('getrowid', rowindex);
 		        					$("#pending_tax_grid").jqxGrid('deleterow', id);
 		                    	}	
                 			}
