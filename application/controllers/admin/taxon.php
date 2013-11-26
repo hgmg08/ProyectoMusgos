@@ -258,12 +258,12 @@ class Taxon extends CI_Controller {
 	
 	public function persist_lower_synonim()
 	{
-		$tid = $this->input->get("tid");
-		$sid = $this->input->get("id");
-		$name = trim($this->input->get("name"));
-		$author = trim($this->input->get("author"));
-		$rank = $this->input->get("rank");
-		$type = $this->input->get("type");
+		$tid = $this->input->post("tid");
+		$sid = $this->input->post("id");
+		$name = trim($this->input->post("name"));
+		$author = trim($this->input->post("author"));
+		$rank = $this->input->post("rank");
+		$type = $this->input->post("type");
 		
 		if ($name && $author && $rank && $type) {
 			if ($sid) {
@@ -275,7 +275,7 @@ class Taxon extends CI_Controller {
 					$staxon->setSynonimClasification($this->getSynonimNumber($type));
 					$this->em->persist($staxon);
 					$this->em->flush();
-					echo 1;
+					echo $staxon->getId();
 				}
 				else {
 					echo -1;
@@ -295,7 +295,7 @@ class Taxon extends CI_Controller {
 					
 					$this->em->persist($staxon);
 					$this->em->flush();
-					echo 1;
+					echo $staxon->getId();
 				}
 				
 				else {
@@ -323,18 +323,18 @@ class Taxon extends CI_Controller {
 	}
 	
 	public function persist_location() {
-		$tid = $this->input->get("tid");
-		$lid = $this->input->get("id");
-		$stateName = trim($this->input->get("state"));
-		$townName = trim($this->input->get("town"));
-		$name = trim($this->input->get("location"));
-		$altitude_min = trim($this->input->get("altitude_min"));
-		$altitude_max = trim($this->input->get("altitude_max"));
-		$latitude = trim($this->input->get("latitude"));
-		$longitude = trim($this->input->get("longitude"));
-		$collection = trim($this->input->get("collection"));
-		$collection_date = $this->input->get("collection_date");
-		$herbarium = $this->input->get("herbarium");
+		$tid = $this->input->post("tid");
+		$lid = $this->input->post("id");
+		$stateName = trim($this->input->post("state"));
+		$townName = trim($this->input->post("town"));
+		$name = trim($this->input->post("location"));
+		$altitude_min = trim($this->input->post("altitude_min"));
+		$altitude_max = trim($this->input->post("altitude_max"));
+		$latitude = trim($this->input->post("latitude"));
+		$longitude = trim($this->input->post("longitude"));
+		$collection = trim($this->input->post("collection"));
+		$collection_date = $this->input->post("collection_date");
+		$herbarium = $this->input->post("herbarium");
 		
 		if ($stateName && $name) {
 			$state = $this->em->getRepository('entities\Estado')->findOneBy(array('name' => $stateName));
@@ -361,7 +361,7 @@ class Taxon extends CI_Controller {
 					$location->setHebarium($herbarium);
 					$this->em->persist($location);
 					$this->em->flush();
-					echo 1;
+					echo $location->getId();
 				}
 				
 				else {
@@ -392,7 +392,7 @@ class Taxon extends CI_Controller {
 					$location->setTaxon($taxon);
 					$this->em->persist($location);
 					$this->em->flush();
-					echo 1;
+					echo $location->getId();
 				}
 				
 				else {
