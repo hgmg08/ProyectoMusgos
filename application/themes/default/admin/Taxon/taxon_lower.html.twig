@@ -136,6 +136,7 @@
 						success: function(response) {
 							console.log(response);
 							if (response > 0) {
+								rowdata.id = response;
 								commit(true);
 							}
 						},
@@ -261,10 +262,9 @@
 				
 				updaterow: function (rowid, rowdata, commit) {
 					var collDate = $('#grid_especimenes').jqxGrid('getcelltext', rowid, "collection_date");
-					console.log(collDate);
 					rowdata.collection_date = collDate;
 					var data = 'tid=' + taxonId + '&' + $.param(rowdata);
-					console.log(data);
+					console.log(rowdata);
 					$.ajax({
 						type: 'POST',
 						url: '{{ base_url('admin/taxon/persist_location') }}',
@@ -274,6 +274,7 @@
 						success: function(response) {
 							console.log(response);
 							if (response > 0) {
+								rowdata.id = response;
 								commit(true);
 							}
 							else if (response == -2) {
@@ -369,6 +370,7 @@
 		                    	if (rowindex >= 0) {
 		                    		var id = $("#grid_especimenes").jqxGrid('getrowid', rowindex);
 		        					$("#grid_especimenes").jqxGrid('deleterow', id);
+									$('#grid_locref').jqxGrid('clear');
 		                    	}	
                 			}
             			});
