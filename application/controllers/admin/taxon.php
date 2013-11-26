@@ -321,6 +321,105 @@ class Taxon extends CI_Controller {
 			echo false;
 		}
 	}
+	
+	public function persist_location() {
+		$tid = $this->input->get("tid");
+		$lid = $this->input->get("id");
+		$stateName = trim($this->input->get("state"));
+		$townName = trim($this->input->get("town"));
+		$name = trim($this->input->get("location"));
+		$altitude_min = trim($this->input->get("altitude_min"));
+		$altitude_max = trim($this->input->get("altitude_max"));
+		$latitude = trim($this->input->get("latitude"));
+		$longitude = trim($this->input->get("longitude"));
+		$collection = trim($this->input->get("collection"));
+		$collection_date = $this->input->get("collection_date");
+		$herbarium = $this->input->get("herbarium");
+		
+		if ($stateName && $name) {
+			$state = $this->em->getRepository('entities\Estado')->findOneBy(array('name' => $stateName));
+			$town = $this->em->getRepository('entities\Municipio')->findOneBy(array('name' => $townName));
+			
+			if ($lid) {
+				$location = $this->em->find('entities\Localidad', $lid);
+				if ($location) {
+					$location->setEstado($state);
+					$location->setMunicipio($town);
+					$location->setName($name);
+					$location->setMinAltitude($altitude_min);
+					$location->setMaxAltitude($altitude_max);
+					$location->setLatitude($latitude);
+					$location->setLongitude($longitude);
+					$location->setCollection($collection);
+					try {
+						$location->setCollectionDate(($collection_date)? new \DateTime($collection_date) : NULL);
+					}
+					catch (Exception $e) {
+						echo -2;
+						exit;
+					}
+					$location->setHebarium($herbarium);
+					$this->em->persist($location);
+					$this->em->flush();
+					echo 1;
+				}
+				
+				else {
+					echo -1;
+				}
+			}
+			
+			else {
+				$taxon = $this->em->find('entities\Taxon', $tid);
+				if ($taxon) {
+					$location = new entities\Localidad;
+					$location->setEstado($state);
+					$location->setMunicipio($town);
+					$location->setName($name);
+					$location->setMinAltitude($altitude_min);
+					$location->setMaxAltitude($altitude_max);
+					$location->setLatitude($latitude);
+					$location->setLongitude($longitude);
+					$location->setCollection($collection);
+					try {
+						$location->setCollectionDate(($collection_date)? new \DateTime($collection_date) : NULL);
+					}
+					catch (Exception $e) {
+						echo -2;
+						exit;
+					}
+					$location->setHebarium($herbarium);
+					$location->setTaxon($taxon);
+					$this->em->persist($location);
+					$this->em->flush();
+					echo 1;
+				}
+				
+				else {
+					echo -1;
+				}
+			}
+		}
+
+		else {
+			echo -1;
+		}
+	}
+
+	public function delete_location()
+	{
+		$id = $this->input->post("id");
+		$loc = $this->em->find('entities\Localidad', $id);
+		if ($loc) {
+			$this->em->remove($loc);
+			$this->em->flush();
+			echo true;
+		}
+		else {
+			echo false;
+		}
+		
+	}
 		
 	//Populate higher taxa form
 	private function higher_taxa_form($rank, $taxon = NULL) 
@@ -395,6 +494,7 @@ class Taxon extends CI_Controller {
 		$this->twiggy->set('ecorregiones', json_encode($this->em->getRepository('entities\Ecorregion')->getAll()));
 		$this->twiggy->set('ecosistemas', $this->getEcosistemas());
 		$this->twiggy->set('estados', json_encode($this->em->getRepository('entities\Estado')->getAll()));	
+		$this->twiggy->set('publications', json_encode($this->pub_grid()));
 		
 		$auth = $this->session->userdata('auth');
 		if ($auth) {
@@ -450,17 +550,10 @@ class Taxon extends CI_Controller {
 	private function fillLocalidades($taxon)
 	{
 		$localidades = NULL;
-		$loc_pub = NULL;
 		
 		if ($taxon) {
 			$loc = $taxon->getLocalidades();
 			foreach ($loc as $l) {
-				if ($l->getEstado()) {
-					foreach ($l->getPublications() as $p) {
-						$loc_pub[] = $p->getQuote();
-					}
-				}
-				
 				$localidades[] = array(
 					'id' => $l->getId(),
 					'state' => ($l->getEstado())? $l->getEstado()->getName() : NULL,
@@ -471,13 +564,75 @@ class Taxon extends CI_Controller {
 					'latitude' => $l->getLatitude(),
 					'longitude' => $l->getLongitude(),
 					'collection' => $l->getCollection(),
-					'collection_date' => ($l->getCollectionDate())? $l->getCollectionDate()->format('d/m/Y') : NULL,
+					'collection_date' => ($l->getCollectionDate())? $l->getCollectionDate()->format('Y-m-d') : NULL,
 					'herbarium' => $l->getHebarium()
 				);
 			}
 		}
 		
 		return $localidades;
+	}
+	
+	public function persistLocalidadReference()
+	{
+		$locId = $this->input->get("location");
+		$pubId = $this->input->get("publication");
+		
+		$location = $this->em->find('entities\Localidad', $locId);
+		$publication = $this->em->find('entities\Publicacion', $pubId);
+		
+		if ($location && $publication) {
+			$publication->addLocalidad($location);
+			$this->em->persist($publication);
+			$this->em->flush();
+			echo 1;
+		}
+		
+		else {
+			echo -1;
+		}
+	}
+	
+	public function deleteLocalidadReference()
+	{
+		$locId = $this->input->post("location");
+		$pubId = $this->input->post("publication");
+		
+		$location = $this->em->find('entities\Localidad', $locId);
+		$publication = $this->em->find('entities\Publicacion', $pubId);
+		
+		if ($location && $publication) {
+			$publication->getLocalidades()->removeElement($location);
+			$this->em->persist($publication);
+			$this->em->flush();
+			echo 1;
+		}
+		
+		else {
+			echo -1;
+		}
+	}
+	
+	public function fillLocalidadReference()
+	{
+		$locId = $this->input->get("location");
+		$location = $this->em->find('entities\Localidad', $locId);
+		$publications = NULL;
+		
+		if ($location) {
+			$pub = $location->getPublications();
+			
+			foreach ($pub as $p) {
+				$publications[] = array(
+					'id' => $p->getId(),
+					'author' => $p->getAuthor(),
+					'title' => $p->getTitle(),
+					'year' => $p->getYear()
+				);
+			}
+		}
+		
+		echo json_encode($publications);
 	}
 	
 	private function fillSustratos($taxon)
@@ -592,6 +747,27 @@ class Taxon extends CI_Controller {
 		}
 		
 		return $taxons;
+	}
+	
+	private function pub_grid()
+	{
+		$result = $this->em->getRepository("entities\Publicacion")->getAll();
+		$publications = array();
+
+		foreach ($result as $r) {
+			$publications[] = array(
+				'id' => $r['id'],
+				'Author' => $r['author'],
+				'Title' => $r['title'],
+				'Year' => $r['year'],
+				'Journal' => $r['journal'],
+				'Collation' => $r['collation'],
+				'Type' => $r['type'],
+				'Quote' => $r['quote']
+			);
+		}
+		
+		return $publications;
 	}
 	
 	//Get Rank Name

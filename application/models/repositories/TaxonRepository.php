@@ -32,7 +32,7 @@ class TaxonRepository extends EntityRepository
 	public function getAll()
 	{
 		$query = $this->_em->createQuery(
-			"SELECT t FROM entities\Taxon t WHERE t.rank > 0"
+			"SELECT t FROM entities\Taxon t WHERE t.rank > 0 AND t.synonimClasification IS NULL"
 		);
 		return $query->getResult(Query::HYDRATE_ARRAY);
 	}

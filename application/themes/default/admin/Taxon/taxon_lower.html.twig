@@ -128,6 +128,7 @@
 					var data = 'tid=' + taxonId + '&' + $.param(rowdata);
 					console.log(data);
 					$.ajax({
+						type: 'POST',
 						url: '{{ base_url('admin/taxon/persist_lower_synonim') }}',
 						data: data,
 						dataType: 'text',
@@ -248,9 +249,8 @@
 			    	{ name: 'latitude', type: 'string' },
 			    	{ name: 'longitude', type: 'string' },
 			    	{ name: 'collection', type: 'string' },
-			    	{ name: 'collection_date', type: 'date', format: "dd/MM/yyyy" },
+			    	{ name: 'collection_date', type: 'string', format: "yyyy-MM-dd" },
 			    	{ name: 'herbarium', type: 'string' },
-			    	{ name: 'reference', type: 'string' }
 			    ],
 				localdata: specimens,
 				pagesize: 10,
@@ -259,8 +259,53 @@
 					commit(true);
 				},
 				
+				updaterow: function (rowid, rowdata, commit) {
+					var collDate = $('#grid_especimenes').jqxGrid('getcelltext', rowid, "collection_date");
+					console.log(collDate);
+					rowdata.collection_date = collDate;
+					var data = 'tid=' + taxonId + '&' + $.param(rowdata);
+					console.log(data);
+					$.ajax({
+						type: 'POST',
+						url: '{{ base_url('admin/taxon/persist_location') }}',
+						data: data,
+						dataType: 'text',
+						cache: false,
+						success: function(response) {
+							console.log(response);
+							if (response > 0) {
+								commit(true);
+							}
+							else if (response == -2) {
+								alert("Error en formato de fecha de colección");
+							}
+						},
+						error: function(jqXHR, textStatus, errorThrown) {
+							alert(errorThrown);
+							commit(false);
+						}
+					});
+				},
+				
 				deleterow: function (rowid, commit) {
-					commit(true);
+					var location = $('#grid_especimenes').jqxGrid('getrowdata', rowid);
+					var data = {
+						id: location.id
+					};
+					$.ajax({
+						type: 'POST',
+						url: '{{ base_url('admin/taxon/delete_location') }}',
+						data: data,
+						dataType: 'text',
+						cache: false,
+						success: function (data, status, xhr) {
+							commit(true);
+						},
+						error: function(jqXHR, textStatus, errorThrown) {
+							commit(false);
+							alert(errorThrown);
+						}
+					});
 				}
 			};
 			
@@ -316,11 +361,17 @@
                     });
                     
                     deleteButton.bind('click', function () {
-                    	var rowindex = $('#grid_especimenes').jqxGrid('getselectedrowindex');
-                    	if (rowindex >= 0) {
-                    		var id = $("#grid_especimenes").jqxGrid('getrowid', rowindex);
-        					$("#grid_especimenes").jqxGrid('deleterow', id);
-                    	}
+                    	$('#confirm').css('visibility', 'visible');
+                    	$('#confirm').jqxWindow('open');
+                    	$('#confirm').on('close', function (event) {
+                			if (event.args.dialogResult.OK) {
+                				var rowindex = $('#grid_especimenes').jqxGrid('getselectedrowindex');
+		                    	if (rowindex >= 0) {
+		                    		var id = $("#grid_especimenes").jqxGrid('getrowid', rowindex);
+		        					$("#grid_especimenes").jqxGrid('deleterow', id);
+		                    	}	
+                			}
+            			});
                     });
                 },
 				columns: [
@@ -360,9 +411,124 @@
 					{ text: 'Latitud', width: '15%', columntype: 'textbox', datafield: 'latitude' },
 					{ text: 'Longitud', width: '15%', columntype: 'textbox', datafield: 'longitud' },
 					{ text: 'Colección', width: '20%', columntype: 'textbox', datafield: 'collection' },
-					{ text: 'Fecha colección', width: '15%', columntype: 'datetimeinput', cellsformat: 'dd/MM/yyyy', datafield: 'collection_date' },
-					{ text: 'Herbario', width: '15%', columntype: 'textbox', datafield: 'herbarium' },
-					{ text: 'Referencia', width: '15%', columntype: 'custom', datafield: 'reference' }
+					{ text: 'Fecha colección', width: '15%', columntype: 'datetimeinput', cellsformat: 'yyyy-MM-dd', datafield: 'collection_date' },
+					{ text: 'Herbario', width: '15%', columntype: 'textbox', datafield: 'herbarium' }
+				]
+			});
+			
+			$('#grid_especimenes').on('rowselect', function (event) {
+				var locId = event.args.row.id;
+				locReferencesSource.data = { location: locId };
+				daLocReferences = new $.jqx.dataAdapter(locReferencesSource);
+				console.log(daLocReferences);
+				$('#grid_locref').jqxGrid({ source: daLocReferences });
+			});
+			
+			var locReferencesSource = {
+				datatype: 'json',
+				datafields: [
+					{ name: 'id', type: 'number' },
+					{ name: 'author', type: 'string' },
+					{ name: 'title', type: 'string' },
+					{ name: 'year', type: 'string' },
+				],
+				url: '{{ base_url('admin/taxon/fillLocalidadReference') }}',
+				cache: false,
+				async: false,
+				
+				addrow: function (rowid, rowdata, position, commit) {
+					var rowindexLoc = $('#grid_especimenes').jqxGrid('getselectedrowindex');
+					var dataLoc = $('#grid_especimenes').jqxGrid('getrowdata', rowindexLoc);
+					
+					var data = {
+						location: dataLoc.id,
+						publication: rowdata.id
+					};
+					
+					$.ajax({
+						url: '{{ base_url('admin/taxon/persistLocalidadReference') }}',
+						data: data,
+						dataType: 'text',
+						cache: false,
+						success: function(response) {
+							console.log(response);
+							if (response > 0) {
+								commit(true);
+							}
+						},
+						error: function(jqXHR, textStatus, errorThrown) {
+							alert(errorThrown);
+							commit(false);
+						}
+					});
+				},
+				
+				deleterow: function (rowid, commit) {
+					var rowindexLoc = $('#grid_especimenes').jqxGrid('getselectedrowindex');
+					var dataLoc = $('#grid_especimenes').jqxGrid('getrowdata', rowindexLoc);
+					
+					var data = {
+						location: dataLoc.id,
+						publication: $('#grid_locref').jqxGrid('getrowdata', rowid).id
+					};
+					
+					$.ajax({
+						type: 'POST',
+						url: '{{ base_url('admin/taxon/deleteLocalidadReference') }}',
+						data: data,
+						dataType: 'text',
+						cache: false,
+						success: function (data, status, xhr) {
+							commit(true);
+						},
+						error: function(jqXHR, textStatus, errorThrown) {
+							commit(false);
+							alert(errorThrown);
+						}
+					});
+				}
+			};
+			
+			var daLocReferences = new $.jqx.dataAdapter(locReferencesSource);
+			
+			$('#grid_locref').jqxGrid({
+				width: 915,
+				theme: theme,
+				autoheight: true,
+				columnsresize: true,
+				showstatusbar: true,
+				localization: getLocalization(),
+			    pageable: true,
+				renderstatusbar: function (statusbar) {
+					var container = $("<div style='overflow: hidden; position: relative; margin: 3px;'></div>");
+                    var addButton = $("<div style='float: left; margin-left: 5px;'><img style='position: relative; margin-top: 1px;' src='{{ base_url('public/images/img16x16_new.png') }}'/><span style='margin-left: 4px; position: relative; top: 2px;'>Añadir</span></div>");
+                    var deleteButton = $("<div style='float: left; margin-left: 5px;'><img style='position: relative; margin-top: 1px;' src='{{ base_url('public/images/img16x16_delete.png') }}'/><span style='margin-left: 4px; position: relative; top: 2px;'>Eliminar</span></div>");
+                    container.append(addButton);
+                    container.append(deleteButton);
+                    statusbar.append(container);
+                    addButton.jqxButton({ theme: theme, width: 70, height: 20 });
+                    deleteButton.jqxButton({ theme: theme, width: 80, height: 20 });
+                    
+                    addButton.bind('click', function () {
+                    	var locIndex = $('#grid_especimenes').jqxGrid('getselectedrowindex');
+                    	if (locIndex >= 0) {
+                    		$('#references').jqxWindow('open');
+                    		
+                    	}
+                    });
+                    
+                    deleteButton.bind('click', function () {
+                    	var rowindex = $('#grid_locref').jqxGrid('getselectedrowindex');
+                    	if (rowindex >= 0) {
+                    		var id = $("#grid_locref").jqxGrid('getrowid', rowindex);
+		        			$("#grid_locref").jqxGrid('deleterow', id);
+		        		}
+                    });
+                },
+				columns: [
+					{ text: 'Autor', width: '20%', columntype: 'textbox', datafield: 'author' },
+					{ text: 'Título', width: '70%', columntype: 'textbox', datafield: 'title' },
+					{ text: 'Año', width: '10%', columntype: 'textbox', datafield: 'year' }
 				]
 			});
 			
@@ -498,6 +664,63 @@
                     $('#ok').focus();
                 }
            	});
+           	
+           	$('#references').jqxWindow({ width: 800, height: 400, isModal: true, autoOpen: false, resizable: false, theme: theme });
+           	
+           	var dataPub = {{ publications }};
+			var pubSource =
+			{
+			    datatype: "json",
+			    datafields: [
+					{ name: 'id', type: 'number' },
+					{ name: 'Author', type: 'string' },
+					{ name: 'Title', type: 'string' },
+					{ name: 'Year', type: 'int' },
+					{ name: 'Journal', type: 'string' },
+					{ name: 'Collation', type: 'string' },
+					{ name: 'Type', type: 'string' },
+					{ name: 'Quote', type: 'string' }
+				],
+				localdata: dataPub,
+				pagesize: 10,
+			};
+			
+			var pubDataAdapter = new $.jqx.dataAdapter(pubSource);
+			
+			$("#pub_grid").jqxGrid({
+				width: '100%',
+				autoheight: true,
+				source: pubDataAdapter,
+				theme: theme,
+				enablebrowserselection: true,
+				columnsresize: true,
+				showfilterrow: true,
+                filterable: true,
+                sortable: true,
+			    localization: getLocalization(),
+			    pageable: true,
+			    columns: [
+			    	{ text: 'Id', datafield: 'id', width: '3%', filtertype: 'textbox' },
+			        { text: 'Autor', datafield: 'Author', width: '15%', filtertype: 'textbox' },
+			        { text: 'Título', datafield: 'Title', width: '15%', filtertype: 'textbox' },
+			        { text: 'Año', datafield: 'Year', filtertype: 'textbox' },
+			        { text: 'Revista', datafield: 'Journal', filtertype: 'textbox' },
+			        { text: 'Colación', datafield: 'Collation', filtertype: 'textbox' },
+			        { text: 'Tipo', datafield: 'Type', width: '15%', filtertype: 'list' },
+			        { text: 'Cita corta', datafield: 'Quote', filtertype: 'textbox' }
+			    ]
+			});
+			
+			$("#pub_grid").on('rowselect', function (event) {
+				var data = {
+					id: event.args.row.id,
+					author: event.args.row.Author,
+					title: event.args.row.Title,
+					year: event.args.row.Year
+				};
+				
+				$('#grid_locref').jqxGrid('addrow', null, data);
+			});
 			
 			$('#save_details').jqxButton({ width: 70, theme: theme });
 			$('#save_distribution').jqxButton({ width: 70, theme: theme });
@@ -931,6 +1154,11 @@
 					<legend>Especímenes</legend>
 						<div id="grid_especimenes"></div>
 					</fieldset>
+					
+					<fieldset>
+					<legend>Referencias por locación</legend>
+						<div id="grid_locref"></div>
+					</fieldset>
 				</form>
 			</div>
 			
@@ -997,6 +1225,12 @@
 			<br/><br/>
 			<input type="button" id="ok" value="Sí" style="margin-right: 10px" />
             <input type="button" id="cancel" value="No" />
+		</div>
+	</div>
+	
+	<div id="references" caption="Referencias">
+		<div>
+			<div id="pub_grid"></div>
 		</div>
 	</div>
 
