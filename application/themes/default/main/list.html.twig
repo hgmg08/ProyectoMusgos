@@ -33,6 +33,7 @@
             }
             
             var linkrenderer = function (row, column, value) {
+            	
                 var id = $("#resultsGrid").jqxGrid('getrowdata', row).id;
                 var link = '<div id="searchLink"><a href="{{ base_url('taxon') }}' + '/' + id + '">' + value + '</a></div>';
                 return link;
@@ -66,7 +67,7 @@
 
 	<div class="grid_12 search_results">
 		{% if search != -1 %}
-			<h2>Búsqueda para "<span class="search_text">{{ search }}</span>"</h2>
+			<h2>Listado para categoría "<span class="search_text">{{ rank }}</span>"</h2>
 		{% endif %}
 		<br />
 		<div id="resultsGrid"></div>
