@@ -515,7 +515,6 @@
                     	var locIndex = $('#grid_especimenes').jqxGrid('getselectedrowindex');
                     	if (locIndex >= 0) {
                     		$('#references').jqxWindow('open');
-                    		
                     	}
                     });
                     
@@ -714,6 +713,7 @@
 			});
 			
 			$("#pub_grid").on('rowselect', function (event) {
+				var found = false;
 				var data = {
 					id: event.args.row.id,
 					author: event.args.row.Author,
@@ -721,7 +721,19 @@
 					year: event.args.row.Year
 				};
 				
-				$('#grid_locref').jqxGrid('addrow', null, data);
+				var rowcount = $('#grid_locref').jqxGrid('getdatainformation').rowscount;
+				
+				for (var i = 0; i < rowcount; i++) {
+					var id = $('#grid_locref').jqxGrid('getrowdata', i).id;
+					if (id == data.id) {
+						found = true;
+						break;
+					}
+				}
+				
+				if (!found) {
+					$('#grid_locref').jqxGrid('addrow', null, data);
+				}
 			});
 			
 			$('#save_details').jqxButton({ width: 70, theme: theme });

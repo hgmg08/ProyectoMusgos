@@ -132,6 +132,15 @@ class TaxonRepository extends EntityRepository
 			$strDql = $strDql . " JOIN t.sustratos sus";
 		}
 		
+		if(!empty($filters['lr_categ']) || !empty($filters['lr_crite']) || !empty($filters['lr_country']) || 
+			!empty($filters['lr_author'])) {
+			$strDql = $strDql . " JOIN t.listas_rojas lr";
+		}
+		
+		if(!empty($filters['lr_author'])) {
+			$strDql = $strDql . " JOIN lr.publications lrp";
+		}
+		
 		if(!empty($filters['author_pub']) || !empty($filters['title_pub']) || !empty($filters['year_pub']) ||
 			!empty($filters['location']) || !empty($filters['estado']) || !empty($filters['min_alt']) || 
 			!empty($filters['max_alt']) || !empty($filters['collection']) || $filters['coll_date'] != "/  /"
@@ -150,7 +159,7 @@ class TaxonRepository extends EntityRepository
 		if(!empty($filters['municipio'])) {
 			$strDql = $strDql . " JOIN loc.municipio mun";
 		}
-				
+			
 		$strDql = $strDql . " WHERE t.rank IN(6,7,8) AND t.status = 2";
 		
 		if(!empty($filters['genus'])) {
@@ -165,12 +174,36 @@ class TaxonRepository extends EntityRepository
 			$strDql = $strDql . " AND phf.id = :family";
 		}
 		
+		if(!empty($filters['lr_categ'])) {
+			$strDql = $strDql . " AND lr.category = :lr_categ";
+		}
+		
+		if(!empty($filters['lr_crite'])) {
+			$strDql = $strDql . " AND lr.criterionIUCN = :lr_crite";
+		}
+		
+		if(!empty($filters['lr_country'])) {
+			$strDql = $strDql . " AND lr.country = :lr_country";
+		}
+		
+		if(!empty($filters['lr_author'])) {
+			$strDql = $strDql . " AND lrp.quote LIKE :lr_author";
+		}
+		
 		if(!empty($filters['name_tax'])) {
 			$strDql = $strDql . " AND t.name LIKE :name_tax";
 		}
 		
 		if(!empty($filters['author_tax'])) {
 			$strDql = $strDql . " AND t.authorInitials LIKE :author_tax";
+		}
+		
+		if(!empty($filters['zona_vdw'])) {
+			$strDql = $strDql . " AND t.VDWDistribution LIKE :zona_vdw";
+		}
+		
+		if(!empty($filters['andean'])) {
+			$strDql = $strDql . " AND t.tropicalAndeanDistribution LIKE :andean";
 		}
 		
 		if(!empty($filters['endemism'])) {
@@ -249,12 +282,36 @@ class TaxonRepository extends EntityRepository
 			$query->setParameter('family', $filters['family']);
 		}
 		
+		if(!empty($filters['lr_categ'])) {
+			$query->setParameter('lr_categ', $filters['lr_categ']);
+		}
+		
+		if(!empty($filters['lr_crite'])) {
+			$query->setParameter('lr_crite', $filters['lr_crite']);
+		}
+		
+		if(!empty($filters['lr_country'])) {
+			$query->setParameter('lr_country', $filters['lr_country']);
+		}
+		
+		if(!empty($filters['lr_author'])) {
+			$query->setParameter('lr_author', "%".$filters['lr_author']."%");
+		}
+		
 		if(!empty($filters['name_tax'])) {
 			$query->setParameter('name_tax', "%".$filters['name_tax']."%");
 		}
 		
 		if(!empty($filters['author_tax'])) {
 			$query->setParameter('author_tax', "%".$filters['author_tax']."%");
+		}
+		
+		if(!empty($filters['zona_vdw'])) {
+			$query->setParameter('zona_vdw', "%".$filters['zona_vdw']."%");
+		}
+		
+		if(!empty($filters['andean'])) {
+			$query->setParameter('andean', "%".$filters['andean']."%");
 		}
 		
 		if(!empty($filters['endemism'])) {

@@ -8,6 +8,14 @@
         	theme: theme,
         	autoHide: false
         });
+        
+        $("#andean").jqxTooltip({ 
+        	content: '<img src="{{ base_url('public/images/andinotropicales.jpg') }}" />', 
+        	position: 'mouse', 
+        	name: 'vdw', 
+        	theme: theme,
+        	autoHide: false
+        });
     });
 </script>
 						<!-- Distribución mundial -->
@@ -25,5 +33,13 @@
 							<ul>
 								<li><span>{{ taxon.getVDWDistribution }}</span></li>
 							</ul>
+							<br/>
 						{% endif %}
-					
+						
+						<!-- Paises Andinotropicales -->
+						{% if taxon.tropicalAndeanDistribution != null %}
+							<strong>Distribución por paises andino-tropicales:</strong><img id="andean" src="{{ base_url('public/images/img12x12_about.png') }}" style="margin-left:5px;" />
+							<ul>
+								<li><span>{{ taxon.tropicalAndeanDistribution }}</span></li>
+							</ul>
+						{% endif %}
