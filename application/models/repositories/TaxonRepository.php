@@ -14,7 +14,7 @@ use Doctrine\ORM\EntityRepository,
  */
 class TaxonRepository extends EntityRepository
 {
-	
+
 	public function getAllByStatus($status)
 	{
 		$query = $this->_em->createQuery(
@@ -80,7 +80,7 @@ class TaxonRepository extends EntityRepository
 	public function rankCount($rank)
 	{
 		$query = $this->_em->createQuery(
-			"SELECT COUNT(t.id) FROM entities\Taxon t WHERE t.rank = :rank"
+			"SELECT COUNT(t.id) FROM entities\Taxon t WHERE t.rank = :rank AND t.status = 2"
 		);
 		$query->setParameter('rank', $rank);
 		return $query->getResult(Query::HYDRATE_SINGLE_SCALAR);
@@ -89,7 +89,7 @@ class TaxonRepository extends EntityRepository
 	public function getAllByRank($rank)
 	{
 		$query = $this->_em->createQuery(
-			"SELECT t FROM entities\Taxon t WHERE t.rank = :rank"
+			"SELECT t FROM entities\Taxon t WHERE t.rank = :rank AND t.status = 2"
 		);
 		$query->setParameter('rank', $rank);
 		return $query->getResult(Query::HYDRATE_ARRAY);

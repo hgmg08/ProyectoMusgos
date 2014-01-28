@@ -31,7 +31,7 @@
 					{% for h in hierarchy %}
 						<li>
 						<span>
-							<strong>{{ rank[h.getRank] }}</strong>: {{ h.getName }}
+							<strong>{{ rank[h.getRank] }}</strong>: <a id="link_hierarchy" href="{{ base_url('taxon') }}/{{ h.getId }}">{{ h.getName }}</a>
 						</span>
 						</li>
 					{% endfor %}

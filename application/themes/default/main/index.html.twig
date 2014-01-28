@@ -39,12 +39,12 @@
 		<img id="mdv_title" src="{{ base_url('public/images/mdv_datos/titulo-datos.png') }}" />
 		<div class="mdv_data_group">
 			<ul id="mdv_data">
-				<li><div id="mdv_data_number">{{ rankCount.clase }}</div> <div id="mdv_data_title">Clases</div></li>
-				<li><div id="mdv_data_number">{{ rankCount.subclase }}</div> <div id="mdv_data_title">SubClases</div></li>
-				<li><div id="mdv_data_number">{{ rankCount.orden }}</div> <div id="mdv_data_title">Ordenes</div></li>
-				<li><div id="mdv_data_number">{{ rankCount.familia }}</div> <div id="mdv_data_title">Familias</div></li>
-				<li><div id="mdv_data_number">{{ rankCount.genero }}</div> <div id="mdv_data_title">Géneros</div></li>
-				<li><div id="mdv_data_number">{{ rankCount.especie }}</div> <div id="mdv_data_title">Especies</div></li>
+				<li><div id="mdv_data_number"><a href="{{ base_url('tlist?rank=1') }}">{{ rankCount.clase }}</a></div> <div id="mdv_data_title">Clases</div></li>
+				<li><div id="mdv_data_number"><a href="{{ base_url('tlist?rank=2') }}">{{ rankCount.subclase }}</a></div> <div id="mdv_data_title">SubClases</div></li>
+				<li><div id="mdv_data_number"><a href="{{ base_url('tlist?rank=3') }}">{{ rankCount.orden }}</a></div> <div id="mdv_data_title">Ordenes</div></li>
+				<li><div id="mdv_data_number"><a href="{{ base_url('tlist?rank=4') }}">{{ rankCount.familia }}</a></div> <div id="mdv_data_title">Familias</div></li>
+				<li><div id="mdv_data_number"><a href="{{ base_url('tlist?rank=5') }}">{{ rankCount.genero }}</a></div> <div id="mdv_data_title">Géneros</div></li>
+				<li><div id="mdv_data_number"><a href="{{ base_url('tlist?rank=6') }}">{{ rankCount.especie }}</a></div> <div id="mdv_data_title">Especies</div></li>
 			</ul>
 		</div>
 	</div>

@@ -187,37 +187,38 @@ class Taxon extends CI_Controller {
 			}
 			
 			//Imagenes
-			$galleryDir = 'public/images/gallery/' . $taxon->getId() . '/';
-			$thumbsDir = $galleryDir . 'thumbs/';
-			$gallery = array();
-			$imgFiles = glob($galleryDir . "*.jpg");
-			$imgTextFile = glob($galleryDir . "*.csv");
-			$imgTextData = $this->csvreader->parse_file($imgTextFile[0]);
-			$i = 0;
-			foreach ($imgFiles as $img) {
-				$imgName = str_replace($galleryDir, "", $img);
-				if (!is_file($thumbsDir . $imgName)) {
-					$config['source_image'] = $img;
-					$config['new_image'] = $thumbsDir . $imgName;
-					$config['width'] = 120;
-					$config['height'] = 100;
-					$config['maintain_ratio'] = TRUE;
-					$this->image_lib->initialize($config);
-					$this->image_lib->resize();
-					echo $this->image_lib->display_errors();
-				}
-				$gallery[$i]['img'] = $img;
-				$gallery[$i]['thumb'] = $thumbsDir . $imgName;
-				for ($j = 0; $j < count($imgTextData); $j++){
-					if ($imgTextData[$j]['Imagen'] == str_replace(".jpg", "", $imgName)) {
-						$gallery[$i]['desc'] =  "Descripción: " . utf8_encode(trim($imgTextData[$j]["Descripcion"])) . ". " . 
-							"Autor: " . utf8_encode(trim($imgTextData[$j]["Autor"])) . ". " . "Colección: " . utf8_encode(trim($imgTextData[$j]["Coleccion"]));
-						break;	
+			if ($taxon->getRank() > 5) {
+				$galleryDir = 'public/images/gallery/' . $taxon->getId() . '/';
+				$thumbsDir = $galleryDir . 'thumbs/';
+				$gallery = array();
+				$imgFiles = glob($galleryDir . "*.jpg");
+				$imgTextFile = glob($galleryDir . "*.csv");
+				$imgTextData = $this->csvreader->parse_file($imgTextFile[0]);
+				$i = 0;
+				foreach ($imgFiles as $img) {
+					$imgName = str_replace($galleryDir, "", $img);
+					if (!is_file($thumbsDir . $imgName)) {
+						$config['source_image'] = $img;
+						$config['new_image'] = $thumbsDir . $imgName;
+						$config['width'] = 120;
+						$config['height'] = 100;
+						$config['maintain_ratio'] = TRUE;
+						$this->image_lib->initialize($config);
+						$this->image_lib->resize();
+						echo $this->image_lib->display_errors();
 					}
+					$gallery[$i]['img'] = $img;
+					$gallery[$i]['thumb'] = $thumbsDir . $imgName;
+					for ($j = 0; $j < count($imgTextData); $j++){
+						if ($imgTextData[$j]['Imagen'] == str_replace(".jpg", "", $imgName)) {
+							$gallery[$i]['desc'] =  "Descripción: " . utf8_encode(trim($imgTextData[$j]["Descripcion"])) . ". " . 
+								"Autor: " . utf8_encode(trim($imgTextData[$j]["Autor"])) . ". " . "Colección: " . utf8_encode(trim($imgTextData[$j]["Coleccion"]));
+							break;	
+						}
+					}
+					$i++;
 				}
-				$i++;
 			}
-		
 			//Envio de variables a interfaz
 			$this->twiggy->set('rank', $this->fill_rank());
 			$this->twiggy->set('endemic', $endemica);
@@ -233,7 +234,9 @@ class Taxon extends CI_Controller {
 			$this->twiggy->set('ecosistema', $ecosistema);
 			$this->twiggy->set('listaRoja', $listaRoja);
 			$this->twiggy->set('cambioClimatico', $cambioClimatico);
-			$this->twiggy->set('gallery', $gallery);	
+			if ($taxon->getRank() > 5) {
+				$this->twiggy->set('gallery', $gallery);	
+			}	
 		} 
 
 		else {
