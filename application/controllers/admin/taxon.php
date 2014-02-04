@@ -931,6 +931,7 @@ class Taxon extends CI_Controller {
 		$galleryDir = GALLERY_DIR . $id . '/thumbs/';
 		try {
 			mkdir($galleryDir, 0775, true);	
+			fopen($galleryDir.$id.'.csv', "x+");
 		}
 		catch (Exception $e) {
 			return false;
